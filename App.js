@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {HomeScreen, JobScreen, LegalScreen, FinScreen, DonateScreen} from './app/screens/screens.js';
 //import sign in and create account
 import {SignIn, CreateAccount} from './app/screens/signin.js';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
     //import WelcomeScreen from './app/screens/WelcomeScreen';
     //import { SafeAreaView, StyleSheet } from 'react-native'
@@ -29,11 +30,37 @@ export default function App() {
   return  (
    <NavigationContainer style={styles.container}>
      {userToken ? (
-       <Tab.Navigator>
+       <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+          let iconName;
+          if (route.name == "Home") {
+            iconName = "home-outline";
+          }
+          else if (route.name == "Jobs") {
+            iconName = "briefcase-outline";
+          }
+          else if (route.name == "Legal") {
+            iconName = "people-outline";
+          }
+          else if (route.name == "Aid") {
+            iconName = "clipboard-outline";
+          }
+          else if (route.name == "Donate") {
+            iconName = "gift-outline";
+          }
+          return <Ionicons name={iconName} size={size} color={color}/>;
+        },
+        })}
+        tabBarOptions={{
+          activeTintColor: 'blue',
+          inactiveTintColor: 'black',
+        }}
+        >
         <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
-        <Tab.Screen name="Job" component={JobScreen}></Tab.Screen>
+        <Tab.Screen name="Jobs" component={JobScreen}></Tab.Screen>
         <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
-        <Tab.Screen name="Financial" component={FinScreen}></Tab.Screen>
+        <Tab.Screen name="Aid" component={FinScreen}></Tab.Screen>
         <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
      </Tab.Navigator>
      ) : (

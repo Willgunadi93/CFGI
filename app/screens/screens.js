@@ -1,7 +1,7 @@
-
 //import
 import * as React from 'react';
 import { View, Text, StyleSheet } from "react-native";
+
 
 export const HomeScreen = () => {   //home page component
     return (
