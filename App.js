@@ -24,7 +24,7 @@ const AuthStack = createStackNavigator();
 
 export default function App() {
 
-  const [userToken, setUserToken] = React.useState('asdf');
+  const [userToken, setUserToken] = React.useState(null);
   //registering these components are stacks
 
   return  (
