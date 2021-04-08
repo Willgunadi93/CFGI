@@ -21,4 +21,6 @@ target 'CFGI' do
   #  post_install do |installer|
   #    flipper_post_install(installer)
   #  end
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
 end
