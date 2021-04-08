@@ -1,7 +1,7 @@
 //import
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
-import {  Text, StyleSheet, Button, View, TextInput } from "react-native";
+import {  Text, StyleSheet, Button, View, TextInput, Image } from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 
 export const SignIn = ({ navigation}) => {  //login component
@@ -11,7 +11,15 @@ export const SignIn = ({ navigation}) => {  //login component
     const [number, onChangeText] = React.useState(null);
     return (
         <ScreenContainer style={StyleSheet.container}>
-            <View>
+            <View style={styles.logoView}>
+                <View style={{paddingBottom: 50, alignItems: 'center'}}>
+                    <Image style={{marginTop: 50, marginBottom: 20}} source = {require('../assets/img/arrow-left.png')} />
+                    <Image style={{marginLeft: -10}}source = {require('../assets/img/arrow-right.png')} />
+                    <View style={{position: 'absolute', alignItems: 'center'}}>
+                        <Image style={styles.logo} source={require('../assets/img/logo.png')} />
+                    </View>
+                </View>
+                
                 <Text style={styles.CFGI}>COMMUNITY FOR GLOBAL {"\n"} INNOVATION</Text>
                 <Text style={styles.welcome}>WELCOME</Text>
             </View>
@@ -34,7 +42,7 @@ export const SignIn = ({ navigation}) => {  //login component
             </View>
             <View style={styles.buttonContainer}>
                 <Button titleStyle={styles.buttonText} title='LOGIN' onPress={() => alert('Complete')}/>
-                <Text style={{ color: 'blue', textAlign: 'right', paddingTop: 10}} onPress={() => navigation.push('CreateAccount')}>Sign up ></Text>
+                <Text style={{ color: 'blue', textAlign: 'right', paddingTop: 10}} onPress={() => navigation.push('CreateAccount')}>Sign up {'>'}</Text>
             </View>
         </ScreenContainer>
     );
@@ -62,7 +70,7 @@ const styles = StyleSheet.create({
         color: '#69676F',
         fontSize: 16,
         textAlign: 'center',
-        paddingVertical: 20,
+        paddingVertical: 15,
         fontFamily: 'Righteous-Regular'
     },
 
@@ -70,7 +78,7 @@ const styles = StyleSheet.create({
         color: '#3F3356',
         fontSize: 32,
         textAlign: 'center',
-        paddingVertical: 25,
+        paddingVertical: 10,
         fontFamily: 'Righteous-Regular'
     },
 
@@ -97,5 +105,28 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         backgroundColor: 'white',
         borderColor: '#DADADA'
+      },
+
+      logoView: {
+          alignItems: 'center',
+          paddingTop: 60
+      },
+
+      logo: {
+          height: 160,
+          width: 160
+      },
+
+      backgroundContainer: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+      },
+
+      backdrop: {
+        flex:1,
+        flexDirection: 'column'
       },
   });
