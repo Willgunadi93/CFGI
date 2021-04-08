@@ -6,7 +6,9 @@ import { NavigationContainer } from '@react-navigation/native'; //container
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; //bottom nav
 import { createStackNavigator } from '@react-navigation/stack';
 //import screens
-import {HomeScreen, JobScreen, LegalScreen, FinScreen, DonateScreen} from './app/screens/screens.js';
+import { HomeScreen, JobScreen, LegalScreen, FinScreen, DonateScreen } from './app/screens/screens.js';
+//Authentication
+import { AuthContext } from './app/screens/context';
 //import sign in and create account
 import {SignIn, CreateAccount} from './app/screens/signin.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -22,59 +24,79 @@ const Tab = createBottomTabNavigator();
 //authentication stack
 const AuthStack = createStackNavigator();
 
+
 export default function App() {
 
+  const [isLoading, setIsLoading] = React.useState(true);
   const [userToken, setUserToken] = React.useState(null);
+
+  const authContext = React.useMemo(() => {
+    return {
+      signIn: () => {
+        //isLoading(false);
+        setUserToken('asdf');
+      },
+      signUp: () => {
+        //isLoading(false);
+        setUserToken('asdf');
+      },
+      signOut: () => {
+        //isLoading(false);
+        setUserToken(null);
+      }
+    };
+  }, []);
   //registering these components are stacks
 
   return  (
-   <NavigationContainer style={styles.container}>
-     {userToken ? (
-       <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-          let iconName;
-          if (route.name == "Home") {
-            iconName = "home-outline";
-          }
-          else if (route.name == "Jobs") {
-            iconName = "briefcase-outline";
-          }
-          else if (route.name == "Legal") {
-            iconName = "people-outline";
-          }
-          else if (route.name == "Aid") {
-            iconName = "clipboard-outline";
-          }
-          else if (route.name == "Donate") {
-            iconName = "gift-outline";
-          }
-          return <Ionicons name={iconName} size={size} color={color}/>;
-        },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'blue',
-          inactiveTintColor: 'black',
-        }}
-        >
-        <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
-        <Tab.Screen name="Jobs" component={JobScreen}></Tab.Screen>
-        <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
-        <Tab.Screen name="Aid" component={FinScreen}></Tab.Screen>
-        <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
-     </Tab.Navigator>
-     ) : (
-      <AuthStack.Navigator>
-        <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>  
-        <AuthStack.Screen name="CreateAccount" component={CreateAccount}></AuthStack.Screen>
-    </AuthStack.Navigator>
-     )}
-     {/* <AuthStack.Navigator>
-       <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>  
-       <AuthStack.Screen name="CreateAccount" component={CreateAccount}></AuthStack.Screen>
-     </AuthStack.Navigator> */}
-   </NavigationContainer>
-    
+    <AuthContext.Provider value={authContext}>
+      <NavigationContainer style={styles.container}>
+        {userToken ? (
+          <Tab.Navigator
+            screenOptions={({route}) => ({
+              tabBarIcon: ({focused, color, size}) => {
+              let iconName;
+              if (route.name == "Home") {
+                iconName = "home-outline";
+              }
+              else if (route.name == "Jobs") {
+                iconName = "briefcase-outline";
+              }
+              else if (route.name == "Legal") {
+                iconName = "people-outline";
+              }
+              else if (route.name == "Aid") {
+                iconName = "clipboard-outline";
+              }
+              else if (route.name == "Donate") {
+                iconName = "gift-outline";
+              }
+              return <Ionicons name={iconName} size={size} color={color}/>;
+            },
+            })}
+            tabBarOptions={{
+              activeTintColor: 'blue',
+              inactiveTintColor: 'black',
+            }}
+            >
+            <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
+            <Tab.Screen name="Jobs" component={JobScreen}></Tab.Screen>
+            <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
+            <Tab.Screen name="Aid" component={FinScreen}></Tab.Screen>
+            <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
+        </Tab.Navigator>
+        ) : (
+          <AuthStack.Navigator>
+            <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>  
+            <AuthStack.Screen name="CreateAccount" component={CreateAccount}></AuthStack.Screen>
+        </AuthStack.Navigator>
+        )}
+        {/* <AuthStack.Navigator>
+          <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>  
+          <AuthStack.Screen name="CreateAccount" component={CreateAccount}></AuthStack.Screen>
+        </AuthStack.Navigator> */}
+      </NavigationContainer>
+   </AuthContext.Provider>
   );  
 }
 /* <NavigationContainer>
