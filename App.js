@@ -10,6 +10,8 @@ import {HomeScreen, JobScreen, LegalScreen, FinScreen, DonateScreen} from './app
 //import sign in and create account
 import {SignIn, CreateAccount} from './app/screens/signin.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 
     //import WelcomeScreen from './app/screens/WelcomeScreen';
     //import { SafeAreaView, StyleSheet } from 'react-native'
@@ -24,7 +26,7 @@ const AuthStack = createStackNavigator();
 
 export default function App() {
 
-  const [userToken, setUserToken] = React.useState(null);
+  const [userToken, setUserToken] = React.useState("asdf");
   //registering these components are stacks
 
   return  (
@@ -33,23 +35,23 @@ export default function App() {
        <Tab.Navigator
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
-          let iconName;
+          // let iconName;
+          // let assistIcon;
           if (route.name == "Home") {
-            iconName = "home-outline";
+            return <Ionicons name="home" size={size} color={color}/>
           }
           else if (route.name == "Jobs") {
-            iconName = "briefcase-outline";
+            return <Ionicons name="briefcase" size={size} color={color}/>
           }
           else if (route.name == "Legal") {
-            iconName = "people-outline";
+            return <Ionicons name="people" size={size} color={color}/>
           }
-          else if (route.name == "Aid") {
-            iconName = "clipboard-outline";
+          else if (route.name == "Assistance") {
+            return <Icon name={"hand-holding-usd"} size={size} color={color}/>
           }
           else if (route.name == "Donate") {
-            iconName = "gift-outline";
+            return <Ionicons name="gift" size={size} color={color}/>
           }
-          return <Ionicons name={iconName} size={size} color={color}/>;
         },
         })}
         tabBarOptions={{
@@ -60,7 +62,7 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
         <Tab.Screen name="Jobs" component={JobScreen}></Tab.Screen>
         <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
-        <Tab.Screen name="Aid" component={FinScreen}></Tab.Screen>
+        <Tab.Screen name="Assistance" component={FinScreen}></Tab.Screen>
         <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
      </Tab.Navigator>
      ) : (

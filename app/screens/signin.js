@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center',
         paddingVertical: 15,
-        fontFamily: 'Righteous-Regular'
+        // fontFamily: 'Righteous-Regular'
     },
 
     welcome: {
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         fontSize: 32,
         textAlign: 'center',
         paddingVertical: 10,
-        fontFamily: 'Righteous-Regular'
+        // fontFamily: 'Righteous-Regular'
     },
 
     buttonContainer: {
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
-        fontFamily:'Oxygen-Bold', 
+        // fontFamily:'Oxygen-Bold', 
         fontSize: 14,
     },
 
