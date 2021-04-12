@@ -6,7 +6,8 @@ import { NavigationContainer } from '@react-navigation/native'; //container
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; //bottom nav
 import { createStackNavigator } from '@react-navigation/stack';
 //import screens
-import { HomeScreen, JobScreen, LegalScreen, FinScreen, DonateScreen } from './app/screens/screens.js';
+import { HomeScreen, JobScreen, LegalScreen, DonateScreen } from './app/screens/screens.js';
+import {FinScreen } from './app/screens/financial.js';
 //Authentication
 import { AuthContext } from './app/screens/context';
 //import sign in and create account

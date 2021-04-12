@@ -29,13 +29,7 @@ export const JobScreen = () => {   //Jobs page component
       </View>
     );
   }
-  export const FinScreen = () => {   //Jobs page component
-    return (
-      <View style={styles.container}>
-        <Text>Financial Aid component</Text>
-      </View>
-    );
-  }
+  
   export const DonateScreen = () => {   //Jobs page component
     return (
       <View style={styles.container}>
