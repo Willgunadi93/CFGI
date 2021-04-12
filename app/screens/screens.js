@@ -1,4 +1,3 @@
-//import
 import * as React from 'react';
 import { View, Text, StyleSheet, Button } from "react-native";
 import { AuthContext } from '../screens/context';
