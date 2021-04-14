@@ -1,7 +1,7 @@
 //import
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
-import {  Text, StyleSheet, Button, View, TextInput, Image, Ellipse, Portal, Modal, Pressable } from "react-native";
+import {  Text, StyleSheet, Button, View, TextInput, Image, Modal, Pressable } from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 import * as Font from 'expo-font';
 import { AuthContext } from './context';
