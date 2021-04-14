@@ -3,34 +3,39 @@ import { View, Text, StyleSheet,  TouchableOpacity,Image } from "react-native";
 import { AuthContext } from '../screens/context';
 import { Card,ListItem, Button, Icon } from "react-native-elements";
 import { ScreenContainer } from 'react-native-screens';
-
+import {ProfileScreen} from '../screens/profile.js';
 
  export const HomeScreen = ({navigation}) => { 
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.inRow}> 
-                <Image style={{width: 50, height: 50, top: 60, left: 20,right: 20}} source={require("../assets/img/CFGInews.png")}/>
-                <Image style={{width: 170, height: 35, top: 60,left: 70,right: 20}} source={require("../assets/img/logo-full.png")}/>
-                <Image style={{width: 40, height: 40, top: 60, left: 130,right: 20}} source={require("../assets/img/profile.png")}/>
+                <Image style={ {width: 55, height: 55, top: 50, left: 10} } source={require("../assets/img/CFGInews.png")}/>
+                <Image style={{ paddingLeft: 10, paddingRight: 10,width: 270, height: 55, top: 120,left: 15,right: 20}} source={require("../assets/img/logo-full.png")}/>
+                <TouchableOpacity  onPress={() => navigation.navigate('HomeScreen', {screen: 'ProfileScreen'})}>
+                <Image style={ {width: 50, height: 50, top: 53, left: 10}}  source={require("../assets/img/profile.png")}/>
+                </TouchableOpacity>
             </View>
-            <View style={{top: 100}}>
-                <Text style={styles.mainText}>Upcomming Appointments</Text>
+
+            <View style={styles.section1}>
+                <Text style={styles.h1}>Upcomming Appointments</Text>
             
                 <TouchableOpacity  onPress={() => Actions.Screen()}>
-                <Card name="card" style={styles.cardLayout} pointerEvents="none">
-                    <Image style={{width: 30, height: 30}} source={require("../assets/img/attorney.png")} />         
-                    <Text >Attorney: Toby Renolds{"\n"}Starting @ 7:00 AM - May 8, 2019 </Text>
+                <Card style={styles.inRow} name="card"  pointerEvents="none">
+                <Text style={styles.cardTxt} >Attorney: Toby Renolds{"\n"}Starting @ 7:00 AM - May 8, 2019 </Text>
+                    <Image style={styles.cardImg} source={require("../assets/img/attorney.png")} />         
                     <Icon name='RightOutlined'  type='antdesign'/>
                 </Card>
                 </TouchableOpacity>
-                
-                <Text style={styles.mainText}>Saved Financial Forms</Text>
+            </View> 
+
+            <View style={styles.section2}>
+                <Text style={styles.h1}>Saved Financial Forms</Text>
                 
                 <TouchableOpacity  onPress={() => Actions.Screen()}>
                 <Card name="card" style={styles.cardLayout} pointerEvents="none">
                 <Text style={{ color: 'red', textAlign: 'right', marginTop: -5, textDecorationLine: 'underline'}}>Delete draft</Text>
-                    <Image style={{width: 30, height: 30}} source={require("../assets/img/notSubmittedFin.png")} />         
-                    <Text >Status: not yet submitted{"\n"}Submitted at 7:00 AM - May 8, 2019 </Text>
+                    <Image style={styles.cardImg} source={require("../assets/img/notSubmittedFin.png")} />         
+                    <Text style={styles.cardTxt}>Status: not yet submitted{"\n"}Submitted at 7:00 AM - May 8, 2019 </Text>
                 </Card>
                 </TouchableOpacity>
             </View>
@@ -42,11 +47,32 @@ import { ScreenContainer } from 'react-native-screens';
   const styles = StyleSheet.create({   
     inRow: {
         flexDirection: 'row',
+        paddingLeft: 10,
+        paddingRight: 10,
       },
 
     img: {
         paddingLeft: 100,
         paddingRight: 100,
+    },
+
+    cardImg: {
+        width: 80, height: 80,
+    },
+
+    cardTxt: {
+        fontSize: 16, //left: 80,
+    },
+
+    h1: {
+         fontSize: 22, left: 15,
+    },
+    
+    section1: {
+        top: 170, paddingEnd: 20,
+    },
+    section2: {
+        top: 200, paddingEnd: 20,
     },
 
     container: {
@@ -63,13 +89,25 @@ import { ScreenContainer } from 'react-native-screens';
     }, 
 
     cardLayout: {
-        //flexDirection: 'row',
-        //flexWrap: 'wrap',
-        width:350,
-        height:50,
-        justifyContent: 'flex-start',
-        top: 20,
-        bottom: 20,
+        //justifyContent: 'flex-start',
+        flexDirection: 'row',
     },
 
 });
+
+ //stack nav
+ import { NavigationContainer } from '@react-navigation/native';
+ import { createStackNavigator } from '@react-navigation/stack';
+ 
+ const Stack = createStackNavigator();
+ 
+ const MyStack = () => {
+   return (
+     <NavigationContainer>
+       <Stack.Navigator>
+         <Stack.Screen name="Profile" component={ProfileScreen} />
+       </Stack.Navigator>
+     </NavigationContainer>
+   );
+ };
+ 

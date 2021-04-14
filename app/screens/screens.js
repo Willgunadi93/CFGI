@@ -35,3 +35,5 @@ export const JobScreen = () => {   //Jobs page component
       justifyContent: 'center',
     },
   });
+
+ 

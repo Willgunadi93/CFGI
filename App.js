@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; //bott
 import { createStackNavigator } from '@react-navigation/stack';
 //import screens
 import {HomeScreen } from './app/screens/home.js';
+import {ProfileScreen} from './app/screens/profile.js';
 import { JobScreen, LegalScreen, DonateScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 
