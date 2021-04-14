@@ -1,7 +1,7 @@
 //import
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
-import {  Text, StyleSheet, Button, View, TextInput, Image, Ellipse } from "react-native";
+import {  Text, StyleSheet, Button, View, TextInput, Image, Ellipse, Portal, Modal, Pressable } from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 import * as Font from 'expo-font';
 import { AuthContext } from './context';
@@ -139,12 +139,19 @@ export const ForgotPassword = ({navigation}) => {        //create a password res
             <View style={styles.buttonContainer}>
                 <Button titleStyle={styles.buttonText} title='CONTINUE' onPress={() => navigation.push('ResetPassword')}/>
             </View>
-            <View style={{alignItems: 'center'}}>
-                <Image style={styles.water} source={require('../assets/img/water.png')} />
-                <View style={{alignItems: 'center', position: 'absolute'}}>
-                    <View style={styles.circleRedBottom}></View>
-                    <View style={styles.circleOrangeBottom}></View>
+            {/* <View style={{alignItems: 'center'}}>
+                <View style={{position: 'absolute'}}>
+                    <Image style={styles.water} source={require('../assets/img/water.png')} />
+                    <View style={{alignItems: 'center'}}>
+                        <View style={styles.circleRedBottom}></View>
+                        <View style={styles.circleOrangeBottom}></View>
+                    </View>
                 </View>
+            </View> */}
+            <View style={{alignItems: 'center', paddingVertical: 50}}>
+                <Image style={{marginTop: 100, position: 'absolute', width:'100%', height: 150}} source={require('../assets/img/water.png')} />
+                <View style={styles.circleRedBottom}></View>
+                <View style={styles.circleOrangeBottom}></View>
             </View>
         </ScreenContainer>
     );
@@ -152,38 +159,79 @@ export const ForgotPassword = ({navigation}) => {        //create a password res
 
 export const ResetPassword = () => {        //create a password resetting component
     //After users enters information(fname,lname,email,password), join-now creates the account;
-    const { signUp } = React.useContext(AuthContext);
+    const { signUp, signIn } = React.useContext(AuthContext);
     const [number, onChangeText] = React.useState(null);
+
+    const [modalVisible, setModalVisible] = React.useState(false);
+
     return (
         <ScreenContainer style={StyleSheet.container}>
+
             <View style={styles.logoView}>
-                <View style={{paddingVertical: 30, alignItems: 'center'}}>
+                <View style={{paddingVertical: 10, alignItems: 'center'}}>
                     <View style={{alignItems: 'center'}}>
                         <Image style={styles.logoFull} source={require('../assets/img/logo-full.png')} />
                     </View>
                 </View>
                 
-                <Text style={styles.password}>Forgot Your Password</Text>
-                <Text style={{marginHorizontal: 50, fontSize: 16, marginBottom: 20}}>To reset your password please enter the email that you used to register for CFGI.</Text>
+                <Text style={styles.password}>An email was sent to you. </Text>
+                <Text style={{marginHorizontal: 50, fontSize: 16, marginBottom: 10}}>Please enter the validation code and your new password.</Text>
             </View>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: 5}}>
                     <TextInput
                         style={styles.input}
                         onChangeText={onChangeText}
-                        placeholder="Email"
+                        placeholder="Validation Code"
+                    />
+                </View>
+
+                <View style={{paddingVertical: 5}}>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={onChangeText}
+                        placeholder="New Password"
+                    />
+                </View>
+
+                <View style={{paddingVertical: 5}}>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={onChangeText}
+                        placeholder="Confirm Password"
                     />
                 </View>
             </View>
+
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.modalText}>Password successfully set!</Text>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => signIn()}
+                        >
+                        <Text style={styles.textStyle}>LOGIN</Text>
+                        </Pressable>
+                    </View>
+                </View>
+            </Modal>
+
             <View style={styles.buttonContainer}>
-                <Button titleStyle={styles.buttonText} title='CONTINUE' onPress={() => signUp()}/>
+                <Button titleStyle={styles.buttonText} title='CONFIRM PASSWORD' onPress={() => setModalVisible(true)}/>
             </View>
             <View style={{alignItems: 'center'}}>
-                <Image style={styles.water} source={require('../assets/img/water.png')} />
-                <View style={{alignItems: 'center', position: 'absolute'}}>
-                    <View style={styles.circleRedBottom}></View>
-                    <View style={styles.circleOrangeBottom}></View>
-                </View>
+                <Image style={{marginTop: 50, position: 'absolute', width:'100%', height: 150}} source={require('../assets/img/water.png')} />
+                <View style={styles.circleRedBottom}></View>
+                <View style={styles.circleOrangeBottom}></View>
             </View>
         </ScreenContainer>
     );
@@ -285,7 +333,6 @@ const styles = StyleSheet.create({
       water: {
         height: 150,
         width: "100%",
-        marginTop: 100
       },
 
       backgroundContainer: {
@@ -341,8 +388,8 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 70 / 2,
-        marginRight: '70%',
-        marginTop: 75,
+        marginRight: '60%',
+        marginTop: 20,
         backgroundColor: "#FF564F",
       },
 
@@ -351,7 +398,58 @@ const styles = StyleSheet.create({
         height: 46,
         borderRadius: 46 / 2,
         marginRight: '20%',
-        marginTop: 20,
+        marginTop: 30,
         backgroundColor: "#FAC007",
       },
+
+      centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+
+      modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 10,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+
+      button: {
+        borderRadius: 5,
+        paddingVertical: 5,
+        paddingHorizontal: 15,
+        marginTop: 5,
+        elevation: 2
+      },
+
+      buttonOpen: {
+        backgroundColor: "#F194FF",
+      },
+
+      buttonClose: {
+        backgroundColor: "#2196F3",
+      },
+
+      textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+      },
+
+      modalText: {
+        marginBottom: 15,
+        textAlign: "center",
+        fontWeight: 'bold'
+      }
   });
