@@ -20,10 +20,10 @@ import {ProfileScreen} from '../screens/profile.js';
                 <Text style={styles.h1}>Upcomming Appointments</Text>
             
                 <TouchableOpacity  onPress={() => Actions.Screen()}>
-                <Card style={styles.inRow} name="card"  pointerEvents="none">
-                <Text style={styles.cardTxt} >Attorney: Toby Renolds{"\n"}Starting @ 7:00 AM - May 8, 2019 </Text>
+                <Card style={styles.cardLayout} name="card"  pointerEvents="none">
                     <Image style={styles.cardImg} source={require("../assets/img/attorney.png")} />         
-                    <Icon name='RightOutlined'  type='antdesign'/>
+                    <Text style={styles.cardTxt} >Attorney: Toby Renolds{"\n"}{"\n"}Starting @ 7:00 AM - May 8, 2019 </Text>
+                    <Image  style={styles.cardArrow} source={require("../assets/img/rightArrow.png")} />         
                 </Card>
                 </TouchableOpacity>
             </View> 
@@ -33,9 +33,9 @@ import {ProfileScreen} from '../screens/profile.js';
                 
                 <TouchableOpacity  onPress={() => Actions.Screen()}>
                 <Card name="card" style={styles.cardLayout} pointerEvents="none">
-                <Text style={{ color: 'red', textAlign: 'right', marginTop: -5, textDecorationLine: 'underline'}}>Delete draft</Text>
+                <Text style={{ color: 'red', textAlign: 'right', marginTop: -2, textDecorationLine: 'underline'}}>Delete draft</Text>
                     <Image style={styles.cardImg} source={require("../assets/img/notSubmittedFin.png")} />         
-                    <Text style={styles.cardTxt}>Status: not yet submitted{"\n"}Submitted at 7:00 AM - May 8, 2019 </Text>
+                    <Text style={styles.cardTxt}>Status: not yet submitted{"\n"}{"\n"}Submitted at 7:00 AM - May 8, 2019 </Text>
                 </Card>
                 </TouchableOpacity>
             </View>
@@ -47,8 +47,8 @@ import {ProfileScreen} from '../screens/profile.js';
   const styles = StyleSheet.create({   
     inRow: {
         flexDirection: 'row',
-        paddingLeft: 10,
-        paddingRight: 10,
+        //paddingLeft: 10,
+        //paddingRight: 10,
       },
 
     img: {
@@ -57,11 +57,15 @@ import {ProfileScreen} from '../screens/profile.js';
     },
 
     cardImg: {
-        width: 80, height: 80,
+        width: 80, height: 80, top: 25, left:-5,
     },
 
     cardTxt: {
-        fontSize: 16, //left: 80,
+        fontSize: 16, left: 85, top: -35,
+    },
+
+    cardArrow: {
+        top: -75, left:320,
     },
 
     h1: {
@@ -91,6 +95,8 @@ import {ProfileScreen} from '../screens/profile.js';
     cardLayout: {
         //justifyContent: 'flex-start',
         flexDirection: 'row',
+        width: 200,
+        height: 100,
     },
 
 });
