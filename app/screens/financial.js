@@ -9,6 +9,7 @@ import {FinAppScreen } from './FinDocScreen';
 const Stack = createStackNavigator();
 
 export const FinScreen = ({navigation}) => { 
+
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.container}>
@@ -16,6 +17,7 @@ export const FinScreen = ({navigation}) => {
                 style={styles.img}/>
                 <Text style={styles.title}>APPLY</Text>
                 <Text style={styles.header}>Emergency Financial Assistance</Text>
+
                 <Text style={styles.mainText}>For any student in need of financial assistance for amenities 
                     such as transportation fees, food, and emergency housing, we have an
                     application for financial assistance thanks to the generiosity of our donors*
@@ -27,11 +29,11 @@ export const FinScreen = ({navigation}) => {
             <Button style={styles.buttonText} title='APPLY NOW' onPress={() => navigation.navigate('FinAppScreen')} />
             {/* <Button titleStyle={styles.buttonText} title='LOGIN' onPress={() => signIn()}/> */}
             <Text style={{ color: 'blue', paddingTop: 15, textDecorationLine: 'underline'}}>TERMS AND CONDITIONS</Text>
+
         </View>
    </ScreenContainer>
     );
   }
-
 
 function FinStack() {
   return (
@@ -49,6 +51,7 @@ export default function App() {
 }
 
 
+
   const styles = StyleSheet.create({        
     container: {
       flex: 1,
@@ -56,7 +59,6 @@ export default function App() {
       alignItems: 'center',
       justifyContent: 'center',
     },
-
     mainText: {
         textAlign: 'left',
         paddingLeft: 50,
@@ -82,7 +84,6 @@ export default function App() {
         // fontFamily:'Oxygen-Bold', 
         fontSize: 14,
     },
-
     title: {
         fontSize: 25,
         textAlign: 'left',

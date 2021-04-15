@@ -28,6 +28,7 @@ export const FinAppScreen = () => {
             </View>
             {/* fixed size */}
             <Text style={styles.header}>Provide justification on why you need the money:</Text>
+
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: 5}}>
                     <TextInput
@@ -59,7 +60,6 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
-
     header: {
         fontSize: 25,
         textAlign: 'left', 

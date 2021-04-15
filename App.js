@@ -10,10 +10,11 @@ import { HomeScreen, JobScreen, LegalScreen, DonateScreen } from './app/screens/
 import {FinScreen } from './app/screens/financial.js';
 // temporary, will delete later
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
+
 //Authentication
 import { AuthContext } from './app/screens/context';
 //import sign in and create account
-import {SignIn, CreateAccount} from './app/screens/signin.js';
+import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screens/signin.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -93,7 +94,9 @@ export default function App() {
      </Tab.Navigator>
      ) : (
       <AuthStack.Navigator>
-        <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>  
+        <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>
+        <AuthStack.Screen name="ForgotPassword" component={ForgotPassword}></AuthStack.Screen> 
+        <AuthStack.Screen name="ResetPassword" component={ResetPassword}></AuthStack.Screen> 
         <AuthStack.Screen name="CreateAccount" component={CreateAccount}></AuthStack.Screen>
     </AuthStack.Navigator>
      )}
