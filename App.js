@@ -8,6 +8,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 //import screens
 import { HomeScreen, JobScreen, LegalScreen, DonateScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
+// temporary, will delete later
+import { FinAppScreen } from './app/screens/FinDocScreen.js';
+
 //Authentication
 import { AuthContext } from './app/screens/context';
 //import sign in and create account
@@ -59,9 +62,7 @@ export default function App() {
      {userToken ? (
        <Tab.Navigator
         screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-          // let iconName;
-          // let assistIcon;
+          tabBarIcon: ({color, size}) => {
           if (route.name == "Home") {
             return <Ionicons name="home" size={size} color={color}/>
           }
@@ -87,7 +88,8 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
         <Tab.Screen name="Jobs" component={JobScreen}></Tab.Screen>
         <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
-        <Tab.Screen name="Assistance" component={FinScreen}></Tab.Screen>
+        {/* <Tab.Screen name="Assistance" component={FinScreen}></Tab.Screen> */}
+        <Tab.Screen name="Assistance" component={FinAppScreen}></Tab.Screen>
         <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
      </Tab.Navigator>
      ) : (
