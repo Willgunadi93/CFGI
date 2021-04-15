@@ -1,39 +1,20 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button, Image, TextInput } from "react-native";
-import { AuthContext } from '../screens/context';
+import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity } from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-
-// const authContext = React.useMemo(() => {
-//     return {
-//       signIn: () => {
-//         //isLoading(false);
-//         setUserToken('asdf');
-//       },
-//       signUp: () => {
-//         //isLoading(false);
-//         setUserToken('asdf');
-//       },
-//       signOut: () => {
-//         //isLoading(false);
-//         setUserToken(null);
-//       }
-//     };
-//   }, []);
 
 
 export const FinAppScreen = () => { 
     const [onChangeText] = React.useState(null);
     return (
-        <ScreenContainer style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
 
 {/* <View style={{justiftyContent:"center", alignItems:"center"}}>
    <Icon>
 </View> */}
-            {/* <View style={styles.back}> */}
-                <Ionicons name="arrow-back-circle" size={40} color="#4C67F6" margin='left'></Ionicons>
-            {/* </View> */}
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Ionicons name="arrow-back-circle" size={40} color="#4C67F6" ></Ionicons>
+            </View>
             <Text style={styles.header}>Requested amount of aid:</Text>
             {/* Fixed size */}
             <View style={styles.inputContainer}>
@@ -56,14 +37,17 @@ export const FinAppScreen = () => {
                 </View>
             </View>
             <Text style={styles.header}>Attach Documents</Text>
-            <Text>Please provide the following documents:</Text>
-            <View style={styles.buttonContainer}>
+            <Text style={styles.mainText}>Please provide the following documents:</Text>
+            <View style={styles.buttonContainer, {flexDirection: 'row'}}>
                 {/* put buttons next to each other */}
-                <Button style={styles.buttonText} title='SAVE AND SUBMIT LATER'/>
-                <Button style={styles.buttonText} title='SUBMIT'/>
-                {/* <Button titleStyle={styles.buttonText} title='LOGIN' onPress={() => signIn()}/> */}
+                <TouchableOpacity style={styles.saveButton}>
+                    <Text style={styles.buttonSaveText}>SAVE</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.submitButton}>
+                    <Text style={styles.buttonSubmitText}>SUBMIT</Text>
+                </TouchableOpacity>
             </View>
-        </ScreenContainer>
+        </ScrollView>
     );
   }
 
@@ -88,28 +72,52 @@ const styles = StyleSheet.create({
     },
 
     mainText: {
-        justifyContent: 'center',
-        paddingLeft: 50,
-        paddingRight: 50,
-        paddingTop: 30, 
-        paddingBottom: 30
-    }, 
-
-    specialText: {
-        // padding: 50,
-        justifyContent: 'center',
-        fontStyle: 'italic',
+        textAlign: 'left',
+        fontSize: 16
     }, 
 
     buttonContainer: {
         paddingHorizontal: 50,
         paddingVertical: 20,
-        justifyContent: "center",
+        justifyContent: 'center',
+        justifyContent: 'space-between'
     },
 
-    buttonText: {
+    saveButton: {
         // fontFamily:'Oxygen-Bold', 
-        fontSize: 14,
+        backgroundColor:"#4C67F6",
+        padding: 10, 
+        width: 120,
+        height: 50,
+        alignContent: 'space-between',
+        // flexBasis: 60
+        // alignSelf: 'auto'
+    },
+
+    buttonSaveText: {
+        color: '#ffffff',
+        fontSize: 16,
+        textAlign: 'center',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    submitButton: {
+        // fontFamily:'Oxygen-Bold', 
+        backgroundColor:"#4C67F6",
+        padding: 10, 
+        width: 120,
+        height: 50,
+        alignContent: 'space-between',
+        // flexBasis: 60
+    },
+
+    buttonSubmitText: {
+        color: '#ffffff',
+        fontSize: 16,
+        textAlign: 'center',
+        flexDirection: 'row',
+        alignItems: 'center'
     },
 
     inputContainer: {
@@ -118,7 +126,7 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        height: 100,
+        height: 125,
         width: 300,
         padding: 10,
         borderWidth: 1,

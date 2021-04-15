@@ -87,8 +87,8 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
         <Tab.Screen name="Jobs" component={JobScreen}></Tab.Screen>
         <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
-        <Tab.Screen name="Assistance" component={FinScreen}></Tab.Screen>
-        {/* <Tab.Screen name="Assistance" component={FinAppScreen}></Tab.Screen> */}
+        {/* <Tab.Screen name="Assistance" component={FinScreen}></Tab.Screen> */}
+        <Tab.Screen name="Assistance" component={FinAppScreen}></Tab.Screen>
         <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
      </Tab.Navigator>
      ) : (

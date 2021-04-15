@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Button, Image } from "react-native";
-import { AuthContext } from '../screens/context';
 import { ScreenContainer } from 'react-native-screens';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import {FinAppScreen } from './FinDocScreen';
+// import { AuthStack } from '../app/App.js';
 
+const Stack = createStackNavigator();
 
-// export const SignIn = ({ navigation}) => { 
- export const FinScreen = ({navigation}) => { 
-    // const { signIn } = React.useContext(AuthContext);
-    // const { apply } = React.useContext(AuthContext);
+export const FinScreen = ({navigation}) => { 
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.container}>
@@ -23,7 +24,7 @@ import { ScreenContainer } from 'react-native-screens';
             </View>
 
             <View style={styles.buttonContainer}>
-            <Button style={styles.buttonText} title='APPLY NOW' onPress={() => applyForAid()} />
+            <Button style={styles.buttonText} title='APPLY NOW' onPress={() => navigation.navigate('FinAppScreen')} />
             {/* <Button titleStyle={styles.buttonText} title='LOGIN' onPress={() => signIn()}/> */}
             <Text style={{ color: 'blue', paddingTop: 15, textDecorationLine: 'underline'}}>TERMS AND CONDITIONS</Text>
         </View>
@@ -32,9 +33,19 @@ import { ScreenContainer } from 'react-native-screens';
   }
 
 
-export const applyForAid = () => {        //create an account component
-    //After users enters information(fname,lname,email,password), join-now creates the account;
-    
+function FinStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name='FinAppScreen' component={FinAppScreen} />
+    </Stack.Navigator>
+  );
+}
+
+
+export default function App() {
+    return (<NavigationContainer>
+        <FinStack/>
+    </NavigationContainer>);
 }
 
 
@@ -44,9 +55,6 @@ export const applyForAid = () => {        //create an account component
       backgroundColor: '#F7F5F9',
       alignItems: 'center',
       justifyContent: 'center',
-    },
-
-    img: {
     },
 
     mainText: {
@@ -79,10 +87,10 @@ export const applyForAid = () => {        //create an account component
         fontSize: 25,
         textAlign: 'left',
         fontWeight: 'bold',
-        paddingLeft: 50,
+        // paddingLeft: 50,
         paddingRight: 50,
         paddingTop: 30, 
-        paddingBottom: 30, 
+        // paddingBottom: 30, 
         color: '#FF6E00'
     },
 
@@ -94,7 +102,7 @@ export const applyForAid = () => {        //create an account component
         paddingLeft: 50,
         paddingRight: 50,
         paddingTop: 30, 
-        paddingBottom: 30, 
+        paddingBottom: 5, 
         color: '#3F3356'
     }
 
