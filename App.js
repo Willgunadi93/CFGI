@@ -6,11 +6,15 @@ import { NavigationContainer } from '@react-navigation/native'; //container
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; //bottom nav
 import { createStackNavigator } from '@react-navigation/stack';
 //import screens
-import { HomeScreen, JobScreen, LegalScreen, FinScreen, DonateScreen } from './app/screens/screens.js';
+import { HomeScreen, JobScreen, LegalScreen, DonateScreen } from './app/screens/screens.js';
+import {FinScreen } from './app/screens/financial.js';
+// temporary, will delete later
+import { FinAppScreen } from './app/screens/FinDocScreen.js';
+
 //Authentication
 import { AuthContext } from './app/screens/context';
 //import sign in and create account
-import {SignIn, CreateAccount} from './app/screens/signin.js';
+import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screens/signin.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -58,9 +62,7 @@ export default function App() {
      {userToken ? (
        <Tab.Navigator
         screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-          // let iconName;
-          // let assistIcon;
+          tabBarIcon: ({color, size}) => {
           if (route.name == "Home") {
             return <Ionicons name="home" size={size} color={color}/>
           }
@@ -86,12 +88,15 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
         <Tab.Screen name="Jobs" component={JobScreen}></Tab.Screen>
         <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
-        <Tab.Screen name="Assistance" component={FinScreen}></Tab.Screen>
+        {/* <Tab.Screen name="Assistance" component={FinScreen}></Tab.Screen> */}
+        <Tab.Screen name="Assistance" component={FinAppScreen}></Tab.Screen>
         <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
      </Tab.Navigator>
      ) : (
       <AuthStack.Navigator>
-        <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>  
+        <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>
+        <AuthStack.Screen name="ForgotPassword" component={ForgotPassword}></AuthStack.Screen> 
+        <AuthStack.Screen name="ResetPassword" component={ResetPassword}></AuthStack.Screen> 
         <AuthStack.Screen name="CreateAccount" component={CreateAccount}></AuthStack.Screen>
     </AuthStack.Navigator>
      )}
@@ -104,25 +109,6 @@ export default function App() {
     
   );  
 }
-/* <NavigationContainer>
-<Tab.Navigator>
-  <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
-  <Tab.Screen name="Job" component={JobScreen}></Tab.Screen>
-  <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
-  <Tab.Screen name="Financial" component={FinScreen}></Tab.Screen>
-  <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
-</Tab.Navigator>
-</NavigationContainer> */
-
-
- // <SafeAreaView style={styles.container}>
-    //   <WelcomeScreen />
-    // </SafeAreaView>
-
-/* <View style={styles.container}>
-      <Text>CFGI Landing page / Signup page eventually</Text>
-      <StatusBar style="auto" />
-      </View> */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
