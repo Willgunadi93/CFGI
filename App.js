@@ -109,25 +109,6 @@ export default function App() {
     
   );  
 }
-/* <NavigationContainer>
-<Tab.Navigator>
-  <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
-  <Tab.Screen name="Job" component={JobScreen}></Tab.Screen>
-  <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
-  <Tab.Screen name="Financial" component={FinScreen}></Tab.Screen>
-  <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
-</Tab.Navigator>
-</NavigationContainer> */
-
-
- // <SafeAreaView style={styles.container}>
-    //   <WelcomeScreen />
-    // </SafeAreaView>
-
-/* <View style={styles.container}>
-      <Text>CFGI Landing page / Signup page eventually</Text>
-      <StatusBar style="auto" />
-      </View> */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
