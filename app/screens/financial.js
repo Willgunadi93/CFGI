@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Button, Image } from "react-native";
-import { AuthContext } from '../screens/context';
 import { ScreenContainer } from 'react-native-screens';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import {FinAppScreen } from './FinDocScreen';
+// import { AuthStack } from '../app/App.js';
 
+const Stack = createStackNavigator();
 
-// export const SignIn = ({ navigation}) => { 
- export const FinScreen = ({navigation}) => { 
-    // const { signIn } = React.useContext(AuthContext);
+export const FinScreen = ({navigation}) => { 
+
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.container}>
                 <Image source={require("../assets/img/logo-full.png")}
                 style={styles.img}/>
+                <Text style={styles.title}>APPLY</Text>
+                <Text style={styles.header}>Emergency Financial Assistance</Text>
+
                 <Text style={styles.mainText}>For any student in need of financial assistance for amenities 
                     such as transportation fees, food, and emergency housing, we have an
                     application for financial assistance thanks to the generiosity of our donors*
@@ -20,13 +26,30 @@ import { ScreenContainer } from 'react-native-screens';
             </View>
 
             <View style={styles.buttonContainer}>
-            <Button style={styles.buttonText} title='APPLY NOW'/>
+            <Button style={styles.buttonText} title='APPLY NOW' onPress={() => navigation.navigate('FinAppScreen')} />
             {/* <Button titleStyle={styles.buttonText} title='LOGIN' onPress={() => signIn()}/> */}
-            <Text style={{ color: 'blue', textAlign: 'right', paddingTop: 15, textDecorationLine: 'underline'}}>TERMS AND CONDITIONS</Text>
+            <Text style={{ color: 'blue', paddingTop: 15, textDecorationLine: 'underline'}}>TERMS AND CONDITIONS</Text>
+
         </View>
    </ScreenContainer>
     );
   }
+
+function FinStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name='FinAppScreen' component={FinAppScreen} />
+    </Stack.Navigator>
+  );
+}
+
+
+export default function App() {
+    return (<NavigationContainer>
+        <FinStack/>
+    </NavigationContainer>);
+}
+
 
 
   const styles = StyleSheet.create({        
@@ -36,12 +59,8 @@ import { ScreenContainer } from 'react-native-screens';
       alignItems: 'center',
       justifyContent: 'center',
     },
-
-    img: {
-    },
-
     mainText: {
-        justifyContent: 'center',
+        textAlign: 'left',
         paddingLeft: 50,
         paddingRight: 50,
         paddingTop: 30, 
@@ -50,8 +69,9 @@ import { ScreenContainer } from 'react-native-screens';
 
     specialText: {
         // padding: 50,
-        justifyContent: 'center',
+        // justifyContent: 'center',
         fontStyle: 'italic',
+        textAlign: 'left',
     }, 
 
     buttonContainer: {
@@ -64,5 +84,27 @@ import { ScreenContainer } from 'react-native-screens';
         // fontFamily:'Oxygen-Bold', 
         fontSize: 14,
     },
+    title: {
+        fontSize: 25,
+        textAlign: 'left',
+        fontWeight: 'bold',
+        // paddingLeft: 50,
+        paddingRight: 50,
+        paddingTop: 30, 
+        // paddingBottom: 30, 
+        color: '#FF6E00'
+    },
+
+    header: {
+        fontSize: 25,
+        textAlign: 'left', 
+        fontWeight: 'bold',
+        // justifyContent: 'center',
+        paddingLeft: 50,
+        paddingRight: 50,
+        paddingTop: 30, 
+        paddingBottom: 5, 
+        color: '#3F3356'
+    }
 
 });
