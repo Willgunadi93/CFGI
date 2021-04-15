@@ -65,11 +65,6 @@ export const JobScreen = () => {   //Jobs page component
       alignItems: 'center',
       justifyContent: 'center',
     },
-<<<<<<< HEAD
-  });
-
- 
-=======
 
     button: {
       borderRadius: 10,
@@ -86,4 +81,3 @@ export const JobScreen = () => {   //Jobs page component
       fontSize: 16
     },
   });
->>>>>>> navigation
