@@ -6,14 +6,13 @@ import { NavigationContainer } from '@react-navigation/native'; //container
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; //bottom nav
 import { createStackNavigator } from '@react-navigation/stack';
 //import screens
-import { HomeScreen, JobScreen, LegalScreen, FinScreen, DonateScreen } from './app/screens/screens.js';
+import { HomeScreen, JobScreen, LegalScreen, FinScreen, DonateScreen, AppointmentScreen } from './app/screens/screens.js';
 //Authentication
 import { AuthContext } from './app/screens/context';
 //import sign in and create account
 import {SignIn, CreateAccount} from './app/screens/signin.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
 
     //import WelcomeScreen from './app/screens/WelcomeScreen';
     //import { SafeAreaView, StyleSheet } from 'react-native'

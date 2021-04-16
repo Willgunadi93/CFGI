@@ -12,13 +12,13 @@ export const SignIn = ({ navigation}) => {  //login component
     //Signup = prompts users to create an account if they dont have one
     const [number, onChangeText] = React.useState(null);
 
-    const { signIn } = React.useContext(AuthContext);
+    const { signIn } = React.useContext(AuthContext); //WHERE THE PICTURE OF IT!!!!!!!!!
     return (
         <ScreenContainer style={StyleSheet.container}>
             <View style={styles.logoView}>
                 <View style={{paddingBottom: 50, alignItems: 'center'}}>
                     <Image style={{marginTop: 50, marginBottom: 20}} source = {require('../assets/img/arrow-left.png')} />
-                    <Image style={{marginLeft: -10}}source = {require('../assets/img/arrow-right.png')} />
+                    <Image style={{marginLeft: -10}}source = {require('../assets/img/arrow-right.png')} /> 
                     <View style={{position: 'absolute', alignItems: 'center'}}>
                         <Image style={styles.logo} source={require('../assets/img/logo.png')} />
                     </View>
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center',
         paddingVertical: 15,
-        // fontFamily: 'Righteous-Regular'
+        //fontFamily: 'righteous-regular'
     },
 
     welcome: {
