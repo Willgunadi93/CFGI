@@ -1,4 +1,4 @@
-import 'react-native';
+import 'react-native';//Beginning
 import React from 'react';
 import App from '../App';
 
@@ -6,5 +6,5 @@ import App from '../App';
 import renderer from 'react-test-renderer';
 
 it('renders correctly', () => {
-  renderer.create(<App />);
+  renderer.create(<App />); //Return statement, how it renders out what it updates
 });
