@@ -6,14 +6,14 @@ import { NavigationContainer } from '@react-navigation/native'; //container
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; //bottom nav
 import { createStackNavigator } from '@react-navigation/stack';
 //import screens
-
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
-import { JobScreen, LegalScreen, DonateScreen, AppointmentScreen } from './app/screens/screens.js';
+import { JobScreen, LegalScreen, DonateScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 
 // temporary, will delete later
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
+
 //Authentication
 import { AuthContext } from './app/screens/context';
 //import sign in and create account
@@ -22,7 +22,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { StackRouter } from 'react-navigation';
 import { color } from 'react-native-reanimated';
-
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
