@@ -1,3 +1,3 @@
-import React from 'react'//Don't worry about it 
+import React from 'react'
 
 export const AuthContext = React.createContext();
