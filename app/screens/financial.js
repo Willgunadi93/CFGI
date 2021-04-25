@@ -5,11 +5,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import {FinAppScreen } from './FinDocScreen';
 // import { AuthStack } from '../app/App.js';
+// import {navigation} from 'App.js';
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 
 export const FinScreen = ({navigation}) => { 
-
+    // const {navigation} = props;
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.container}>
@@ -26,31 +27,14 @@ export const FinScreen = ({navigation}) => {
             </View>
 
             <View style={styles.buttonContainer}>
-            <Button style={styles.buttonText} title='APPLY NOW' onPress={() => navigation.navigate('FinAppScreen')} />
-            {/* <Button titleStyle={styles.buttonText} title='LOGIN' onPress={() => signIn()}/> */}
+            <Button style={styles.buttonText} title='APPLY NOW' onPress={() => navigation.navigate('FinDocs')}/>
             <Text style={{ color: 'blue', paddingTop: 15, textDecorationLine: 'underline'}}>TERMS AND CONDITIONS</Text>
 
         </View>
    </ScreenContainer>
     );
   }
-
-function FinStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name='FinAppScreen' component={FinAppScreen} />
-    </Stack.Navigator>
-  );
-}
-
-
-export default function App() {
-    return (<NavigationContainer>
-        <FinStack/>
-    </NavigationContainer>);
-}
-
-
+  
 
   const styles = StyleSheet.create({        
     container: {
