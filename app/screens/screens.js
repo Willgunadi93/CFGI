@@ -50,7 +50,7 @@ export const JobScreen = () => {   //Jobs page component
               </Pressable>
             </View>
             <View style={{flexDirection: 'row', paddingTop: 30}}>
-              <Text style={{fontSize: 12, color: "#FF6E00", opacity: 0.8}}>Help international students{'\n'}reach for the american dream</Text>
+              <Text style={{fontSize: 12, color: "#FF6E00", opacity: 0.8}}>Help international students{'\n'}reach for the American dream</Text>
               <Image style={{width: 28, height: 36, marginLeft: 10}} source={require('../assets/img/sun.png')} />
             </View>
         </View>

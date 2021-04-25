@@ -1,45 +1,48 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity } from "react-native";
-import { ScreenContainer } from 'react-native-screens';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
-export const FinAppScreen = () => { 
-    const [onChangeText] = React.useState(null);
+export const FinAppScreen = ({navigation}) => { 
     return (
         <ScrollView contentContainerStyle={styles.container}>
 
-{/* <View style={{justiftyContent:"center", alignItems:"center"}}>
-   <Icon>
-</View> */}
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="arrow-back-circle" size={40} color="#4C67F6" ></Ionicons>
-            </View>
+            <TouchableHighlight onPress={() => navigation.goBack()}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Ionicons name="arrow-back-circle" size={40} color="#4C67F6"/>
+                </View>
+            </TouchableHighlight>
+
             <Text style={styles.header}>Requested amount of aid:</Text>
             {/* Fixed size */}
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: 5}}>
                     <TextInput
                         style={styles.moneyInput}
-                        onChangeText={onChangeText}
+                        // onChangeText={onChangeText}
+                        // onChangeText={(text) => {this.setState({text});}}
+                        // value={this.state.text}
                         placeholder="$"
                     />
                 </View>
             </View>
-            {/* fixed size */}
+
             <Text style={styles.header}>Provide justification on why you need the money:</Text>
 
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: 5}}>
                     <TextInput
                         style={styles.input}
-                        onChangeText={onChangeText}
+                        // onChangeText={onChangeText}
                     />
                 </View>
             </View>
             <Text style={styles.header}>Attach Documents</Text>
             <Text style={styles.mainText}>Please provide the following documents:</Text>
-            <View style={styles.buttonContainer, {flexDirection: 'row'}}>
+            {/* Insert upload docs here */}
+
+            <View style={styles.buttonContainer, {display: 'flex', flexDirection: 'row'}}>
                 {/* put buttons next to each other */}
                 <TouchableOpacity style={styles.saveButton}>
                     <Text style={styles.buttonSaveText}>SAVE</Text>
@@ -60,6 +63,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+
     header: {
         fontSize: 25,
         textAlign: 'left', 
@@ -77,6 +81,7 @@ const styles = StyleSheet.create({
     }, 
 
     buttonContainer: {
+        // display: 'flex',
         paddingHorizontal: 50,
         paddingVertical: 20,
         justifyContent: 'center',
