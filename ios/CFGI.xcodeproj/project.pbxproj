@@ -31,6 +31,9 @@
 		D701D7C8968F445EB91DCAAF /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52A926D8DEAD46568F7D22F2 /* SimpleLineIcons.ttf */; };
 		0A9FB3DF556B4FE19693776D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 923D6D1D038246C48BA0BC48 /* Zocial.ttf */; };
 		23DFC1529C6648FDB9E2D9DA /* Righteous-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73C15C58731D447F8AB36E72 /* Righteous-Regular.ttf */; };
+		4DA255D9DDDA4AC1B03AEE14 /* Oxygen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A73E4DAF1B964A498B7E2F9E /* Oxygen-Bold.ttf */; };
+		72FA66D7D49C4EDCAA28A575 /* Oxygen-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAEDB692947E47D5A1BF35C2 /* Oxygen-Light.ttf */; };
+		F896D3A08D83400688CD8531 /* Oxygen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0503A97212974B7EBAEB8634 /* Oxygen-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		52A926D8DEAD46568F7D22F2 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		923D6D1D038246C48BA0BC48 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		73C15C58731D447F8AB36E72 /* Righteous-Regular.ttf */ = {isa = PBXFileReference; name = "Righteous-Regular.ttf"; path = "../app/assets/fonts/Righteous-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A73E4DAF1B964A498B7E2F9E /* Oxygen-Bold.ttf */ = {isa = PBXFileReference; name = "Oxygen-Bold.ttf"; path = "../app/assets/fonts/Oxygen-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AAEDB692947E47D5A1BF35C2 /* Oxygen-Light.ttf */ = {isa = PBXFileReference; name = "Oxygen-Light.ttf"; path = "../app/assets/fonts/Oxygen-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0503A97212974B7EBAEB8634 /* Oxygen-Regular.ttf */ = {isa = PBXFileReference; name = "Oxygen-Regular.ttf"; path = "../app/assets/fonts/Oxygen-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +180,9 @@
 				52A926D8DEAD46568F7D22F2 /* SimpleLineIcons.ttf */,
 				923D6D1D038246C48BA0BC48 /* Zocial.ttf */,
 				73C15C58731D447F8AB36E72 /* Righteous-Regular.ttf */,
+				A73E4DAF1B964A498B7E2F9E /* Oxygen-Bold.ttf */,
+				AAEDB692947E47D5A1BF35C2 /* Oxygen-Light.ttf */,
+				0503A97212974B7EBAEB8634 /* Oxygen-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -260,6 +269,9 @@
 				D701D7C8968F445EB91DCAAF /* SimpleLineIcons.ttf in Resources */,
 				0A9FB3DF556B4FE19693776D /* Zocial.ttf in Resources */,
 				23DFC1529C6648FDB9E2D9DA /* Righteous-Regular.ttf in Resources */,
+				4DA255D9DDDA4AC1B03AEE14 /* Oxygen-Bold.ttf in Resources */,
+				72FA66D7D49C4EDCAA28A575 /* Oxygen-Light.ttf in Resources */,
+				F896D3A08D83400688CD8531 /* Oxygen-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

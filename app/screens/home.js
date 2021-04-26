@@ -5,12 +5,14 @@ import { Card,ListItem, Button, Icon } from "react-native-elements";
 import { ScreenContainer } from 'react-native-screens';
 import {ProfileScreen} from '../screens/profile.js';
 
+// <Image style={{ paddingLeft: 10, paddingRight: 10,width: 270, height: 55, top: 120,left: 15,right: 20}} source={require("../assets/img/logo-full.png")}/>
+
  export const HomeScreen = ({navigation}) => { 
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.inRow}> 
                 <Image style={ {width: 55, height: 55, top: 50, left: 10} } source={require("../assets/img/CFGInews.png")}/>
-                <Image style={{ paddingLeft: 10, paddingRight: 10,width: 270, height: 55, top: 120,left: 15,right: 20}} source={require("../assets/img/logo-full.png")}/>
+                
                 <TouchableOpacity  onPress={() => navigation.navigate('HomeScreen', {screen: 'ProfileScreen'})}>
                 <Image style={ {width: 50, height: 50, top: 53, left: 10}}  source={require("../assets/img/profile.png")}/>
                 </TouchableOpacity>

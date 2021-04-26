@@ -14,8 +14,8 @@ export const FinScreen = ({navigation}) => {
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.container}>
-                <Image source={require("../assets/img/logo-full.png")}
-                style={styles.img}/>
+                {/* <Image source={require("../assets/img/logo-full.png")} */}
+            {/* style={styles.img}/> */}
                 <Text style={styles.title}>APPLY</Text>
                 <Text style={styles.header}>Emergency Financial Assistance</Text>
 

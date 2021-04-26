@@ -61,6 +61,10 @@ function LegalStack() {
         component={LegalScreen}
       />
       {/* Add actual page for legal consultation */}
+      <Stack.Screen
+        name="AppointDocs"
+        component={AppointmentScreen}
+      />
     </Stack.Navigator>
   )
 }

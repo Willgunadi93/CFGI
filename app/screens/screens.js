@@ -4,10 +4,9 @@ import { useLinkProps } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { FontDisplay } from 'expo-font';
 import * as React from 'react';
-import { View, Text, StyleSheet, Button, Image, TextInput, ImageBackground, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Button, Image, TextInput, ImageBackground, ScrollView,Pressable  } from "react-native";
 import { AuthContext } from '../screens/context';
-import { View, Text, StyleSheet, Button, Image, Pressable } from "react-native";
-import { TextInput } from 'react-native-gesture-handler';
+//import { TextInput } from 'react-native-gesture-handler';
 import { ScreenContainer } from 'react-native-screens';
 
 //what I added
@@ -134,14 +133,13 @@ export const JobScreen = () => {   //Jobs page component
 
     );
   }
-
-  
+  //<Image source={require('../assets/img/logo-full.png')} />
   export const DonateScreen = () => {   //Jobs page component
     return (
       <ScreenContainer style={StyleSheet.container}>
         <View style={{paddingVertical: 30, alignItems: 'center'}}>
             <View style={{alignItems: 'center'}}>
-              <Image source={require('../assets/img/logo-full.png')} />
+              
               <Image style={{marginTop: 30, marginBottom: 20, marginLeft: 100}} source = {require('../assets/img/arrow-left.png')} />
               <Image style={{marginLeft: -10, marginRight: 100}}source = {require('../assets/img/arrow-right.png')} />
             </View>
