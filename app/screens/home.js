@@ -17,7 +17,7 @@ import {ProfileScreen} from '../screens/profile.js';
             </View>
 
             <View style={styles.section1}>
-                <Text style={styles.h1}>Upcomming Appointments</Text>
+                <Text style={styles.h1}>Upcoming Appointments</Text>
             
                 <TouchableOpacity  onPress={() => Actions.Screen()}>
                 <Card style={styles.cardLayout} name="card"  pointerEvents="none">

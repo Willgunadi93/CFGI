@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Button, Image, Pressable } from "react-native";
 import { TextInput } from 'react-native-gesture-handler';
 import { ScreenContainer } from 'react-native-screens';
 import { AuthContext } from '../screens/context';
+//import webview
+import { WebView } from 'react-native-webview';
 
 export const JobScreen = () => {   //Jobs page component
     return (
@@ -14,9 +16,9 @@ export const JobScreen = () => {   //Jobs page component
 
   export const LegalScreen = () => {   //Jobs page component
     return (
-      <View style={styles.container}>
-        <Text>Legal page component</Text>
-      </View>
+      
+        <WebView source={{uri : 'https://testingcfgi.s3-us-west-1.amazonaws.com/webview.html'}}/>
+      
     );
   }
   
