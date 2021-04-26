@@ -21,7 +21,7 @@ import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screen
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { StackRouter } from 'react-navigation';
-import { color } from 'react-native-reanimated';
+// import { color } from 'react-native-reanimated';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -97,153 +97,172 @@ function DonateStack() {
 }
 
 
-// make a stack out of all these screens
-function App() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-      initialRouteName="Home"
-      tabBarOptions={{activeTintColor: 'blue', inactiveTintColor: 'black'}}>
-      <Tab.Screen
-        // Each tab leads to a stack, which has the actual components
-        name="Home"
-        component={HomeStack}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Ionicons name='home' color={color} size={size}/>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Jobs"
-        component={JobStack}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Ionicons name='briefcase' color={color} size={size}/>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Legal"
-        component={LegalStack}
-        // onPress={() => this.props.navigation.navigate('LegalScreen')}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Ionicons name='people' color={color} size={size}/>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Assistance"
-        component={FinStack}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Icon name='hand-holding-usd' color={color} size={size}/>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Donate"
-        component={DonateStack}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Ionicons name='gift' color={color} size={size}/>
-          ),
-        }}
-      />
-    </Tab.Navigator>
-    </NavigationContainer>
-  )
-}
+// // make a stack out of all these screens
+// function App() {
+//   return (
+//     <NavigationContainer>
+//       <Tab.Navigator
+//       initialRouteName="Home"
+//       tabBarOptions={{activeTintColor: 'blue', inactiveTintColor: 'black'}}>
+//       <Tab.Screen
+//         // Each tab leads to a stack, which has the actual components
+//         name="Home"
+//         component={HomeStack}
+//         options={{
+//           tabBarIcon: ({color, size}) => (
+//             <Ionicons name='home' color={color} size={size}/>
+//           ),
+//         }}
+//       />
+//       <Tab.Screen
+//         name="Jobs"
+//         component={JobStack}
+//         options={{
+//           tabBarIcon: ({color, size}) => (
+//             <Ionicons name='briefcase' color={color} size={size}/>
+//           ),
+//         }}
+//       />
+//       <Tab.Screen
+//         name="Legal"
+//         component={LegalStack}
+//         // onPress={() => this.props.navigation.navigate('LegalScreen')}
+//         options={{
+//           tabBarIcon: ({color, size}) => (
+//             <Ionicons name='people' color={color} size={size}/>
+//           ),
+//         }}
+//       />
+//       <Tab.Screen
+//         name="Assistance"
+//         component={FinStack}
+//         options={{
+//           tabBarIcon: ({color, size}) => (
+//             <Icon name='hand-holding-usd' color={color} size={size}/>
+//           ),
+//         }}
+//       />
+//       <Tab.Screen
+//         name="Donate"
+//         component={DonateStack}
+//         options={{
+//           tabBarIcon: ({color, size}) => (
+//             <Ionicons name='gift' color={color} size={size}/>
+//           ),
+//         }}
+//       />
+//     </Tab.Navigator>
+//     </NavigationContainer>
+//   )
+// }
 
 
 
 // //bottom nav
 // const Tab = createBottomTabNavigator();
 // //authentication stack
-// const AuthStack = createStackNavigator();
+// const Stack = createStackNavigator();
 
 
-// export default function App() {
+export default function App() {
 
-//   const [isLoading, setIsLoading] = React.useState(true);
-//   const [userToken, setUserToken] = React.useState(null);
-//   //registering these components are stacks
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [userToken, setUserToken] = React.useState(null);
+  //registering these components are stacks
 
-//   const authContext = React.useMemo(() => {
-//     return {
-//       signIn: () => {
-//         //isLoading(false);
-//         setUserToken('asdf');
-//       },
-//       signUp: () => {
-//         //isLoading(false);
-//         setUserToken('asdf');
-//       },
-//       signOut: () => {
-//         //isLoading(false);
-//         setUserToken(null);
-//       }
-//     };
-//   }, []);
+  const authContext = React.useMemo(() => {
+    return {
+      signIn: () => {
+        //isLoading(false);
+        setUserToken('asdf');
+      },
+      signUp: () => {
+        //isLoading(false);
+        setUserToken('asdf');
+      },
+      signOut: () => {
+        //isLoading(false);
+        setUserToken(null);
+      }
+    };
+  }, []);
 
 
 
-//   return  (
-//     <AuthContext.Provider value={authContext}>
-//    <NavigationContainer style={styles.container}>
-//      {userToken ? (
-//        <Tab.Navigator
-//         screenOptions={({route}) => ({
-//           tabBarIcon: ({color, size}) => {
-//           if (route.name == "Home") {
-//             return <Ionicons name="home" size={size} color={color}/>
-//           }
-//           else if (route.name == "Jobs") {
-//             return <Ionicons name="briefcase" size={size} color={color}/>
-//           }
-//           else if (route.name == "Legal") {
-//             return <Ionicons name="people" size={size} color={color}/>
-//           }
-//           else if (route.name == "Assistance") {
-//             return <Icon name={"hand-holding-usd"} size={size} color={color}/>
-//           }
-//           else if (route.name == "Donate") {
-//             return <Ionicons name="gift" size={size} color={color}/>
-//           }
-//         },
-//         })}
-//         tabBarOptions={{
-//           activeTintColor: 'blue',
-//           inactiveTintColor: 'black',
-//         }}
-//         >
-//         <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
-//         <Tab.Screen name="Jobs" component={JobScreen}></Tab.Screen>
-//         <Tab.Screen name="Legal" component={LegalScreen}></Tab.Screen>
-//         <Tab.Screen name="Assistance" component={FinScreen}></Tab.Screen>
-//         {/* <Tab.Screen name="Assistance" component={FinAppScreen}></Tab.Screen> */}
-//         <Tab.Screen name="Donate" component={DonateScreen}></Tab.Screen>
-//      </Tab.Navigator>
-//      ) : (
-//       <AuthStack.Navigator>
-//         <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>
-//         <AuthStack.Screen name="ForgotPassword" component={ForgotPassword}></AuthStack.Screen> 
-//         <AuthStack.Screen name="ResetPassword" component={ResetPassword}></AuthStack.Screen> 
-//         <AuthStack.Screen name="CreateAccount" component={CreateAccount}></AuthStack.Screen>
-//     </AuthStack.Navigator>
-//      )}
-//      {/* <AuthStack.Navigator>
-//        <AuthStack.Screen name="SignIn" component={SignIn}></AuthStack.Screen>  
-//        <AuthStack.Screen name="CreateAccount" component={CreateAccount}></AuthStack.Screen>
-//      </AuthStack.Navigator> */}
-//    </NavigationContainer>
-//    </AuthContext.Provider>
+  return  (
+    <AuthContext.Provider value={authContext}>
+   <NavigationContainer style={styles.container}>
+     {userToken ? (
+       <Tab.Navigator
+       initialRouteName="Home"
+       tabBarOptions={{activeTintColor: 'blue', inactiveTintColor: 'black'}}>
+       <Tab.Screen
+         // Each tab leads to a stack, which has the actual components
+         name="Home"
+         component={HomeStack}
+         options={{
+           tabBarIcon: ({color, size}) => (
+             <Ionicons name='home' color={color} size={size}/>
+           ),
+         }}
+       />
+       <Tab.Screen
+         name="Jobs"
+         component={JobStack}
+         options={{
+           tabBarIcon: ({color, size}) => (
+             <Ionicons name='briefcase' color={color} size={size}/>
+           ),
+         }}
+       />
+       <Tab.Screen
+         name="Legal"
+         component={LegalStack}
+         // onPress={() => this.props.navigation.navigate('LegalScreen')}
+         options={{
+           tabBarIcon: ({color, size}) => (
+             <Ionicons name='people' color={color} size={size}/>
+           ),
+         }}
+       />
+       <Tab.Screen
+         name="Assistance"
+         component={FinStack}
+         options={{
+           tabBarIcon: ({color, size}) => (
+             <Icon name='hand-holding-usd' color={color} size={size}/>
+           ),
+         }}
+       />
+       <Tab.Screen
+         name="Donate"
+         component={DonateStack}
+         options={{
+           tabBarIcon: ({color, size}) => (
+             <Ionicons name='gift' color={color} size={size}/>
+           ),
+         }}
+       />
+     </Tab.Navigator>
+     ) : (
+      <Stack.Navigator>
+        <Stack.Screen name="SignIn" component={SignIn}></Stack.Screen>
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen> 
+        <Stack.Screen name="ResetPassword" component={ResetPassword}></Stack.Screen> 
+        <Stack.Screen name="CreateAccount" component={CreateAccount}></Stack.Screen>
+    </Stack.Navigator>
+     )}
+     {/* <Stack.Navigator>
+       <Stack.Screen name="SignIn" component={SignIn}></Stack.Screen>  
+       <Stack.Screen name="CreateAccount" component={CreateAccount}></Stack.Screen>
+     </Stack.Navigator> */}
+   </NavigationContainer>
+   </AuthContext.Provider>
     
-//   );  
-// }
+  );  
+}
 
-export default App;
+// export default App;
 
 const styles = StyleSheet.create({
   container: {
