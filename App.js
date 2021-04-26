@@ -21,12 +21,11 @@ import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screen
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { StackRouter } from 'react-navigation';
-// import { color } from 'react-native-reanimated';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Add stack for logging in here
 
 function HomeStack() {
   return (
@@ -156,14 +155,6 @@ function DonateStack() {
 //   )
 // }
 
-
-
-// //bottom nav
-// const Tab = createBottomTabNavigator();
-// //authentication stack
-// const Stack = createStackNavigator();
-
-
 export default function App() {
 
   const [isLoading, setIsLoading] = React.useState(true);
@@ -262,7 +253,6 @@ export default function App() {
   );  
 }
 
-// export default App;
 
 const styles = StyleSheet.create({
   container: {
