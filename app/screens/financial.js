@@ -2,19 +2,17 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Button, Image } from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
-// import {SvgUri } from 'react-native-svg-uri'; 
+import {SvgUri } from 'react-native-svg-uri'; 
 
 
 export const FinScreen = ({navigation}) => { 
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.topContainer}>
+                {/* Should change this to svg */}
                 <Image source={require("../assets/img/logo-full.png")} style={styles.img}/>
+                {/* <SvgUri source={require("../assets/img/logo.svg")}/> */}
             </View>
-{/* 
-            <View style={{flexDirection:'row'}}> 
-          <Text style={{fontSize: 18, textAlign:'right', flex:1}}>textAlign:'right',{'\n'} flex:1</Text>
-        </View> */}
             
             <View style={styles.titleContainer}>
             {/* View here */}
@@ -32,7 +30,7 @@ export const FinScreen = ({navigation}) => {
             {/* </View> */}
 
             <View style={styles.buttonContainer}>
-            <Button style={styles.buttonText} title='APPLY NOW' onPress={() => navigation.navigate('FinDocs')}/>
+                <Button style={styles.buttonText} title='APPLY NOW' onPress={() => navigation.navigate('FinDocs')}/>
             <Text style={{ color: 'blue', paddingTop: wp('5%'), textDecorationLine: 'underline'}}>TERMS AND CONDITIONS</Text>
 
         </View>
@@ -54,10 +52,6 @@ export const FinScreen = ({navigation}) => {
         justifyContent: 'center',
       },
 
-    // bodycontainer: {
-    //     alignItems: 'flex-start',
-    // },
-
     mainText: {
         textAlign: 'left',
         paddingLeft: wp('15%'),
@@ -67,18 +61,15 @@ export const FinScreen = ({navigation}) => {
     }, 
 
     specialText: {
-        // paddingRight: 50,
-        // justifyContent: 'center',
         fontStyle: 'italic',
         textAlign: 'left',
+        paddingRight: wp('25%'),
     }, 
 
     buttonContainer: {
-        // paddingHorizontal: 50,
         paddingHorizontal: wp('20%'),
-        // paddingVertical: 20,
         paddingVertical: hp('3%'),
-        justifyContent: "center",
+        justifyContent: 'center',
     },
 
     buttonText: {
@@ -90,12 +81,9 @@ export const FinScreen = ({navigation}) => {
         fontSize: 25,
         textAlign: 'left',
         fontWeight: 'bold',
-        // paddingRight: 50,
+        paddingRight: wp('50%'),
         paddingTop: hp('4%'),
-        // paddingTop: 30, 
-        // paddingBottom: 30, 
         color: '#FF6E00',
-        // flex: 1
     },
 
     titleContainer: {
@@ -106,14 +94,11 @@ export const FinScreen = ({navigation}) => {
     header: {
         fontSize: 25,
         textAlign: 'left',
-        // justifyContent: 'flex-start', 
         fontWeight: 'bold',
-        width: wp('60%'),
-        // justifyContent: 'center',
-        paddingLeft: 50,
-        paddingRight: 50,
-        paddingTop: 30, 
-        paddingBottom: 5, 
+        width: wp('90%'),
+        paddingLeft: wp('10%'), 
+        paddingTop: hp('1%'), 
+        paddingBottom: hp('1%'), 
         color: '#3F3356'
     },
 
