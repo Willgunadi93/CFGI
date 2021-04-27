@@ -8,6 +8,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 //import screens
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
+import {AboutScreen} from './app/screens/about.js';
+
 import { JobScreen, LegalScreen, DonateScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 
@@ -33,6 +35,16 @@ function HomeStack() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
+      />
+      {/* Profile */}
+      <Stack.Screen 
+        name="Profile"
+        component={ProfileScreen}
+      />
+      {/* About */}
+      <Stack.Screen
+        name="About"
+        component={AboutScreen}
       />
     </Stack.Navigator>
   )
