@@ -12,8 +12,9 @@ import { ScreenContainer } from 'react-native-screens';
  export const AboutScreen = ({ navigation, route}) => { 
     // const { signIn } = React.useContext(AuthContext);
     return (
-        <ScrollView style={styles.scrollView}>
-        <ScreenContainer style={styles.inCol}>
+        <ScrollView>
+        <ScreenContainer style={styles.container}>
+        
             <View style={styles.inCol}>
                 <Image style={{width: 360, height: 75,top: 100, left: 20}} source={require("../assets/img/logo-full.png")}/>
                 <Text style={{top:145, fontSize: 26,fontWeight: 'bold'}}>WHAT'S NEW</Text>
@@ -40,17 +41,19 @@ import { ScreenContainer } from 'react-native-screens';
                 <Text style={styles.h2}>The Founders</Text>
                 <Image style={styles.fullLenImg} source={require("../assets/img/founders.png")}/>
             </View>
-
-            <Divider style={{top:400}}/>
-    
-   </ScreenContainer>
-   </ScrollView>
+           
+        </ScreenContainer>
+        <View style={{padding:200}}></View>
+        </ScrollView> 
     );
   }
 
   const styles = StyleSheet.create({ 
-    scrollView: {
-        backgroundColor: 'white',
+    container: {
+        flex: 1,
+        backgroundColor: '#F7F5F9',
+        alignItems: 'center',
+        justifyContent: 'center',
       },       
     header: {
       top: 50,

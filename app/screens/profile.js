@@ -1,6 +1,6 @@
 //profile
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Button, Image } from "react-native";
+import { View, Text, ScrollView,StyleSheet, TouchableOpacity, Button, Image } from "react-native";
 import { AuthContext } from '../screens/context';
 import { Card,ListItem, Icon } from "react-native-elements";
 import { ScreenContainer } from 'react-native-screens';
@@ -10,6 +10,7 @@ import { ScreenContainer } from 'react-native-screens';
  export const ProfileScreen = ({ navigation, route}) => { 
     // const { signIn } = React.useContext(AuthContext);
     return (
+        <ScrollView>
         <ScreenContainer style={styles.inCol}>
 
             <View style={styles.userContainer}>
@@ -38,7 +39,9 @@ import { ScreenContainer } from 'react-native-screens';
                         <Text style={{color: "red"}}>Log Out</Text>
                     </Card>
             </View>
-   </ScreenContainer>
+        </ScreenContainer>
+        <View style={{padding:100}}></View> 
+   </ScrollView>
     );
   }
 
@@ -52,7 +55,11 @@ import { ScreenContainer } from 'react-native-screens';
         justifyContent: 'flex-start',
         flexDirection: 'column',
       },
-
+      container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        },
     cardLayout: {
         //flexDirection: 'row',
         //flexWrap: 'wrap',
