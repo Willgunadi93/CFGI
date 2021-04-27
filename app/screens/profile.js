@@ -11,9 +11,6 @@ import { ScreenContainer } from 'react-native-screens';
     // const { signIn } = React.useContext(AuthContext);
     return (
         <ScreenContainer style={styles.inCol}>
-            <TouchableOpacity  onPress={() => Actions.Screen()}>
-                <Image style={{top: 50, left: 20, width: 50, height: 50}} source={require("../assets/img/backbutton.png")}/>
-            </TouchableOpacity>
 
             <View style={styles.userContainer}>
                 <Image style={{width: 120, height: 120}} source={require("../assets/img/user.png")}/>
@@ -21,36 +18,25 @@ import { ScreenContainer } from 'react-native-screens';
             </View>
 
             <View style={{top: 150}}>
-                <TouchableOpacity  onPress={() => Actions.Screen()}>
                     <Card name="card" style={styles.cardLayout} pointerEvents="none">        
                         <Text >Change Email Address</Text>
                     </Card>
-                </TouchableOpacity>
-                <TouchableOpacity  onPress={() => Actions.Screen()}>
+               
                     <Card name="card" style={styles.cardLayout} pointerEvents="none">        
                         <Text >Reset Password</Text>
                     </Card>
-                </TouchableOpacity>
-                <TouchableOpacity  onPress={() => Actions.Screen()}>
                     <Card name="card" style={styles.cardLayout} pointerEvents="none">        
                         <Text >Update Username</Text>
                     </Card>
-                </TouchableOpacity>
-                <TouchableOpacity  onPress={() => Actions.Screen()}>
                     <Card name="card" style={styles.cardLayout} pointerEvents="none">        
-                        <Text >Regulat Login Devices</Text>
+                        <Text >Regulate Login Devices</Text>
                     </Card>
-                </TouchableOpacity>
-                <TouchableOpacity  onPress={() => Actions.Screen()}>
                     <Card name="card" style={styles.cardLayout} pointerEvents="none">        
                         <Text >System Language Preferences</Text>
                     </Card>
-                </TouchableOpacity>
-                <TouchableOpacity  onPress={() => Actions.Screen()}>
                     <Card name="card" style={styles.cardLayout} pointerEvents="none">        
                         <Text style={{color: "red"}}>Log Out</Text>
                     </Card>
-                </TouchableOpacity>
             </View>
    </ScreenContainer>
     );

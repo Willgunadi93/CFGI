@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 //import screens
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
+import {AboutScreen} from './app/screens/about.js';
 import { JobScreen, LegalScreen, DonateScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 
@@ -21,9 +22,54 @@ import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screen
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
-    //import WelcomeScreen from './app/screens/WelcomeScreen';
-    //import { SafeAreaView, StyleSheet } from 'react-native'
+function HomeStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+      />
+      {/* Profile */}
+      <Stack.Screen 
+        name="Profile"
+        component={ProfileScreen}
+      />
+      {/* About */}
+      <Stack.Screen
+        name="About"
+        component={AboutScreen}
+      />
+    </Stack.Navigator>
+  )
+}
+
+function JobStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Jobs"
+        component={JobScreen}
+      />
+    </Stack.Navigator>
+  )
+}
+
+
+function LegalStack() {
+  return (
+    <Stack.Navigator>
+      {/* Landing page */}
+      <Stack.Screen
+        name="Legal"
+        component={LegalScreen}
+      />
+      {/* Add actual page for legal consultation */}
+    </Stack.Navigator>
+  )
+}
 
     //Carousel homepage. 
     //import CarouselCards from './app/assets/CarouselCards'

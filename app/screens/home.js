@@ -9,17 +9,19 @@ import {ProfileScreen} from '../screens/profile.js';
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.inRow}> 
-                <Image style={ {width: 55, height: 55, top: 50, left: 10} } source={require("../assets/img/CFGInews.png")}/>
-                <Image style={{ paddingLeft: 10, paddingRight: 10,width: 270, height: 55, top: 120,left: 15,right: 20}} source={require("../assets/img/logo-full.png")}/>
-                <TouchableOpacity  onPress={() => navigation.navigate('HomeScreen', {screen: 'ProfileScreen'})}>
-                <Image style={ {width: 50, height: 50, top: 53, left: 10}}  source={require("../assets/img/profile.png")}/>
+                <TouchableOpacity  onPress={() => navigation.navigate("About")}>
+                    <Image style={ {width: 55, height: 55, top: 20, left: 10} } source={require("../assets/img/CFGInews.png")}/>
+                </TouchableOpacity>
+                <Image style={{ paddingLeft: 10, paddingRight: 10,width: 270, height: 55, top: 100,left: 15,right: 20}} source={require("../assets/img/logo-full.png")}/>
+                <TouchableOpacity  onPress={() => navigation.navigate("Profile")}>
+                <Image style={ {width: 50, height: 50, top: 23, left: 10}}  source={require("../assets/img/profile.png")}/>
                 </TouchableOpacity>
             </View>
 
             <View style={styles.section1}>
                 <Text style={styles.h1}>Upcomming Appointments</Text>
             
-                <TouchableOpacity  onPress={() => Actions.Screen()}>
+                <TouchableOpacity  onPress={() => navigation.navigate("Legal")}>
                 <Card style={styles.cardLayout} name="card"  pointerEvents="none">
                     <Image style={styles.cardImg} source={require("../assets/img/attorney.png")} />         
                     <Text style={styles.cardTxt} >Attorney: Toby Renolds{"\n"}{"\n"}Starting @ 7:00 AM - May 8, 2019 </Text>
@@ -31,7 +33,7 @@ import {ProfileScreen} from '../screens/profile.js';
             <View style={styles.section2}>
                 <Text style={styles.h1}>Saved Financial Forms</Text>
                 
-                <TouchableOpacity  onPress={() => Actions.Screen()}>
+                <TouchableOpacity  onPress={() => navigation.navigate("FinDocs")}>
                 <Card name="card" style={styles.cardLayout} pointerEvents="none">
                 <Text style={{ color: 'red', textAlign: 'right', marginTop: -2, textDecorationLine: 'underline'}}>Delete draft</Text>
                     <Image style={styles.cardImg} source={require("../assets/img/notSubmittedFin.png")} />         
@@ -57,11 +59,11 @@ import {ProfileScreen} from '../screens/profile.js';
     },
 
     cardImg: {
-        width: 80, height: 80, top: 25, left:-5,
+        width: 80, height: 80, top: 25, left:-9,
     },
 
     cardTxt: {
-        fontSize: 16, left: 85, top: -35,
+        fontSize: 16, left: 75, top: -35,
     },
 
     cardArrow: {
@@ -69,14 +71,14 @@ import {ProfileScreen} from '../screens/profile.js';
     },
 
     h1: {
-         fontSize: 22, left: 15,
+         fontSize: 22, fontWeight: 'bold', left: 15,
     },
     
     section1: {
-        top: 170, paddingEnd: 20,
+        top: 150, paddingEnd: 20,
     },
     section2: {
-        top: 200, paddingEnd: 20,
+        top: 180, paddingEnd: 20,
     },
 
     container: {
