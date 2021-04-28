@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 //import screens
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
-import { JobScreen, LegalScreen, DonateScreen } from './app/screens/screens.js';
+import { JobScreen, LegalScreen, DonateScreen, AppointmentScreen, CalendlyScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 
 // temporary, will delete later
@@ -59,6 +59,14 @@ function LegalStack() {
         component={LegalScreen}
       />
       {/* Add actual page for legal consultation */}
+      <Stack.Screen
+        name="AppointDocs"
+        component={AppointmentScreen}
+      />
+      <Stack.Screen
+        name="calendar"
+        component={CalendlyScreen}
+      />
     </Stack.Navigator>
   )
 }
