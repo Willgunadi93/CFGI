@@ -50,54 +50,51 @@ export const JobScreen = () => {   //Jobs page component
   }
    ]
    ////
+  
+   export const CalendlyScreen = () => {
+     return (
+      <WebView source={{uri : 'https://testingcfgi.s3-us-west-1.amazonaws.com/webview.html'}}/>
+     );
+   }
 
   export const LegalScreen = ({navigation}) => {   //Jobs page component
     return (
       <View style={styles.legalContainer}>
       <Image style={{width:'50%', height:"15%", resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/>
-      <View style={styles.header}>
+      <View style={{paddingBottom: 30}}>
           <Text style={styles.legalTitle}>Legal Services</Text>
-          <Text style={styles.subTitle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
+          <Text style={{fontSize:18}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
       </View>
       <View style={styles.body}>
           <LegalButton text='View Appointment' onPress={() => console.log("Haven't added page.")} icon='calendar' />
-          <View style={styles.space}/>
+          <View style={{margin:5}}/>
           <LegalButton text="Schedule with Attorneys" onPress={() => navigation.navigate('AppointDocs')} icon='calendar-check' />
-          <View style={styles.space}/>
+          <View style={{margin:5}}/>
           <LegalButton text="Frequently Asked Questions" onPress={() => console.log("Haven't added page.")} icon='chat' />
-          <View style={styles.space}/>
+          <View style={{margin:5}}/>
           <LegalButton text="Resource Library" onPress={() => console.log("Haven't added page.")} icon='book-reader'/>
       </View>
     </View>
-        // <WebView source={{uri : 'https://testingcfgi.s3-us-west-1.amazonaws.com/webview.html'}}/>
 
     );
   }
 
-  export const AppointmentScreen = () => {
+  export const AppointmentScreen = ({navigation}) => {
 
     var cards =  users.map(u => {
       return (
-        <LegalCard key={u.key}>
-          <View style={{flexDirection:'row'}}>
-            <Image style={{flex:0.5, width:'100%', height:'100%', resizeMode:"contain", alignItems: "flex-start",borderRadius:100}}source={require('../assets/img/attorneydefault.png')}/>
-            <View style={{paddingLeft:10}}>
-            <Text style={{fontWeight:'bold'}}>{u.name}</Text>
-            <Text><Text style={{fontWeight:'bold'}}>Expertise:  </Text>{u.expertise}</Text>
-            <Text><Text style={{fontWeight:'bold'}}>Languages:  </Text> {u.languages}</Text>
-            </View>
-          </View>
+        <LegalCard key={u.key} name = {u.name} expertise = {u.expertise} languages = {u.languages} onPress={() => navigation.navigate('calendar')}>
         </LegalCard>
       );
     }
     );
-  
+
     return (
       <ScrollView>
         
-        <View style={{padding: 30, marginTop:30, flex:1}}>
+        <View style={{padding: 30, flex:1}}>
           <Image style={{height:'30%', resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/>
-          <Text style={styles.AsubTitle}>LEGAL</Text>
+          <Text style={styles.AsubTitle}>DIRECTORY</Text>
           <Text style={styles.attorneyTitle}>Find A CFGI Attorney For A Consultation</Text>
         </View>
          
@@ -105,7 +102,7 @@ export const JobScreen = () => {   //Jobs page component
         <View style={{paddingHorizontal: 30}}>
           <TextInput value="EXPERTISE:" style={styles.dropdown}/>
           <TextInput value="LANGUAGE:"style={styles.dropdown}/>
-          <View style={styles.space}/>
+          <View style={{margin:5}}/>
         </View>
         <View style={{padding:30, flexDirection:'row', paddingBottom:0}}>
           <Text style={styles.legalResults}> 15 Results</Text>
@@ -172,7 +169,6 @@ export const JobScreen = () => {   //Jobs page component
       alignItems: 'center',
       justifyContent: 'center',
     },
-
     button: {
       borderRadius: 10,
       paddingVertical: 13,
@@ -180,7 +176,6 @@ export const JobScreen = () => {   //Jobs page component
       marginTop: 5,
       backgroundColor: "#4C67F6"
     },
-
     textStyle: {
       color: "white",
       fontWeight: "bold",
@@ -189,22 +184,14 @@ export const JobScreen = () => {   //Jobs page component
     },
     legalContainer: { //Attorney/Appointment
       backgroundColor: '#F7F5F9',
-      padding: 30
+      paddingRight: 30,
+      paddingLeft: 30,
+      paddingBottom: 30
     },
     legalTitle:{ //Legal Services
       fontSize:32,
       textAlign: 'left',
       color: '#3F3356'
-    },
-    header:{ //Legal Services
-      paddingBottom: 30
-    },
-
-    subTitle:{ //Legal Services
-      fontSize:18
-    },
-    space:{
-      margin: 5
     },
     AsubTitle:{ //Attorney/Appointment
       color:'#FF564F',
