@@ -3,12 +3,7 @@ import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, Scro
 import { ScreenContainer } from 'react-native-screens';
 import { Card } from "react-native-elements";
 import { AuthContext } from '../screens/context';
-import { ScreenContainer } from 'react-native-screens';
-
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
- } from 'react-native-responsive-screen';
+//import { ScreenContainer } from 'react-native-screens';
 
 //import webview
 import { WebView } from 'react-native-webview';
@@ -86,7 +81,7 @@ export const JobScreen = () => {   //Jobs page component
   //Dummy Data for Attorneys. One issue, can't call <Image source={require(u.image)}/> within it.
   const users = [
     {
-       name: 'Kayla Johnson',
+       name: 'Bill Gunadi',
        expertise: 'OPT, CPT, H1B',
        languages: 'English, Hindi',
        image: '../assets/img/attorneydefault.png',

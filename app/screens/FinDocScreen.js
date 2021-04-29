@@ -9,11 +9,11 @@ export const FinAppScreen = ({navigation}) => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
 
-            <TouchableHighlight onPress={() => navigation.goBack()}>
+            {/* <TouchableHighlight onPress={() => navigation.goBack()}>
                 <View style={styles.backButtonContainer}>
                     <Ionicons name="arrow-back-circle" size={40} color="#4C67F6"/>
                 </View>
-            </TouchableHighlight>
+            </TouchableHighlight> */}
 
             <Text style={styles.header}>Requested amount of aid:</Text>
             {/* Fixed size */}

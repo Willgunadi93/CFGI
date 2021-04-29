@@ -86,7 +86,7 @@ function LegalStack() {
 
 function FinStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       {/* Landing page */}
       <Stack.Screen 
         name="Financial"
@@ -256,7 +256,7 @@ export default function App() {
        />
      </Tab.Navigator>
      ) : (
-      <Stack.Navigator>
+      <Stack.Navigator >
         <Stack.Screen name="SignIn" component={SignIn}></Stack.Screen>
         <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen> 
         <Stack.Screen name="ResetPassword" component={ResetPassword}></Stack.Screen> 
