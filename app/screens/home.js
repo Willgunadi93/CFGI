@@ -1,24 +1,28 @@
 import * as React from 'react';
 import { View, Text,  StyleSheet, ScrollView,  TouchableOpacity,Image } from "react-native";
 import { AuthContext } from '../screens/context';
-import { Card,ListItem, Button, Icon } from "react-native-elements";
 import { ScreenContainer } from 'react-native-screens';
-import {ProfileScreen} from '../screens/profile.js';
 
+/*
+This is the home page. It contains the cards for Upcomming Appointments 
+Saved Financial Forms. It also links users to the CFGI News and User Profile page.
+*/
  export const HomeScreen = ({navigation}) => { 
     return (
         <ScrollView>
             <ScreenContainer style={styles.container}>
+            {/* top row of navigation */}
             <View style={styles.inRow}> 
                 <TouchableOpacity  onPress={() => navigation.navigate("About")}>
-                    <Image style={ {width: 55, height: 55, top: 20, left: 10} } source={require("../assets/img/CFGInews.png")}/>
+                    <Image style={ styles.icon } source={require("../assets/img/CFGInews.png")}/>
                 </TouchableOpacity>
-                <Image style={{ paddingLeft: 10, paddingRight: 10,width: 270, height: 55, top: 100,left: 5,right: 20}} source={require("../assets/img/logo-full.png")}/>
+                <Image style={styles.logo} source={require("../assets/img/logo-full.png")}/>
                 <TouchableOpacity  onPress={() => navigation.navigate("Profile")}>
-                <Image style={ {width: 50, height: 50, top: 23, left: 5}}  source={require("../assets/img/profile.png")}/>
+                <Image style={ styles.icon }  source={require("../assets/img/profile.png")}/>
                 </TouchableOpacity>
             </View>
 
+            {/* cards for upcomming appointments */}
             <View style={styles.section1}>
                 <Text style={styles.h1}>Upcomming Appointments</Text>
             
@@ -31,6 +35,7 @@ import {ProfileScreen} from '../screens/profile.js';
                 </TouchableOpacity>
             </View> 
 
+            {/* cards for saved financial forms */}
             <View style={styles.section2}>
                 <Text style={styles.h1}>Saved Financial Forms</Text>
                 
@@ -48,23 +53,18 @@ import {ProfileScreen} from '../screens/profile.js';
     );
   }
 
-
   const styles = StyleSheet.create({   
     inRow: {
         flexDirection: 'row',
-        //paddingLeft: 10,
-        //paddingRight: 10,
       },
 
-    img: {
-        paddingLeft: 100,
-        paddingRight: 100,
+    icon:{
+        width: 30, height: 30, margin:50,
     },
 
     PersonImg: {
         width: 80, height: 80,
     },
-
     FormImg: {
         width: 70, height: 70,
     },
@@ -76,32 +76,27 @@ import {ProfileScreen} from '../screens/profile.js';
         fontSize: 13, left: 10, top: 10
     },
 
-    cardArrow: {
-        top: 30, left: 10
-    },
-
     h1: {
          fontSize: 22, fontWeight: 'bold', left: 15,
     },
     
     section1: {
-        top: 150, paddingEnd: 20,
+        top: 50, paddingEnd: 20,
     },
     section2: {
-        top: 180, paddingEnd: 20,
+        top: 100, paddingEnd: 20,
+    },
+
+    logo:{
+        resizeMode:"contain", alignSelf:'center',
     },
 
     container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#F7F5F9',
     },
-
-    mainText: {
-        color: 'purple',
-        paddingTop: 5,
-        paddingBottom: 2,
-    }, 
 
     cardLayout: {
         flexDirection: 'row', 
@@ -112,5 +107,4 @@ import {ProfileScreen} from '../screens/profile.js';
         borderRadius: 10,
         padding: 10,
     },
-
 });
