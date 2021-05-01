@@ -7,22 +7,24 @@ import { ScreenContainer } from 'react-native-screens';
 // importing and using `Carousel`
 //import Carousel from './Carousel';
 
-
-// export const SignIn = ({ navigation}) => { 
+/* This is the about page that contains CFGI news and about information.
+<Image style={{ width: 410, height: 460,top: 80}} source={require("../assets/img/immigrationStories.png")}/>
+ */
  export const AboutScreen = ({ navigation, route}) => { 
-    // const { signIn } = React.useContext(AuthContext);
     return (
         <ScrollView>
         <ScreenContainer style={styles.container}>
         
             <View style={styles.inCol}>
-                <Image style={{width: 360, height: 75,top: 100, left: 20}} source={require("../assets/img/logo-full.png")}/>
-                <Text style={{top:145, fontSize: 26,fontWeight: 'bold'}}>WHAT'S NEW</Text>
-                <Image style={{ width: 410, height: 460,top: 177}} source={require("../assets/img/builtInAmerica.png")}/>
+                <Image style={ styles.logo } source={require("../assets/img/logo-full.png")}/>
+                <Text style={ styles.section1 }>WHAT'S NEW</Text>
+                <Image style={{ width: 410, height: 460,top: 80}} source={require("../assets/img/builtInAmerica.png")}/>
             </View>
 
+            {/* add carousel here put dots for swip*/}
 
-            <View style={{top: 220, alignContent: 'right'}}>
+            {/* about us section */}
+            <View style={{top: 150, alignContent: 'right'}}>
                 <Text style={styles.h1}>ABOUT US</Text>
                 <Image style={styles.yellowLine} source={require("../assets/img/yellowLine.png")}/>
                 <Text style={styles.h2}>What We Do</Text>
@@ -35,7 +37,8 @@ import { ScreenContainer } from 'react-native-screens';
                             work experience.*</Text>
             </View>
 
-            <View style={{top:300, alignContent: 'right'}}>
+            {/* CFGI founders' information */}
+            <View style={{top:200, alignContent: 'right'}}>
                 <Text style={styles.h1}>MEET</Text>
                 <Image style={styles.yellowLine} source={require("../assets/img/yellowLine.png")}/>
                 <Text style={styles.h2}>The Founders</Text>
@@ -43,7 +46,7 @@ import { ScreenContainer } from 'react-native-screens';
             </View>
            
         </ScreenContainer>
-        <View style={{padding:200}}></View>
+        <View style={{padding:100}}></View>
         </ScrollView> 
     );
   }
@@ -54,26 +57,24 @@ import { ScreenContainer } from 'react-native-screens';
         backgroundColor: '#F7F5F9',
         alignItems: 'center',
         justifyContent: 'center',
-      },       
-    header: {
-      top: 50,
-      left: 35,
-      flexDirection: 'column',
+      },
+
+    logo:{
+        top: 20, 
+        width: 300,
+        height: 100,
+        resizeMode:"contain", alignSelf:'center',
     },
 
     h1: {
         color: 'pink', fontSize: 36, textAlign: 'right', right: 15,
     },
-
     h2: {
         top: 5, fontSize: 36, textAlign: 'right', right: 15, paddingBottom:20,
     },
 
     yellowLine: {
         width: 210, height: 20, left: 210,
-    },
-    backbtn: {
-        top: 70, left: 20, width: 50, height: 50,
     },
 
     fullLenImg: {
@@ -84,12 +85,6 @@ import { ScreenContainer } from 'react-native-screens';
         flexDirection: 'column',
       },
 
-    cardLayout: {
-        //flexDirection: 'row',
-        //flexWrap: 'wrap',
-        justifyContent: 'flex-start',
-    },
-
     mainText: { 
         left:20,
         top: 10,
@@ -99,4 +94,10 @@ import { ScreenContainer } from 'react-native-screens';
         paddingTop: 30, 
         paddingBottom: 30
     }, 
+
+    section1:{
+        top: 50, 
+        fontSize: 26,
+        fontWeight: 'bold',
+    },
 });
