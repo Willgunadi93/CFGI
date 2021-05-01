@@ -1,34 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-//Import react navigation
-import { NavigationContainer } from '@react-navigation/native'; //container
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; //bottom nav
+// Navigation container used for navigating to every single component
+import { NavigationContainer } from '@react-navigation/native'; 
+// The bottom navigation bar used in our entire app
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; 
+// Used to navigate from page to page, especially when we go from a different component to another component
 import { createStackNavigator } from '@react-navigation/stack';
-//import screens
+// All of our screens, importing them here so our navigation stack is aware of the system hierarchy
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
-
 import {AboutScreen} from './app/screens/about.js';
 import { JobScreen, LegalScreen, DonateScreen, AppointmentScreen, CalendlyScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
-
-// temporary, will delete later
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
 
-//Authentication
+// Used to authenticate the user's credentials so they can have access to the app
 import { AuthContext } from './app/screens/context';
-//import sign in and create account
+// Import sign in and create account
 import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screens/signin.js';
+// Icons used for our bottom navigation bar
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { StackRouter } from 'react-navigation';
 
-
+// Globally defining our bottom navigation bar and our system hierarchy stack
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-
+// Stack hierarchy starting from the home screen, HomeScreen component is the top of the hierarchy and 
+// leads to every other component
 function HomeStack() {
   return (
     <Stack.Navigator>
@@ -50,6 +49,7 @@ function HomeStack() {
   )
 }
 
+// Stack that defines job hierarchy, all components related to jobs are listed here
 function JobStack() {
   return (
     <Stack.Navigator>
@@ -61,7 +61,8 @@ function JobStack() {
   )
 }
 
-
+// Stack that defines legal consultation hierarchy, all components related to legal
+// are listed here
 function LegalStack() {
   return (
     <Stack.Navigator>
@@ -70,7 +71,6 @@ function LegalStack() {
         name="Legal"
         component={LegalScreen}
       />
-      {/* Add actual page for legal consultation */}
       <Stack.Screen
         name="AppointDocs"
         component={AppointmentScreen}
@@ -83,10 +83,11 @@ function LegalStack() {
   )
 }
 
-
+// Stack that defines financial assistance hierarchy, all components related to financial assistance
+// are listed here
 function FinStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       {/* Landing page */}
       <Stack.Screen 
         name="Financial"
@@ -101,7 +102,7 @@ function FinStack() {
   )
 }
 
-
+// Stack that defines donation hierarchy, all components related to donation are listed here
 function DonateStack() {
   return (
     <Stack.Navigator>
@@ -175,12 +176,15 @@ function DonateStack() {
 //   )
 // }
 
+// Export the App component, our "main"
 export default function App() {
-
+  
+  // These are components related to user authentication  
   const [isLoading, setIsLoading] = React.useState(true);
   const [userToken, setUserToken] = React.useState(null);
-  //registering these components are stacks
-
+  
+  // User authentication that is added to thhe authority stack
+  // Currently it's all placeholder text
   const authContext = React.useMemo(() => {
     return {
       signIn: () => {
@@ -199,7 +203,8 @@ export default function App() {
   }, []);
 
 
-
+  // Define the bottom navigation bar by setting icons and colors if the 
+  // user has been accepted by the system
   return  (
     <AuthContext.Provider value={authContext}>
    <NavigationContainer style={styles.container}>
@@ -208,7 +213,8 @@ export default function App() {
        initialRouteName="Home"
        tabBarOptions={{activeTintColor: 'blue', inactiveTintColor: 'black'}}>
        <Tab.Screen
-         // Each tab leads to a stack, which has the actual components
+         // Each tab leads to its respective stack, which 
+        //  will lead the user to the actual components
          name="Home"
          component={HomeStack}
          options={{
@@ -256,7 +262,9 @@ export default function App() {
        />
      </Tab.Navigator>
      ) : (
-      <Stack.Navigator>
+      //  If user isn't accepted by the system, they are directed to the stack of 
+      // sign up/log in options
+      <Stack.Navigator >
         <Stack.Screen name="SignIn" component={SignIn}></Stack.Screen>
         <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen> 
         <Stack.Screen name="ResetPassword" component={ResetPassword}></Stack.Screen> 
