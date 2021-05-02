@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput } from "react-native";
+import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput, TouchableHighlight, TouchableOpacity } from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 import { Card } from "react-native-elements";
 import { AuthContext } from '../screens/context';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 //import { ScreenContainer } from 'react-native-screens';
 
 //import webview
@@ -18,58 +19,80 @@ import {SearchBar} from 'react-native-elements'; //Stand in for eventual drop do
 import LegalCard from '../screens/legalCard';
 //
 
+
+
 export const JobScreen = () => {   //Jobs page component
+
+  const [searchJob, setSearchJob] = React.useState('');
+  const [searchLoc, setSearchLoc] = React.useState('');
+  const searchFilterFunction = text => { setSearchJob(text); };
+  const searchLocFunction = text => { setSearchLoc(text); };
+
     return (
       <ScrollView>
       <View style={styles.jobContainer}>
-      <View style={{padding: hp('5%'), flex: 1}}>
-        <Image style={{height:'30%', resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/logo-full.png')} />
+      <View style={{padding: hp('3%'), flex: 1}}>
+        <Image style={{height:'11%', resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/Screenslogo.png')} />
         <Text style={styles.jobTitle}>CAREER</Text>
         <Text style={styles.jobSubtitle}>Find A Job From Trusted Partners</Text>
         <Text style={{fontSize: 13, color: "#000000", lineHeight: 16, paddingBottom: hp('2%')}}>
           These companies took the CFGI diversity pledge{'\n'}
-          and are open to considering sponsorship for the right candidates.
-        </Text>
-      </View>
+          and are open to considering sponsorship for the{'\n'}
+          right candidates. </Text>
 
-      <View style={styles.inputContainer}>
-          <View style={{paddingVertical: hp('1%')}}>
-            <TextInput style={styles.input} placeholder="          job title, keywords, or company"/>
+        <View style={{paddingVertical: hp('1%')}}>
+            <SearchBar inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:40}}
+            containerStyle={{margin:0, padding:0, backgroundColor:'white', borderRadius:30, borderWidth:1, borderTopColor:'#4C67F6', borderEndColor:'#4C67F6', borderColor:'#4C67F6', borderBottomColor:'#4C67F6'}}
+            inputStyle={{fontStyle:'italic', fontSize:14}} 
+            onChangeText={searchFilterFunction} value={searchJob}
+            placeholder="  job title, keywords, or company"/>
           </View>
-          <View style={{paddingVertical: hp('1.2%')}}>
-            <TextInput style={styles.input} placeholder="          zipcode or city"/>
+          
+          <View style={{paddingVertical: hp('1%')}}> 
+          <SearchBar inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:40}}
+            containerStyle={{margin:0, padding:0, backgroundColor:'white', borderRadius:30, borderWidth:1, borderTopColor:'#4C67F6', borderEndColor:'#4C67F6', borderColor:'#4C67F6', borderBottomColor:'#4C67F6'}}
+            inputStyle={{fontStyle:'italic', fontSize:14}} 
+            onChangeText={searchLocFunction} value={searchLoc} 
+            clearIcon={true}
+            searchIcon={() => <Ionicons name="location-outline" color='gray' size={19}/>}
+            placeholder="  zipcode or city"/> 
           </View>
       </View>
 
-      <View style={{height: hp('5%'), right: hp('12.5%'), top: hp('4.5%')}}>
-        <Pressable style={styles.jobButton}>
-            <Text style={styles.textStyle}>SEARCH</Text>
-        </Pressable>
+      <View style={{height: hp('0%'), alignContent: 'center', top: hp('-4.6%')}}>
+        <TouchableHighlight onPress={() => console.log("Haven't added search function.")} style={styles.jobButton} activeOpacity={1} underlayColor="#0A30F6">
+            <Text style={styles.jobTextStyle}>SEARCH</Text>
+        </TouchableHighlight>
       </View>
 
-      <View style={{width: hp('12%'), height: hp('5%'), right: hp('12.5%'), top: hp('21.5%')}}> 
+      <View style={{width: hp('15%'), height: hp('6%') ,top: hp('18.5%'), left: hp('3.5%')}}> 
         <Text style={{fontSize: 16, color: "#000000", fontWeight: 'bold'}}>105 Results</Text>
       </View>
 
-      <View style={{top: 150, paddingStart: 22, paddingEnd: 16}}> 
-        <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
-          <Text style={styles.positionCategory} >UI/UX Design </Text>
-          <Text style={styles.positionTitle} >SaaS Homepage redesign and onboarding updates </Text>
-          <Text style={styles.positionLocation} >Albany, NY </Text>
-          <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
-        </Card>
-        <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
-          <Text style={styles.positionCategory} >Information Technology </Text>
-          <Text style={styles.positionTitle} >Web/app designer required to create web apps </Text>
-          <Text style={styles.positionLocation} >Blackwood, WA </Text>
-          <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
-        </Card>
-        <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
-          <Text style={styles.positionCategory} >Technology </Text>
-          <Text style={styles.positionTitle} >Adobe Systems Careers - Performance Media, Analyst </Text>
-          <Text style={styles.positionLocation} >Santa Ana, CA </Text>
-          <Text style={styles.postTime} >Posted 24 days ago </Text>
-        </Card>
+      <View style={{top: hp('15%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
+        <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+          <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+            <Text style={styles.positionCategory} >UI/UX Design </Text>
+            <Text style={styles.positionTitle} >SaaS Homepage redesign and onboarding updates </Text>
+            <Text style={styles.positionLocation} >Albany, NY </Text>
+            <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
+          </Card></TouchableOpacity>
+          
+          <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+          <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+            <Text style={styles.positionCategory} >Information Technology </Text>
+            <Text style={styles.positionTitle} >Web/app designer required to create web apps </Text>
+            <Text style={styles.positionLocation} >Blackwood, WA </Text>
+            <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
+          </Card></TouchableOpacity>
+
+          <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+          <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+            <Text style={styles.positionCategory} >Technology </Text>
+            <Text style={styles.positionTitle} >Adobe Systems Careers - Performance Media, Analyst </Text>
+            <Text style={styles.positionLocation} >Santa Ana, CA </Text>
+            <Text style={styles.postTime} >Posted 24 days ago </Text>
+          </Card></TouchableOpacity>
       </View>
       
       <View style={{padding: 85}}></View>
@@ -220,26 +243,34 @@ export const JobScreen = () => {   //Jobs page component
     jobContainer: {
       flex: 1,
       backgroundColor: '#F7F5F9',
-      alignItems: 'center',
-      justifyContent: 'center'
+      //alignItems: 'center',
+      justifyContent: 'center',
     },
 
     jobButton: {
       borderRadius: 10,
-      width: 153,
-      height: 35,
+      width: hp('17%'),
+      height: hp('4.6%'),
       left: 110,
       top: 80,
       backgroundColor: "#4C67F6"
     },
 
-    textStyle: {
+    jobTextStyle: {
       color: "#FFFFFF",
       fontWeight: "bold",
       textAlign: "center",
       fontSize: 16,
-      marginTop: 8
+      marginTop: hp('1%')
     },
+
+    textStyle: {
+      color: "white",
+      fontWeight: "bold",
+      textAlign: "center",
+      fontSize: 16
+    },
+
     button: {
       borderRadius: 10,
       paddingVertical: 13,
@@ -247,12 +278,7 @@ export const JobScreen = () => {   //Jobs page component
       marginTop: 5,
       backgroundColor: "#4C67F6"
     },
-    textStyle: {
-      color: "white",
-      fontWeight: "bold",
-      textAlign: "center",
-      fontSize: 16
-    },
+
     legalContainer: { //Attorney/Appointment
       backgroundColor: '#F7F5F9',
       paddingRight: 30,
@@ -282,6 +308,7 @@ export const JobScreen = () => {   //Jobs page component
         paddingRight: 10,
         alignSelf:'flex-end'
     },
+
     dropdown:{ //Attorney/Appointment
       borderColor: '#4C67F6',
       borderWidth: 1,
@@ -292,23 +319,15 @@ export const JobScreen = () => {   //Jobs page component
       backgroundColor:'white',
       color: 'black'
     },
-  
 
-    inputContainer: {
-      width: wp('81%'),
-      height: hp('6%'),
-      left: hp('0.55%'),
-      top: hp('3.5%'),
-    },
-    
     input: {
-      height: hp('5%'),
-      padding: hp('1.5%'),
+      height: 40,
+      padding: hp('2%'),
       borderWidth: 1,
-      borderRadius: 16,
+      borderRadius: 30,
       backgroundColor: 'white',
       borderColor: '#4C67F6',
-      fontStyle: 'italic'
+      fontStyle: 'italic',
     },
 
     jobTitle: {
@@ -347,16 +366,17 @@ export const JobScreen = () => {   //Jobs page component
 
     positionTitle: {
       fontSize: 16, 
-      left: hp('6%'), 
+      //left: hp('6%'), 
       top: -5, 
       fontWeight: 'bold',
+      textAlign: 'left',
     },
 
     positionLocation: {
       fontSize: 13, 
-      left: hp('6.1%'), 
+      //left: hp('6.1%'), 
       color: '#50555C', 
-      marginTop: 2
+      marginTop: 2,
     },
 
     postTime: {
