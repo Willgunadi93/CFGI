@@ -12,7 +12,8 @@ export const FinAppScreen = ({navigation}) => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             {/* Back button that allows the user to go back to the landing screen */}
-            <TouchableHighlight onPress={() => navigation.goBack()}>
+            <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
+            {/* backgroundColor: '#F7F5F9' */}
                 <View style={styles.backButtonContainer}>
                     <Ionicons name="arrow-back-circle" size={40} color="#4C67F6"/>
                 </View>
@@ -26,7 +27,7 @@ export const FinAppScreen = ({navigation}) => {
                         style={styles.moneyInput}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.inputValue}
+                        // value={this.state.text}
                         placeholder="$"
                         // multiline onChange={(event) => this.onChangeText(event)}
                         // onChange={(event) =>
@@ -46,7 +47,11 @@ export const FinAppScreen = ({navigation}) => {
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
                         style={styles.input}
-                        // onChangeText={onChangeText}
+                        // onChangeText={(text) => {this.setState({text});}}
+                        // value={this.state.text}
+                        multiline={true}
+                        numberOfLines={4}
+                        textAlignVertical={'top'}
                     />
                 </View>
             </View>
@@ -79,6 +84,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#F7F5F9',
       alignItems: 'center',
       justifyContent: 'center',
+    //   height: keyboard.keyboardShown? 510 - keyboard.keyboardHeight: 510
     },
 
     // Defines styling for the back button
@@ -129,7 +135,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingTop: 3
     },
 
     // Defines padding for all text box containers

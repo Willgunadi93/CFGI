@@ -70,6 +70,7 @@ export const FinScreen = ({navigation}) => {
         paddingRight: wp('15%'),
         paddingTop: hp('3%'), 
         paddingBottom: hp('4%'),
+        fontSize: 18
     }, 
 
     // Terms and conditions apply text, italicizes it
@@ -77,6 +78,7 @@ export const FinScreen = ({navigation}) => {
         fontStyle: 'italic',
         textAlign: 'left',
         paddingRight: wp('25%'),
+        fontSize: 15
     }, 
 
     // Styling for the button
@@ -86,10 +88,10 @@ export const FinScreen = ({navigation}) => {
         justifyContent: 'center',
     },
 
-    // Text on the botton
+    // Text on the button
     buttonText: {
         // fontFamily:'Oxygen-Bold', 
-        fontSize: 14,
+        fontSize: 18,
     },
 
     // APPLY
@@ -97,7 +99,7 @@ export const FinScreen = ({navigation}) => {
         fontSize: 25,
         textAlign: 'left',
         fontWeight: 'bold',
-        paddingRight: wp('50%'),
+        paddingRight: wp('52%'),
         paddingTop: hp('4%'),
         color: '#FF6E00',
     },
