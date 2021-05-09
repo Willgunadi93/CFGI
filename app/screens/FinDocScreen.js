@@ -112,11 +112,19 @@ export const FinAppScreen = ({navigation}) => {
             {/* Make this a drop down */}
             <Text style={styles.header}>Marital Status</Text>
             <DropDownPicker
-                items = {[
-                    {label: 'Single', value: 'single'}
-                ]
+                items = {items}
+                    
+                //What I changed, Stephanie
+                open={open}
+                value={value}
+                setValue={setValue}
+                setitems={setItems}
+                setOpen={setOpen}
+                searchable={false}
+                listMode="SCROLLVIEW" //Making it scrollable
+                maxHeight={150} //The height of the dropdown
+                //
 
-                } 
                 // {[{label: 'Single', value: 'single'},
                 // {label: 'Married', value: 'married'}, 
                 // {label: 'Widowed', value: 'widowed'},
@@ -128,8 +136,10 @@ export const FinAppScreen = ({navigation}) => {
                 // setValue = {setValue}
                 // setItems = {setItems}
                 // setopen = {setOpen}
-                style = {{width: wp('76%')}}
-                containerStyle = {{paddingLeft: wp('12%')}}
+
+                //What I changed, Stephanie
+                style = {{width: wp('76%'), alignSelf:"center"}} //Added alignSelf to make container center
+                containerStyle = {{width: wp('76%'), alignSelf:"center"}} //Added alignSelf center to make dropdown center
             /> 
 
 {/* const [open, setOpen] = useState(false);
