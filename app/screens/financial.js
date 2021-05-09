@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button, Image } from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 // for responsive design
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import {SvgUri } from 'react-native-svg-uri'; 
+// import {SvgUri } from 'react-native-svg-uri'; 
 
 
 // Landing page for the financial assistance page, this is from the financial stack 
