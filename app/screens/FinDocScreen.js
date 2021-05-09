@@ -6,6 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import DropDownPicker from 'react-native-dropdown-picker';
+import CheckBox from '@react-native-community/checkbox';
 
 
 // Actual page for applying for financial assistance, allows users to upload documents and fill out answers
@@ -49,9 +50,11 @@ export const FinAppScreen = ({navigation}) => {
         {label: 'J-1 work authorized', value: 'j1_work'}
     ]);
 
+    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
     return (
-        <ScrollView>
-            <View style={styles.container}>
+    <ScrollView>
+        <View style={styles.container}>
             {/* Back button that allows the user to go back to the landing screen */}
             <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
                 <View style={styles.backButtonContainer}>
@@ -302,11 +305,24 @@ export const FinAppScreen = ({navigation}) => {
 
             {/* Allows users to attach necessary financial documents and upload them to the database */}
             <Text style={styles.header}>Attach Documents</Text>
-            <Text style={styles.mainText}>If you have them available, please provide any and all financial documents that 
+            <Text style={styles.mainText}>Please provide any and all financial documents that 
             prove your current financial situation and status. This includes any federal income tax returns, 
-            bank statements, investment records, and records of untaxed income from either the United States or from your home country.
-            Otherwise, leave this section blank.</Text>
+            bank statements, investment records, and records of untaxed income from either the United States or from your home country.</Text>
             {/* Insert upload docs here */}
+
+            {/* Temporary until uploading files is implemented */}
+            <View style={{paddingVertical: hp('3%')}}></View>
+
+            <Text style={styles.mainText}>I have filled out this application with complete accuracy and care.
+            I understand that any incomplete, inaccurate, or invalid information may result in this application getting rejected. 
+            I agree to the Terms and Conditions.</Text>
+            <View style={{paddingLeft: wp('45%')}}>
+            <CheckBox
+                disabled = {false}
+                value = {toggleCheckBox}
+                onValueChange = {(newValue) => setToggleCheckBox(newValue)}
+            />
+            </View>
 
             <View style={styles.buttonContainer}>
                 {/* Allows the user to save the current application and come back to it later */}
@@ -318,8 +334,8 @@ export const FinAppScreen = ({navigation}) => {
                     <Text style={styles.buttonText}>SUBMIT</Text>
                 </TouchableOpacity>
             </View>
-            </View>
-        </ScrollView>
+        </View>
+    </ScrollView>
     );
   }
 
