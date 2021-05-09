@@ -2,6 +2,10 @@ import * as React from 'react';
 import { View, Text,  StyleSheet, ScrollView,  TouchableOpacity,Image } from "react-native";
 import { AuthContext } from '../screens/context';
 import { ScreenContainer } from 'react-native-screens';
+import {
+    heightPercentageToDP as hp,
+    widthPercentageToDP as wp,
+   } from 'react-native-responsive-screen';
 
 /*
 This is the home page. It contains the cards for Upcomming Appointments 
@@ -30,7 +34,7 @@ Saved Financial Forms. It also links users to the CFGI News and User Profile pag
                 <View  style={styles.cardLayout} name="card"  pointerEvents="none">
                     <Image style={styles.PersonImg} source={require("../assets/img/attorney.png")} />         
                     <Text style={styles.section1_Txt} >Attorney: Toby Renolds{"\n"}{"\n"}Starting @ 7:00 AM - May 8, 2019 </Text>
-                    <Image  style={styles.cardArrow} source={require("../assets/img/rightArrow.png")} />         
+                    <Image  style={{resizeMode:"contain"}} source={require("../assets/img/rightArrow.png")} />         
                 </View>
                 </TouchableOpacity>
             </View> 
@@ -59,14 +63,14 @@ Saved Financial Forms. It also links users to the CFGI News and User Profile pag
       },
 
     icon:{
-        width: 30, height: 30, margin:50,
+        width: 30, height: 30, margin:50, resizeMode:"contain", 
     },
 
     PersonImg: {
-        width: 80, height: 80,
+        width: 80, height: 80, resizeMode:"contain", 
     },
     FormImg: {
-        width: 70, height: 70,
+        width: 70, height: 70, resizeMode:"contain", 
     },
 
     section1_Txt: {
@@ -88,7 +92,7 @@ Saved Financial Forms. It also links users to the CFGI News and User Profile pag
     },
 
     logo:{
-        resizeMode:"contain", alignSelf:'center',
+        top: 45, resizeMode:"contain",
     },
 
     container: {
