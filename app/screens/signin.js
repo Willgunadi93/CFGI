@@ -11,6 +11,7 @@ import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
    } from 'react-native-responsive-screen';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 // User is taken to this component when the app is opened 
@@ -24,6 +25,7 @@ export const SignIn = ({ navigation}) => {
     return (
         // Formatting logo and arrow buttons
         <ScreenContainer style={StyleSheet.container}>
+          <ScrollView>
             <View style={styles.logoView}>
                 <View style={{paddingBottom: hp('8%'), alignItems: 'center'}}>
                     <Image style={{marginTop: hp('8%'), marginBottom: hp('2%')}} source = {require('../assets/img/arrow-left.png')} />
@@ -63,6 +65,7 @@ export const SignIn = ({ navigation}) => {
               </Pressable>
               <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('1%')}} onPress={() => navigation.push('CreateAccount')}>Sign up {'>'}</Text>
             </View>
+            </ScrollView>
         </ScreenContainer>
     );
 }
@@ -76,6 +79,7 @@ export const CreateAccount = () => {
     return (
         // Background images and logos
         <ScreenContainer style={StyleSheet.container}>
+          <ScrollView>
             <View style={styles.logoView}>
                 <View style={{paddingVertical: hp('13%'), alignItems: 'center'}}>
                     <View style={{alignItems: 'center', position: 'absolute'}}>
@@ -131,6 +135,7 @@ export const CreateAccount = () => {
                 <Text style={styles.textStyle}>JOIN NOW</Text>
               </Pressable>
             </View>
+          </ScrollView>
         </ScreenContainer>
     );
 }
@@ -143,6 +148,7 @@ export const ForgotPassword = ({navigation}) => {
     const [number, onChangeText] = React.useState(null);
     return (
         <ScreenContainer style={StyleSheet.container}>
+          <ScrollView>
             <View style={styles.logoView}>
                 <View style={{paddingVertical: hp('4%'), alignItems: 'center'}}>
                     <View style={{alignItems: 'center'}}>
@@ -184,6 +190,7 @@ export const ForgotPassword = ({navigation}) => {
                 <View style={styles.circleRedBottom}></View>
                 <View style={styles.circleOrangeBottom}></View>
             </View>
+          </ScrollView>
         </ScreenContainer>
     );
 }
