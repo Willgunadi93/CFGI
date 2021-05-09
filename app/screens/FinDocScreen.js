@@ -23,6 +23,18 @@ export const FinAppScreen = ({navigation}) => {
     const [permit_open, setPermitOpen] = useState(false);
     const [permit_value, setPermitValue] = useState(null);
 
+    // Set variables and states for short and long answer text input
+    const [other_visa, setOtherVisa] = useState(null);
+    const [int_student, setIntStud] = useState(null);
+    const [phone, setPhone] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [university, setUni] = useState(null);
+    const [children, setChildren] = useState(null);
+    const [other_permit, setOtherPermit] = useState(null);
+    const [aid, setAid] = useState(null);
+    const [reason, setReason] = useState(null);
+
+
     // Set all dropdown menu choices and their values
     const [visa_choices, setVisaItems] = useState([
         {label: 'F-1', value: 'f1'},
@@ -50,6 +62,7 @@ export const FinAppScreen = ({navigation}) => {
         {label: 'J-1 work authorized', value: 'j1_work'}
     ]);
 
+    // Checks if the user has checked the checkbox
     const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
     return (
@@ -91,6 +104,9 @@ export const FinAppScreen = ({navigation}) => {
                     <View style={{paddingVertical: hp('1%')}}>
                         <TextInput
                             style={styles.shortAnswerInput}
+                            value = {other_visa}
+                            setValue = {setOtherVisa}
+
                             // onChangeText={onChangeText}
                             // onChangeText={(text) => {this.setState({text});}}
                             // value={this.state.text}
@@ -98,9 +114,6 @@ export const FinAppScreen = ({navigation}) => {
                             // onChange={(event) =>
                             //     this.onChangeText(event)
                             //   }
-                            //   onContentSizeChange={(event) => {
-                            //     this.setState({ height: event.nativeEvent.contentSize.height })
-                            //   }}
                         />
                 </View>
             </View>
@@ -111,11 +124,11 @@ export const FinAppScreen = ({navigation}) => {
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
                         style={styles.input}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        multiline={true}
-                        numberOfLines={4}
-                        textAlignVertical={'top'}
+                        value = {int_student}
+                        setValue = {setIntStud}
+                        multiline = {true}
+                        numberOfLines = {4}
+                        textAlignVertical = {'top'}
                     />
                 </View>
             </View>
@@ -124,7 +137,10 @@ export const FinAppScreen = ({navigation}) => {
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
-                        style={styles.shortAnswerInput}
+                        style = {styles.shortAnswerInput}
+                        value = {phone}
+                        setValue = {setPhone}
+                        
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -143,7 +159,10 @@ export const FinAppScreen = ({navigation}) => {
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
-                        style={styles.shortAnswerInput}
+                        style = {styles.shortAnswerInput}
+                        value = {email}
+                        setValue = {setEmail}
+
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -162,7 +181,9 @@ export const FinAppScreen = ({navigation}) => {
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
-                        style={styles.shortAnswerInput}
+                        style = {styles.shortAnswerInput}
+                        value = {university}
+                        setValue = {setUni}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -204,7 +225,9 @@ export const FinAppScreen = ({navigation}) => {
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
-                        style={styles.childrenInput}
+                        style = {styles.childrenInput}
+                        value = {children}
+                        setValue = {setChildren}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -247,7 +270,9 @@ export const FinAppScreen = ({navigation}) => {
                 <View style={styles.inputContainer}>
                     <View style={{paddingVertical: hp('1%')}}>
                         <TextInput
-                            style={styles.shortAnswerInput}
+                            style = {styles.shortAnswerInput}
+                            value = {other_permit}
+                            setValue = {setOtherPermit}
                             // onChangeText={onChangeText}
                             // onChangeText={(text) => {this.setState({text});}}
                             // value={this.state.text}
@@ -267,11 +292,14 @@ export const FinAppScreen = ({navigation}) => {
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
-                        style={styles.shortAnswerInput}
+                        style = {styles.shortAnswerInput}
+                        value = {aid}
+                        setValue = {setAid}
+                        placeholder = "$ USD"
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
-                        placeholder="$ USD"
+                        
                         // multiline onChange={(event) => this.onChangeText(event)}
                         // onChange={(event) =>
                         //     this.onChangeText(event)
@@ -292,12 +320,14 @@ export const FinAppScreen = ({navigation}) => {
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
-                        style={styles.input}
+                        style = {styles.input}
+                        value = {reason}
+                        setValue = {setReason}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
-                        multiline={true}
-                        numberOfLines={4}
-                        textAlignVertical={'top'}
+                        multiline = {true}
+                        numberOfLines = {4}
+                        textAlignVertical = {'top'}
                     />
                 </View>
             </View>
