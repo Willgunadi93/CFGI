@@ -179,39 +179,41 @@ export const JobScreen = () => {   //Jobs page component
   
   export const DonateScreen = () => {   //Jobs page component
     return (
-      <ScreenContainer style={StyleSheet.container}>
-        <View style={{paddingVertical: hp('3%'), alignItems: 'center'}}>
-            <View style={{alignItems: 'center'}}>
-              <Image source={require('../assets/img/logo-full.png')} />
-              <Image style={{marginTop: hp('4%'), marginBottom: hp('3%'), marginLeft: wp('15%')}} source = {require('../assets/img/arrow-left.png')} />
-              <Image style={{marginLeft: -wp('15%'), marginRight: wp('5%')}}source = {require('../assets/img/arrow-right.png')} />
-            </View>
-            <View style={{flexDirection: 'row', paddingTop: hp('3%')}}>
-              <View style={{flexDirection: 'column'}}>
-                <Text style={{fontSize: 24, color: "#FF6E00", fontWeight: 'bold'}}>Inspired to Give</Text>
-                <Text style={{fontSize: 54, color: "#3F3356", fontWeight: 'bold'}}>Donate{'\n'}Now</Text>
-              </View>
-              <Image style={{width: hp('20%'), height: hp('20%'), marginTop: hp('3%'), marginLeft: hp('3%')}} source={require('../assets/img/donation-box.png')} />
-            </View>
-            
-            <View style={{paddingLeft: hp('4%'), paddingRight: wp('25%'), paddingTop: hp('1%')}}>
-              <Text style={{fontSize: 18, color: "#3F3356"}}>
-                With your donation,{'\n'}we can continue to support international 
-                students with financial assistance, legal help, job opportunities, 
-                so they can stay and thrive in the United States. 
-              </Text>
-            </View>
-            <View style={{paddingTop: hp('3%')}}>
-              <Pressable style={styles.button}>
-                <Text style={styles.textStyle}>DONATE</Text>
-              </Pressable>
-            </View>
-            <View style={{flexDirection: 'row', paddingTop: hp('4%')}}>
-              <Text style={{fontSize: 12, color: "#FF6E00", opacity: 0.8}}>Help international students{'\n'}reach for the American dream</Text>
-              <Image style={{width: hp('3%'), height: hp('4%'), marginLeft: hp('2%')}} source={require('../assets/img/sun.png')} />
-            </View>
+      <View style={{paddingTop: "5%", paddingHorizontal: "5%", backgroundColor: '#F7F5F9'}}>
+        <Image style={{height: "10%", width:"50%", resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/Screenslogo.png')}/>
+        <View style={{paddingTop: "5%"}}>
+          <Image style={{marginBottom: hp('3%'), marginLeft: wp('15%')}} source = {require('../assets/img/arrow-left.png')} />
+          <Image style={{marginLeft: -wp('15%'), marginRight: wp('5%')}} source = {require('../assets/img/arrow-right.png')} />
         </View>
-      </ScreenContainer>
+        <View style={{flexDirection: 'row', paddingTop: "5%", paddingHorizontal: "5%"}}>
+          <View style={{flexDirection: 'column'}}>
+            <Text style={{fontSize: 24, color: "#FF6E00", fontWeight: 'bold'}}>Inspired to Give</Text>
+            <Text style={{fontSize: 54, color: "#3F3356", fontWeight: 'bold'}}>Donate{'\n'}Now</Text>
+          </View>
+          <Image style={{width: hp('20%'), height: hp('20%'), marginTop: hp('3%'), marginLeft: hp('3%')}} source={require('../assets/img/donation-box.png')} />
+        </View>
+        
+        <View style={{paddingHorizontal: "5%"}}>
+          <View style={{paddingRight: "25%", paddingTop: "1%"}}>
+            <Text style={{fontSize: 18, color: "#3F3356"}}>
+              With your donation,{'\n'}we can continue to support international 
+              students with financial assistance, legal help, job opportunities, 
+              so they can stay and thrive in the United States. 
+            </Text>
+          </View>
+        </View>
+        <View style={{paddingTop: "5%", paddingHorizontal: "25%"}}>
+          <Pressable style={styles.button}>
+            <Text style={styles.textStyle}>DONATE</Text>
+          </Pressable>
+        </View>
+        <View style={{alignItems: "center"}}>
+          <View style={{flexDirection: 'row', paddingTop: "5%"}}>
+            <Text style={{fontSize: 12, color: "#FF6E00", opacity: 0.8}}>Help international students{'\n'}reach for the American dream</Text>
+            <Image style={{width: hp('3%'), height: hp('4%'), marginLeft: hp('2%')}} source={require('../assets/img/sun.png')} />
+          </View>
+        </View>
+      </View> 
     );
   }
 

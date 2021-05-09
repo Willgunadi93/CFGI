@@ -4,6 +4,10 @@ import { View, Text, ScrollView,StyleSheet, TouchableOpacity, Button, Image } fr
 import { AuthContext } from '../screens/context';
 import { Card,ListItem, Icon } from "react-native-elements";
 import { ScreenContainer } from 'react-native-screens';
+import {
+    heightPercentageToDP as hp,
+    widthPercentageToDP as wp,
+   } from 'react-native-responsive-screen';
 
 /*
 This is the user profile page. Most functionalities listed in the cards below
@@ -15,34 +19,23 @@ are currently not within the scope of our project.
         <ScreenContainer style={styles.inCol}>
            {/* user information */}
             <View style={styles.userContainer}>
-                <Image style={{width: 120, height: 120}} source={require("../assets/img/user.png")}/>
+            <View style={{padding: hp('2%'), flex: 1}}>
+                <Image style={{resizeMode:"contain", alignSelf:'center', width: 120, height: 120}} source={require("../assets/img/userProfile.png")}/>
+            </View>
                 <Text style={styles.mainText}>User Name{"\n"}Email: XXXXXXXX</Text>
             </View>
 
             {/* settings options */}
-            <View style={{top: 150}}>
-                    <Card name="card" style={styles.cardLayout} pointerEvents="none">        
-                        <Text >Change Email Address</Text>
-                    </Card>
-               
-                    <Card name="card" style={styles.cardLayout} pointerEvents="none">        
-                        <Text >Reset Password</Text>
-                    </Card>
-                    <Card name="card" style={styles.cardLayout} pointerEvents="none">        
-                        <Text >Update Username</Text>
-                    </Card>
-                    <Card name="card" style={styles.cardLayout} pointerEvents="none">        
-                        <Text >Regulate Login Devices</Text>
-                    </Card>
-                    <Card name="card" style={styles.cardLayout} pointerEvents="none">        
-                        <Text >System Language Preferences</Text>
-                    </Card>
+            <View style={{top: 150,}}>
+            <TouchableOpacity  onPress={() => navigation.navigate("signOut")}>
                     <Card name="card" style={styles.cardLayout} pointerEvents="none">        
                         <Text style={{color: "red"}}>Log Out</Text>
                     </Card>
+            </TouchableOpacity>
+                    <Text style={{top: 50, alignSelf:'center'}}>More features coming soon!</Text>
             </View>
         </ScreenContainer>
-        <View style={{padding:100}}></View> 
+        <View style={{padding:50}}></View> 
    </ScrollView>
     );
   }
@@ -57,7 +50,6 @@ are currently not within the scope of our project.
     inCol: {
         justifyContent: 'flex-start',
         flexDirection: 'column',
-        backgroundColor: '#F7F5F9',
       },
     
     cardLayout: {
@@ -68,9 +60,9 @@ are currently not within the scope of our project.
         justifyContent: 'center',
         color: "purple",
         fontSize: 25,
-        paddingLeft: 20,
-        paddingRight: 50,
-        paddingTop: 30, 
+        paddingLeft: 10,
+        paddingRight: 80,
+        paddingTop: 50, 
         paddingBottom: 30
     }, 
 });
