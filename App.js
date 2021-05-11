@@ -10,10 +10,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
 import {AboutScreen} from './app/screens/about.js';
-import { JobScreen, LegalScreen, DonateScreen, AppointmentScreen, CalendlyScreen } from './app/screens/screens.js';
+import { JobScreen, LegalScreen, DonateScreen, CalendlyScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
-
+//Stephanie's Edit
+import { AppointmentScreen } from './app/screens/appointment.js';
 // Used to authenticate the user's credentials so they can have access to the app
 import { AuthContext } from './app/screens/context';
 // Import sign in and create account
