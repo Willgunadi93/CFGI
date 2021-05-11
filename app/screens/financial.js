@@ -4,6 +4,7 @@ import { ScreenContainer } from 'react-native-screens';
 // for responsive design
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 // import {SvgUri } from 'react-native-svg-uri'; 
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 
 // Landing page for the financial assistance page, this is from the financial stack 
@@ -26,21 +27,19 @@ export const FinScreen = ({navigation}) => {
             </View>
             <Text style={styles.header}>Emergency Financial Assistance</Text>
 
-            {/* View here */}
             {/* Describes briefly what the financial assistance feature is for */}
             <Text style={styles.mainText}>For any student in need of financial assistance for amenities 
                 such as transportation fees, food, and emergency housing, we have an
                 application for financial assistance thanks to the generiosity of our donors*
             </Text>
             <Text style={styles.specialText}>*Terms and conditions apply</Text>
-        {/* </View> */}
 
         <View style={styles.buttonContainer}>
             {/* Button that will lead the user to the actual application, which is a component called FinDocs */}
             <Button style={styles.buttonText} title='APPLY NOW' onPress={() => navigation.navigate('FinDocs')}/>
             {/* Link to terms and conditions that will be written later 
             Will list everything the user will agree to when they apply for assistance */}
-        <Text style={{ color: 'blue', paddingTop: wp('5%'), textDecorationLine: 'underline'}}>TERMS AND CONDITIONS</Text>
+        <Text style={{ color: 'blue', paddingTop: wp('5%'), textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>TERMS AND CONDITIONS</Text>
 
     </View>
    </ScreenContainer>

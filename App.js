@@ -13,6 +13,7 @@ import {AboutScreen} from './app/screens/about.js';
 import { JobScreen, LegalScreen, DonateScreen, AppointmentScreen, CalendlyScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
+import { termsAndConditions } from './app/screens/termsAndConditions';
 
 // Used to authenticate the user's credentials so they can have access to the app
 import { AuthContext } from './app/screens/context';
@@ -92,6 +93,10 @@ function FinStack() {
       <Stack.Screen 
         name="Financial"
         component={FinScreen}
+      />
+      <Stack.Screen
+        name="termsAndConditions"
+        component={termsAndConditions}
       />
       {/* Actual application */}
       <Stack.Screen
