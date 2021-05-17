@@ -14,34 +14,39 @@ import CheckBox from '@react-native-community/checkbox';
 // Part of financial aid stack defined in App.js, directly from landing page
 export const FinAppScreen = ({navigation}) => {
     // Set variables and states for opening dropdown menus 
-    const [visa_open, setVisaOpen] = useState(false);
-    const [visa_value, setVisaValue] = useState(null);
+    const [status_open, setStatusOpen] = useState(false);
+    const [status_value, setStatusValue] = useState(null);
 
     const [marital_open, setMaritalOpen] = useState(false);
     const [marital_value, setMaritalValue] = useState(null);
 
-    const [permit_open, setPermitOpen] = useState(false);
-    const [permit_value, setPermitValue] = useState(null);
+    const [degree_open, setDegreeOpen] = useState(false);
+    const [degree_value, setDegreeValue] = useState(null);
 
     // Set variables and states for short and long answer text input
-    const [other_visa, setOtherVisa] = useState(null);
+    const [first_name, setFirstName] = useState(null);
+    const [last_name, setLastName] = useState(null);
+    const [other_status, setOtherStatus] = useState(null);
+    const [other_degree, setOtherDegree] = useState(null);
     const [int_student, setIntStud] = useState(null);
     const [phone, setPhone] = useState(null);
     const [email, setEmail] = useState(null);
     const [university, setUni] = useState(null);
+    const [study, setStudy] = useState(null);
+    const [grad_year, setGradYear] = useState(null);
     const [children, setChildren] = useState(null);
-    const [other_permit, setOtherPermit] = useState(null);
     const [aid, setAid] = useState(null);
     const [reason, setReason] = useState(null);
 
 
     // Set all dropdown menu choices and their values
-    const [visa_choices, setVisaItems] = useState([
-        {label: 'F-1', value: 'f1'},
-        {label: 'J-1', value: 'j1'}, 
-        {label: 'DACA', value: 'daca'},
-        {label: 'Green Card (permanent resident)', value: 'green_card'},
-        {label: 'Other', value: 'other'}
+    const [degree_options, setDegreeItems] = useState([
+        {label: "Associate's", value: 'associate'},
+        {label: "Bachelor's", value: 'bachelor'}, 
+        {label: "Master's", value: 'master'},
+        {label: "Doctoral", value: 'doctoral'},
+        {label: "Professional", value: 'professional'},
+        {label: "Other", value: 'other'}
     ]);
 
     const [marital_choices, setMaritalItems] = useState([
@@ -52,14 +57,19 @@ export const FinAppScreen = ({navigation}) => {
         {label: 'Domestic Partnership', value: 'partnership'}
     ]);
 
-    const [permit_choices, setPermitItems] = useState([
+    const [status_choices, setStatusItems] = useState([
         {label: 'F-1 without work authorization', value: 'f1_no_work'},
-        {label: 'F-1 Hardship EAD (work permit)', value: 'work_permit'}, 
+        {label: 'F-1 with work permit based on financial hardship', value: 'work_permit'}, 
         {label: 'F-1 CPT', value: 'cpt'},
         {label: 'F-1 Pre-Completion OPT', value: 'pre-opt'},
         {label: 'F-1 Regular OPT', value: 'regular_opt'},
         {label: 'F-1 STEM OPT', value: 'stem_opt'},
-        {label: 'J-1 work authorized', value: 'j1_work'}
+        {label: 'J-1 without work authorization', value: 'j1_no_work'},
+        {label: 'J-1 work authorized', value: 'j1_work'},
+        {label: 'DACA with work permit', value: 'daca_work'},
+        {label: 'DACA without work permit', value: 'daca_no_work'},
+        {label: 'Green Card/Lawful Permanent Resident (LPR)', value: 'lpr'},
+        {label: 'Other', value: 'other'},
     ]);
 
     // Checks if the user has checked the checkbox
@@ -75,60 +85,73 @@ export const FinAppScreen = ({navigation}) => {
                 </View>
             </TouchableHighlight>
 
-            <Text style={styles.header}>Select the type of visa you're current holding</Text>
-            <DropDownPicker
-                // Set menu choices
-                items = {visa_choices}
-                // Set the open state
-                open = {visa_open}
-                // Set the value of the selected choice
-                value = {visa_value}
-                setValue = {setVisaValue}
-                setitems = {setVisaItems}
-                setOpen = {setVisaOpen}
-                // There's no search bar
-                searchable = {false}
-                // Making it scrollable
-                listMode = "SCROLLVIEW"
-                // The height of the dropdown 
-                maxHeight = {150} 
-                // Added alignSelf to make container center
-                style = {{width: wp('76%'), alignSelf:"center"}} 
-                // Added alignSelf center to make dropdown center
-                containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
-            />
+            <Text style={styles.mainText}>Please read through this document carefully and answer all questions carefully and accurately.
+            By filling it out, you agree to the <Text style={{ color: 'blue', textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>Terms and Conditions</Text>.</Text>
 
-            <Text style={styles.header}>If you put "Other" in the last question, please put in the visa you carry. 
-            Otherwise, put "N/A" (without quotes).</Text>
-                <View style={styles.inputContainer}>
-                    <View style={{paddingVertical: hp('1%')}}>
-                        <TextInput
-                            style={styles.shortAnswerInput}
-                            value = {other_visa}
-                            setValue = {setOtherVisa}
-
-                            // onChangeText={onChangeText}
-                            // onChangeText={(text) => {this.setState({text});}}
-                            // value={this.state.text}
-                            // multiline onChange={(event) => this.onChangeText(event)}
-                            // onChange={(event) =>
-                            //     this.onChangeText(event)
-                            //   }
-                        />
-                </View>
-            </View>
-
-            <Text style={styles.header}>Please elaborate on why you identify as an international student. Include details such as 
-            country of origin, the process you undertook to get your visa(s) and obtain your status, etc.</Text>
+            <Text style={styles.header}>First Name</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
-                        style={styles.input}
-                        value = {int_student}
-                        setValue = {setIntStud}
-                        multiline = {true}
-                        numberOfLines = {4}
-                        textAlignVertical = {'top'}
+                        style = {styles.shortAnswerInput}
+                        value = {first_name}
+                        setValue = {setFirstName}
+
+                        // onChangeText={onChangeText}
+                        // onChangeText={(text) => {this.setState({text});}}
+                        // value={this.state.text}
+                        // multiline onChange={(event) => this.onChangeText(event)}
+                        // onChange={(event) =>
+                        //     this.onChangeText(event)
+                        //   }
+                        //   onContentSizeChange={(event) => {
+                        //     this.setState({ height: event.nativeEvent.contentSize.height })
+                        //   }}
+                    />
+                </View>
+            </View>
+
+            <Text style={styles.header}>Family/Last Name</Text>
+            <View style={styles.inputContainer}>
+                <View style={{paddingVertical: hp('1%')}}>
+                    <TextInput
+                        style = {styles.shortAnswerInput}
+                        value = {last_name}
+                        setValue = {setLastName}
+
+                        // onChangeText={onChangeText}
+                        // onChangeText={(text) => {this.setState({text});}}
+                        // value={this.state.text}
+                        // multiline onChange={(event) => this.onChangeText(event)}
+                        // onChange={(event) =>
+                        //     this.onChangeText(event)
+                        //   }
+                        //   onContentSizeChange={(event) => {
+                        //     this.setState({ height: event.nativeEvent.contentSize.height })
+                        //   }}
+                    />
+                </View>
+            </View>
+
+            {/* Use calendar functionality for date of */}
+
+            <Text style={styles.header}>Email Address</Text>
+            <View style={styles.inputContainer}>
+                <View style={{paddingVertical: hp('1%')}}>
+                    <TextInput
+                        style = {styles.shortAnswerInput}
+                        value = {email}
+                        setValue = {setEmail}
+
+                        // onChangeText={onChangeText}
+                        // onChangeText={(text) => {this.setState({text});}}
+                        // value={this.state.text}
+                        // multiline onChange={(event) => this.onChangeText(event)}
+                        // onChange={(event) =>
+                        //     this.onChangeText(event)
+                        //   }
+                        //   onContentSizeChange={(event) => {
+                        //     this.setState({ height: event.nativeEvent.contentSize.height })
+                        //   }}
                     />
                 </View>
             </View>
@@ -155,29 +178,22 @@ export const FinAppScreen = ({navigation}) => {
                 </View>
             </View>
 
-            <Text style={styles.header}>Email Address</Text>
+            <Text style={styles.header}>Please elaborate on why you identify as an international student. Include details such as 
+            country of origin, the process you undertook to get your visa(s) and obtain your status, etc.</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
-                        style = {styles.shortAnswerInput}
-                        value = {email}
-                        setValue = {setEmail}
-
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
+                        style={styles.input}
+                        value = {int_student}
+                        setValue = {setIntStud}
+                        multiline = {true}
+                        numberOfLines = {4}
+                        textAlignVertical = {'top'}
                     />
                 </View>
             </View>
 
-            <Text style={styles.header}>University you're currently attending</Text>
+            <Text style={styles.header}>University/college you're currently attending</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
@@ -197,6 +213,95 @@ export const FinAppScreen = ({navigation}) => {
                     />
                 </View>
             </View>
+
+            <Text style={styles.header}>What degree are you seeking?</Text>
+            <DropDownPicker
+                // Set menu choices
+                items = {degree_options}
+                // Set the open state
+                open = {degree_open}
+                // Set the value of the selected choice
+                value = {degree_value}
+                setValue = {setDegreeValue}
+                setitems = {setDegreeItems}
+                setOpen = {setDegreeOpen}
+                // There's no search bar
+                searchable = {false}
+                // Making it scrollable
+                listMode = "SCROLLVIEW"
+                // The height of the dropdown 
+                maxHeight = {150} 
+                // Added alignSelf to make container center
+                style = {{width: wp('76%'), alignSelf:"center"}} 
+                // Added alignSelf center to make dropdown center
+                containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
+            />
+            
+
+            <Text style={styles.header}>If you put "Other" in the last question, please put in your degree. 
+            Otherwise, put "N/A" (no quotes).</Text>
+                <View style={styles.inputContainer}>
+                    <View style={{paddingVertical: hp('1%')}}>
+                        <TextInput
+                            style={styles.shortAnswerInput}
+                            value = {other_degree}
+                            setValue = {setOtherDegree}
+
+                            // onChangeText={onChangeText}
+                            // onChangeText={(text) => {this.setState({text});}}
+                            // value={this.state.text}
+                            // multiline onChange={(event) => this.onChangeText(event)}
+                            // onChange={(event) =>
+                            //     this.onChangeText(event)
+                            //   }
+                        />
+                </View>
+            </View>
+
+
+            <Text style={styles.header}>Field of study</Text>
+            <View style={styles.inputContainer}>
+                <View style={{paddingVertical: hp('1%')}}>
+                    <TextInput
+                        style = {styles.shortAnswerInput}
+                        value = {study}
+                        setValue = {setStudy}
+                        // onChangeText={onChangeText}
+                        // onChangeText={(text) => {this.setState({text});}}
+                        // value={this.state.text}
+                        // multiline onChange={(event) => this.onChangeText(event)}
+                        // onChange={(event) =>
+                        //     this.onChangeText(event)
+                        //   }
+                        //   onContentSizeChange={(event) => {
+                        //     this.setState({ height: event.nativeEvent.contentSize.height })
+                        //   }}
+                    />
+                </View>
+            </View>
+
+
+            <Text style={styles.header}>Expected year of graduation</Text>
+            <View style={styles.inputContainer}>
+                <View style={{paddingVertical: hp('1%')}}>
+                    <TextInput
+                        style = {styles.shortAnswerInput}
+                        value = {grad_year}
+                        setValue = {setGradYear}
+                        // onChangeText={onChangeText}
+                        // onChangeText={(text) => {this.setState({text});}}
+                        // value={this.state.text}
+                        // multiline onChange={(event) => this.onChangeText(event)}
+                        // onChange={(event) =>
+                        //     this.onChangeText(event)
+                        //   }
+                        //   onContentSizeChange={(event) => {
+                        //     this.setState({ height: event.nativeEvent.contentSize.height })
+                        //   }}
+                    />
+                </View>
+            </View>
+
 
             <Text style={styles.header}>Marital Status</Text>
             <DropDownPicker
@@ -219,9 +324,9 @@ export const FinAppScreen = ({navigation}) => {
                 style = {{width: wp('76%'), alignSelf:"center"}} 
                 // Added alignSelf center to make dropdown center
                 containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
-            />            
+            />
 
-            <Text style={styles.header}>If you have children, please note how many</Text>
+            <Text style={styles.header}>If you have children, please note how many. Otherwise, put "N/A" (no quotes).</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
@@ -242,18 +347,18 @@ export const FinAppScreen = ({navigation}) => {
                 </View>
             </View>
 
-            <Text style={styles.header}>Select the work permit you currently carry</Text>
+            <Text style={styles.header}>What is your current U.S. immigration status?</Text>
             <DropDownPicker
-                // Set dropdown menu choices
-                items = {permit_choices}
+                // Set menu choices
+                items = {status_choices}
                 // Set the open state
-                open = {permit_open}
+                open = {status_open}
                 // Set the value of the selected choice
-                value = {permit_value}
-                setValue = {setPermitValue}
-                setitems = {setPermitItems}
-                setOpen = {setPermitOpen}
-                // There is no search bar
+                value = {status_value}
+                setValue = {setStatusValue}
+                setitems = {setStatusItems}
+                setOpen = {setStatusOpen}
+                // There's no search bar
                 searchable = {false}
                 // Making it scrollable
                 listMode = "SCROLLVIEW"
@@ -265,14 +370,15 @@ export const FinAppScreen = ({navigation}) => {
                 containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
             />
 
-            <Text style={styles.header}>If you put "Other" in the last question, please put in the visa you carry. 
-            Otherwise, put "N/A" (without quotes).</Text>
+            <Text style={styles.header}>If you put "Other" in the last question, please put in your status.
+            Otherwise, put "N/A" (no quotes).</Text>
                 <View style={styles.inputContainer}>
                     <View style={{paddingVertical: hp('1%')}}>
                         <TextInput
-                            style = {styles.shortAnswerInput}
-                            value = {other_permit}
-                            setValue = {setOtherPermit}
+                            style={styles.shortAnswerInput}
+                            value = {other_status}
+                            setValue = {setOtherStatus}
+
                             // onChangeText={onChangeText}
                             // onChangeText={(text) => {this.setState({text});}}
                             // value={this.state.text}
@@ -280,15 +386,15 @@ export const FinAppScreen = ({navigation}) => {
                             // onChange={(event) =>
                             //     this.onChangeText(event)
                             //   }
-                            //   onContentSizeChange={(event) => {
-                            //     this.setState({ height: event.nativeEvent.contentSize.height })
-                            //   }}
                         />
                 </View>
             </View>
 
+
             {/* Allows the user to input an amount of aid */}
-            <Text style={styles.header}>Requested amount of aid</Text>
+            <Text style={styles.header}>How much financial assistance are you seeking?</Text>
+            <View style={{paddingTop: hp('1%')}}></View>
+            <Text style={styles.mainText}>Most CFGI scholarships are between $200-$1000 USD and are offered on a one-time basis for a specific need.</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
@@ -311,9 +417,10 @@ export const FinAppScreen = ({navigation}) => {
                 </View>
             </View>
 
+
             {/* Long answer question that the user can type in extensively. Question specifically describes the types of financial 
             situations the user has to describe, answer must be thorough and detailed in order to be accepted */}
-            <Text style={styles.header}>If you or any family members have a situation that has caused to incur 
+            <Text style={styles.header}>Why do you need support? If you or any family members have a situation that has caused to incur 
             expenses, debts, or loss of income, describe the situation in the box below. 
             Specify the amounts of the expenses, debts, and income losses in as much detail as possible.
             Examples may include medical expenses, job loss, eviction, and homelessness.</Text>
@@ -335,9 +442,8 @@ export const FinAppScreen = ({navigation}) => {
 
             {/* Allows users to attach necessary financial documents and upload them to the database */}
             <Text style={styles.header}>Attach Documents</Text>
-            <Text style={styles.mainText}>Please provide any and all financial documents that 
-            prove your current financial situation and status. This includes any federal income tax returns, 
-            bank statements, investment records, and records of untaxed income from either the United States or from your home country.</Text>
+            <Text style={styles.mainText}>Upload any scans of documents supporting your request, such as bank statements, federal income tax returns, bank statements, investment records, and records of untaxed income from either the United States or from your home country. 
+            This is optional. You may be asked for more details upon review of your application.</Text>
             {/* Insert upload docs here */}
 
             {/* Temporary until uploading files is implemented */}
