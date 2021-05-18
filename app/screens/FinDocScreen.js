@@ -392,9 +392,9 @@ export const FinAppScreen = ({navigation}) => {
 
 
             {/* Allows the user to input an amount of aid */}
-            <Text style={styles.header}>How much financial assistance are you seeking?</Text>
+            <Text style={styles.header}>How much financial assistance are you seeking?*</Text>
             <View style={{paddingTop: hp('1%')}}></View>
-            <Text style={styles.mainText}>Most CFGI scholarships are between $200-$1000 USD and are offered on a one-time basis for a specific need.</Text>
+            <Text style={styles.mainText}>*Most CFGI scholarships are between $200-$1000 USD and are offered on a one-time basis for a specific need.</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
@@ -440,12 +440,6 @@ export const FinAppScreen = ({navigation}) => {
             </View>
 
 
-            {/* Allows users to attach necessary financial documents and upload them to the database */}
-            <Text style={styles.header}>Attach Documents</Text>
-            <Text style={styles.mainText}>Upload any scans of documents supporting your request, such as bank statements, federal income tax returns, bank statements, investment records, and records of untaxed income from either the United States or from your home country. 
-            This is optional. You may be asked for more details upon review of your application.</Text>
-            {/* Insert upload docs here */}
-
             {/* Temporary until uploading files is implemented */}
             <View style={{paddingVertical: hp('3%')}}></View>
 
@@ -466,7 +460,8 @@ export const FinAppScreen = ({navigation}) => {
                     <Text style={styles.buttonText}>SAVE</Text>
                 </TouchableOpacity>
                 {/* Submits the current application by uploading to the database, will be manually reviewed by CFGI */}
-                <TouchableOpacity style={styles.buttonStyle}>
+                {/* Directs user to confirmation screen */}
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate("FinAppConfirmation")} underlayColor={'#F7F5F9'}>
                     <Text style={styles.buttonText}>SUBMIT</Text>
                 </TouchableOpacity>
             </View>

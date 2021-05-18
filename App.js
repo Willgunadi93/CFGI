@@ -13,6 +13,7 @@ import {AboutScreen} from './app/screens/about.js';
 import { JobScreen, LegalScreen, DonateScreen, AppointmentScreen, CalendlyScreen } from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
+import { FinAppConfirmationScreen } from './app/screens/FinAppConfirmationScreen';
 import { termsAndConditions } from './app/screens/termsAndConditions';
 
 // Used to authenticate the user's credentials so they can have access to the app
@@ -102,6 +103,11 @@ function FinStack() {
       <Stack.Screen
         name="FinDocs"
         component={FinAppScreen}
+      />
+      
+      <Stack.Screen
+        name="FinAppConfirmation"
+        component={FinAppConfirmationScreen}
       />
     </Stack.Navigator>
   )
@@ -240,7 +246,6 @@ export default function App() {
        <Tab.Screen
          name="Legal"
          component={LegalStack}
-         // onPress={() => this.props.navigation.navigate('LegalScreen')}
          options={{
            tabBarIcon: ({color, size}) => (
              <Ionicons name='people' color={color} size={size}/>

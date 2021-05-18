@@ -121,7 +121,7 @@ export const FinScreen = ({navigation}) => {
         color: '#3F3356'
     },
 
-    // Defining dimensiosn and padding for logo
+    // Defining dimensions and padding for logo
     img: {
         width: wp('60%'),
         height: hp('10%'),
