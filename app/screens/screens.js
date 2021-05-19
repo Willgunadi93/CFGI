@@ -197,6 +197,34 @@ export const JobScreen = () => {   //Jobs page component
       textAlign: 'left',
       color: '#3F3356'
     },
+    AsubTitle:{ //Attorney/Appointment
+      color:'#FF564F',
+      fontSize: 24,
+      fontWeight:'bold',
+      paddingTop:20
+    },
+    attorneyTitle:{ //Attorney/Appointment
+      color: "#3F3356",
+      fontSize: 24,
+      fontWeight:'bold'
+    },
+    legalResults:{ //Attorney/Appointment
+        fontSize:24,
+        color: "#3F3356",
+        fontWeight:'bold',
+        paddingRight: 10,
+        alignSelf:'flex-end'
+    },
+    dropdown:{ //Attorney/Appointment
+      borderColor: '#4C67F6',
+      borderWidth: 1,
+      borderRadius: 11,
+      padding:10,
+      marginTop:10,
+      fontWeight:'bold',
+      backgroundColor:'white',
+      color: 'black'
+    },
   
 
     inputContainer: {

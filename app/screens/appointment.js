@@ -5,6 +5,8 @@ import LegalCard from '../screens/legalCard';
 import { useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useCallback } from 'react';
+import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
+import { Divider } from 'react-native-elements'
 
 //Dummy Data for Attorneys. One issue, can't call <Image source={require(u.image)}/> within it.
 const users = [
@@ -39,15 +41,15 @@ export const AppointmentScreen = ({navigation}) => {
     const [expert_value, setExpertValue] = useState(null);
     const [expert_items, setExpertItems] = useState([
       {label: 'Immigration', value: 'immigration'},
-      {label: 'visa', value: 'visa'},
+      {label: 'Visa', value: 'visa'},
       {label: 'OPT', value: 'opt'}
     ]);
     //Language Dropdown
     const [lang_open, setLangOpen] = useState(false);
     const [lang_value, setLangValue] = useState(null);
     const [lang_items, setLangItems] = useState([
-      {label: 'English', value: 'apple'},
-      {label: 'Spanish', value: 'spanish'}
+      {label: 'English', value: 'english'},
+      {label: 'Korean', value: 'korean'}
     ]);
     //Close Dropdowns when other opens
     const onExpertOpen = useCallback(() => {
@@ -81,6 +83,7 @@ export const AppointmentScreen = ({navigation}) => {
          
         <ImageBackground source={require('../assets/img/legalwave.png')} style={{resizeMode:'cover'}}>
         <View style={{paddingHorizontal: 30}}>
+        <Text style={{fontWeight:"bold", fontSize:16, marginTop:25, color: "#3F3356"}}>EXPERTISE TYPE:</Text>
         <DropDownPicker
             onOpen={onExpertOpen}  
             open={expert_open}
@@ -91,22 +94,21 @@ export const AppointmentScreen = ({navigation}) => {
             setValue={setExpertValue}
             setItems={setExpertItems}
             listMode = "SCROLLVIEW"
+            placeholder="Select Attorney Expertise"
+            placeholderStyle={{fontStyle:"italic"}}
             maxHeight = {100}
-            placeholder="EXPERTISE:"
-            placeholderStyle={{fontWeight:"bold"}}
-            placeholder="EXPERTISE TYPE:"
-            placeholderStyle={{fontWeight:"bold"}}
+            labelStyle={{color:'#3F3356'}}
             dropDownContainerStyle={{
-                borderColor: "#4C67F6"
+                borderColor: "#4C67F6",
             }}
             style={{
                 borderColor: "#4C67F6",
                 marginBottom:15,
                 zIndex: 1
             }}
-            containerStyle={{marginTop:30}}
-        />
-        <DropDownPicker
+            containerStyle={{marginTop:10}}/> 
+        <Text style={{fontWeight:"bold", fontSize:16, color: "#3F3356"}}>LANGUAGE:</Text>
+             <DropDownPicker
             onOpen={onLangOpen}
             open={lang_open}
             searchable = {false}
@@ -116,9 +118,10 @@ export const AppointmentScreen = ({navigation}) => {
             setValue={setLangValue}
             setItems={setLangItems}
             listMode = "SCROLLVIEW"
+            placeholder="Select Language Fluency"
+            placeholderStyle={{fontStyle:"italic"}}
             maxHeight = {100}
-            placeholder="LANGUAGE:"
-            placeholderStyle={{fontWeight:"bold"}}
+            labelStyle={{color:'#3F3356'}}
             dropDownContainerStyle={{
                 borderColor: "#4C67F6"
             }}
@@ -127,11 +130,12 @@ export const AppointmentScreen = ({navigation}) => {
                 marginBottom:15,
                 zIndex: 1
             }}
-            labelStyle={{textAlign:'right'}}
-            containerStyle={{marginTop:5}}
-        />
-        </View>
-        <View style={{padding:30, flexDirection:'row', paddingBottom:0}}>
+            containerStyle={{marginTop:10, marginBottom:10}}
+        /></View>
+        
+        <Divider style={{ height:1.5, backgroundColor: '#E6E6E6', marginTop: 20, borderRadius:10, alignSelf:"center", width: "85%" }} />
+
+        <View style={{zIndex: -1, padding:30, flexDirection:'row', paddingBottom:0}}>
           <Text style={styles.legalResults}> 15 Results</Text>
           <SearchBar
           inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:35,}}
