@@ -38,17 +38,18 @@ export const SignIn = ({ navigation}) => {
                 <Text style={styles.CFGI}>COMMUNITY FOR GLOBAL {"\n"} INNOVATION</Text>
                 <Text style={styles.welcome}>WELCOME</Text>
             </View>
-            {/* Ask the user for their email and password */}
+            {/* Ask the user for their username and password */}
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
                         style={styles.input}
                         onChangeText={onChangeText}
-                        placeholder="Email"
+                        placeholder="Username"
                     />
                 </View>
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
+                        secureTextEntry={true}
                         style={styles.input}
                         onChangeText={onChangeText}
                         placeholder="Password"
@@ -120,9 +121,18 @@ export const CreateAccount = () => {
                         placeholder="Email"
                     />
                 </View>
+                {/* User inputs their username when creating a new account */}
+                <View style={{paddingVertical: hp('0.5%')}}>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={onChangeText}
+                        placeholder="Username"
+                    />
+                </View>
                 {/* User inputs their password when creating a new account*/}
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
+                        secureTextEntry={true}
                         style={styles.input}
                         onChangeText={onChangeText}
                         placeholder="Password"
@@ -150,10 +160,11 @@ export const ForgotPassword = ({navigation}) => {
         <ScreenContainer style={StyleSheet.container}>
           <ScrollView>
             <View style={styles.logoView}>
-                <View style={{paddingVertical: hp('4%'), alignItems: 'center'}}>
-                    <View style={{alignItems: 'center'}}>
-                        <Image style={styles.logoFull} source={require('../assets/img/logo-full.png')} />
-                    </View>
+                {/* <View style={{paddingVertical: hp('4%'), alignItems: 'center'}}>
+                    
+                </View> */}
+                <View style={{alignItems: 'center'}}>
+                  <Image style={{width: 250, height: 150, resizeMode: 'contain'}} source={require('../assets/img/logo-full.png')} />
                 </View>
                 {/* Instructions */}
                 <Text style={styles.password}>Forgot Your Password</Text>
@@ -186,7 +197,7 @@ export const ForgotPassword = ({navigation}) => {
             </View> */}
             {/* Defines formatting of phone screen */}
             <View style={{alignItems: 'center', paddingVertical: hp('6%')}}>
-                <Image style={{marginTop: hp('12%'), position: 'absolute', width:'100%', height: hp('19%')}} source={require('../assets/img/water.png')} />
+                <Image style={{marginTop: hp('16%'), position: 'absolute', width:'100%', height: hp('19%')}} source={require('../assets/img/water.png')} />
                 <View style={styles.circleRedBottom}></View>
                 <View style={styles.circleOrangeBottom}></View>
             </View>
@@ -211,7 +222,7 @@ export const ResetPassword = () => {
             <View style={styles.logoView}>
                 <View style={{paddingVertical: hp('2%'), alignItems: 'center'}}>
                     <View style={{alignItems: 'center'}}>
-                        <Image style={styles.logoFull} source={require('../assets/img/logo-full.png')} />
+                        <Image style={{width: 250, height: 100, resizeMode: 'contain'}} source={require('../assets/img/logo-full.png')} />
                     </View>
                 </View>
                 
@@ -231,6 +242,7 @@ export const ResetPassword = () => {
                 {/* User can enter in a new password here */}
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
+                        secureTextEntry={true}
                         style={styles.input}
                         onChangeText={onChangeText}
                         placeholder="New Password"
@@ -240,6 +252,7 @@ export const ResetPassword = () => {
                 {/* User can enter in the new password again */}
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
+                        secureTextEntry={true}
                         style={styles.input}
                         onChangeText={onChangeText}
                         placeholder="Confirm Password"

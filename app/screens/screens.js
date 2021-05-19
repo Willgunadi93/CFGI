@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput } from "react-native";
+import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput, Linking } from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 import { Card } from "react-native-elements";
 import { AuthContext } from '../screens/context';
@@ -190,7 +190,7 @@ export const JobScreen = () => {   //Jobs page component
             <Text style={{fontSize: 24, color: "#FF6E00", fontWeight: 'bold'}}>Inspired to Give</Text>
             <Text style={{fontSize: 54, color: "#3F3356", fontWeight: 'bold'}}>Donate{'\n'}Now</Text>
           </View>
-          <Image style={{width: hp('20%'), height: hp('20%'), marginTop: hp('3%'), marginLeft: hp('3%')}} source={require('../assets/img/donation-box.png')} />
+          <Image style={{width: hp('20%'), height: hp('20%'), marginLeft: wp('2%')}} source={require('../assets/img/donation-box.png')} />
         </View>
         
         <View style={{paddingHorizontal: "5%"}}>
@@ -203,10 +203,11 @@ export const JobScreen = () => {   //Jobs page component
           </View>
         </View>
         <View style={{paddingTop: "5%", paddingHorizontal: "25%"}}>
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={ ()=>{ Linking.openURL('https://paypal.me/ZongyaoW?locale.x=en_US')}}>
             <Text style={styles.textStyle}>DONATE</Text>
           </Pressable>
         </View>
+        {/* <WebView style={{padding: 50}} source={{uri : 'https://paypalbutton.s3-us-west-1.amazonaws.com/paypal.html'}}/> */}
         <View style={{alignItems: "center"}}>
           <View style={{flexDirection: 'row', paddingTop: "5%"}}>
             <Text style={{fontSize: 12, color: "#FF6E00", opacity: 0.8}}>Help international students{'\n'}reach for the American dream</Text>
