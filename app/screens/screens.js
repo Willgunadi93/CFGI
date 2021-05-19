@@ -18,6 +18,8 @@ import {SearchBar} from 'react-native-elements'; //Stand in for eventual drop do
 import LegalCard from '../screens/legalCard';
 //
 
+console.log("test");
+
 export const JobScreen = () => {   //Jobs page component
     return (
       <ScrollView>
