@@ -43,7 +43,7 @@ export const FinScreen = ({navigation}) => {
 
             {/* Link to terms and conditions that will be written later 
             Will list everything the user will agree to when they apply for assistance */}
-        <Text style={{ color: '#4C67F6', paddingTop: wp('5%'), textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>TERMS AND CONDITIONS</Text>
+        <Text style={{ color: '#4C67F6', paddingTop: wp('5%'), paddingLeft: wp('5%'), textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>TERMS AND CONDITIONS</Text>
 
     </View>
    </ScreenContainer>
@@ -140,8 +140,11 @@ export const FinScreen = ({navigation}) => {
 
     buttonStyle: {
         // fontFamily:'Oxygen-Bold', 
-        backgroundColor:"#4C67F6",
-        padding: 10, 
+        borderRadius: 10,
+        paddingVertical: 13,
+        paddingHorizontal: 55,
+        marginTop: 5,
+        backgroundColor: "#4C67F6"
     },
 
 });

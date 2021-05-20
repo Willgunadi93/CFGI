@@ -81,11 +81,11 @@ const styles = StyleSheet.create({
     // Defines styling for button
     buttonStyle: {
         // fontFamily:'Oxygen-Bold', 
-        backgroundColor:"#4C67F6",
-        padding: 10, 
-        width: wp('32%'),
-        height: hp('10%'),
-        alignContent: 'space-between',
+        borderRadius: 10,
+        paddingVertical: 13,
+        paddingHorizontal: 55,
+        marginTop: 5,
+        backgroundColor: "#4C67F6"
     },
 
     // Styling for the text inside the button
