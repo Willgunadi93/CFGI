@@ -55,6 +55,9 @@ export const JobScreen = () => {   //Jobs page component
             <TextInput style={styles.jobInput} placeholder="Email Address"/>
           </View>
           <View style={{paddingVertical: hp('1%')}}>
+            <TextInput style={styles.jobInput} placeholder="Phone Number (optional)"/>
+          </View>
+          <View style={{paddingVertical: hp('1%')}}>
             <TextInput style={styles.jobInput} placeholder="Company Name"/>
           </View>
         </View>
