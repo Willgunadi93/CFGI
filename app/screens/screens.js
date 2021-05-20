@@ -4,6 +4,7 @@ import { ScreenContainer } from 'react-native-screens';
 import { Card } from "react-native-elements";
 import { AuthContext } from '../screens/context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+//import { GoogleSpreadsheet } from "google-spreadsheet";
 //import { ScreenContainer } from 'react-native-screens';
 
 //import webview
@@ -23,83 +24,111 @@ import LegalCard from '../screens/legalCard';
 
 export const JobScreen = () => {   //Jobs page component
 
-  const [searchJob, setSearchJob] = React.useState('');
-  const [searchLoc, setSearchLoc] = React.useState('');
-  const searchFilterFunction = text => { setSearchJob(text); };
-  const searchLocFunction = text => { setSearchLoc(text); };
+  // const [searchJob, setSearchJob] = React.useState('');
+  // const [searchLoc, setSearchLoc] = React.useState('');
+  // const searchFilterFunction = text => { setSearchJob(text); };
+  // const searchLocFunction = text => { setSearchLoc(text); };
 
     return (
       <ScrollView>
       <View style={styles.jobContainer}>
       <View style={{padding: hp('3%'), flex: 1}}>
-        <Image style={{height:'11%', resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/Screenslogo.png')} />
-        <Text style={styles.jobTitle}>CAREER</Text>
-        <Text style={styles.jobSubtitle}>Find A Job From Trusted Partners</Text>
+        <Image style={{height:'6.5%', resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/Screenslogo.png')} />
+        <Text style={styles.jobTitle}>CAREERS</Text>
+        <Text style={styles.jobSubtitle}>THIS FEATURE IS COMING SOON!</Text>
         <Text style={{fontSize: 13, color: "#000000", lineHeight: 16, paddingBottom: hp('2%')}}>
-          These companies took the CFGI diversity pledge{'\n'}
-          and are open to considering sponsorship for the{'\n'}
-          right candidates. </Text>
+          We are looking for companies took the CFGI diversity{'\n'}
+          pledge and are open to considering sponsorship for{'\n'}
+          the right candidates. </Text>
+        <Text style={{fontSize: 14, fontWeight:'bold', color: "#000000", lineHeight: 14, paddingBottom: hp('0%')}}>
+          Want to be on our partner list?{'\n'}</Text>
+        <Text style={{fontSize: 14, color: '#000000', fontWeight:'bold',paddingBottom: hp('2%')}}>Please sign up below, we will contact you soon.
+          </Text>
+        
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput style={styles.jobInput} placeholder="First Name"/>
+          </View>
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput style={styles.jobInput} placeholder="Last Name"/>
+          </View>
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput style={styles.jobInput} placeholder="Email Address"/>
+          </View>
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput style={styles.jobInput} placeholder="Company Name"/>
+          </View>
+        </View>
 
-        <View style={{paddingVertical: hp('1%')}}>
-            <SearchBar inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:40}}
+        {/* <View style={{paddingVertical: hp('1%')}}>
+            <TextInput inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:40}}
             containerStyle={{margin:0, padding:0, backgroundColor:'white', borderRadius:30, borderWidth:1, borderTopColor:'#4C67F6', borderEndColor:'#4C67F6', borderColor:'#4C67F6', borderBottomColor:'#4C67F6'}}
             inputStyle={{fontStyle:'italic', fontSize:14}} 
             onChangeText={searchFilterFunction} value={searchJob}
-            placeholder="  job title, keywords, or company"/>
-          </View>
+            placeholder="  This feature is under construction."/>
+          </View> */}
           
-          <View style={{paddingVertical: hp('1%')}}> 
+          {/* <View style={{paddingVertical: hp('1%')}}> 
           <SearchBar inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:40}}
             containerStyle={{margin:0, padding:0, backgroundColor:'white', borderRadius:30, borderWidth:1, borderTopColor:'#4C67F6', borderEndColor:'#4C67F6', borderColor:'#4C67F6', borderBottomColor:'#4C67F6'}}
             inputStyle={{fontStyle:'italic', fontSize:14}} 
             onChangeText={searchLocFunction} value={searchLoc} 
             clearIcon={true}
             searchIcon={() => <Ionicons name="location-outline" color='gray' size={19}/>}
-            placeholder="  zipcode or city"/> 
-          </View>
-      </View>
+            placeholder="  Please check back soon!"/> 
+          </View> */}
 
-      <View style={{height: hp('0%'), alignContent: 'center', top: hp('-4.6%')}}>
-        <TouchableHighlight onPress={() => console.log("Haven't added search function.")} style={styles.jobButton} activeOpacity={1} underlayColor="#0A30F6">
-            <Text style={styles.jobTextStyle}>SEARCH</Text>
+      <View style={{height: hp('0%'), alignContent: 'center', top: hp('-5.8%')}}>
+        <TouchableHighlight onPress={() => console.log("Submit successfully.")} style={styles.jobButton} activeOpacity={1} underlayColor="#0A30F6">
+            <Text style={styles.jobTextStyle}>Submit</Text>
         </TouchableHighlight>
       </View>
 
-      <View style={{width: hp('15%'), height: hp('6%') ,top: hp('18.5%'), left: hp('3.5%')}}> 
-        <Text style={{fontSize: 16, color: "#000000", fontWeight: 'bold'}}>105 Results</Text>
+      <View style={{width: hp('15%'), height: hp('6%') ,top: hp('16.5%'), left: hp('3.5%')}}> 
+        <Text style={{fontSize: 16, color: "#000000", fontWeight: 'bold'}}>Results</Text>
       </View>
 
-      <View style={{top: hp('15%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
-        <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
-          <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
-            <Text style={styles.positionCategory} >UI/UX Design </Text>
-            <Text style={styles.positionTitle} >SaaS Homepage redesign and onboarding updates </Text>
-            <Text style={styles.positionLocation} >Albany, NY </Text>
-            <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
-          </Card></TouchableOpacity>
-          
-          <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
-          <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
-            <Text style={styles.positionCategory} >Information Technology </Text>
-            <Text style={styles.positionTitle} >Web/app designer required to create web apps </Text>
-            <Text style={styles.positionLocation} >Blackwood, WA </Text>
-            <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
-          </Card></TouchableOpacity>
-
-          <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
-          <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
-            <Text style={styles.positionCategory} >Technology </Text>
-            <Text style={styles.positionTitle} >Adobe Systems Careers - Performance Media, Analyst </Text>
-            <Text style={styles.positionLocation} >Santa Ana, CA </Text>
-            <Text style={styles.postTime} >Posted 24 days ago </Text>
-          </Card></TouchableOpacity>
-      </View>
+      <View style={{top: hp('13%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
+      <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+        <Text style={styles.positionCategory} >Job Category </Text>
+          <Text style={styles.positionTitle} >Potential Job Posting</Text>
+          <Text style={styles.positionLocation} >City, State Code</Text>
+          <Text style={styles.postTime} >Posted XX minnutes ago </Text>
+      </Card></View>
       
-      <View style={{padding: 85}}></View>
+      <View style={{padding: 70}}></View>
       </View>
       </ScrollView>
     );
   }
+
+  //Job Page Comments Function: To Be Implemented
+
+  // <View style={{top: hp('15%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
+  //       <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+  //         <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+  //           <Text style={styles.positionCategory} >UI/UX Design </Text>
+  //           <Text style={styles.positionTitle} >SaaS Homepage redesign and onboarding updates </Text>
+  //           <Text style={styles.positionLocation} >Albany, NY </Text>
+  //           <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
+  //         </Card></TouchableOpacity>
+          
+  //         <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+  //         <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+  //           <Text style={styles.positionCategory} >Information Technology </Text>
+  //           <Text style={styles.positionTitle} >Web/app designer required to create web apps </Text>
+  //           <Text style={styles.positionLocation} >Blackwood, WA </Text>
+  //           <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
+  //         </Card></TouchableOpacity>
+
+  //         <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+  //         <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+  //           <Text style={styles.positionCategory} >Technology </Text>
+  //           <Text style={styles.positionTitle} >Adobe Systems Careers - Performance Media, Analyst </Text>
+  //           <Text style={styles.positionLocation} >Santa Ana, CA </Text>
+  //           <Text style={styles.postTime} >Posted 24 days ago </Text>
+  //         </Card></TouchableOpacity>
+  //     </View>
+
 
   //Dummy Data for Attorneys. One issue, can't call <Image source={require(u.image)}/> within it.
   const users = [
@@ -320,14 +349,17 @@ export const JobScreen = () => {   //Jobs page component
       color: 'black'
     },
 
-    input: {
-      height: 40,
+    jobInput: {
+      height: hp("6%"),
+      width: hp('35%'),
+      alignSelf: 'center',
       padding: hp('2%'),
       borderWidth: 1,
-      borderRadius: 30,
+      borderRadius: 10,
       backgroundColor: 'white',
       borderColor: '#4C67F6',
       fontStyle: 'italic',
+      fontSize: 15,
     },
 
     jobTitle: {
