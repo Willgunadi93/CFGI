@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import DropDownPicker from 'react-native-dropdown-picker';
-import CheckBox from '@react-native-community/checkbox';
+// import CheckBox from '@react-native-community/checkbox';
 
 
 // Actual page for applying for financial assistance, allows users to upload documents and fill out answers
@@ -73,7 +73,7 @@ export const FinAppScreen = ({navigation}) => {
     ]);
 
     // Checks if the user has checked the checkbox
-    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+    // const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
     return (
     <ScrollView>
@@ -447,11 +447,11 @@ export const FinAppScreen = ({navigation}) => {
             I understand that any incomplete, inaccurate, or invalid information may result in this application getting rejected. 
             I agree to the Terms and Conditions.</Text>
             <View style={{paddingLeft: wp('45%')}}>
-            <CheckBox
+            {/* <CheckBox
                 disabled = {false}
                 value = {toggleCheckBox}
                 onValueChange = {(newValue) => setToggleCheckBox(newValue)}
-            />
+            /> */}
             </View>
 
             <View style={styles.buttonContainer}>
@@ -517,12 +517,13 @@ const styles = StyleSheet.create({
     // Defines styling for both save and submit buttons
     buttonStyle: {
         // fontFamily:'Oxygen-Bold', 
-        backgroundColor:"#4C67F6",
-        padding: 10, 
-        width: wp('30.6%'),
-        height: hp('6.5%'),
-        alignContent: 'space-between',
+        borderRadius: 10,
+        paddingVertical: 13,
+        paddingHorizontal: 55,
+        marginTop: 5,
+        backgroundColor: "#4C67F6"
     },
+
 
     // Styling for the text inside the buttons
     buttonText: {

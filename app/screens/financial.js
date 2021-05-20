@@ -4,7 +4,7 @@ import { ScreenContainer } from 'react-native-screens';
 // for responsive design
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 // import {SvgUri } from 'react-native-svg-uri'; 
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 // Landing page for the financial assistance page, this is from the financial stack 
@@ -36,10 +36,14 @@ export const FinScreen = ({navigation}) => {
 
         <View style={styles.buttonContainer}>
             {/* Button that will lead the user to the actual application, which is a component called FinDocs */}
-            <Button style={styles.buttonText} title='APPLY NOW' onPress={() => navigation.navigate('FinDocs')}/>
+            <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate("FinDocs")} underlayColor={'#F7F5F9'}>
+                <Text style={styles.buttonText}>APPLY NOW</Text>
+            </TouchableOpacity>
+
+
             {/* Link to terms and conditions that will be written later 
             Will list everything the user will agree to when they apply for assistance */}
-        <Text style={{ color: 'blue', paddingTop: wp('5%'), textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>TERMS AND CONDITIONS</Text>
+        <Text style={{ color: '#4C67F6', paddingTop: wp('5%'), paddingLeft: wp('5%'), textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>TERMS AND CONDITIONS</Text>
 
     </View>
    </ScreenContainer>
@@ -89,8 +93,12 @@ export const FinScreen = ({navigation}) => {
 
     // Text on the button
     buttonText: {
-        // fontFamily:'Oxygen-Bold', 
-        fontSize: 18,
+        color: '#ffffff',
+        fontSize: 16,
+        textAlign: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingTop: 3
     },
 
     // APPLY
@@ -127,6 +135,16 @@ export const FinScreen = ({navigation}) => {
         height: hp('10%'),
         alignSelf: 'center',
         resizeMode: 'contain'
-    }
+    },
+
+
+    buttonStyle: {
+        // fontFamily:'Oxygen-Bold', 
+        borderRadius: 10,
+        paddingVertical: 13,
+        paddingHorizontal: 55,
+        marginTop: 5,
+        backgroundColor: "#4C67F6"
+    },
 
 });

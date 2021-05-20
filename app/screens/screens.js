@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput, Linking } from "react-native";
+import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput, Linking, TouchableHighlight, TouchableOpacity} from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 import { Card } from "react-native-elements";
 import { AuthContext } from '../screens/context';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+//import { GoogleSpreadsheet } from "google-spreadsheet";
 //import { ScreenContainer } from 'react-native-screens';
 
 //import webview
@@ -16,61 +18,85 @@ import {
 import LegalButton from '../screens/legalbuttons';
 //
 
+
+
 export const JobScreen = () => {   //Jobs page component
+
+  // const [searchJob, setSearchJob] = React.useState('');
+  // const [searchLoc, setSearchLoc] = React.useState('');
+  // const searchFilterFunction = text => { setSearchJob(text); };
+  // const searchLocFunction = text => { setSearchLoc(text); };
+
     return (
       <ScrollView>
       <View style={styles.jobContainer}>
-      <View style={{padding: hp('5%'), flex: 1}}>
-        <Image style={{height:'30%', resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/logo-full.png')} />
-        <Text style={styles.jobTitle}>CAREER</Text>
-        <Text style={styles.jobSubtitle}>Find A Job From Trusted Partners</Text>
+      <View style={{padding: hp('3%'), flex: 1}}>
+        <Image style={{height:'6.5%', resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/Screenslogo.png')} />
+        <Text style={styles.jobTitle}>CAREERS</Text>
+        <Text style={styles.jobSubtitle}>THIS FEATURE IS COMING SOON!</Text>
         <Text style={{fontSize: 13, color: "#000000", lineHeight: 16, paddingBottom: hp('2%')}}>
-          These companies took the CFGI diversity pledge{'\n'}
-          and are open to considering sponsorship for the right candidates.
-        </Text>
-      </View>
-
-      <View style={styles.inputContainer}>
+          We are looking for companies took the CFGI diversity{'\n'}
+          pledge and are open to considering sponsorship for{'\n'}
+          the right candidates. </Text>
+        <Text style={{fontSize: 14, fontWeight:'bold', color: "#000000", lineHeight: 14, paddingBottom: hp('0%')}}>
+          Want to be on our partner list?{'\n'}</Text>
+        <Text style={{fontSize: 14, color: '#000000', fontWeight:'bold',paddingBottom: hp('2%')}}>Please sign up below, we will contact you soon.
+          </Text>
+        
           <View style={{paddingVertical: hp('1%')}}>
-            <TextInput style={styles.input} placeholder="          job title, keywords, or company"/>
+            <TextInput style={styles.jobInput} placeholder="First Name"/>
           </View>
-          <View style={{paddingVertical: hp('1.2%')}}>
-            <TextInput style={styles.input} placeholder="          zipcode or city"/>
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput style={styles.jobInput} placeholder="Last Name"/>
           </View>
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput style={styles.jobInput} placeholder="Email Address"/>
+          </View>
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput style={styles.jobInput} placeholder="Phone Number (optional)"/>
+          </View>
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput style={styles.jobInput} placeholder="Company Name"/>
+          </View>
+        </View>
+
+        {/* <View style={{paddingVertical: hp('1%')}}>
+            <TextInput inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:40}}
+            containerStyle={{margin:0, padding:0, backgroundColor:'white', borderRadius:30, borderWidth:1, borderTopColor:'#4C67F6', borderEndColor:'#4C67F6', borderColor:'#4C67F6', borderBottomColor:'#4C67F6'}}
+            inputStyle={{fontStyle:'italic', fontSize:14}} 
+            onChangeText={searchFilterFunction} value={searchJob}
+            placeholder="  This feature is under construction."/>
+          </View> */}
+          
+          {/* <View style={{paddingVertical: hp('1%')}}> 
+          <SearchBar inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:40}}
+            containerStyle={{margin:0, padding:0, backgroundColor:'white', borderRadius:30, borderWidth:1, borderTopColor:'#4C67F6', borderEndColor:'#4C67F6', borderColor:'#4C67F6', borderBottomColor:'#4C67F6'}}
+            inputStyle={{fontStyle:'italic', fontSize:14}} 
+            onChangeText={searchLocFunction} value={searchLoc} 
+            clearIcon={true}
+            searchIcon={() => <Ionicons name="location-outline" color='gray' size={19}/>}
+            placeholder="  Please check back soon!"/> 
+          </View> */}
+
+      <View style={{height: hp('0%'), alignContent: 'center', top: hp('-5.8%')}}>
+        <TouchableHighlight onPress={() => console.log("Submit successfully.")} style={styles.jobButton} activeOpacity={1} underlayColor="#0A30F6">
+            <Text style={styles.jobTextStyle}>Submit</Text>
+        </TouchableHighlight>
       </View>
 
-      <View style={{height: hp('5%'), right: hp('12.5%'), top: hp('4.5%')}}>
-        <Pressable style={styles.jobButton}>
-            <Text style={styles.textStyle}>SEARCH</Text>
-        </Pressable>
+      <View style={{width: hp('15%'), height: hp('6%') ,top: hp('16.5%'), left: hp('3.5%')}}> 
+        <Text style={{fontSize: 16, color: "#000000", fontWeight: 'bold'}}>Results</Text>
       </View>
 
-      <View style={{width: hp('12%'), height: hp('5%'), right: hp('12.5%'), top: hp('21.5%')}}> 
-        <Text style={{fontSize: 16, color: "#000000", fontWeight: 'bold'}}>105 Results</Text>
-      </View>
-
-      <View style={{top: 150, paddingStart: 22, paddingEnd: 16}}> 
-        <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
-          <Text style={styles.positionCategory} >UI/UX Design </Text>
-          <Text style={styles.positionTitle} >SaaS Homepage redesign and onboarding updates </Text>
-          <Text style={styles.positionLocation} >Albany, NY </Text>
-          <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
-        </Card>
-        <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
-          <Text style={styles.positionCategory} >Information Technology </Text>
-          <Text style={styles.positionTitle} >Web/app designer required to create web apps </Text>
-          <Text style={styles.positionLocation} >Blackwood, WA </Text>
-          <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
-        </Card>
-        <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
-          <Text style={styles.positionCategory} >Technology </Text>
-          <Text style={styles.positionTitle} >Adobe Systems Careers - Performance Media, Analyst </Text>
-          <Text style={styles.positionLocation} >Santa Ana, CA </Text>
-          <Text style={styles.postTime} >Posted 24 days ago </Text>
-        </Card>
-      </View>
+      <View style={{top: hp('13%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
+      <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+        <Text style={styles.positionCategory} >Job Category </Text>
+          <Text style={styles.positionTitle} >Potential Job Posting</Text>
+          <Text style={styles.positionLocation} >City, State Code</Text>
+          <Text style={styles.postTime} >Posted XX minnutes ago </Text>
+      </Card></View>
       
-      <View style={{padding: 85}}></View>
+      <View style={{padding: 70}}></View>
       </View>
       </ScrollView>
     );
@@ -154,26 +180,34 @@ export const JobScreen = () => {   //Jobs page component
     jobContainer: {
       flex: 1,
       backgroundColor: '#F7F5F9',
-      alignItems: 'center',
-      justifyContent: 'center'
+      //alignItems: 'center',
+      justifyContent: 'center',
     },
 
     jobButton: {
       borderRadius: 10,
-      width: 153,
-      height: 35,
+      width: hp('17%'),
+      height: hp('4.6%'),
       left: 110,
       top: 80,
       backgroundColor: "#4C67F6"
     },
 
-    textStyle: {
+    jobTextStyle: {
       color: "#FFFFFF",
       fontWeight: "bold",
       textAlign: "center",
       fontSize: 16,
-      marginTop: 8
+      marginTop: hp('1%')
     },
+
+    textStyle: {
+      color: "white",
+      fontWeight: "bold",
+      textAlign: "center",
+      fontSize: 16
+    },
+
     button: {
       borderRadius: 10,
       paddingVertical: 13,
@@ -181,12 +215,7 @@ export const JobScreen = () => {   //Jobs page component
       marginTop: 5,
       backgroundColor: "#4C67F6"
     },
-    textStyle: {
-      color: "white",
-      fontWeight: "bold",
-      textAlign: "center",
-      fontSize: 16
-    },
+
     legalContainer: { //Attorney/Appointment
       backgroundColor: '#F7F5F9',
       paddingRight: 30,
@@ -216,6 +245,7 @@ export const JobScreen = () => {   //Jobs page component
         paddingRight: 10,
         alignSelf:'flex-end'
     },
+
     dropdown:{ //Attorney/Appointment
       borderColor: '#4C67F6',
       borderWidth: 1,
@@ -226,23 +256,18 @@ export const JobScreen = () => {   //Jobs page component
       backgroundColor:'white',
       color: 'black'
     },
-  
 
-    inputContainer: {
-      width: wp('81%'),
-      height: hp('6%'),
-      left: hp('0.55%'),
-      top: hp('3.5%'),
-    },
-    
-    input: {
-      height: hp('5%'),
-      padding: hp('1.5%'),
+    jobInput: {
+      height: hp("6%"),
+      width: hp('35%'),
+      alignSelf: 'center',
+      padding: hp('2%'),
       borderWidth: 1,
-      borderRadius: 16,
+      borderRadius: 10,
       backgroundColor: 'white',
       borderColor: '#4C67F6',
-      fontStyle: 'italic'
+      fontStyle: 'italic',
+      fontSize: 15,
     },
 
     jobTitle: {
@@ -281,16 +306,17 @@ export const JobScreen = () => {   //Jobs page component
 
     positionTitle: {
       fontSize: 16, 
-      left: hp('6%'), 
+      //left: hp('6%'), 
       top: -5, 
       fontWeight: 'bold',
+      textAlign: 'left',
     },
 
     positionLocation: {
       fontSize: 13, 
-      left: hp('6.1%'), 
+      //left: hp('6.1%'), 
       color: '#50555C', 
-      marginTop: 2
+      marginTop: 2,
     },
 
     postTime: {
