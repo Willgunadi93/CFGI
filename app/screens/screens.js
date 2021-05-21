@@ -113,8 +113,8 @@ export const JobScreen = () => {   //Jobs page component
   export const LegalScreen = ({navigation}) => {   //Jobs page component
     return (
       <View style={styles.legalContainer}>
-      <Image style={{width:'50%', height:"15%", resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/>
-      <View style={{paddingBottom: 30}}>
+      {/* <Image style={{width:'50%', height:"15%", resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/> */}
+      <View style={{paddingBottom: 30, paddingTop:30}}>
           <Text style={styles.legalTitle}>Legal Services</Text>
           <Text style={{fontSize:18}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
       </View>
@@ -218,9 +218,7 @@ export const JobScreen = () => {   //Jobs page component
 
     legalContainer: { //Attorney/Appointment
       backgroundColor: '#F7F5F9',
-      paddingRight: 30,
-      paddingLeft: 30,
-      paddingBottom: 30
+      padding: 30
     },
     legalTitle:{ //Legal Services
       fontSize:32,

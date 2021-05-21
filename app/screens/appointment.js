@@ -73,10 +73,10 @@ export const AppointmentScreen = ({navigation}) => {
     const searchFilterFunction = text => { setSearchJob(text); };
 
     return (
-      <ScrollView>
+      <ScrollView style={{paddingTop:30, backgroundColor:"#F7F5F9"}}>
         
-        <View style={{padding: 30, flex:1}}>
-          <Image style={{height:'30%', resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/>
+        <View style={{paddingHorizontal: 30, flex:1}}>
+          {/* <Image style={{height:'30%', resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/> */}
           <Text style={styles.AsubTitle}>DIRECTORY</Text>
           <Text style={styles.attorneyTitle}>Find A CFGI Attorney For A Consultation</Text>
         </View>
