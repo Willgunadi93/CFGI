@@ -75,6 +75,21 @@ export const FinAppScreen = ({navigation}) => {
     // Checks if the user has checked the checkbox
     // const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
+    //Field Error States; 'false' means no errors
+    const [fNameError, setfNameError] = useState(false);
+    const [LNameError, setLNameError] = useState(false);
+
+    //Validation for only regex expression
+    function onlyRegex (item, expression, error){
+        var exp = new RegExp(expression)
+        if(!exp.test(item)){
+            error(true)
+        }
+        else{
+            error(false)
+        }
+    }
+    
     return (
     <ScrollView>
         <View style={styles.container}>
@@ -91,9 +106,9 @@ export const FinAppScreen = ({navigation}) => {
             <Text style={styles.header}>First Name</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
-                    <TextInput
+                    {/* <TextInput
                         style = {styles.shortAnswerInput}
-                        value = {first_name}
+                        // value = {first_name}
                         setValue = {setFirstName}
 
                         // onChangeText={onChangeText}
@@ -106,14 +121,23 @@ export const FinAppScreen = ({navigation}) => {
                         //   onContentSizeChange={(event) => {
                         //     this.setState({ height: event.nativeEvent.contentSize.height })
                         //   }}
+                    /> */}
+
+                    {/* Stephanie Edit */}
+                    <TextInput
+                        onChangeText={name => setFirstName({name})}
+                        onChange={name => onlyRegex(name.nativeEvent.text, '^[a-zA-Z]+$', setfNameError)}
+                        style={[styles.shortAnswerInput,{borderColor: fNameError? '#E76060': '#DADADA'}]}
                     />
+                    {fNameError? <Text style={{color:'#E76060'}}>Please provide a valid entry.</Text>: null}
+                    {/* ===== */}
                 </View>
             </View>
 
             <Text style={styles.header}>Family/Last Name</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
-                    <TextInput
+                    {/* <TextInput
                         style = {styles.shortAnswerInput}
                         value = {last_name}
                         setValue = {setLastName}
@@ -128,7 +152,14 @@ export const FinAppScreen = ({navigation}) => {
                         //   onContentSizeChange={(event) => {
                         //     this.setState({ height: event.nativeEvent.contentSize.height })
                         //   }}
+                    /> */}
+                    <TextInput
+                        onChangeText={name => setLastName({name})}
+                        onChange={name => onlyRegex(name.nativeEvent.text, '^[a-zA-Z]+$',setLNameError)}
+                        style={[styles.shortAnswerInput,{borderColor: LNameError? '#E76060': '#DADADA'}]}
                     />
+                    {LNameError? <Text style={{color:'#E76060'}}>Please provide a valid entry.</Text>: null}
+                    {/* ===== */}
                 </View>
             </View>
 
