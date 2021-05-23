@@ -139,6 +139,8 @@ export const FinAppScreen = ({navigation}) => {
 
                     {/* Stephanie Edit */}
                     <TextInput
+                        // setValue = {setFirstName}
+                        // value = {first_name}
                         onChangeText={name => setFirstName({name})}
                         onChange={name => onlyRegex(name.nativeEvent.text, '^[a-zA-Z]+$', setfNameError)}
                         style={[styles.shortAnswerInput,{borderColor: fNameError? '#E76060': '#DADADA'}]}
