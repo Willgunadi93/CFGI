@@ -89,6 +89,22 @@ export const FinAppScreen = ({navigation}) => {
             error(false)
         }
     }
+<<<<<<< Updated upstream
+=======
+
+
+    function submitCheck(navigation) {
+        console.log("pressed");
+        if (degree_value == null || marital_value == null || status_value == null ||
+            fNameError == true || first_name == null
+            ) {
+            console.log("one of them is null");
+        }
+        else {
+            navigation.navigate("FinAppConfirmation");
+        }
+    }
+>>>>>>> Stashed changes
     
     return (
     <ScrollView>
@@ -125,6 +141,8 @@ export const FinAppScreen = ({navigation}) => {
 
                     {/* Stephanie Edit */}
                     <TextInput
+                        // setValue = {setFirstName}
+                        // value = {first_name}
                         onChangeText={name => setFirstName({name})}
                         onChange={name => onlyRegex(name.nativeEvent.text, '^[a-zA-Z]+$', setfNameError)}
                         style={[styles.shortAnswerInput,{borderColor: fNameError? '#E76060': '#DADADA'}]}
@@ -492,7 +510,7 @@ export const FinAppScreen = ({navigation}) => {
                 </TouchableOpacity>
                 {/* Submits the current application by uploading to the database, will be manually reviewed by CFGI */}
                 {/* Directs user to confirmation screen */}
-                <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate("FinAppConfirmation")} underlayColor={'#F7F5F9'}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => submitCheck(navigation)} underlayColor={'#F7F5F9'}>
                     <Text style={styles.buttonText}>SUBMIT</Text>
                 </TouchableOpacity>
             </View>
