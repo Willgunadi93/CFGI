@@ -78,7 +78,9 @@ export const FinAppScreen = ({navigation}) => {
     //Field Error States; 'false' means no errors
     const [fNameError, setfNameError] = useState(false);
     const [LNameError, setLNameError] = useState(false);
-
+    const [degreeError, setDegreeError] = useState(false);
+    const [statusError, setStatusError] = useState(false);
+    const [maritalError, setMaritalError] = useState(false);
     //Validation for only regex expression
     function onlyRegex (item, expression, error){
         var exp = new RegExp(expression)
@@ -89,7 +91,19 @@ export const FinAppScreen = ({navigation}) => {
             error(false)
         }
     }
-    
+    //Validation check for dropdowns
+    function dropErr(){
+        var values = [degree_value, status_value, marital_value]
+        var error = [setDegreeError, setStatusError, setMaritalError]
+        var x;
+        for(x = 0; x < values.length; x++){
+            if (values[x] === null){
+                error[x](true)
+            }
+        }
+        return(console.log(degreeError && statusError && maritalError))
+
+    }
     return (
     <ScrollView>
         <View style={styles.container}>
@@ -263,12 +277,11 @@ export const FinAppScreen = ({navigation}) => {
                 // The height of the dropdown 
                 maxHeight = {150} 
                 // Added alignSelf to make container center
-                style = {{width: wp('76%'), alignSelf:"center"}} 
+                style = {{width: wp('76%'), alignSelf:"center", borderColor: degreeError? "#E76060": 'black'}}
                 // Added alignSelf center to make dropdown center
-                containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
+                containerStyle = {{width: wp('76%'), alignSelf:"center"}}
+                onChangeValue={(value) => setDegreeError(false)}
             />
-            
-
             <Text style={styles.header}>If you put "Other" in the last question, please put in your degree. 
             Otherwise, put "N/A" (no quotes).</Text>
                 <View style={styles.inputContainer}>
@@ -289,7 +302,7 @@ export const FinAppScreen = ({navigation}) => {
                 </View>
             </View>
 
-
+            
             <Text style={styles.header}>Field of study</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
@@ -352,9 +365,10 @@ export const FinAppScreen = ({navigation}) => {
                 // The height of the dropdown 
                 maxHeight = {150} 
                 // Added alignSelf to make container center
-                style = {{width: wp('76%'), alignSelf:"center"}} 
+                style = {{width: wp('76%'), alignSelf:"center", borderColor: maritalError? "#E76060": 'black'}} 
                 // Added alignSelf center to make dropdown center
                 containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
+                onChangeValue={(value) => setMaritalError(false)}
             />
 
             <Text style={styles.header}>If you have children, please note how many. Otherwise, put "N/A" (no quotes).</Text>
@@ -396,9 +410,10 @@ export const FinAppScreen = ({navigation}) => {
                 // The height of the dropdown 
                 maxHeight = {150} 
                 // Added alignSelf to make container center
-                style = {{width: wp('76%'), alignSelf:"center"}} 
+                style = {{width: wp('76%'), alignSelf:"center", borderColor: statusError? "#E76060": 'black'}} 
                 // Added alignSelf center to make dropdown center
-                containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
+                containerStyle = {{width: wp('76%'), alignSelf:"center"}}
+                onChangeValue={(value) => setStatusError(false)}
             />
 
             <Text style={styles.header}>If you put "Other" in the last question, please put in your status.
@@ -492,7 +507,7 @@ export const FinAppScreen = ({navigation}) => {
                 </TouchableOpacity>
                 {/* Submits the current application by uploading to the database, will be manually reviewed by CFGI */}
                 {/* Directs user to confirmation screen */}
-                <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate("FinAppConfirmation")} underlayColor={'#F7F5F9'}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => dropErr()} underlayColor={'#F7F5F9'}>
                     <Text style={styles.buttonText}>SUBMIT</Text>
                 </TouchableOpacity>
             </View>
