@@ -31,7 +31,6 @@ export const JobScreen = () => {   //Jobs page component
       <ScrollView>
       <View style={styles.jobContainer}>
       <View style={{padding: hp('3%'), flex: 1}}>
-        <Image style={{height:'6.5%', resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/Screenslogo.png')} />
         <Text style={styles.jobTitle}>CAREERS</Text>
         <Text style={styles.jobSubtitle}>THIS FEATURE IS COMING SOON!</Text>
         <Text style={{fontSize: 13, color: "#000000", lineHeight: 16, paddingBottom: hp('2%')}}>
@@ -137,7 +136,6 @@ export const JobScreen = () => {   //Jobs page component
   export const DonateScreen = () => {   //Jobs page component
     return (
       <View style={{paddingTop: "5%", paddingHorizontal: "5%", backgroundColor: '#F7F5F9'}}>
-        <Image style={{height: "10%", width:"50%", resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/Screenslogo.png')}/>
         <View style={{paddingTop: "5%"}}>
           <Image style={{marginBottom: hp('3%'), marginLeft: wp('15%')}} source = {require('../assets/img/arrow-left.png')} />
           <Image style={{marginLeft: -wp('15%'), marginRight: wp('5%')}} source = {require('../assets/img/arrow-right.png')} />

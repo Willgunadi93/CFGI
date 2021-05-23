@@ -208,65 +208,6 @@ function DonateStack() {
 }
 
 
-// // make a stack out of all these screens
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <Tab.Navigator
-//       initialRouteName="Home"
-//       tabBarOptions={{activeTintColor: 'blue', inactiveTintColor: 'black'}}>
-//       <Tab.Screen
-//         // Each tab leads to a stack, which has the actual components
-//         name="Home"
-//         component={HomeStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='home' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Jobs"
-//         component={JobStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='briefcase' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Legal"
-//         component={LegalStack}
-//         // onPress={() => this.props.navigation.navigate('LegalScreen')}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='people' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Assistance"
-//         component={FinStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Icon name='hand-holding-usd' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Donate"
-//         component={DonateStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='gift' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//     </Tab.Navigator>
-//     </NavigationContainer>
-//   )
-// }
-
 // Export the App component, our "main"
 export default function App() {
   
@@ -361,10 +302,6 @@ export default function App() {
         <Stack.Screen name="CreateAccount" component={CreateAccount}></Stack.Screen>
     </Stack.Navigator>
      )}
-     {/* <Stack.Navigator>
-       <Stack.Screen name="SignIn" component={SignIn}></Stack.Screen>  
-       <Stack.Screen name="CreateAccount" component={CreateAccount}></Stack.Screen>
-     </Stack.Navigator> */}
    </NavigationContainer>
    </AuthContext.Provider>
     

@@ -12,12 +12,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 export const FinScreen = ({navigation}) => { 
     return (
         <ScreenContainer style={styles.container}>
-            <View style={styles.topContainer}>
-                {/* Should change this to svg */}
-                {/* Logo here */}
-                <Image source={require("../assets/img/logo-full.png")} style={styles.img}/>
-                {/* <SvgUri source={require("../assets/img/logo.svg")}/> */}
-            </View>
+            <View style={styles.topContainer}></View>
             
             {/* Flavor and description text here */}
             <View style={styles.titleContainer}>

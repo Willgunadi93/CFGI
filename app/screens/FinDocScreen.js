@@ -6,7 +6,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import DropDownPicker from 'react-native-dropdown-picker';
-// import CheckBox from '@react-native-community/checkbox';
 
 
 // Actual page for applying for financial assistance, allows users to upload documents and fill out answers
@@ -72,21 +71,27 @@ export const FinAppScreen = ({navigation}) => {
         {label: 'Other', value: 'other'},
     ]);
 
-    // Checks if the user has checked the checkbox
-    // const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
     //Field Error States; 'false' means no errors
     const [fNameError, setfNameError] = useState(false);
     const [LNameError, setLNameError] = useState(false);
 
     //Validation for only regex expression
-    function onlyRegex (item, expression, error){
+    function onlyRegex (item, expression, error) {
         var exp = new RegExp(expression)
         if(!exp.test(item)){
             error(true)
         }
         else{
             error(false)
+        }
+    }
+
+
+    function checkDropdown(value1, value2, value3) {
+        if (value1 == null || value2 == null || value3 == null) {
+            console.log(value1)
+            console.log(value2)
+            console.log(value3)
         }
     }
     
@@ -252,10 +257,15 @@ export const FinAppScreen = ({navigation}) => {
                 // Set the open state
                 open = {degree_open}
                 // Set the value of the selected choice
-                value = {degree_value}
+               
                 setValue = {setDegreeValue}
+                value = {degree_value}
                 setitems = {setDegreeItems}
                 setOpen = {setDegreeOpen}
+
+                // Change degree choice if the user changes choices
+                onChangeValue = {degree => setDegreeValue(degree)}
+                
                 // There's no search bar
                 searchable = {false}
                 // Making it scrollable
@@ -345,6 +355,9 @@ export const FinAppScreen = ({navigation}) => {
                 setValue = {setMaritalValue}
                 setitems = {setMaritalItems}
                 setOpen = {setMaritalOpen}
+                // Changes the choice if the user changes their choice
+                onChangeValue = {marital => setMaritalValue(marital)}
+
                 // There's no search bar
                 searchable = {false}
                 // Making it scrollable
@@ -389,6 +402,8 @@ export const FinAppScreen = ({navigation}) => {
                 setValue = {setStatusValue}
                 setitems = {setStatusItems}
                 setOpen = {setStatusOpen}
+                // Change the status value if the user changes their mind
+                onChangeValue = {status => setStatusValue(status)}
                 // There's no search bar
                 searchable = {false}
                 // Making it scrollable
