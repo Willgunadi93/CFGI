@@ -89,8 +89,6 @@ export const FinAppScreen = ({navigation}) => {
             error(false)
         }
     }
-<<<<<<< Updated upstream
-=======
 
 
     function submitCheck(navigation) {
@@ -104,7 +102,6 @@ export const FinAppScreen = ({navigation}) => {
             navigation.navigate("FinAppConfirmation");
         }
     }
->>>>>>> Stashed changes
     
     return (
     <ScrollView>
