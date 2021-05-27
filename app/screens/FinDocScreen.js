@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import DropDownPicker from 'react-native-dropdown-picker';
-import CheckBox from '@react-native-community/checkbox';
+// import CheckBox from '@react-native-community/checkbox';
 import { Divider } from 'react-native-elements';
 
 // Actual page for applying for financial assistance, allows users to upload documents and fill out answers
@@ -509,13 +509,13 @@ export const FinAppScreen = ({navigation}) => {
             <View style={{paddingVertical: hp('3%')}}></View>
             
             <View style={{flexDirection:'row', paddingHorizontal: wp('13%'), marginBottom:20, backgroundColor:'#grey'}}>
-                <View style={{alignSelf:'center', marginRight: 10}}>
+                {/* <View style={{alignSelf:'center', marginRight: 10}}>
                     <CheckBox
                         disabled = {false}
                         value = {toggleCheckBox}
                         onValueChange = {(newValue) => setToggleCheckBox(newValue)}
                     />
-                </View>
+                </View> */}
                 <View>
                     <Text style={[styles.mainText, ({paddingRight: wp('0'), paddingLeft: wp('0%')})]}>I have filled out this application with complete accuracy and care.
                     I understand that any incomplete, inaccurate, or invalid information may result in this application getting rejected. 
