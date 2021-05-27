@@ -158,7 +158,7 @@ export const JobScreen = () => {   //Jobs page component
           </View>
         </View>
         <View style={{paddingTop: "5%", paddingHorizontal: "25%"}}>
-          <Pressable style={styles.button} onPress={ ()=>{ Linking.openURL('hhttps://www.paypal.com/donate?hosted_button_id=SXQDLBKH55C42')}}>
+          <Pressable style={styles.button} onPress={ ()=>{ Linking.openURL('https://www.paypal.com/donate?hosted_button_id=SXQDLBKH55C42')}}>
             <Text style={styles.textStyle}>DONATE</Text>
           </Pressable>
         </View>
