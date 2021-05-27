@@ -387,7 +387,7 @@ export const FinAppScreen = ({navigation}) => {
             />
             {maritalError? <Text style={{color:'#E76060', paddingLeft: wp('13%') }}>Please select an entry.</Text>: null}
 
-            <Text style={styles.header}>If you have children, please note how many. Otherwise, put "N/A" (no quotes).</Text>
+            <Text style={styles.header}>If you have children, please note how many. Otherwise, put "0" (no quotes).</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
                     <TextInput
