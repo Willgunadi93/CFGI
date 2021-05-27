@@ -93,6 +93,14 @@ export const FinAppScreen = ({navigation}) => {
             console.log(value2)
             console.log(value3)
         }
+        
+    function pickerChoice (item, error) {
+        if (item == null) {
+            error(true);
+        }
+        else {
+            error(false);
+        }
     }
     
     return (
@@ -260,6 +268,8 @@ export const FinAppScreen = ({navigation}) => {
                
                 setValue = {setDegreeValue}
                 value = {degree_value}
+                value = {(degree_value) => setDegreeValue(degree_value)}
+                setValue = {(value) => console.log(value)}
                 setitems = {setDegreeItems}
                 setOpen = {setDegreeOpen}
 

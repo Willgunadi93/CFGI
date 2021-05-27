@@ -12,7 +12,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 export const FinScreen = ({navigation}) => { 
     return (
         <ScreenContainer style={styles.container}>
-            <View style={styles.topContainer}></View>
+            <View style={styles.topContainer}>
+            </View>
             
             {/* Flavor and description text here */}
             <View style={styles.titleContainer}>
