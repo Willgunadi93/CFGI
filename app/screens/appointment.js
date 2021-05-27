@@ -1,33 +1,33 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput } from "react-native";
+import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput, TouchableOpacity } from "react-native";
 import {SearchBar} from 'react-native-elements';
 import LegalCard from '../screens/legalCard';
 import { useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useCallback } from 'react';
-import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import { Divider } from 'react-native-elements'
+import { Modal } from 'react-native';
 
 //Dummy Data for Attorneys. One issue, can't call <Image source={require(u.image)}/> within it.
 const users = [
     {
        name: 'Bill Gunadi',
        expertise: 'OPT, CPT, H1B',
-       languages: 'English, Hindi',
+       languages: 'English',
        image: '../assets/img/attorneydefault.png',
        key:'1'
     },
     {
-      name: 'Taylor Mason',
-      expertise: 'OPT, CPT, H1B',
-      languages: 'English, Hindi',
+      name: 'Matthew W. Blaisdell',
+      expertise: 'Family green cards, Employment green cards, student, work permits',
+      languages: 'English',
       image: '../assets/img/attorneydefault.png',
       key:'2'
    },
     {
-      name: 'Kristine Park',
-      expertise: 'OPT, CPT, H1B',
-      languages: 'English, Hindi',
+      name: 'Seth Finberg',
+      expertise: 'Asylum, Employment Authorization Documents, F-1 Visas, TPS Applications',
+      languages: 'English',
       image: '../assets/img/attorneydefault.png',
       key:'3'
   }
@@ -36,20 +36,27 @@ const users = [
 
 export const AppointmentScreen = ({navigation}) => {
 
+    //Term & Conditions
+    const [modalVisible, setModalVisible] = React.useState(true);
+
     //Expertise Dropdown
     const [expert_open, setExpertOpen] = useState(false);
     const [expert_value, setExpertValue] = useState(null);
     const [expert_items, setExpertItems] = useState([
-      {label: 'Immigration', value: 'immigration'},
-      {label: 'Visa', value: 'visa'},
-      {label: 'OPT', value: 'opt'}
+      {label: 'Asylum', value: 'asylum'},
+      {label: 'Employment Authorization Documents (EAD)', value: 'ead'},
+      {label: 'Employment Green Cards', value: 'egc'},
+      {label: 'Family Green Cards', value: 'fgc'},
+      {label: 'F-1 Visas', value: 'f1'},
+      {label: 'Students', value: 'students'},
+      {label: 'TPS Applications', value: 'tpsApps'},
+      {label: 'Work Permits', value: 'workPermits'}
     ]);
     //Language Dropdown
     const [lang_open, setLangOpen] = useState(false);
     const [lang_value, setLangValue] = useState(null);
     const [lang_items, setLangItems] = useState([
-      {label: 'English', value: 'english'},
-      {label: 'Korean', value: 'korean'}
+      {label: 'English', value: 'english'}
     ]);
     //Close Dropdowns when other opens
     const onExpertOpen = useCallback(() => {
@@ -73,7 +80,24 @@ export const AppointmentScreen = ({navigation}) => {
     const searchFilterFunction = text => { setSearchJob(text); };
 
     return (
-      <ScrollView style={{paddingTop:30, backgroundColor:"#F7F5F9"}}>
+      <ScrollView style={{paddingTop:30, backgroundColor:"#F7F5F9", flex: 1}}>
+        
+        <View>
+        <Modal animationType="slide" transparent={true} visible={modalVisible} 
+        onRequestClose={() => {
+        setModalVisible(!modalVisible);}}>
+            <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={{fontSize:18, fontWeight:'bold'}}>TERMS AND CONDITIONS</Text>
+              <Text style={{fontSize:15, marginTop: 10}}>By continuing, I understand CFGI does not provide legal advice. It is a pro bono attorney matching service. 
+              CFGI does not carry professional liability insurance. Attorneys are independently responsible for any legal advice provided.</Text>
+              <TouchableOpacity onPress={() => {setModalVisible(!modalVisible)}} style={{backgroundColor:'#4C67F6', alignSelf:'center', borderRadius: 10, paddingVertical: 13, paddingHorizontal: 55, marginTop: 15}}>
+                <Text style={{fontSize: 15, color: 'white', fontWeight:'bold', alignSelf: 'center'}}>PROCEED</Text>
+              </TouchableOpacity>
+            </View>
+            </View>
+        </Modal>
+        </View>
         
         <View style={{paddingHorizontal: 30, flex:1}}>
           {/* <Image style={{height:'30%', resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/> */}
@@ -96,7 +120,7 @@ export const AppointmentScreen = ({navigation}) => {
             listMode = "SCROLLVIEW"
             placeholder="Select Attorney Expertise"
             placeholderStyle={{fontStyle:"italic"}}
-            maxHeight = {100}
+            maxHeight = {150}
             labelStyle={{color:'#3F3356'}}
             dropDownContainerStyle={{
                 borderColor: "#4C67F6",
@@ -120,7 +144,7 @@ export const AppointmentScreen = ({navigation}) => {
             listMode = "SCROLLVIEW"
             placeholder="Select Language Fluency"
             placeholderStyle={{fontStyle:"italic"}}
-            maxHeight = {100}
+            maxHeight = {150}
             labelStyle={{color:'#3F3356'}}
             dropDownContainerStyle={{
                 borderColor: "#4C67F6"
@@ -174,5 +198,23 @@ export const AppointmentScreen = ({navigation}) => {
         fontWeight:'bold',
         paddingRight: 10,
         alignSelf:'flex-end'
-    }
+    },
+    centeredView: {
+      flex: 1,
+      justifyContent: "flex-end",
+      alignItems: "center",
+      backgroundColor: "rgba(0, 0, 0, 0.2)"
+    },
+    modalView: {
+      backgroundColor: "white",
+      borderRadius: 30,
+      flex: 0.3,
+      width: "90%",
+      shadowColor: "#000",
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+      marginBottom:20,
+      padding:30,
+    },
 });

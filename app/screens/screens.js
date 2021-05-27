@@ -119,11 +119,8 @@ export const JobScreen = () => {   //Jobs page component
       </View>
       <View style={styles.body}>
           <LegalButton text='View Appointment' onPress={() => console.log("Haven't added page.")} icon='calendar' />
-          <View style={{margin:5}}/>
           <LegalButton text="Schedule with Attorneys" onPress={() => navigation.navigate('AppointDocs')} icon='calendar-check' />
-          <View style={{margin:5}}/>
           {/* <LegalButton text="Frequently Asked Questions" onPress={() => console.log("Haven't added page.")} icon='chat' />
-          <View style={{margin:5}}/>
           <LegalButton text="Resource Library" onPress={() => console.log("Haven't added page.")} icon='book-reader'/> */}
       </View>
     </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, TouchableOpacity, Modal, Text, TouchableHighlight, Pressable, Image} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { AntDesign } from '@expo/vector-icons'; 
 
 export default function LegalCard({name, languages, expertise, onPress}){
 
@@ -15,15 +15,15 @@ export default function LegalCard({name, languages, expertise, onPress}){
         setModalVisible(!modalVisible);}}>
             <View style={styles.centeredView}>
             <View style={styles.modalView}>
-            <Pressable onPress={() => setModalVisible(!modalVisible)}><Ionicons name="arrow-back-circle" size={45} color="#4C67F6"/></Pressable>
+            <Pressable onPress={() => setModalVisible(!modalVisible)}><AntDesign name="arrowleft" size={24} color="#459EFF" /></Pressable>
             <Image style={{alignSelf:"center",borderRadius:50, height:"15%", resizeMode:"contain"}}source={require('../assets/img/attorneydefault.png')}/>
             <Text style={{paddingTop: 10,fontSize:18, fontWeight:'bold', textAlign:"center", color:'#3F3356'}}>{name}</Text>
             <Text style={{textAlign:"center", color:"#459EFF", textDecorationLine: "underline", marginBottom:20}}>Avvo Profile</Text>
             <ScrollView>
-                <Text style={{color:"#3F3356"}}><Text style={styles.textStyle}>About:{"\n"}</Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                <Text style={{color:"#3F3356"}}><Text style={styles.textStyle}>Expertise:  </Text>{expertise}</Text>
-                <Text style={{color:"#3F3356"}}><Text style={styles.textStyle}>Languages:  </Text> {languages}</Text>
-                <Text style={{color:"#3F3356"}}><Text style={styles.textStyle}>Location:  </Text> Pasedena, California</Text>
+                <Text style={{color:"#3F3356", marginBottom: 5}}><Text style={styles.textStyle}>About:{"\n"}</Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                <Text style={{color:"#3F3356", marginBottom: 5}}><Text style={styles.textStyle}>Expertise:  </Text>{expertise}</Text>
+                <Text style={{color:"#3F3356", marginBottom: 5}}><Text style={styles.textStyle}>Languages:  </Text> {languages}</Text>
+                <Text style={{color:"#3F3356", marginBottom: 5}}><Text style={styles.textStyle}>Location:  </Text> Pasedena, California</Text>
                 
                 {/* Hours Available */}
                 <View style={{flexDirection:"row"}}>
@@ -33,7 +33,6 @@ export default function LegalCard({name, languages, expertise, onPress}){
                 {/* /// */}
 
                 <Text style={{color:"#3F3356"}}><Text style={styles.textStyle}>Phone Number: </Text> (714) 200-6182</Text>
-                <Text style={{color:"#3F3356"}}><Text style={styles.textStyle}>Email: </Text> pAnteater@uci.edu</Text>
             </ScrollView>
 
             {/* Button */}
@@ -55,11 +54,11 @@ export default function LegalCard({name, languages, expertise, onPress}){
            <TouchableOpacity onPress={() => setModalVisible(true)}>
             <View style={styles.content}>
                 <View style={{flexDirection:'row'}}>
-                    <Image style={{flex:0.5, height:'100%', resizeMode:"contain", alignItems: "flex-start", borderRadius:50}}source={require('../assets/img/attorneydefault.png')}/>
-                    <View style={{paddingLeft:10}}>
-                    <Text style={{fontWeight:'bold',color:"#3F3356"}}>{name}</Text>
-                    <Text style={{color:"#3F3356"}}><Text style={{fontWeight:'bold',color:"#3F3356"}}>Expertise:  </Text>{expertise}</Text>
-                    <Text style={{color:"#3F3356"}}><Text style={{fontWeight:'bold',color:"#3F3356"}}>Languages:  </Text> {languages}</Text>
+                    <Image style={{flex:0.2, height:'100%', resizeMode:"contain", alignItems: "flex-start", borderRadius:50}}source={require('../assets/img/attorneydefault.png')}/>
+                    <View style={{paddingLeft:10, flex:0.8}}>
+                    <Text style={{fontWeight:'bold',color:"#3F3356", paddingBottom: 6}}>{name}</Text>
+                    <Text style={{color:"#3F3356"}}><Text style={{fontWeight:'bold',color:"#3F3356"}}>Expertise: </Text>{expertise}</Text>
+                    <Text style={{color:"#3F3356"}}><Text style={{fontWeight:'bold',color:"#3F3356"}}>Language: </Text> {languages}</Text>
                     </View>
                 </View>  
              </View>
@@ -75,7 +74,8 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       borderRadius: 10,
       elevation: 1,
-      marginTop: 10
+      marginTop: 10,
+      flex: 1
     },
     content:{
         backgroundColor: 'white',
@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     },
     textStyle:{
         fontWeight:'bold',
-        lineHeight: 30,
         flex:0.3,
         color:"#3F3356"
     }
