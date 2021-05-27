@@ -320,8 +320,6 @@ export const FinAppScreen = ({navigation}) => {
                
                 setValue = {setDegreeValue}
                 value = {degree_value}
-                value = {(degree_value) => setDegreeValue(degree_value)}
-                setValue = {(value) => console.log(value)}
                 setitems = {setDegreeItems}
                 setOpen = {setDegreeOpen}
 
@@ -582,7 +580,7 @@ export const FinAppScreen = ({navigation}) => {
             <View style={{paddingVertical: hp('3%')}}></View>
             
             <View style={{flexDirection:'row', paddingHorizontal: wp('13%'), marginBottom:20, backgroundColor:'#E9E9E9'}}>
-                <View style={{alignSelf:'center', marginRight: 10}}>
+                {/* <View style={{alignSelf:'center', marginRight: 10}}>
                     <CheckBox
                         disabled = {false}
                         value = {toggleCheckBox}
