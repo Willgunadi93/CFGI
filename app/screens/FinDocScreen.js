@@ -6,7 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import DropDownPicker from 'react-native-dropdown-picker';
-
+import CheckBox from '@react-native-community/checkbox';
+import { Divider } from 'react-native-elements';
 
 // Actual page for applying for financial assistance, allows users to upload documents and fill out answers
 // to submit to the database so their application process is manually reviewed
@@ -71,10 +72,15 @@ export const FinAppScreen = ({navigation}) => {
         {label: 'Other', value: 'other'},
     ]);
 
+    // Checks if the user has checked the checkbox
+    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
     //Field Error States; 'false' means no errors
     const [fNameError, setfNameError] = useState(false);
     const [LNameError, setLNameError] = useState(false);
-
+    const [degreeError, setDegreeError] = useState(false);
+    const [statusError, setStatusError] = useState(false);
+    const [maritalError, setMaritalError] = useState(false);
     //Validation for only regex expression
     function onlyRegex (item, expression, error) {
         var exp = new RegExp(expression)
@@ -85,36 +91,33 @@ export const FinAppScreen = ({navigation}) => {
             error(false)
         }
     }
+    //Validation check for dropdowns
+    function dropErr(){
+        var values = [degree_value, status_value, marital_value]
+        var error = [setDegreeError, setStatusError, setMaritalError]
+        var x;
+        for(x = 0; x < values.length; x++){
+            if (values[x] === null){
+                error[x](true)
+            }
+        }
+        return(console.log(degreeError && statusError && maritalError))
 
-
-    function checkDropdown(value1, value2, value3) {
-        if (value1 == null || value2 == null || value3 == null) {
-            console.log(value1)
-            console.log(value2)
-            console.log(value3)
-        }
-        
-    function pickerChoice (item, error) {
-        if (item == null) {
-            error(true);
-        }
-        else {
-            error(false);
-        }
     }
-    
     return (
     <ScrollView>
         <View style={styles.container}>
             {/* Back button that allows the user to go back to the landing screen */}
-            <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
+            {/* <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
                 <View style={styles.backButtonContainer}>
                     <Ionicons name="arrow-back-circle" size={40} color="#4C67F6"/>
                 </View>
-            </TouchableHighlight>
-
-            <Text style={styles.mainText}>Please read through this document carefully and answer all questions carefully and accurately.
-            By filling it out, you agree to the <Text style={{ color: 'blue', textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>Terms and Conditions</Text>.</Text>
+            </TouchableHighlight> */}
+            <View style={{}}>
+            <Text style={{paddingTop: 30, paddingBottom:20, fontWeight:'bold', fontSize:24, textAlign:'center', color: "#3F3356"}}>EMERGENCY FINANCIAL AID APPLICATION</Text>
+            <Text style={[styles.mainText, ({textAlign:'center', paddingBottom: 30})]}>Please read through this document thoroughly and answer all questions carefully and accurately. By filling it out, you agree to the <Text style={{ color: 'blue', textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>Terms and Conditions</Text>.</Text>
+            <Divider style={{borderColor: '#F9C446', borderWidth: 3, width:'90%', alignSelf:'center'}}></Divider>
+            </View>
 
             <Text style={styles.header}>First Name</Text>
             <View style={styles.inputContainer}>
@@ -138,6 +141,8 @@ export const FinAppScreen = ({navigation}) => {
 
                     {/* Stephanie Edit */}
                     <TextInput
+                        // setValue = {setFirstName}
+                        // value = {first_name}
                         onChangeText={name => setFirstName({name})}
                         onChange={name => onlyRegex(name.nativeEvent.text, '^[a-zA-Z]+$', setfNameError)}
                         style={[styles.shortAnswerInput,{borderColor: fNameError? '#E76060': '#DADADA'}]}
@@ -283,12 +288,12 @@ export const FinAppScreen = ({navigation}) => {
                 // The height of the dropdown 
                 maxHeight = {150} 
                 // Added alignSelf to make container center
-                style = {{width: wp('76%'), alignSelf:"center"}} 
+                style = {{width: wp('76%'), alignSelf:"center", borderColor: degreeError? "#E76060": 'black', borderWidth: degreeError? 2: 1}}
                 // Added alignSelf center to make dropdown center
-                containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
+                containerStyle = {{width: wp('76%'), alignSelf:"center"}}
+                onChangeValue={(value) => setDegreeError(false)}
             />
-            
-
+            {degreeError? <Text style={{color:'#E76060', paddingLeft: wp('13%') }}>Please select an entry.</Text>: null}
             <Text style={styles.header}>If you put "Other" in the last question, please put in your degree. 
             Otherwise, put "N/A" (no quotes).</Text>
                 <View style={styles.inputContainer}>
@@ -309,7 +314,7 @@ export const FinAppScreen = ({navigation}) => {
                 </View>
             </View>
 
-
+            
             <Text style={styles.header}>Field of study</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
@@ -375,10 +380,12 @@ export const FinAppScreen = ({navigation}) => {
                 // The height of the dropdown 
                 maxHeight = {150} 
                 // Added alignSelf to make container center
-                style = {{width: wp('76%'), alignSelf:"center"}} 
+                style = {{width: wp('76%'), alignSelf:"center", borderColor: maritalError? "#E76060": 'black', borderWidth: maritalError? 2: 1}} 
                 // Added alignSelf center to make dropdown center
                 containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
+                onChangeValue={(value) => setMaritalError(false)}
             />
+            {maritalError? <Text style={{color:'#E76060', paddingLeft: wp('13%') }}>Please select an entry.</Text>: null}
 
             <Text style={styles.header}>If you have children, please note how many. Otherwise, put "N/A" (no quotes).</Text>
             <View style={styles.inputContainer}>
@@ -421,10 +428,12 @@ export const FinAppScreen = ({navigation}) => {
                 // The height of the dropdown 
                 maxHeight = {150} 
                 // Added alignSelf to make container center
-                style = {{width: wp('76%'), alignSelf:"center"}} 
+                style = {{width: wp('76%'), alignSelf:"center", borderColor: statusError? "#E76060": 'black', borderWidth: statusError? 2: 1}} 
                 // Added alignSelf center to make dropdown center
-                containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
+                containerStyle = {{width: wp('76%'), alignSelf:"center"}}
+                onChangeValue={(value) => setStatusError(false)}
             />
+            {statusError? <Text style={{color:'#E76060', paddingLeft: wp('13%') }}>Please select an entry.</Text>: null}
 
             <Text style={styles.header}>If you put "Other" in the last question, please put in your status.
             Otherwise, put "N/A" (no quotes).</Text>
@@ -498,26 +507,30 @@ export const FinAppScreen = ({navigation}) => {
 
             {/* Temporary until uploading files is implemented */}
             <View style={{paddingVertical: hp('3%')}}></View>
-
-            <Text style={styles.mainText}>I have filled out this application with complete accuracy and care.
-            I understand that any incomplete, inaccurate, or invalid information may result in this application getting rejected. 
-            I agree to the Terms and Conditions.</Text>
-            <View style={{paddingLeft: wp('45%')}}>
-            {/* <CheckBox
-                disabled = {false}
-                value = {toggleCheckBox}
-                onValueChange = {(newValue) => setToggleCheckBox(newValue)}
-            /> */}
+            
+            <View style={{flexDirection:'row', paddingHorizontal: wp('13%'), marginBottom:20, backgroundColor:'#grey'}}>
+                <View style={{alignSelf:'center', marginRight: 10}}>
+                    <CheckBox
+                        disabled = {false}
+                        value = {toggleCheckBox}
+                        onValueChange = {(newValue) => setToggleCheckBox(newValue)}
+                    />
+                </View>
+                <View>
+                    <Text style={[styles.mainText, ({paddingRight: wp('0'), paddingLeft: wp('0%')})]}>I have filled out this application with complete accuracy and care.
+                    I understand that any incomplete, inaccurate, or invalid information may result in this application getting rejected. 
+                    I agree to the Terms and Conditions.</Text> 
+                </View>
             </View>
 
             <View style={styles.buttonContainer}>
                 {/* Allows the user to save the current application and come back to it later */}
-                <TouchableOpacity style={styles.buttonStyle}>
-                    <Text style={styles.buttonText}>SAVE</Text>
+                <TouchableOpacity style={{borderColor: "#4C67F6", borderWidth:1, borderRadius: 10, backgroundColor:'white', paddingHorizontal: 55, paddingVertical: 13, marginTop: 5, marginRight: 5}}>
+                    <Text style={[styles.buttonText,({color: "#4C67F6", fontWeight:'bold'})]}>SAVE</Text>
                 </TouchableOpacity>
                 {/* Submits the current application by uploading to the database, will be manually reviewed by CFGI */}
                 {/* Directs user to confirmation screen */}
-                <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate("FinAppConfirmation")} underlayColor={'#F7F5F9'}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => dropErr()} underlayColor={'#F7F5F9'}>
                     <Text style={styles.buttonText}>SUBMIT</Text>
                 </TouchableOpacity>
             </View>
@@ -567,7 +580,9 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         paddingVertical: hp('2%'),
-        justifyContent: 'space-around'
+        paddingLeft: wp('13%'),
+        paddingRight: wp('13%'),
+        justifyContent: 'center'
     },
 
     // Defines styling for both save and submit buttons
@@ -577,18 +592,19 @@ const styles = StyleSheet.create({
         paddingVertical: 13,
         paddingHorizontal: 55,
         marginTop: 5,
-        backgroundColor: "#4C67F6"
+        backgroundColor: "#4C67F6",
+        alignSelf:'center'
     },
 
 
     // Styling for the text inside the buttons
     buttonText: {
         color: '#ffffff',
-        fontSize: 16,
+        fontSize: 15,
         textAlign: 'center',
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingTop: 3
+        // flexDirection: 'row',
+        alignSelf: 'center',
+        fontWeight:'bold'
     },
 
     // Defines padding for all text box containers
