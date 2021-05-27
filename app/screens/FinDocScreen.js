@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity } from "react-native";
-import { TouchableHighlight } from 'react-native-gesture-handler';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import DropDownPicker from 'react-native-dropdown-picker';
-// import CheckBox from '@react-native-community/checkbox';
 import { Divider } from 'react-native-elements';
 
 // Actual page for applying for financial assistance, allows users to upload documents and fill out answers
@@ -72,8 +69,6 @@ export const FinAppScreen = ({navigation}) => {
         {label: 'Other', value: 'other'},
     ]);
 
-    // Checks if the user has checked the checkbox
-    const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
     //Field Error States; 'false' means no errors
     const [fNameError, setfNameError] = useState(false);
@@ -103,6 +98,7 @@ export const FinAppScreen = ({navigation}) => {
             error(false)
         }
     }
+    
     //Validation for non-empty states
     function nonEmpty(item, error){
         if(item === ''){
@@ -253,7 +249,7 @@ export const FinAppScreen = ({navigation}) => {
                     <TextInput
                         style = {[styles.shortAnswerInput, {borderColor: phoneError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setPhone({name})}
-                        onChange={name => onlyRegex(name.nativeEvent.text,"^\\d{10}$", setPhoneError)}
+                        onChange={name => onlyRegex(name.nativeEvent.text,"^[0-9]{10}$", setPhoneError)}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -398,7 +394,7 @@ export const FinAppScreen = ({navigation}) => {
                         // setValue = {setGradYear}
                         style = {[styles.shortAnswerInput, {borderColor: gradYearError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setGradYear({name})}
-                        onChange={name => onlyRegex(name.nativeEvent.text, "^20\\d{2}$", setGradYearError)}
+                        onChange={name => onlyRegex(name.nativeEvent.text, "^20[0-9]{2}$", setGradYearError)}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -452,7 +448,7 @@ export const FinAppScreen = ({navigation}) => {
                         // setValue = {setChildren}
                         style = {[styles.shortAnswerInput, {borderColor: childrenError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setChildren({name})}
-                        onChange={name => onlyRegex(name.nativeEvent.text, "^0|[1][0-9]|20$", setChildrenError)}
+                        onChange={name => onlyRegex(name.nativeEvent.text, "^[0-9][0-9]?$", setChildrenError)}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -532,7 +528,7 @@ export const FinAppScreen = ({navigation}) => {
                         placeholder = "$ USD"
                         style = {[styles.shortAnswerInput, {borderColor: aidError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setAid({name})}
-                        onChange={name => onlyRegex(name.nativeEvent.text,'^[2-9][0-9][0-9]|1000$',setAidError)}
+                        onChange={name => onlyRegex(name.nativeEvent.text,'^[2-9][0-9][0-9](\.?[0-9]{2})?|1000$',setAidError)}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -579,14 +575,7 @@ export const FinAppScreen = ({navigation}) => {
             {/* Temporary until uploading files is implemented */}
             <View style={{paddingVertical: hp('3%')}}></View>
             
-            <View style={{flexDirection:'row', paddingHorizontal: wp('13%'), marginBottom:20, backgroundColor:'#E9E9E9'}}>
-                {/* <View style={{alignSelf:'center', marginRight: 10}}>
-                    <CheckBox
-                        disabled = {false}
-                        value = {toggleCheckBox}
-                        onValueChange = {(newValue) => setToggleCheckBox(newValue)}
-                    />
-                </View> */}
+            <View style={{flexDirection:'row', paddingHorizontal: wp('13%'), marginBottom:20}}>
                 <View>
                     <Text style={[styles.mainText, ({paddingRight: wp('0'), paddingLeft: wp('0%')})]}>I have filled out this application with complete accuracy and care.
                     I understand that any incomplete, inaccurate, or invalid information may result in this application getting rejected. 
