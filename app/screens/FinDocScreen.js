@@ -185,7 +185,7 @@ export const FinAppScreen = ({navigation}) => {
                         onChange={name => nonEmpty(name.nativeEvent.text, setfNameError)}
                         style={[styles.shortAnswerInput,{borderColor: fNameError? '#E76060': '#DADADA'}]}
                     />
-                    {fNameError? <Text style={{color:'#E76060'}}>Please provide a valid entry.</Text>: null}
+                    {fNameError? <Text style={{color:'#E76060'}}>Please enter your first name.</Text>: null}
                     {/* ===== */}
                 </View>
             </View>
@@ -214,7 +214,7 @@ export const FinAppScreen = ({navigation}) => {
                         onChange={name => nonEmpty(name.nativeEvent.text, setLNameError)}
                         style={[styles.shortAnswerInput,{borderColor: LNameError? '#E76060': '#DADADA'}]}
                     />
-                    {LNameError? <Text style={{color:'#E76060'}}>Please provide a valid entry.</Text>: null}
+                    {LNameError? <Text style={{color:'#E76060'}}>Please enter your last name.</Text>: null}
                     {/* ===== */}
                 </View>
             </View>
@@ -239,7 +239,7 @@ export const FinAppScreen = ({navigation}) => {
                         //     this.setState({ height: event.nativeEvent.contentSize.height })
                         //   }}
                     />
-                    {emailError? <Text style={{color:'#E76060'}}>Please provide a valid entry.</Text>: null}
+                    {emailError? <Text style={{color:'#E76060'}}>Please provide a valid email address.</Text>: null}
                 </View>
             </View>
 
@@ -249,7 +249,7 @@ export const FinAppScreen = ({navigation}) => {
                     <TextInput
                         style = {[styles.shortAnswerInput, {borderColor: phoneError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setPhone({name})}
-                        onChange={name => onlyRegex(name.nativeEvent.text,"^[0-9]{10}$", setPhoneError)}
+                        onChange={name => onlyRegex(name.nativeEvent.text,"^[0-9]{18}$", setPhoneError)}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -261,7 +261,8 @@ export const FinAppScreen = ({navigation}) => {
                         //     this.setState({ height: event.nativeEvent.contentSize.height })
                         //   }}
                     />
-                    {phoneError? <Text style={{color:'#E76060'}}>Please provide a valid entry.</Text>: null}
+                    {phoneError? <Text style={{color:'#E76060'}}>Please provide a valid phone number, 
+                    all numbers together with no parantheses ("()"), no dashes ("-"), and no pluses ("+"). </Text>: null}
                 </View>
             </View>
 
@@ -280,7 +281,7 @@ export const FinAppScreen = ({navigation}) => {
                         onChangeText={name => setIntStud({name})}
                         onChange={name => nonEmpty(name.nativeEvent.text, setText1Error)}
                     />
-                    {text1Error? <Text style={{color:'#E76060'}}>Please fill in the text entry.</Text>: null}
+                    {text1Error? <Text style={{color:'#E76060'}}>Please answer the question.</Text>: null}
                 </View>
             </View>
 
@@ -302,7 +303,7 @@ export const FinAppScreen = ({navigation}) => {
                         //     this.setState({ height: event.nativeEvent.contentSize.height })
                         //   }}
                     />
-                    {uniError? <Text style={{color:'#E76060'}}>Please fill in the text entry.</Text>: null}
+                    {uniError? <Text style={{color:'#E76060'}}>Please enter your university name.</Text>: null}
                 </View>
             </View>
 
@@ -354,7 +355,7 @@ export const FinAppScreen = ({navigation}) => {
                             //     this.onChangeText(event)
                             //   }
                         />
-                        {otherDegreeError? <Text style={{color:'#E76060'}}>Please provide a valid entry.</Text>: null}
+                        {otherDegreeError? <Text style={{color:'#E76060'}}>Please enter a valid degree or "N/A".</Text>: null}
                 </View>
             </View>
 
@@ -380,7 +381,7 @@ export const FinAppScreen = ({navigation}) => {
                         //     this.setState({ height: event.nativeEvent.contentSize.height })
                         //   }}
                     />
-                    {studyError? <Text style={{color:'#E76060'}}>Please provide a valid entry.</Text>: null}
+                    {studyError? <Text style={{color:'#E76060'}}>Please enter your field of study.</Text>: null}
                 </View>
             </View>
 
@@ -437,7 +438,7 @@ export const FinAppScreen = ({navigation}) => {
                 containerStyle = {{width: wp('76%'), alignSelf:"center"}} 
                 onChangeValue={(value) => setMaritalError(false)}
             />
-            {maritalError? <Text style={{color:'#E76060', paddingLeft: wp('13%') }}>Please select an entry.</Text>: null}
+            {maritalError? <Text style={{color:'#E76060', paddingLeft: wp('13%') }}>Please select your marital status.</Text>: null}
 
             <Text style={styles.header}>If you have children, please note how many. Otherwise, put "0" (no quotes).</Text>
             <View style={styles.inputContainer}>
@@ -460,7 +461,7 @@ export const FinAppScreen = ({navigation}) => {
                         //     this.setState({ height: event.nativeEvent.contentSize.height })
                         //   }}
                     />
-                    {childrenError? <Text style={{color:'#E76060'}}>Please provide a number.</Text>: null}
+                    {childrenError? <Text style={{color:'#E76060'}}>Please enter the number of children you have, or 0.</Text>: null}
                 </View>
             </View>
 
@@ -489,7 +490,7 @@ export const FinAppScreen = ({navigation}) => {
                 containerStyle = {{width: wp('76%'), alignSelf:"center"}}
                 onChangeValue={(value) => setStatusError(false)}
             />
-            {statusError? <Text style={{color:'#E76060', paddingLeft: wp('13%') }}>Please select an entry.</Text>: null}
+            {statusError? <Text style={{color:'#E76060', paddingLeft: wp('13%') }}>Please select your immigration status.</Text>: null}
 
             <Text style={styles.header}>If you put "Other" in the last question, please put in your status.
             Otherwise, put "N/A" (no quotes).</Text>
@@ -510,7 +511,7 @@ export const FinAppScreen = ({navigation}) => {
                             //     this.onChangeText(event)
                             //   }
                         />
-                        {otherStatusError? <Text style={{color:'#E76060'}}>Please provide a valid entry.</Text>: null}
+                        {otherStatusError? <Text style={{color:'#E76060'}}>Please enter your immigration status, or "N/A".</Text>: null}
                 </View>
             </View>
 
@@ -541,7 +542,7 @@ export const FinAppScreen = ({navigation}) => {
                         //     this.setState({ height: event.nativeEvent.contentSize.height })
                         //   }}
                     />
-                    {aidError? <Text style={{color:'#E76060'}}>Please provide a valid rounded aid amount.</Text>: null}
+                    {aidError? <Text style={{color:'#E76060'}}>Please enter in an aid amount between 200 to 1000 (no "$" needed).</Text>: null}
                 </View>
             </View>
 
@@ -567,7 +568,7 @@ export const FinAppScreen = ({navigation}) => {
                         numberOfLines = {4}
                         textAlignVertical = {'top'}
                     />
-                    {reasonError? <Text style={{color:'#E76060'}}>Please fill in the text entry.</Text>: null}
+                    {reasonError? <Text style={{color:'#E76060'}}>Please answer the question.</Text>: null}
                 </View>
             </View>
 
