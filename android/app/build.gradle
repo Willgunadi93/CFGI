@@ -216,4 +216,10 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
+android {
+    dexOptions {
+        javaMaxHeapSize "4G"
+    }
+}
+
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
