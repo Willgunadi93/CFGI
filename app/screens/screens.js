@@ -103,11 +103,11 @@ export const JobScreen = () => {   //Jobs page component
 
   
   
-   export const CalendlyScreen = () => {
-     return (
-      <WebView source={{uri : 'https://testingcfgi.s3-us-west-1.amazonaws.com/webview.html'}}/>
-     );
-   }
+  //  export const CalendlyScreen = () => {
+  //    return (
+  //     <WebView source={{uri : 'https://testingcfgi.s3-us-west-1.amazonaws.com/webview.html'}}/>
+  //    );
+  //  }
 
   export const LegalScreen = ({navigation}) => {   //Jobs page component
     return (
