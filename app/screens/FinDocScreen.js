@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, ScrollView, TextInput, TouchableHighlight, TouchableOpacity } from "react-native";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -33,8 +34,7 @@ export const FinAppScreen = ({navigation}) => {
     const [grad_year, setGradYear] = useState(null);
     const [children, setChildren] = useState(null);
     const [aid, setAid] = useState(null);
-    const [reason, setReason] = useState(null);
-
+    const [reason, setReason] = useState(null)
 
     // Set all dropdown menu choices and their values
     const [degree_options, setDegreeItems] = useState([
@@ -109,18 +109,6 @@ export const FinAppScreen = ({navigation}) => {
         }
     }
 
-    //Validation check for dropdowns
-    // function dropErr(){
-    //     var values = [degree_value, status_value, marital_value]
-    //     var error = [setDegreeError, setStatusError, setMaritalError]
-    //     var x;
-    //     for(x = 0; x < values.length; x++){
-    //         if (values[x] === null){
-    //             error[x](true)
-    //         }
-    //     }
-    // }
-
     function onSubmitEntry(){
         var values = [degree_value, status_value, marital_value, first_name, last_name, other_status, other_degree, int_student,phone, email,
         university, study, grad_year, children, aid, reason];
@@ -146,11 +134,11 @@ export const FinAppScreen = ({navigation}) => {
     <ScrollView>
         <View style={styles.container}>
             {/* Back button that allows the user to go back to the landing screen */}
-            {/* <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
+            <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
                 <View style={styles.backButtonContainer}>
                     <Ionicons name="arrow-back-circle" size={40} color="#4C67F6"/>
                 </View>
-            </TouchableHighlight> */}
+            </TouchableHighlight>
             <View style={{}}>
             <Text style={{paddingTop: 30, paddingBottom:20, fontWeight:'bold', fontSize:24, textAlign:'center', color: "#3F3356"}}>EMERGENCY FINANCIAL AID APPLICATION</Text>
             <Text style={[styles.mainText, ({textAlign:'center', paddingBottom: 30})]}>Please read through this document thoroughly and answer all questions carefully and accurately. By filling it out, you agree to the <Text style={{ color: 'blue', textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>Terms and Conditions</Text>.</Text>
@@ -586,9 +574,12 @@ export const FinAppScreen = ({navigation}) => {
 
             <View style={styles.buttonContainer}>
                 {/* Allows the user to save the current application and come back to it later */}
-                <TouchableOpacity style={{borderColor: "#4C67F6", borderWidth:1, borderRadius: 10, backgroundColor:'white', paddingHorizontal: 55, paddingVertical: 13, marginTop: 5, marginRight: 5}}>
-                    <Text style={[styles.buttonText,({color: "#4C67F6", fontWeight:'bold'})]}>SAVE</Text>
-                </TouchableOpacity>
+                {/* Save button will be disabled until this feature is developed */}
+                <View style={{opacity: 0.4}}>
+                    <TouchableOpacity disabled={true} style={{borderColor: "#4C67F6", borderWidth:1, borderRadius: 10, backgroundColor:'white', paddingHorizontal: 55, paddingVertical: 13, marginTop: 5, marginRight: 5}}>
+                        <Text style={[styles.buttonText,({color: "#4C67F6", fontWeight:'bold'})]}>SAVE</Text>
+                    </TouchableOpacity>
+                </View>
                 {/* Submits the current application by uploading to the database, will be manually reviewed by CFGI */}
                 {/* Directs user to confirmation screen */}
                 <TouchableOpacity style={styles.buttonStyle} onPressIn={() => onSubmitEntry()} onPress={() =>onSubmittion()} underlayColor={'#F7F5F9'}>
