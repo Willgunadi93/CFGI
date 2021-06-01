@@ -23,6 +23,8 @@ import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screen
 // Icons used for our bottom navigation bar
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+//import axios
+import axios from 'axios'     //connects the server to the front end
 
 // Globally defining our bottom navigation bar and our system hierarchy stack
 const Stack = createStackNavigator();
@@ -126,66 +128,6 @@ function DonateStack() {
     </Stack.Navigator>
   )
 }
-
-
-// // make a stack out of all these screens
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <Tab.Navigator
-//       initialRouteName="Home"
-//       tabBarOptions={{activeTintColor: 'blue', inactiveTintColor: 'black'}}>
-//       <Tab.Screen
-//         // Each tab leads to a stack, which has the actual components
-//         name="Home"
-//         component={HomeStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='home' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Jobs"
-//         component={JobStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='briefcase' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Legal"
-//         component={LegalStack}
-//         // onPress={() => this.props.navigation.navigate('LegalScreen')}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='people' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Assistance"
-//         component={FinStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Icon name='hand-holding-usd' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Donate"
-//         component={DonateStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='gift' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//     </Tab.Navigator>
-//     </NavigationContainer>
-//   )
-// }
 
 // Export the App component, our "main"
 export default function App() {
