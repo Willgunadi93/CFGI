@@ -76,6 +76,11 @@ function HomeStack({navigation}) {
         name="About"
         component={AboutScreen}
       />
+      {/* retun to signIn */}
+      <Stack.Screen 
+        name="SignIn" 
+        component={SignIn}
+      />
     </Stack.Navigator>
   )
 }

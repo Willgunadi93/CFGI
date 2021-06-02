@@ -98,6 +98,7 @@ const exampleItems = [
         fontSize: 26, 
         textAlign: 'left', 
         right: 100, 
+        fontWeight:'bold',
         paddingBottom:20,
     },
     

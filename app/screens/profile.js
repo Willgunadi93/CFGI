@@ -19,20 +19,17 @@ are currently not within the scope of our project.
         <ScreenContainer style={styles.inCol}>
            {/* user information */}
             <View style={styles.userContainer}>
-            <View style={{padding: hp('2%'), flex: 1}}>
-                <Image style={{resizeMode:"contain", alignSelf:'center', width: 120, height: 120}} source={require("../assets/img/userProfile.png")}/>
-            </View>
                 <Text style={styles.mainText}>User Name{"\n"}Email: XXXXXXXX</Text>
             </View>
 
             {/* settings options */}
             <View style={{top: 150,}}>
-            <TouchableOpacity  onPress={() => navigation.navigate("signOut")}>
+            <TouchableOpacity  onPress={() => navigation.navigate("SignIn")}>
                     <Card name="card" style={styles.cardLayout} pointerEvents="none">        
                         <Text style={{color: "red"}}>Log Out</Text>
                     </Card>
             </TouchableOpacity>
-                    <Text style={{top: 50, alignSelf:'center'}}>More features coming soon!</Text>
+                    <Text style={{top: 50, fontWeight:'bold',alignSelf:'center'}}>More features coming soon!</Text>
             </View>
         </ScreenContainer>
         <View style={{padding:50}}></View> 
@@ -45,6 +42,8 @@ are currently not within the scope of our project.
       top: 100,
       left: 35,
       flexDirection: 'row',
+      justifyContent: 'center',
+        alignContent: 'center',
     },
 
     inCol: {
@@ -57,8 +56,7 @@ are currently not within the scope of our project.
     },
 
     mainText: {
-        justifyContent: 'center',
-        color: "purple",
+        color: "#3F3356",
         fontSize: 25,
         paddingLeft: 10,
         paddingRight: 80,
