@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
-import { useState } from 'react';
 import {  Text, StyleSheet, Button, View, TextInput, Image, Modal, Pressable } from "react-native";
 // Contains all components, used for styling purposes
 import { ScreenContainer } from 'react-native-screens';
@@ -13,6 +12,10 @@ import {
     widthPercentageToDP as wp,
    } from 'react-native-responsive-screen';
 import { ScrollView } from 'react-native-gesture-handler';
+import axiosInstance from '../helpers/axiosInterceptors';
+import axiosRegister from '../helpers/axiosRegister';
+import { NavigationEvents } from 'react-navigation';
+
 
 // User is taken to this component when the app is opened 
 export const SignIn = ({ navigation}) => { 
@@ -20,8 +23,18 @@ export const SignIn = ({ navigation}) => {
     // LOGIN = logs in after users enter their email and password
     // Signup = prompts users to create an account if they dont have one
     const [number, onChangeText] = React.useState(null);
-
     const { signIn } = React.useContext(AuthContext);
+    const [form, setForm] = React.useState({});
+
+    const onChange = ({name, value}) => {
+      setForm({...form, [name]:value});
+    }
+
+    const onSubmit = () => {
+      if(form.username && form.password) {
+        axiosLogin(form);
+      }
+    }
     return (
         // Formatting logo and arrow buttons
         <ScreenContainer style={StyleSheet.container}>
@@ -56,12 +69,12 @@ export const SignIn = ({ navigation}) => {
                     />
                 </View>
                 {/* Link that allows the user to reset their password */}
-                <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text>
+                {/* <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text> */}
             </View>
 
             {/* Buttons that allow the user to log in to their account and sign up*/}
             <View style={{paddingTop: hp('2%'), paddingHorizontal: wp('10%')}}>
-              <Pressable style={styles.button} onPress={() => signIn()}>
+              <Pressable style={styles.button} onPress={() => signIn()}>  
                 <Text style={styles.textStyle}>Login</Text>
               </Pressable>
               <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('1%')}} onPress={() => navigation.push('CreateAccount')}>Sign up {'>'}</Text>
@@ -72,64 +85,46 @@ export const SignIn = ({ navigation}) => {
 }
 
 // Component that allows the user to create a new account
-export const CreateAccount = () => {
+export const CreateAccount = ({navigation}) => {
     // After the user enters their first name, last name, email, and password,
     // their account is created and stored in the database
     const { signUp } = React.useContext(AuthContext);
     const [number, onChangeText] = React.useState(null);
 
-    const [first_name, setFirstName] = useState(null);
-    const [last_name, setLastName] = useState(null);
-    const [email, setEmail] = useState(null);
+    const [form, setForm] = React.useState({});
+    const [errors, setErrors] = React.useState({});
 
-    const [fNameError, setfNameError] = useState(false);
-    const [LNameError, setLNameError] = useState(false);
-    const [emailError, setEmailError] = useState(false);
-    
-    //Validation for only regex expression
-    function onlyRegex (item, expression, error) {
-      var exp = new RegExp(expression)
-      if(!exp.test(item)){
-          error(true)
-      }
-      else{
-          error(false)
-      }
+    const onChange = ({name, value}) => {
+      setForm({...form, [name]:value});
     }
-    
-    //Validation for non-empty states
-    function nonEmpty(item, error){
-      if(item === ''){
-          error(true)
+
+    const onSubmit = () => {
+      //validation
+      console.log('form: ', form);
+
+      //username validation
+      if (!form.username) {
+        setErrors((prev) => {
+          return {...prev, userName: 'Please add a username'};
+        });
       }
-      else{
-          error(false)
+      //firstname validation
+      if(!form.firstName) {
+        setErrors((prev) => {
+          return{...prev, firstName:'Please enter a first name'};
+        });
       }
-    }
-    
-    function onSubmitEntry(){
-      // var values = [degree_value, status_value, marital_value, first_name, last_name, other_status, other_degree, int_student,phone, email,
-      // university, study, grad_year, children, aid, reason];
-      // var states = [setDegreeError, setStatusError, setMaritalError, setfNameError, setLNameError, setOtherStatusError, setOtherDegreeError, setText1Error, setPhoneError, setEmailError, setUniError,
-      // setStudyError, setGradYearError, setChildrenError, setAidError, setReasonError];
-    
-      var values = [first_name, last_name, email];
-      var states = [setfNameError, setLNameError, setEmailError];
+
+      //check if every all fields are inputted
+      if(Object.values(form).length === 5 && Object.values(form).every((item) => item.trim().length > 0)) {
+        //post request to api 
+        axiosRegister(form);
+        navigation.navigate(SignIn);
+      }
       
-      //Check if none of them have been answered
-      for(var x = 0; x < values.length; x++){
-          if (values[x] === null){
-              states[x](true);
-          }
-      }
+
     }
 
-    function onSubmit(){
-      var errors = [emailError, LNameError, fNameError];
-      if(errors.every((e) => e === false)){
-        signUp();
-      }
-  }
 
     return (
         // Background images and logos
@@ -156,35 +151,43 @@ export const CreateAccount = () => {
                 {/* User inputs their first and last name when signing up for a new account*/}
                 <View style={{paddingVertical: hp('0.5%'), flexDirection: 'row'}}>
                     <TextInput
-                        style={[styles.inputNarrowLeft,{borderColor: fNameError? '#E76060': '#DADADA'}]}
-                        onChangeText={name => setFirstName({name})}
+                        style={styles.inputNarrowLeft}
+                        onChangeText={(value) => {
+                          onChange({name: 'firstName', value});
+                        }}
                         placeholder="First Name"
-                        onChange={name => nonEmpty(name.nativeEvent.text, setfNameError)}
+                        error={errors.firstName}
                     />
                     <TextInput
-                        style={[styles.inputNarrowRight,{borderColor: LNameError? '#E76060': '#DADADA'}]}
-                        onChangeText={name => setLastName({name})}
+                        style={styles.inputNarrowRight}
+                        onChangeText={(value) => {
+                          onChange({name: 'lastName', value});
+                        }}
                         placeholder="Last Name"
-                        onChange={name => nonEmpty(name.nativeEvent.text, setLNameError)}
+                        error={errors.lastName}
                     />
                 </View>
 
                 {/* User inputs their email when creating a new account */}
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
-                        style={[styles.input, {borderColor: emailError? '#E76060': '#DADADA'}]}
-                        onChangeText={name => setEmail({name})}
+                        style={styles.input}
+                        onChangeText={(value) => {
+                          onChange({name: 'email', value});
+                        }}
                         placeholder="Email"
-                        onEndEditing={name => onlyRegex(name.nativeEvent.text,'^.+@.+\..+$', setEmailError)}
+                        error={errors.email}
                     />
-                    {emailError? <Text style={{color:'#E76060'}}>Please provide a valid email address.</Text>: null}
                 </View>
                 {/* User inputs their username when creating a new account */}
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
                         style={styles.input}
-                        onChangeText={onChangeText}
+                        onChangeText={(value) => {
+                          onChange({name: 'username', value});
+                        }}
                         placeholder="Username"
+                        error={errors.username}
                     />
                 </View>
                 {/* User inputs their password when creating a new account*/}
@@ -192,14 +195,17 @@ export const CreateAccount = () => {
                     <TextInput
                         secureTextEntry={true}
                         style={styles.input}
-                        onChangeText={onChangeText}
+                        onChangeText={(value) => {
+                          onChange({name: 'password', value});
+                        }}
                         placeholder="Password"
+                        error={errors.password}
                     />
                 </View>
             </View>
             {/* Once button is clicked, the user's account is created */}
             <View style={{paddingTop: hp('2%'), paddingHorizontal: wp('10%')}}>
-              <Pressable onPressIn={() => onSubmitEntry()} onPress={() => onSubmit()} style={styles.button}>
+              <Pressable onPress={onSubmit} style={styles.button}>
                 <Text style={styles.textStyle}>JOIN NOW</Text>
               </Pressable>
             </View>
@@ -207,6 +213,7 @@ export const CreateAccount = () => {
         </ScreenContainer>
     );
 }
+//() => signUp()
 
 // User is taken to this component when they forget their password
 export const ForgotPassword = ({navigation}) => {

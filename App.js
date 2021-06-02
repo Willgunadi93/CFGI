@@ -27,6 +27,8 @@ import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screen
 // Icons used for our bottom navigation bar
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+//import axios
+import axios from 'axios'     //connects the server to the front end
 
 // Globally defining our bottom navigation bar and our system hierarchy stack
 const Stack = createStackNavigator();
@@ -89,7 +91,7 @@ function HomeStack({navigation}) {
 function JobStack() {
   return (
     <Stack.Navigator
-    // Header for Stack
+    //Header for Stack
     screenOptions={{
       headerStyle:{
         height: 90,
@@ -101,7 +103,8 @@ function JobStack() {
         right:0
       },
       headerTintColor: '#459EFF'
-    }}>
+    }}
+    >
       <Stack.Screen
         name="Jobs"
         component={JobScreen}
@@ -115,7 +118,7 @@ function JobStack() {
 function LegalStack() {
   return (
     <Stack.Navigator
-    // Header for Stack
+    //Header for Stack
     screenOptions={{
       headerStyle:{
         height: 90,
@@ -150,7 +153,7 @@ function LegalStack() {
 function FinStack() {
   return (
     <Stack.Navigator
-    // Header for Stack
+    //Header for Stack
     screenOptions={{
       headerStyle:{
         height: 90,
@@ -202,7 +205,7 @@ function DonateStack() {
         right:0
       },
       headerTintColor: '#459EFF'
-    }}>
+    }} >
       {/* Landing page */}
       <Stack.Screen 
         name="Donate"
@@ -212,7 +215,6 @@ function DonateStack() {
     </Stack.Navigator>
   )
 }
-
 
 // Export the App component, our "main"
 export default function App() {

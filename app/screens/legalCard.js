@@ -63,7 +63,7 @@ export default function LegalCard({name, languages, expertise, onPress, linkedin
            <TouchableOpacity onPress={() => setModalVisible(true)}>
             <View style={styles.content}>
                 <View style={{flexDirection:'row'}}>
-                    <Image style={{flex:0.2, height:'100%', resizeMode:"contain", alignItems: "flex-start", borderRadius:50}}source={require('../assets/img/attorneydefault.png')}/>
+                    <Image style={{flex:0.2, height:'100%', resizeMode:"contain", alignItems: "flex-start",}}source={require('../assets/img/attorneydefault.png')}/>
                     <View style={{paddingLeft:10, flex:0.8}}>
                     <Text style={{fontWeight:'bold',color:"#3F3356", paddingBottom: 6, fontSize: 16}}>{name}</Text>
                     <Text style={{color:"#3F3356"}}><Text style={{fontWeight:'bold',color:"#3F3356"}}>Expertise: </Text>{expertise.join(", ")}</Text>
