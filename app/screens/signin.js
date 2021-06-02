@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
-import { useState } from 'react';
 import {  Text, StyleSheet, Button, View, TextInput, Image, Modal, Pressable } from "react-native";
 // Contains all components, used for styling purposes
 import { ScreenContainer } from 'react-native-screens';
@@ -16,6 +15,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import axiosInstance from '../helpers/axiosInterceptors';
 import axiosRegister from '../helpers/axiosRegister';
 import { NavigationEvents } from 'react-navigation';
+
 
 // User is taken to this component when the app is opened 
 export const SignIn = ({ navigation}) => { 
@@ -69,7 +69,7 @@ export const SignIn = ({ navigation}) => {
                     />
                 </View>
                 {/* Link that allows the user to reset their password */}
-                <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text>
+                {/* <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text> */}
             </View>
 
             {/* Buttons that allow the user to log in to their account and sign up*/}
@@ -125,58 +125,6 @@ export const CreateAccount = ({navigation}) => {
 
     }
 
-    // const [first_name, setFirstName] = useState(null);
-    // const [last_name, setLastName] = useState(null);
-    // const [email, setEmail] = useState(null);
-
-    // const [fNameError, setfNameError] = useState(false);
-    // const [LNameError, setLNameError] = useState(false);
-    // const [emailError, setEmailError] = useState(false);
-    
-    // //Validation for only regex expression
-    // function onlyRegex (item, expression, error) {
-    //   var exp = new RegExp(expression)
-    //   if(!exp.test(item)){
-    //       error(true)
-    //   }
-    //   else{
-    //       error(false)
-    //   }
-    // }
-    
-    // //Validation for non-empty states
-    // function nonEmpty(item, error){
-    //   if(item === ''){
-    //       error(true)
-    //   }
-    //   else{
-    //       error(false)
-    //   }
-    // }
-    
-    // function onSubmitEntry(){
-    //   // var values = [degree_value, status_value, marital_value, first_name, last_name, other_status, other_degree, int_student,phone, email,
-    //   // university, study, grad_year, children, aid, reason];
-    //   // var states = [setDegreeError, setStatusError, setMaritalError, setfNameError, setLNameError, setOtherStatusError, setOtherDegreeError, setText1Error, setPhoneError, setEmailError, setUniError,
-    //   // setStudyError, setGradYearError, setChildrenError, setAidError, setReasonError];
-    
-    //   var values = [first_name, last_name, email];
-    //   var states = [setfNameError, setLNameError, setEmailError];
-      
-    //   //Check if none of them have been answered
-    //   for(var x = 0; x < values.length; x++){
-    //       if (values[x] === null){
-    //           states[x](true);
-    //       }
-    //   }
-    // }
-
-  //   function onSubmit(){
-  //     var errors = [emailError, LNameError, fNameError];
-  //     if(errors.every((e) => e === false)){
-  //       signUp();
-  //     }
-  // }
 
     return (
         // Background images and logos
@@ -217,28 +165,19 @@ export const CreateAccount = ({navigation}) => {
                         }}
                         placeholder="Last Name"
                         error={errors.lastName}
-                    //     style={[styles.inputNarrowLeft,{borderColor: fNameError? '#E76060': '#DADADA'}]}
-                    //     onChangeText={name => setFirstName({name})}
-                    //     placeholder="First Name"
-                    //     onChange={name => nonEmpty(name.nativeEvent.text, setfNameError)}
-                    // />
-                    // <TextInput
-                    //     style={[styles.inputNarrowRight,{borderColor: LNameError? '#E76060': '#DADADA'}]}
-                    //     onChangeText={name => setLastName({name})}
-                    //     placeholder="Last Name"
-                    //     onChange={name => nonEmpty(name.nativeEvent.text, setLNameError)}
                     />
                 </View>
 
                 {/* User inputs their email when creating a new account */}
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
-                        style={[styles.input]} //, {borderColor: emailError? '#E76060': '#DADADA'}]}
-                        onChangeText={name => setEmail({name})}
+                        style={styles.input}
+                        onChangeText={(value) => {
+                          onChange({name: 'email', value});
+                        }}
                         placeholder="Email"
-                        // onEndEditing={name => onlyRegex(name.nativeEvent.text,'^.+@.+\..+$', setEmailError)}
+                        error={errors.email}
                     />
-                    {/* {emailError? <Text style={{color:'#E76060'}}>Please provide a valid email address.</Text>: null} */}
                 </View>
                 {/* User inputs their username when creating a new account */}
                 <View style={{paddingVertical: hp('0.5%')}}>
@@ -266,7 +205,7 @@ export const CreateAccount = ({navigation}) => {
             </View>
             {/* Once button is clicked, the user's account is created */}
             <View style={{paddingTop: hp('2%'), paddingHorizontal: wp('10%')}}>
-              <Pressable onPress={() => onSubmit()} style={styles.button}>
+              <Pressable onPress={onSubmit} style={styles.button}>
                 <Text style={styles.textStyle}>JOIN NOW</Text>
               </Pressable>
             </View>

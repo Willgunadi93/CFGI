@@ -180,6 +180,7 @@ export const AppointmentScreen = ({navigation}) => {
         <View style={{paddingHorizontal: 30}}>
         <TouchableOpacity onPress={() => resetAll()}><Text style={{color: "#3C65CC", alignSelf:'flex-end', paddingRight: 5, fontStyle:'italic', textDecorationLine: "underline"}}>Reset All</Text></TouchableOpacity>
         <Text style={{fontWeight:"bold", fontSize:16, marginTop:25, color: "#3F3356"}}>EXPERTISE TYPE:</Text>
+        
         <DropDownPicker
             onOpen={onExpertOpen}  
             open={expert_open}
@@ -195,6 +196,7 @@ export const AppointmentScreen = ({navigation}) => {
             maxHeight = {150}
             labelStyle={{color:'#3F3356'}}
             dropDownContainerStyle={{
+                zIndex : 1,
                 borderColor: "#4C67F6",
             }}
             style={{
@@ -202,7 +204,8 @@ export const AppointmentScreen = ({navigation}) => {
                 marginBottom:15,
                 zIndex: 1
             }}
-            containerStyle={{marginTop:10}}/> 
+            containerStyle={{marginTop:10, zIndex: 1}}/> 
+            
         <Text style={{fontWeight:"bold", fontSize:16, color: "#3F3356"}}>LANGUAGE:</Text>
              <DropDownPicker
             onOpen={onLangOpen}
@@ -224,9 +227,9 @@ export const AppointmentScreen = ({navigation}) => {
             style={{
                 borderColor: "#4C67F6",
                 marginBottom:15,
-                zIndex: 1
+                zIndex: -1
             }}
-            containerStyle={{marginTop:10, marginBottom:10}}
+            containerStyle={{marginTop:10, marginBottom:10, zIndex: -1}}
         /></View>
         
         <Divider style={{ height:1.5, backgroundColor: '#E6E6E6', marginTop: 20, borderRadius:10, alignSelf:"center", width: "85%" }} />

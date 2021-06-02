@@ -43,26 +43,26 @@ function HomeStack({navigation}) {
   return (
     <Stack.Navigator
     //Header for Stack
-    // screenOptions={{
-    //   headerStyle:{
-    //     height: 90,
-    //     backgroundColor:"#F7F5F9"
-    //   },
-    //   headerTitle: () => <CFGIHeader/>,
-    //   headerTitleContainerStyle:{
-    //     left:0,
-    //     right:0
-    //   },
-    //   headerTintColor: '#459EFF',
-    //   headerLeft: () => 
-    //   (<TouchableOpacity onPress={() => navigation.navigate("About")}>
-    //     <Entypo name="news" size={26} color="black" style={{paddingLeft:15}} />
-    //   </TouchableOpacity>),
-    //   headerRight: () => 
-    //   (<TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-    //     <Ionicons name="md-person-outline" size={26} color="black" style={{paddingRight:15}} onPress={() => navigation.navigate("Profile")} />
-    //   </TouchableOpacity>)
-    // }}
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF',
+      headerLeft: () => 
+      (<TouchableOpacity onPress={() => navigation.navigate("About")}>
+        <Entypo name="news" size={26} color="black" style={{paddingLeft:15}} />
+      </TouchableOpacity>),
+      headerRight: () => 
+      (<TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+        <Ionicons name="md-person-outline" size={26} color="black" style={{paddingRight:15}} onPress={() => navigation.navigate("Profile")} />
+      </TouchableOpacity>)
+    }}
     >
       <Stack.Screen
         name="Home"
@@ -86,19 +86,19 @@ function HomeStack({navigation}) {
 function JobStack() {
   return (
     <Stack.Navigator
-    // Header for Stack
-    // screenOptions={{
-    //   headerStyle:{
-    //     height: 90,
-    //     backgroundColor:"#F7F5F9"
-    //   },
-    //   headerTitle: () => <CFGIHeader/>,
-    //   headerTitleContainerStyle:{
-    //     left:0,
-    //     right:0
-    //   },
-    //   headerTintColor: '#459EFF'
-    // }}
+    //Header for Stack
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF'
+    }}
     >
       <Stack.Screen
         name="Jobs"
@@ -113,20 +113,19 @@ function JobStack() {
 function LegalStack() {
   return (
     <Stack.Navigator
-    // Header for Stack
-    // screenOptions={{
-    //   headerStyle:{
-    //     height: 90,
-    //     backgroundColor:"#F7F5F9"
-    //   },
-    //   headerTitle: () => <CFGIHeader/>,
-    //   headerTitleContainerStyle:{
-    //     left:0,
-    //     right:0
-    //   },
-    //   headerTintColor: '#459EFF'
-    // }}
-    >
+    //Header for Stack
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF'
+    }}>
       {/* Landing page */}
       <Stack.Screen
         name="Legal"
@@ -149,20 +148,19 @@ function LegalStack() {
 function FinStack() {
   return (
     <Stack.Navigator
-    // Header for Stack
-    // screenOptions={{
-    //   headerStyle:{
-    //     height: 90,
-    //     backgroundColor:"#F7F5F9"
-    //   },
-    //   headerTitle: () => <CFGIHeader/>,
-    //   headerTitleContainerStyle:{
-    //     left:0,
-    //     right:0
-    //   },
-    //   headerTintColor: '#459EFF'
-    // }}
-    >
+    //Header for Stack
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF'
+    }}>
       {/* Landing page */}
       <Stack.Screen 
         name="Financial"
@@ -191,19 +189,18 @@ function DonateStack() {
   return (
     <Stack.Navigator
     // Header for Stack
-    // screenOptions={{
-    //   headerStyle:{
-    //     height: 90,
-    //     backgroundColor:"#F7F5F9"
-    //   },
-    //   headerTitle: () => <CFGIHeader/>,
-    //   headerTitleContainerStyle:{
-    //     left:0,
-    //     right:0
-    //   },
-    //   headerTintColor: '#459EFF'
-    // }}
-    >
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF'
+    }} >
       {/* Landing page */}
       <Stack.Screen 
         name="Donate"
