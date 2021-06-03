@@ -9,7 +9,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 // All of our screens, importing them here so our navigation stack is aware of the system hierarchy
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
-import {AboutScreen} from './app/screens/about.js';
 import { JobScreen, LegalScreen, DonateScreen} from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
@@ -27,7 +26,6 @@ import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screen
 // Icons used for our bottom navigation bar
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-//import axios
 import axios from 'axios'     //connects the server to the front end
 
 // Globally defining our bottom navigation bar and our system hierarchy stack
@@ -45,7 +43,7 @@ function HomeStack({navigation}) {
     //Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -54,10 +52,6 @@ function HomeStack({navigation}) {
         right:0
       },
       headerTintColor: '#459EFF',
-      headerLeft: () => 
-      (<TouchableOpacity onPress={() => navigation.navigate("About")}>
-        <Entypo name="news" size={26} color="black" style={{paddingLeft:15}} />
-      </TouchableOpacity>),
       headerRight: () => 
       (<TouchableOpacity onPress={() => navigation.navigate("Profile")}>
         <Ionicons name="md-person-outline" size={26} color="black" style={{paddingRight:15}} onPress={() => navigation.navigate("Profile")} />
@@ -72,11 +66,6 @@ function HomeStack({navigation}) {
       <Stack.Screen 
         name="Profile"
         component={ProfileScreen}
-      />
-      {/* About */}
-      <Stack.Screen
-        name="About"
-        component={AboutScreen}
       />
       {/* retun to signIn */}
       <Stack.Screen 
@@ -94,7 +83,7 @@ function JobStack() {
     //Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -121,7 +110,7 @@ function LegalStack() {
     //Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -132,10 +121,10 @@ function LegalStack() {
       headerTintColor: '#459EFF'
     }}>
       {/* Landing page */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Legal"
         component={LegalScreen}
-      />
+      /> */}
       <Stack.Screen
         name="AppointDocs"
         component={AppointmentScreen}
@@ -156,7 +145,7 @@ function FinStack() {
     //Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -196,7 +185,7 @@ function DonateStack() {
     // Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -303,11 +292,18 @@ export default function App() {
      ) : (
       //  If user isn't accepted by the system, they are directed to the stack of 
       // sign up/log in options
-      <Stack.Navigator >
-        <Stack.Screen name="SignIn" component={SignIn}></Stack.Screen>
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen> 
-        <Stack.Screen name="ResetPassword" component={ResetPassword}></Stack.Screen> 
-        <Stack.Screen name="CreateAccount" component={CreateAccount}></Stack.Screen>
+      <Stack.Navigator 
+      screenOptions={{
+        headerStyle:{
+          height: 85,
+          backgroundColor:"#F7F5F9"
+        },
+        headerTintColor: '#459EFF'
+      }}>
+        <Stack.Screen name="SignIn" component={SignIn} options={{headerShown:false}}></Stack.Screen>
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{headerTitle:null}}></Stack.Screen> 
+        <Stack.Screen name="ResetPassword" component={ResetPassword} options={{headerTitle:null}}></Stack.Screen> 
+        <Stack.Screen name="CreateAccount" component={CreateAccount} options={{headerTitle:null}}></Stack.Screen>
     </Stack.Navigator>
      )}
    </NavigationContainer>

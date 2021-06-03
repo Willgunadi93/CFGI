@@ -39,7 +39,7 @@ export const SignIn = ({ navigation}) => {
         // Formatting logo and arrow buttons
         <ScreenContainer style={StyleSheet.container}>
           <ScrollView>
-            <View style={styles.logoView}>
+            <View style={[styles.logoView, ({paddingTop: hp('20%')})]}>
                 <View style={{paddingBottom: hp('8%'), alignItems: 'center'}}>
                     <Image style={{marginTop: hp('8%'), marginBottom: hp('2%')}} source = {require('../assets/img/arrow-left.png')} />
                     <Image style={{marginLeft: -hp('1%')}}source = {require('../assets/img/arrow-right.png')} />
@@ -472,7 +472,7 @@ const styles = StyleSheet.create({
     //   Formatting the logo
       logoView: {
           alignItems: 'center',
-          paddingTop: hp('10%')
+          paddingTop: hp('7%')
       },
 
     //  Styling for logo 

@@ -176,7 +176,7 @@ export const AppointmentScreen = ({navigation}) => {
           <Text style={styles.attorneyTitle}>Find A CFGI Attorney For A Consultation</Text>
         </View>
          
-        <ImageBackground source={require('../assets/img/legalwave.png')} style={{resizeMode:'cover'}} imageStyle={{opacity:0.5}}>
+        <ImageBackground source={require('../assets/img/legalwave.png')} style={{resizeMode:'cover', zIndex:-1}} imageStyle={{opacity:0.5}}>
         <View style={{paddingHorizontal: 30}}>
         <TouchableOpacity onPress={() => resetAll()}><Text style={{color: "#3C65CC", alignSelf:'flex-end', paddingRight: 5, fontStyle:'italic', textDecorationLine: "underline"}}>Reset All</Text></TouchableOpacity>
         <Text style={{fontWeight:"bold", fontSize:16, marginTop:25, color: "#3F3356"}}>EXPERTISE TYPE:</Text>
@@ -195,16 +195,20 @@ export const AppointmentScreen = ({navigation}) => {
             placeholderStyle={{fontStyle:"italic"}}
             maxHeight = {150}
             labelStyle={{color:'#3F3356'}}
+            zIndex={3000}
+            zIndexInverse={1000}
             dropDownContainerStyle={{
-                zIndex : 1,
                 borderColor: "#4C67F6",
+                zIndex:5
             }}
             style={{
                 borderColor: "#4C67F6",
                 marginBottom:15,
-                zIndex: 1
+                zIndex:5,
+                
             }}
-            containerStyle={{marginTop:10, zIndex: 1}}/> 
+            containerStyle={{marginTop:10}}
+            />
             
         <Text style={{fontWeight:"bold", fontSize:16, color: "#3F3356"}}>LANGUAGE:</Text>
              <DropDownPicker
@@ -221,18 +225,21 @@ export const AppointmentScreen = ({navigation}) => {
             placeholderStyle={{fontStyle:"italic"}}
             maxHeight = {150}
             labelStyle={{color:'#3F3356'}}
+            zIndex={2000}
+            zIndexInverse={2000}
             dropDownContainerStyle={{
-                borderColor: "#4C67F6"
+                borderColor: "#4C67F6",
+                zIndex:1
             }}
             style={{
                 borderColor: "#4C67F6",
                 marginBottom:15,
-                zIndex: -1
+                zIndex:1
             }}
-            containerStyle={{marginTop:10, marginBottom:10, zIndex: -1}}
+            containerStyle={{marginTop:10, marginBottom:10}}
         /></View>
         
-        <Divider style={{ height:1.5, backgroundColor: '#E6E6E6', marginTop: 20, borderRadius:10, alignSelf:"center", width: "85%" }} />
+        <Divider style={{ height:1.5, backgroundColor: '#E6E6E6', marginTop: 20, borderRadius:10, alignSelf:"center", width: "85%", zIndex:-1}} />
 
         <View style={{padding:30, flexDirection:'row', paddingBottom:0}}>
           <Text style={styles.legalResults}> {cards.length} Results</Text>

@@ -1,69 +1,158 @@
-
-import * as React from 'react';
-import { View, Text,  StyleSheet, ScrollView,  TouchableOpacity,Image } from "react-native";
+//home
+import React, { useState, useCallback, useRef } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from "react-native";
 import { AuthContext } from '../screens/context';
+import { Divider } from "react-native-elements";
 import { ScreenContainer } from 'react-native-screens';
+// importing and using `Carousel`
+import Carousel from 'react-native-snap-carousel';
 import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
    } from 'react-native-responsive-screen';
 
-/*
-This is the home page. It will contain cards for Saved Financial Forms in the future.
- It also links users to the CFGI News and User Profile page.
-*/
+/* This is the home page that contains CFGI news and about information.
+ */
 
+const exampleItems = [
+    {
+        img: <Image styles={{
+            alignSelf:"center", top: 100,
+          }} source={require("../assets/img/builtInAmerica.png")}/>,
+        
+    },
+    {
+        img: <Image styles={{
+            alignSelf:"center", top: 100,
+          }} source={require("../assets/img/immigrationStories.png")}/>,
+    },
+  ];
+ 
+ export const HomeScreen = ({ navigation, route}) => { 
+    
+    const [carouselItems, setCarouselItems] = useState(exampleItems);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const ref = useRef(null);
 
- export const HomeScreen = ({navigation}) => { 
+    const renderItem = useCallback(({ item, index }) => (
+        <View  
+        >
+          <View>{item.img}</View>
+        </View>
+      ), []);
     return (
+        <ScrollView>
         <ScreenContainer style={styles.container}>
-            {/* cards for saved financial forms */}
+        
             <View style={styles.inCol}>
-            <Text style={styles.welcome_Txt}>WELCOME TO</Text>
-            <Image style={styles.logo} source={require("../assets/img/logo.png")}/>
+                <Text style={ styles.title }>WHAT'S NEW</Text>
+            </View>
+            
+            <View style={{ top: 20, flexDirection:'row', justifyContent: 'center', }}>
+            
+            <Carousel  style={{justifyContent: 'center'}}
+            layout={"default"}
+            ref={ref}
+            data={carouselItems}
+            sliderWidth={300}
+            itemHeight={460}
+            itemWidth={350}
+            renderItem={renderItem}
+            onSnapToItem={(index) => setActiveIndex(index)}
+            firstItem={0}
+            />
+        </View>
 
-                <View style={styles.section2}>
-                    <Text style={styles.section2_Txt}>New feature coming soon!</Text>
-                    <Text style={styles.h1}>Saved Financial Forms</Text>
-                    <Text style={styles.subh1}>Financial forms not yet submitted</Text>
-                </View>
-            </View> 
+            <View style={{top: 100}}>
+                <Text style={styles.h1}>ABOUT US</Text>
+                <Image style={styles.yellowLine} source={require("../assets/img/yellowLine.png")}/>
+                <Text style={styles.h2}>What We Do</Text>
+                <Text style={styles.mainText}>International students are struggling{"\n"}{"\n"}
+                            with all the recent uncertainty around{"\n"}{"\n"}policy changes 
+                            and the threat of{"\n"}{"\n"}deportation, many don’t know where to{"\n"}turn.{"\n"}{"\n"}{"\n"}
+                            We are a non-profit organization that{"\n"}{"\n"}provides a list of companies that hire{"\n"}{"\n"}
+                            foreign nationals. We offer qualifying{"\n"}{"\n"}students need-based financial{"\n"}{"\n"}assistance,
+                            an online networking{"\n"}{"\n"}community in addition to volunteering{"\n"}{"\n"}opportunities to gain
+                            work experience.*</Text>
+            </View>
+
+            <View style={{top:150}}>
+                <Text style={styles.h1}>MEET</Text>
+                <Image style={styles.yellowLine} source={require("../assets/img/yellowLine.png")}/>
+                <Text style={styles.h2}>The Founders</Text>
+                <Image style={styles.fullLenImg} source={require("../assets/img/founders.png")}/>
+            </View>
+           
         </ScreenContainer>
+        <View style={{padding: 80}}></View>
+        </ScrollView> 
     );
   }
 
-  const styles = StyleSheet.create({   
-    inCol: {
-        flexDirection: 'column',
+  const styles = StyleSheet.create({ 
+    title:{
+        top: 20, 
+        fontSize: 26, 
+        textAlign: 'left', 
+        right: 110, 
+        color: "#3F3356",
+        fontWeight:'bold',
+        paddingBottom:20,
+    },
+    
+    container: {
+        flex: 1,
+        backgroundColor: '#F7F5F9',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#F7F5F9',
-      },
-    welcome_Txt: {
-        color: "#3F3356",fontSize: 36, textAlign: 'center', fontWeight: 'bold',
+      },       
+    header: {
+      top: 50,
+      left: 35,
+      flexDirection: 'column',
     },
 
     h1: {
-         fontSize: 22, fontWeight: 'bold',  
-    },
-    subh1: {
-        fontSize: 18, left: 5, padding: 5,   
-    },
-    section2: {
-        top: 130, paddingEnd: 20,  
-        backgroundColor: '#F7F5F9',
-    },
-    section2_Txt: {
-        fontSize: 26, right:30,fontWeight: 'bold', color: "#3F3356",paddingBottom: hp('1%'),
-       },
-    logo:{
-        width: 200, height: 200, top: 35, resizeMode:"contain",  
+        color: "#3F3356", fontSize: 36, textAlign: 'right', right: 15,
     },
 
-    container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#F7F5F9',
+    h2: {
+        color: "#3F3356",top: 5, fontSize: 36, textAlign: 'right', right: 15, paddingBottom:20,
     },
-})
+
+    yellowLine: {
+        width: 210, height: 20, left: 210,
+    },
+    backbtn: {
+        top: 70, left: 20, width: 50, height: 50,
+    },
+
+    fullLenImg: {
+        width: 410, height: 460,
+    },
+
+    inCol: {
+        top: 5,
+        flexDirection: 'column',
+        flex: 1,
+        backgroundColor: '#F7F5F9',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+
+    cardLayout: {
+        justifyContent: 'flex-start',
+    },
+
+    mainText: { 
+        left:20,
+        top: 10,
+        fontSize: 20,
+        paddingLeft: 20,
+        paddingRight: 50,
+        paddingTop: 30, 
+        paddingBottom: 30
+    }, 
+});
+
+
