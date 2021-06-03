@@ -26,7 +26,6 @@ import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screen
 // Icons used for our bottom navigation bar
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-//import axios
 import axios from 'axios'     //connects the server to the front end
 
 // Globally defining our bottom navigation bar and our system hierarchy stack

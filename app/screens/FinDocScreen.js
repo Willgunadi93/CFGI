@@ -134,11 +134,11 @@ export const FinAppScreen = ({navigation}) => {
     <ScrollView>
         <View style={styles.container}>
             {/* Back button that allows the user to go back to the landing screen */}
-            <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
+            {/* <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
                 <View style={styles.backButtonContainer}>
                     <Ionicons name="arrow-back-circle" size={40} color="#4C67F6"/>
                 </View>
-            </TouchableHighlight>
+            </TouchableHighlight> */}
             <View style={{}}>
             <Text style={{paddingTop: 30, paddingBottom:20, fontWeight:'bold', fontSize:24, textAlign:'center', color: "#3F3356"}}>EMERGENCY FINANCIAL AID APPLICATION</Text>
             <Text style={[styles.mainText, ({textAlign:'center', paddingBottom: 30})]}>Please read through this document thoroughly and answer all questions carefully and accurately. By filling it out, you agree to the <Text style={{ color: 'blue', textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>Terms and Conditions</Text>.</Text>
@@ -215,7 +215,7 @@ export const FinAppScreen = ({navigation}) => {
                     <TextInput
                         style = {[styles.shortAnswerInput, {borderColor: emailError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setEmail({name})}
-                        onEndEditing={name => onlyRegex(name.nativeEvent.text,'^.+@.+\..+$', setEmailError)}
+                        onEndEditing={name => onlyRegex(name.nativeEvent.text,'^.+@.+\\..+$', setEmailError)}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -237,7 +237,7 @@ export const FinAppScreen = ({navigation}) => {
                     <TextInput
                         style = {[styles.shortAnswerInput, {borderColor: phoneError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setPhone({name})}
-                        onChange={name => onlyRegex(name.nativeEvent.text,"^[0-9]{18}$", setPhoneError)}
+                        onChange={name => onlyRegex(name.nativeEvent.text,"^(\\+)?[0-9]{9,18}$", setPhoneError)}
                         // onChangeText={onChangeText}
                         // onChangeText={(text) => {this.setState({text});}}
                         // value={this.state.text}
@@ -250,7 +250,7 @@ export const FinAppScreen = ({navigation}) => {
                         //   }}
                     />
                     {phoneError? <Text style={{color:'#E76060'}}>Please provide a valid phone number, 
-                    all numbers together with no parantheses ("()"), no dashes ("-"), and no pluses ("+"). </Text>: null}
+                    all numbers together with no parantheses ("()") and no dashes ("-"). Pluses ("+") are allowed. </Text>: null}
                 </View>
             </View>
 
