@@ -54,7 +54,7 @@ export const JobScreen = () => {   //Jobs page component
     }
     // Check for the Phone Number TextInput
     if (phoneError) {
-      Alert.alert('Invalid Input', 'Please provide a valid phone number,\nall numbers together with no parantheses ("()"), no dashes ("-"), and no pluses ("+").')
+      Alert.alert('Invalid Input', 'Please provide a valid phone number,\nall numbers together with no parantheses ("()") and no dashes ("-"). Pluses ("+") are allowed.')
       return;
     }
     // Check for the Company Name TextInput
@@ -122,14 +122,14 @@ export const JobScreen = () => {   //Jobs page component
             <TextInput //placeholder="Email Address"
             onChangeText={name => setEmail(name)}
             style={styles.jobInput} 
-            onEndEditing={name => onlyRegex(name.nativeEvent.text,"^.+@.+\..+$", setEmailError)}
+            onEndEditing={name => onlyRegex(name.nativeEvent.text,'^.+@.+\\..+$', setEmailError)}
             />
           </View>
           <Text style={styles.header}>Phone Number (optional)</Text>
           <View style={{paddingVertical: hp('1.5%')}}>
             <TextInput style={styles.jobInput} //placeholder="Phone Number (optional)"
             onChangeText={name => setPhone(name)}
-            onEndEditing={name => optional_phone(name.nativeEvent.text, "^[0-9]{10}$", setPhoneError)}
+            onEndEditing={name => optional_phone(name.nativeEvent.text, "^(\\+)?[0-9]{9,18}$", setPhoneError)}
             />
           </View>
           <Text style={styles.header}>Company Name</Text>
@@ -237,7 +237,7 @@ export const JobScreen = () => {   //Jobs page component
 
 
   
-  export const DonateScreen = () => {   //Jobs page component
+  export const DonateScreen = () => {   //Donate page component
     return (
       <View style={{paddingTop: "5%", paddingHorizontal: "5%", backgroundColor: '#F7F5F9'}}>
         <View style={{paddingTop: "5%"}}>
