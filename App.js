@@ -9,7 +9,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 // All of our screens, importing them here so our navigation stack is aware of the system hierarchy
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
-import {AboutScreen} from './app/screens/about.js';
 import { JobScreen, LegalScreen, DonateScreen} from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
@@ -54,10 +53,6 @@ function HomeStack({navigation}) {
         right:0
       },
       headerTintColor: '#459EFF',
-      headerLeft: () => 
-      (<TouchableOpacity onPress={() => navigation.navigate("About")}>
-        <Entypo name="news" size={26} color="black" style={{paddingLeft:15}} />
-      </TouchableOpacity>),
       headerRight: () => 
       (<TouchableOpacity onPress={() => navigation.navigate("Profile")}>
         <Ionicons name="md-person-outline" size={26} color="black" style={{paddingRight:15}} onPress={() => navigation.navigate("Profile")} />
@@ -72,11 +67,6 @@ function HomeStack({navigation}) {
       <Stack.Screen 
         name="Profile"
         component={ProfileScreen}
-      />
-      {/* About */}
-      <Stack.Screen
-        name="About"
-        component={AboutScreen}
       />
       {/* retun to signIn */}
       <Stack.Screen 
