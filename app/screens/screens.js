@@ -54,7 +54,7 @@ export const JobScreen = () => {   //Jobs page component
     }
     // Check for the Phone Number TextInput
     if (phoneError) {
-      Alert.alert('Invalid Input', 'Please provide a valid phone number,\nall numbers together with no parantheses ("()") and no dashes ("-"). Pluses ("+") are allowed.')
+      Alert.alert('Invalid Input', 'Please provide a valid phone number,\nall numbers together with no parantheses ("()"), no dashes ("-"), and no spaces (" "). \nPluses ("+") are allowed.')
       return;
     }
     // Check for the Company Name TextInput
