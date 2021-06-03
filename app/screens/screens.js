@@ -40,22 +40,22 @@ export const JobScreen = () => {   //Jobs page component
           the right candidates. </Text>
         <Text style={{fontSize: 14, fontWeight:'bold', color: "#000000", lineHeight: 14, paddingBottom: hp('0%')}}>
           Want to be on our partner list?{'\n'}</Text>
-        <Text style={{fontSize: 14, color: '#000000', fontWeight:'bold',paddingBottom: hp('2%')}}>Please sign up below, we will contact you soon.
+        <Text style={{fontSize: 14, color: '#000000', fontWeight:'bold',paddingBottom: hp('2.8%')}}>Please sign up below, we will contact you soon.
           </Text>
         
-          <View style={{paddingVertical: hp('1%')}}>
+          <View style={{paddingVertical: hp('1.5%')}}>
             <TextInput style={styles.jobInput} placeholder="First Name"/>
           </View>
-          <View style={{paddingVertical: hp('1%')}}>
+          <View style={{paddingVertical: hp('1.5%')}}>
             <TextInput style={styles.jobInput} placeholder="Last Name"/>
           </View>
-          <View style={{paddingVertical: hp('1%')}}>
+          <View style={{paddingVertical: hp('1.5%')}}>
             <TextInput style={styles.jobInput} placeholder="Email Address"/>
           </View>
-          <View style={{paddingVertical: hp('1%')}}>
+          <View style={{paddingVertical: hp('1.5%')}}>
             <TextInput style={styles.jobInput} placeholder="Phone Number (optional)"/>
           </View>
-          <View style={{paddingVertical: hp('1%')}}>
+          <View style={{paddingVertical: hp('1.5%')}}>
             <TextInput style={styles.jobInput} placeholder="Company Name"/>
           </View>
         </View>
@@ -78,31 +78,59 @@ export const JobScreen = () => {   //Jobs page component
             placeholder="  Please check back soon!"/> 
           </View> */}
 
-      <View style={{height: hp('0%'), alignContent: 'center', top: hp('-5.8%')}}>
-        <TouchableHighlight onPress={() => console.log("Submit successfully.")} style={styles.jobButton} activeOpacity={1} underlayColor="#0A30F6">
+      <View style={{alignContent: 'center', paddingLeft: wp('32%'), marginTop: hp('5%')}}>
+      {/*height: hp('0%'), alignContent: 'center', top: hp('-5.8%')*/}
+        <TouchableOpacity onPress={() => console.log("Submit successfully.")} style={styles.jobButton} underlayColor="#0A30F6">
             <Text style={styles.jobTextStyle}>Submit</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
 
-      <View style={{width: hp('15%'), height: hp('6%') ,top: hp('16.5%'), left: hp('3.5%')}}> 
+      <View style={{width: hp('15%'), height: hp('6%') ,top: hp('10%'), left: hp('3.5%')}}> 
         <Text style={{fontSize: 16, color: "#000000", fontWeight: 'bold'}}>Results</Text>
       </View>
 
-      <View style={{top: hp('13%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
+      <View style={{top: hp('7%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
       <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
         <Text style={styles.positionCategory} >Job Category </Text>
           <Text style={styles.positionTitle} >Potential Job Posting</Text>
           <Text style={styles.positionLocation} >City, State Code</Text>
-          <Text style={styles.postTime} >Posted XX minnutes ago </Text>
+          <Text style={styles.postTime} >Posted 52 minnutes ago </Text>
       </Card></View>
       
-      <View style={{padding: 70}}></View>
+      <View style={{padding: 40}}></View>
       </View>
       </ScrollView>
     );
   }
 
-  
+   //Job Page Comments Function: To Be Implemented
+
+  // <View style={{top: hp('15%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
+  //       <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+  //         <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+  //           <Text style={styles.positionCategory} >UI/UX Design </Text>
+  //           <Text style={styles.positionTitle} >SaaS Homepage redesign and onboarding updates </Text>
+  //           <Text style={styles.positionLocation} >Albany, NY </Text>
+  //           <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
+  //         </Card></TouchableOpacity>
+          
+  //         <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+  //         <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+  //           <Text style={styles.positionCategory} >Information Technology </Text>
+  //           <Text style={styles.positionTitle} >Web/app designer required to create web apps </Text>
+  //           <Text style={styles.positionLocation} >Blackwood, WA </Text>
+  //           <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
+  //         </Card></TouchableOpacity>
+
+  //         <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+  //         <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+  //           <Text style={styles.positionCategory} >Technology </Text>
+  //           <Text style={styles.positionTitle} >Adobe Systems Careers - Performance Media, Analyst </Text>
+  //           <Text style={styles.positionLocation} >Santa Ana, CA </Text>
+  //           <Text style={styles.postTime} >Posted 24 days ago </Text>
+  //         </Card></TouchableOpacity>
+  //     </View>
+
   
    export const CalendlyScreen = () => {
      return (
@@ -187,9 +215,8 @@ export const JobScreen = () => {   //Jobs page component
     jobButton: {
       borderRadius: 10,
       width: hp('17%'),
-      height: hp('4.6%'),
-      left: 110,
-      top: 80,
+      height: hp('4.8%'),
+      alignContent: "center",
       backgroundColor: "#4C67F6"
     },
 
@@ -261,13 +288,13 @@ export const JobScreen = () => {   //Jobs page component
       height: hp("6%"),
       width: hp('35%'),
       alignSelf: 'center',
-      padding: hp('2%'),
+      padding: hp('1.5%'),
       borderWidth: 1,
       borderRadius: 10,
       backgroundColor: 'white',
       borderColor: '#4C67F6',
       fontStyle: 'italic',
-      fontSize: 15,
+      fontSize: 16,
     },
 
     jobTitle: {
