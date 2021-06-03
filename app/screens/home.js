@@ -50,7 +50,7 @@ const exampleItems = [
             
             <View style={{ top: 20, flexDirection:'row', justifyContent: 'center', }}>
             
-            <Carousel  style={{justifyContent: 'center',}}
+            <Carousel  style={{justifyContent: 'center'}}
             layout={"default"}
             ref={ref}
             data={carouselItems}
@@ -63,7 +63,7 @@ const exampleItems = [
             />
         </View>
 
-            <View style={{top: 100, justifyContent: 'right'}}>
+            <View style={{top: 100}}>
                 <Text style={styles.h1}>ABOUT US</Text>
                 <Image style={styles.yellowLine} source={require("../assets/img/yellowLine.png")}/>
                 <Text style={styles.h2}>What We Do</Text>
@@ -76,7 +76,7 @@ const exampleItems = [
                             work experience.*</Text>
             </View>
 
-            <View style={{top:150, justifyContent: 'right'}}>
+            <View style={{top:150}}>
                 <Text style={styles.h1}>MEET</Text>
                 <Image style={styles.yellowLine} source={require("../assets/img/yellowLine.png")}/>
                 <Text style={styles.h2}>The Founders</Text>
