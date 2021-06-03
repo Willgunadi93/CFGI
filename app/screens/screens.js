@@ -216,24 +216,24 @@ export const JobScreen = () => {   //Jobs page component
   //    );
   //  }
 
-  export const LegalScreen = ({navigation}) => {   //Jobs page component
-    return (
-      <View style={styles.legalContainer}>
-      {/* <Image style={{width:'50%', height:"15%", resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/> */}
-      <View style={{paddingBottom: 30, paddingTop:30}}>
-          <Text style={styles.legalTitle}>Legal Services</Text>
-          <Text style={{fontSize:18}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
-      </View>
-      <View style={styles.body}>
-          <LegalButton text='View Appointment' onPress={() => console.log("Haven't added page.")} icon='calendar' />
-          <LegalButton text="Schedule with Attorneys" onPress={() => navigation.navigate('AppointDocs')} icon='calendar-check' />
-          {/* <LegalButton text="Frequently Asked Questions" onPress={() => console.log("Haven't added page.")} icon='chat' />
-          <LegalButton text="Resource Library" onPress={() => console.log("Haven't added page.")} icon='book-reader'/> */}
-      </View>
-    </View>
+  // export const LegalScreen = ({navigation}) => {   //Jobs page component
+  //   return (
+  //     <View style={styles.legalContainer}>
+  //     {/* <Image style={{width:'50%', height:"15%", resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/> */}
+  //     <View style={{paddingBottom: 30, paddingTop:30}}>
+  //         <Text style={styles.legalTitle}>Legal Services</Text>
+  //         <Text style={{fontSize:18}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
+  //     </View>
+  //     <View style={styles.body}>
+  //         <LegalButton text='View Appointment' onPress={() => console.log("Haven't added page.")} icon='calendar' />
+  //         <LegalButton text="Schedule with Attorneys" onPress={() => navigation.navigate('AppointDocs')} icon='calendar-check' />
+  //         {/* <LegalButton text="Frequently Asked Questions" onPress={() => console.log("Haven't added page.")} icon='chat' />
+  //         <LegalButton text="Resource Library" onPress={() => console.log("Haven't added page.")} icon='book-reader'/> */}
+  //     </View>
+  //   </View>
 
-    );
-  }
+  //   );
+  // }
 
 
   

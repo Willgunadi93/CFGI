@@ -43,7 +43,7 @@ function HomeStack({navigation}) {
     //Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -83,7 +83,7 @@ function JobStack() {
     //Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -110,7 +110,7 @@ function LegalStack() {
     //Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -121,10 +121,10 @@ function LegalStack() {
       headerTintColor: '#459EFF'
     }}>
       {/* Landing page */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Legal"
         component={LegalScreen}
-      />
+      /> */}
       <Stack.Screen
         name="AppointDocs"
         component={AppointmentScreen}
@@ -145,7 +145,7 @@ function FinStack() {
     //Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -185,7 +185,7 @@ function DonateStack() {
     // Header for Stack
     screenOptions={{
       headerStyle:{
-        height: 90,
+        height: 85,
         backgroundColor:"#F7F5F9"
       },
       headerTitle: () => <CFGIHeader/>,
@@ -292,11 +292,18 @@ export default function App() {
      ) : (
       //  If user isn't accepted by the system, they are directed to the stack of 
       // sign up/log in options
-      <Stack.Navigator >
-        <Stack.Screen name="SignIn" component={SignIn}></Stack.Screen>
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen> 
-        <Stack.Screen name="ResetPassword" component={ResetPassword}></Stack.Screen> 
-        <Stack.Screen name="CreateAccount" component={CreateAccount}></Stack.Screen>
+      <Stack.Navigator 
+      screenOptions={{
+        headerStyle:{
+          height: 85,
+          backgroundColor:"#F7F5F9"
+        },
+        headerTintColor: '#459EFF'
+      }}>
+        <Stack.Screen name="SignIn" component={SignIn} options={{headerShown:false}}></Stack.Screen>
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{headerTitle:null}}></Stack.Screen> 
+        <Stack.Screen name="ResetPassword" component={ResetPassword} options={{headerTitle:null}}></Stack.Screen> 
+        <Stack.Screen name="CreateAccount" component={CreateAccount} options={{headerTitle:null}}></Stack.Screen>
     </Stack.Navigator>
      )}
    </NavigationContainer>
