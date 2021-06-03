@@ -12,6 +12,9 @@ import {
     widthPercentageToDP as wp,
    } from 'react-native-responsive-screen';
 import { ScrollView } from 'react-native-gesture-handler';
+import axiosInstance from '../helpers/axiosInterceptors';
+import axiosRegister from '../helpers/axiosRegister';
+import { NavigationEvents } from 'react-navigation';
 
 
 // User is taken to this component when the app is opened 
@@ -20,8 +23,18 @@ export const SignIn = ({ navigation}) => {
     // LOGIN = logs in after users enter their email and password
     // Signup = prompts users to create an account if they dont have one
     const [number, onChangeText] = React.useState(null);
-
     const { signIn } = React.useContext(AuthContext);
+    const [form, setForm] = React.useState({});
+
+    const onChange = ({name, value}) => {
+      setForm({...form, [name]:value});
+    }
+
+    const onSubmit = () => {
+      if(form.username && form.password) {
+        axiosLogin(form);
+      }
+    }
     return (
         // Formatting logo and arrow buttons
         <ScreenContainer style={StyleSheet.container}>
@@ -56,12 +69,12 @@ export const SignIn = ({ navigation}) => {
                     />
                 </View>
                 {/* Link that allows the user to reset their password */}
-                <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text>
+                {/* <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text> */}
             </View>
 
             {/* Buttons that allow the user to log in to their account and sign up*/}
             <View style={{paddingTop: hp('2%'), paddingHorizontal: wp('10%')}}>
-              <Pressable style={styles.button} onPress={() => signIn()}>
+              <Pressable style={styles.button} onPress={() => signIn()}>  
                 <Text style={styles.textStyle}>Login</Text>
               </Pressable>
               <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('1%')}} onPress={() => navigation.push('CreateAccount')}>Sign up {'>'}</Text>
@@ -72,11 +85,47 @@ export const SignIn = ({ navigation}) => {
 }
 
 // Component that allows the user to create a new account
-export const CreateAccount = () => {
+export const CreateAccount = ({navigation}) => {
     // After the user enters their first name, last name, email, and password,
     // their account is created and stored in the database
     const { signUp } = React.useContext(AuthContext);
     const [number, onChangeText] = React.useState(null);
+
+    const [form, setForm] = React.useState({});
+    const [errors, setErrors] = React.useState({});
+
+    const onChange = ({name, value}) => {
+      setForm({...form, [name]:value});
+    }
+
+    const onSubmit = () => {
+      //validation
+      console.log('form: ', form);
+
+      //username validation
+      if (!form.username) {
+        setErrors((prev) => {
+          return {...prev, userName: 'Please add a username'};
+        });
+      }
+      //firstname validation
+      if(!form.firstName) {
+        setErrors((prev) => {
+          return{...prev, firstName:'Please enter a first name'};
+        });
+      }
+
+      //check if every all fields are inputted
+      if(Object.values(form).length === 5 && Object.values(form).every((item) => item.trim().length > 0)) {
+        //post request to api 
+        axiosRegister(form);
+        navigation.navigate(SignIn);
+      }
+      
+
+    }
+
+
     return (
         // Background images and logos
         <ScreenContainer style={StyleSheet.container}>
@@ -103,13 +152,19 @@ export const CreateAccount = () => {
                 <View style={{paddingVertical: hp('0.5%'), flexDirection: 'row'}}>
                     <TextInput
                         style={styles.inputNarrowLeft}
-                        onChangeText={onChangeText}
+                        onChangeText={(value) => {
+                          onChange({name: 'firstName', value});
+                        }}
                         placeholder="First Name"
+                        error={errors.firstName}
                     />
                     <TextInput
                         style={styles.inputNarrowRight}
-                        onChangeText={onChangeText}
+                        onChangeText={(value) => {
+                          onChange({name: 'lastName', value});
+                        }}
                         placeholder="Last Name"
+                        error={errors.lastName}
                     />
                 </View>
 
@@ -117,16 +172,22 @@ export const CreateAccount = () => {
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
                         style={styles.input}
-                        onChangeText={onChangeText}
+                        onChangeText={(value) => {
+                          onChange({name: 'email', value});
+                        }}
                         placeholder="Email"
+                        error={errors.email}
                     />
                 </View>
                 {/* User inputs their username when creating a new account */}
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
                         style={styles.input}
-                        onChangeText={onChangeText}
+                        onChangeText={(value) => {
+                          onChange({name: 'username', value});
+                        }}
                         placeholder="Username"
+                        error={errors.username}
                     />
                 </View>
                 {/* User inputs their password when creating a new account*/}
@@ -134,14 +195,17 @@ export const CreateAccount = () => {
                     <TextInput
                         secureTextEntry={true}
                         style={styles.input}
-                        onChangeText={onChangeText}
+                        onChangeText={(value) => {
+                          onChange({name: 'password', value});
+                        }}
                         placeholder="Password"
+                        error={errors.password}
                     />
                 </View>
             </View>
             {/* Once button is clicked, the user's account is created */}
             <View style={{paddingTop: hp('2%'), paddingHorizontal: wp('10%')}}>
-              <Pressable onPress={() => signUp()} style={styles.button}>
+              <Pressable onPress={onSubmit} style={styles.button}>
                 <Text style={styles.textStyle}>JOIN NOW</Text>
               </Pressable>
             </View>
@@ -149,6 +213,7 @@ export const CreateAccount = () => {
         </ScreenContainer>
     );
 }
+//() => signUp()
 
 // User is taken to this component when they forget their password
 export const ForgotPassword = ({navigation}) => {

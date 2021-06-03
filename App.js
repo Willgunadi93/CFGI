@@ -10,14 +10,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
 import {AboutScreen} from './app/screens/about.js';
-import { JobScreen, LegalScreen, DonateScreen, CalendlyScreen } from './app/screens/screens.js';
+import { JobScreen, LegalScreen, DonateScreen} from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
 import { FinAppConfirmationScreen } from './app/screens/FinAppConfirmationScreen';
 import { termsAndConditions } from './app/screens/termsAndConditions';
 
 //Stephanie's Edit
-import { AppointmentScreen } from './app/screens/appointment.js';
+import { AppointmentScreen} from './app/screens/appointment.js';
+import { CalendlyScreen  } from './app/screens/legalCard.js';
+import CFGIHeader from './app/screens/cfgiHeader.js'
 // Used to authenticate the user's credentials so they can have access to the app
 import { AuthContext } from './app/screens/context';
 // Import sign in and create account
@@ -25,6 +27,8 @@ import {SignIn, CreateAccount, ForgotPassword, ResetPassword} from './app/screen
 // Icons used for our bottom navigation bar
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+//import axios
+import axios from 'axios'     //connects the server to the front end
 
 // Globally defining our bottom navigation bar and our system hierarchy stack
 const Stack = createStackNavigator();
@@ -32,9 +36,34 @@ const Tab = createBottomTabNavigator();
 
 // Stack hierarchy starting from the home screen, HomeScreen component is the top of the hierarchy and 
 // leads to every other component
-function HomeStack() {
+
+import { Entypo } from '@expo/vector-icons'; 
+import {TouchableOpacity} from "react-native"
+function HomeStack({navigation}) {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    //Header for Stack
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF',
+      headerLeft: () => 
+      (<TouchableOpacity onPress={() => navigation.navigate("About")}>
+        <Entypo name="news" size={26} color="black" style={{paddingLeft:15}} />
+      </TouchableOpacity>),
+      headerRight: () => 
+      (<TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+        <Ionicons name="md-person-outline" size={26} color="black" style={{paddingRight:15}} onPress={() => navigation.navigate("Profile")} />
+      </TouchableOpacity>)
+    }}
+    >
       <Stack.Screen
         name="Home"
         component={HomeScreen}
@@ -49,6 +78,11 @@ function HomeStack() {
         name="About"
         component={AboutScreen}
       />
+      {/* retun to signIn */}
+      <Stack.Screen 
+        name="SignIn" 
+        component={SignIn}
+      />
     </Stack.Navigator>
   )
 }
@@ -56,7 +90,21 @@ function HomeStack() {
 // Stack that defines job hierarchy, all components related to jobs are listed here
 function JobStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    //Header for Stack
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF'
+    }}
+    >
       <Stack.Screen
         name="Jobs"
         component={JobScreen}
@@ -69,7 +117,20 @@ function JobStack() {
 // are listed here
 function LegalStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    //Header for Stack
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF'
+    }}>
       {/* Landing page */}
       <Stack.Screen
         name="Legal"
@@ -91,7 +152,20 @@ function LegalStack() {
 // are listed here
 function FinStack() {
   return (
-    <Stack.Navigator >
+    <Stack.Navigator
+    //Header for Stack
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF'
+    }}>
       {/* Landing page */}
       <Stack.Screen 
         name="Financial"
@@ -118,7 +192,20 @@ function FinStack() {
 // Stack that defines donation hierarchy, all components related to donation are listed here
 function DonateStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    // Header for Stack
+    screenOptions={{
+      headerStyle:{
+        height: 90,
+        backgroundColor:"#F7F5F9"
+      },
+      headerTitle: () => <CFGIHeader/>,
+      headerTitleContainerStyle:{
+        left:0,
+        right:0
+      },
+      headerTintColor: '#459EFF'
+    }} >
       {/* Landing page */}
       <Stack.Screen 
         name="Donate"
@@ -128,66 +215,6 @@ function DonateStack() {
     </Stack.Navigator>
   )
 }
-
-
-// // make a stack out of all these screens
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <Tab.Navigator
-//       initialRouteName="Home"
-//       tabBarOptions={{activeTintColor: 'blue', inactiveTintColor: 'black'}}>
-//       <Tab.Screen
-//         // Each tab leads to a stack, which has the actual components
-//         name="Home"
-//         component={HomeStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='home' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Jobs"
-//         component={JobStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='briefcase' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Legal"
-//         component={LegalStack}
-//         // onPress={() => this.props.navigation.navigate('LegalScreen')}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='people' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Assistance"
-//         component={FinStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Icon name='hand-holding-usd' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//       <Tab.Screen
-//         name="Donate"
-//         component={DonateStack}
-//         options={{
-//           tabBarIcon: ({color, size}) => (
-//             <Ionicons name='gift' color={color} size={size}/>
-//           ),
-//         }}
-//       />
-//     </Tab.Navigator>
-//     </NavigationContainer>
-//   )
-// }
 
 // Export the App component, our "main"
 export default function App() {
@@ -283,10 +310,6 @@ export default function App() {
         <Stack.Screen name="CreateAccount" component={CreateAccount}></Stack.Screen>
     </Stack.Navigator>
      )}
-     {/* <Stack.Navigator>
-       <Stack.Screen name="SignIn" component={SignIn}></Stack.Screen>  
-       <Stack.Screen name="CreateAccount" component={CreateAccount}></Stack.Screen>
-     </Stack.Navigator> */}
    </NavigationContainer>
    </AuthContext.Provider>
     

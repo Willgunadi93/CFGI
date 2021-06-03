@@ -2,9 +2,9 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput, Linking, TouchableHighlight, TouchableOpacity} from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 import { Card } from "react-native-elements";
+import { useState } from 'react';
 import { AuthContext } from '../screens/context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-//import { GoogleSpreadsheet } from "google-spreadsheet";
 //import { ScreenContainer } from 'react-native-screens';
 
 //import webview
@@ -16,47 +16,126 @@ import {
 
 //What Stephanie Added
 import LegalButton from '../screens/legalbuttons';
+import { Alert } from 'react-native';
 //
-
-
 
 export const JobScreen = () => {   //Jobs page component
 
-  // const [searchJob, setSearchJob] = React.useState('');
-  // const [searchLoc, setSearchLoc] = React.useState('');
-  // const searchFilterFunction = text => { setSearchJob(text); };
-  // const searchLocFunction = text => { setSearchLoc(text); };
+  // Set variables and states
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [company_name, setCompanyName] = useState('');
+
+  //Field Error States; 'false' means no errors
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+
+  const checkTextInput = () => {
+    //Check for the First Name TextInput
+    if (!first_name.trim()) {
+      Alert.alert('Empty Input', 'Please enter your first name.');
+      return;
+    }
+    //Check for the Last Name TextInput
+    if (!last_name.trim()) {
+      Alert.alert('Empty Input', 'Please enter your last name.');
+      return;
+    }
+    // Check for the Email TextInput
+    if (!email.trim()) {
+      Alert.alert('Empty Input', 'Please enter your email address.')
+      return;
+    }
+    if (emailError) {
+      Alert.alert('Invalid Input', "Please provide a valid email address.")
+      return;
+    }
+    // Check for the Phone Number TextInput
+    if (phoneError) {
+      Alert.alert('Invalid Input', 'Please provide a valid phone number,\nall numbers together with no parantheses ("()"), no dashes ("-"), and no pluses ("+").')
+      return;
+    }
+    // Check for the Company Name TextInput
+    if (!company_name.trim()) {
+      Alert.alert('Empty Input', 'Please enter the company name.')
+      return;
+    }
+    //Checked Successfully
+    Alert.alert('Submit Successfully', 'Thank you for signing up,\nwe will reach out to you soon.');
+  };
+
+
+  //Validation for only regex expression
+  function onlyRegex (item, expression, error) {
+    var exp = new RegExp(expression)
+    if(!exp.test(item)){
+        error(true)
+    }
+    else{
+        error(false)
+    }
+}
+
+  //Validation for the optional phone number
+  function optional_phone (item, expression, error) {
+    if (item === '') {
+      error(false)
+    }
+    else{
+      onlyRegex(item, expression, error)
+    }
+  }
 
     return (
       <ScrollView>
       <View style={styles.jobContainer}>
       <View style={{padding: hp('3%'), flex: 1}}>
-        <Image style={{height:'6.5%', resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/Screenslogo.png')} />
         <Text style={styles.jobTitle}>CAREERS</Text>
         <Text style={styles.jobSubtitle}>THIS FEATURE IS COMING SOON!</Text>
-        <Text style={{fontSize: 13, color: "#000000", lineHeight: 16, paddingBottom: hp('2%')}}>
-          We are looking for companies took the CFGI diversity{'\n'}
-          pledge and are open to considering sponsorship for{'\n'}
-          the right candidates. </Text>
+        <Text style={{fontSize: 14, color: "#000000", lineHeight: 16, paddingBottom: hp('2%')}}>
+          We are looking for companies took the CFGI{'\n'}
+          diversity pledge and are open to considering{'\n'}
+          sponsorship for the right candidates. </Text>
         <Text style={{fontSize: 14, fontWeight:'bold', color: "#000000", lineHeight: 14, paddingBottom: hp('0%')}}>
           Want to be on our partner list?{'\n'}</Text>
         <Text style={{fontSize: 14, color: '#000000', fontWeight:'bold',paddingBottom: hp('2.8%')}}>Please sign up below, we will contact you soon.
           </Text>
         
-          <View style={{paddingVertical: hp('1.5%')}}>
-            <TextInput style={styles.jobInput} placeholder="First Name"/>
+          <Text style={styles.header}>First Name</Text>
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput //placeholder="First Name"
+            onChangeText={name => setFirstName(name)}
+            style={styles.jobInput}
+            />
           </View>
-          <View style={{paddingVertical: hp('1.5%')}}>
-            <TextInput style={styles.jobInput} placeholder="Last Name"/>
+          <Text style={styles.header}>Last Name</Text>
+          <View style={{paddingVertical: hp('1%')}}>
+            <TextInput //placeholder="Last Name"
+            onChangeText={name => setLastName(name)}
+            style={styles.jobInput} 
+            />
           </View>
+          <Text style={styles.header}>Email Address</Text>
           <View style={{paddingVertical: hp('1.5%')}}>
-            <TextInput style={styles.jobInput} placeholder="Email Address"/>
+            <TextInput //placeholder="Email Address"
+            onChangeText={name => setEmail(name)}
+            style={styles.jobInput} 
+            onEndEditing={name => onlyRegex(name.nativeEvent.text,"^.+@.+\..+$", setEmailError)}
+            />
           </View>
+          <Text style={styles.header}>Phone Number (optional)</Text>
           <View style={{paddingVertical: hp('1.5%')}}>
-            <TextInput style={styles.jobInput} placeholder="Phone Number (optional)"/>
+            <TextInput style={styles.jobInput} //placeholder="Phone Number (optional)"
+            onChangeText={name => setPhone(name)}
+            onEndEditing={name => optional_phone(name.nativeEvent.text, "^[0-9]{10}$", setPhoneError)}
+            />
           </View>
+          <Text style={styles.header}>Company Name</Text>
           <View style={{paddingVertical: hp('1.5%')}}>
-            <TextInput style={styles.jobInput} placeholder="Company Name"/>
+            <TextInput style={styles.jobInput} //placeholder="Company Name"
+            onChangeText={name => setCompanyName(name)}/>
           </View>
         </View>
 
@@ -78,9 +157,8 @@ export const JobScreen = () => {   //Jobs page component
             placeholder="  Please check back soon!"/> 
           </View> */}
 
-      <View style={{alignContent: 'center', paddingLeft: wp('32%'), marginTop: hp('5%')}}>
-      {/*height: hp('0%'), alignContent: 'center', top: hp('-5.8%')*/}
-        <TouchableOpacity onPress={() => console.log("Submit successfully.")} style={styles.jobButton} underlayColor="#0A30F6">
+      <View style={{alignContent: 'center', paddingLeft: wp('32.2%'), marginTop: hp('0.6%')}}>
+        <TouchableOpacity onPress={checkTextInput} style={styles.jobButton} underlayColor="#0A30F6">
             <Text style={styles.jobTextStyle}>Submit</Text>
         </TouchableOpacity>
       </View>
@@ -132,27 +210,24 @@ export const JobScreen = () => {   //Jobs page component
   //     </View>
 
   
-   export const CalendlyScreen = () => {
-     return (
-      <WebView source={{uri : 'https://testingcfgi.s3-us-west-1.amazonaws.com/webview.html'}}/>
-     );
-   }
+  //  export const CalendlyScreen = () => {
+  //    return (
+  //     <WebView source={{uri : 'https://testingcfgi.s3-us-west-1.amazonaws.com/webview.html'}}/>
+  //    );
+  //  }
 
   export const LegalScreen = ({navigation}) => {   //Jobs page component
     return (
       <View style={styles.legalContainer}>
-      <Image style={{width:'50%', height:"15%", resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/>
-      <View style={{paddingBottom: 30}}>
+      {/* <Image style={{width:'50%', height:"15%", resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/> */}
+      <View style={{paddingBottom: 30, paddingTop:30}}>
           <Text style={styles.legalTitle}>Legal Services</Text>
           <Text style={{fontSize:18}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
       </View>
       <View style={styles.body}>
           <LegalButton text='View Appointment' onPress={() => console.log("Haven't added page.")} icon='calendar' />
-          <View style={{margin:5}}/>
           <LegalButton text="Schedule with Attorneys" onPress={() => navigation.navigate('AppointDocs')} icon='calendar-check' />
-          <View style={{margin:5}}/>
           {/* <LegalButton text="Frequently Asked Questions" onPress={() => console.log("Haven't added page.")} icon='chat' />
-          <View style={{margin:5}}/>
           <LegalButton text="Resource Library" onPress={() => console.log("Haven't added page.")} icon='book-reader'/> */}
       </View>
     </View>
@@ -165,7 +240,6 @@ export const JobScreen = () => {   //Jobs page component
   export const DonateScreen = () => {   //Jobs page component
     return (
       <View style={{paddingTop: "5%", paddingHorizontal: "5%", backgroundColor: '#F7F5F9'}}>
-        <Image style={{height: "10%", width:"50%", resizeMode:"contain", alignSelf:'center'}} source={require('../assets/img/Screenslogo.png')}/>
         <View style={{paddingTop: "5%"}}>
           <Image style={{marginBottom: hp('3%'), marginLeft: wp('15%')}} source = {require('../assets/img/arrow-left.png')} />
           <Image style={{marginLeft: -wp('15%'), marginRight: wp('5%')}} source = {require('../assets/img/arrow-right.png')} />
@@ -188,7 +262,7 @@ export const JobScreen = () => {   //Jobs page component
           </View>
         </View>
         <View style={{paddingTop: "5%", paddingHorizontal: "25%"}}>
-          <Pressable style={styles.button} onPress={ ()=>{ Linking.openURL('https://paypal.me/ZongyaoW?locale.x=en_US')}}>
+          <Pressable style={styles.button} onPress={ ()=>{ Linking.openURL('https://www.paypal.com/donate?hosted_button_id=SXQDLBKH55C42')}}>
             <Text style={styles.textStyle}>DONATE</Text>
           </Pressable>
         </View>
@@ -245,9 +319,7 @@ export const JobScreen = () => {   //Jobs page component
 
     legalContainer: { //Attorney/Appointment
       backgroundColor: '#F7F5F9',
-      paddingRight: 30,
-      paddingLeft: 30,
-      paddingBottom: 30
+      padding: 30
     },
     legalTitle:{ //Legal Services
       fontSize:32,
@@ -290,11 +362,10 @@ export const JobScreen = () => {   //Jobs page component
       alignSelf: 'center',
       padding: hp('1.5%'),
       borderWidth: 1,
-      borderRadius: 10,
+      borderRadius: 6,
       backgroundColor: 'white',
       borderColor: '#4C67F6',
-      fontStyle: 'italic',
-      fontSize: 16,
+      fontSize: 15,
     },
 
     jobTitle: {
@@ -353,5 +424,14 @@ export const JobScreen = () => {   //Jobs page component
       color: '#929599', 
       marginBottom: -8, 
       marginTop: 13,
-    }
+    },
+
+    header: {
+      fontSize: 15,
+      //textAlign: 'left', 
+      marginLeft: hp('8%'),
+      //paddingRight: wp('13%'),
+      paddingTop: hp('2%'),
+      color: '#3F3356'
+  }
 });
