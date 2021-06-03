@@ -2,9 +2,9 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Button, Image, Pressable, ImageBackground, ScrollView, TextInput, Linking, TouchableHighlight, TouchableOpacity} from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 import { Card } from "react-native-elements";
+import { useState } from 'react';
 import { AuthContext } from '../screens/context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-//import { GoogleSpreadsheet } from "google-spreadsheet";
 //import { ScreenContainer } from 'react-native-screens';
 
 //import webview
@@ -16,16 +16,77 @@ import {
 
 //What Stephanie Added
 import LegalButton from '../screens/legalbuttons';
+import { Alert } from 'react-native';
 //
-
-
 
 export const JobScreen = () => {   //Jobs page component
 
-  // const [searchJob, setSearchJob] = React.useState('');
-  // const [searchLoc, setSearchLoc] = React.useState('');
-  // const searchFilterFunction = text => { setSearchJob(text); };
-  // const searchLocFunction = text => { setSearchLoc(text); };
+  // Set variables and states
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [company_name, setCompanyName] = useState('');
+
+  //Field Error States; 'false' means no errors
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+
+  const checkTextInput = () => {
+    //Check for the First Name TextInput
+    if (!first_name.trim()) {
+      Alert.alert('Empty Input', 'Please enter your first name.');
+      return;
+    }
+    //Check for the Last Name TextInput
+    if (!last_name.trim()) {
+      Alert.alert('Empty Input', 'Please enter your last name.');
+      return;
+    }
+    // Check for the Email TextInput
+    if (!email.trim()) {
+      Alert.alert('Empty Input', 'Please enter your email address.')
+      return;
+    }
+    if (emailError) {
+      Alert.alert('Invalid Input', "Please provide a valid email address.")
+      return;
+    }
+    // Check for the Phone Number TextInput
+    if (phoneError) {
+      Alert.alert('Invalid Input', 'Please provide a valid phone number,\nall numbers together with no parantheses ("()"), no dashes ("-"), and no pluses ("+").')
+      return;
+    }
+    // Check for the Company Name TextInput
+    if (!company_name.trim()) {
+      Alert.alert('Empty Input', 'Please enter the company name.')
+      return;
+    }
+    //Checked Successfully
+    Alert.alert('Submit Successfully', 'Thank you for signing up,\nwe will reach out to you soon.');
+  };
+
+
+  //Validation for only regex expression
+  function onlyRegex (item, expression, error) {
+    var exp = new RegExp(expression)
+    if(!exp.test(item)){
+        error(true)
+    }
+    else{
+        error(false)
+    }
+}
+
+  //Validation for the optional phone number
+  function optional_phone (item, expression, error) {
+    if (item === '') {
+      error(false)
+    }
+    else{
+      onlyRegex(item, expression, error)
+    }
+  }
 
     return (
       <ScrollView>
@@ -33,29 +94,48 @@ export const JobScreen = () => {   //Jobs page component
       <View style={{padding: hp('3%'), flex: 1}}>
         <Text style={styles.jobTitle}>CAREERS</Text>
         <Text style={styles.jobSubtitle}>THIS FEATURE IS COMING SOON!</Text>
-        <Text style={{fontSize: 13, color: "#000000", lineHeight: 16, paddingBottom: hp('2%')}}>
-          We are looking for companies took the CFGI diversity{'\n'}
-          pledge and are open to considering sponsorship for{'\n'}
-          the right candidates. </Text>
+        <Text style={{fontSize: 14, color: "#000000", lineHeight: 16, paddingBottom: hp('2%')}}>
+          We are looking for companies took the CFGI{'\n'}
+          diversity pledge and are open to considering{'\n'}
+          sponsorship for the right candidates. </Text>
         <Text style={{fontSize: 14, fontWeight:'bold', color: "#000000", lineHeight: 14, paddingBottom: hp('0%')}}>
           Want to be on our partner list?{'\n'}</Text>
-        <Text style={{fontSize: 14, color: '#000000', fontWeight:'bold',paddingBottom: hp('2%')}}>Please sign up below, we will contact you soon.
+        <Text style={{fontSize: 14, color: '#000000', fontWeight:'bold',paddingBottom: hp('2.8%')}}>Please sign up below, we will contact you soon.
           </Text>
         
+          <Text style={styles.header}>First Name</Text>
           <View style={{paddingVertical: hp('1%')}}>
-            <TextInput style={styles.jobInput} placeholder="First Name"/>
+            <TextInput //placeholder="First Name"
+            onChangeText={name => setFirstName(name)}
+            style={styles.jobInput}
+            />
           </View>
+          <Text style={styles.header}>Last Name</Text>
           <View style={{paddingVertical: hp('1%')}}>
-            <TextInput style={styles.jobInput} placeholder="Last Name"/>
+            <TextInput //placeholder="Last Name"
+            onChangeText={name => setLastName(name)}
+            style={styles.jobInput} 
+            />
           </View>
-          <View style={{paddingVertical: hp('1%')}}>
-            <TextInput style={styles.jobInput} placeholder="Email Address"/>
+          <Text style={styles.header}>Email Address</Text>
+          <View style={{paddingVertical: hp('1.5%')}}>
+            <TextInput //placeholder="Email Address"
+            onChangeText={name => setEmail(name)}
+            style={styles.jobInput} 
+            onEndEditing={name => onlyRegex(name.nativeEvent.text,"^.+@.+\..+$", setEmailError)}
+            />
           </View>
-          <View style={{paddingVertical: hp('1%')}}>
-            <TextInput style={styles.jobInput} placeholder="Phone Number (optional)"/>
+          <Text style={styles.header}>Phone Number (optional)</Text>
+          <View style={{paddingVertical: hp('1.5%')}}>
+            <TextInput style={styles.jobInput} //placeholder="Phone Number (optional)"
+            onChangeText={name => setPhone(name)}
+            onEndEditing={name => optional_phone(name.nativeEvent.text, "^[0-9]{10}$", setPhoneError)}
+            />
           </View>
-          <View style={{paddingVertical: hp('1%')}}>
-            <TextInput style={styles.jobInput} placeholder="Company Name"/>
+          <Text style={styles.header}>Company Name</Text>
+          <View style={{paddingVertical: hp('1.5%')}}>
+            <TextInput style={styles.jobInput} //placeholder="Company Name"
+            onChangeText={name => setCompanyName(name)}/>
           </View>
         </View>
 
@@ -77,31 +157,58 @@ export const JobScreen = () => {   //Jobs page component
             placeholder="  Please check back soon!"/> 
           </View> */}
 
-      <View style={{height: hp('0%'), alignContent: 'center', top: hp('-5.8%')}}>
-        <TouchableHighlight onPress={() => console.log("Submit successfully.")} style={styles.jobButton} activeOpacity={1} underlayColor="#0A30F6">
+      <View style={{alignContent: 'center', paddingLeft: wp('32.2%'), marginTop: hp('0.6%')}}>
+        <TouchableOpacity onPress={checkTextInput} style={styles.jobButton} underlayColor="#0A30F6">
             <Text style={styles.jobTextStyle}>Submit</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
 
-      <View style={{width: hp('15%'), height: hp('6%') ,top: hp('16.5%'), left: hp('3.5%')}}> 
+      <View style={{width: hp('15%'), height: hp('6%') ,top: hp('10%'), left: hp('3.5%')}}> 
         <Text style={{fontSize: 16, color: "#000000", fontWeight: 'bold'}}>Results</Text>
       </View>
 
-      <View style={{top: hp('13%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
+      <View style={{top: hp('7%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
       <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
         <Text style={styles.positionCategory} >Job Category </Text>
           <Text style={styles.positionTitle} >Potential Job Posting</Text>
           <Text style={styles.positionLocation} >City, State Code</Text>
-          <Text style={styles.postTime} >Posted XX minnutes ago </Text>
+          <Text style={styles.postTime} >Posted 52 minnutes ago </Text>
       </Card></View>
       
-      <View style={{padding: 70}}></View>
+      <View style={{padding: 40}}></View>
       </View>
       </ScrollView>
     );
   }
 
-  
+   //Job Page Comments Function: To Be Implemented
+
+  // <View style={{top: hp('15%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
+  //       <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+  //         <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+  //           <Text style={styles.positionCategory} >UI/UX Design </Text>
+  //           <Text style={styles.positionTitle} >SaaS Homepage redesign and onboarding updates </Text>
+  //           <Text style={styles.positionLocation} >Albany, NY </Text>
+  //           <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
+  //         </Card></TouchableOpacity>
+          
+  //         <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+  //         <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+  //           <Text style={styles.positionCategory} >Information Technology </Text>
+  //           <Text style={styles.positionTitle} >Web/app designer required to create web apps </Text>
+  //           <Text style={styles.positionLocation} >Blackwood, WA </Text>
+  //           <Text style={styles.postTime} >Posted 51 minnutes ago </Text>
+  //         </Card></TouchableOpacity>
+
+  //         <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
+  //         <Card containerStyle={styles.cardLayout} name="card"  pointerEvents="none">
+  //           <Text style={styles.positionCategory} >Technology </Text>
+  //           <Text style={styles.positionTitle} >Adobe Systems Careers - Performance Media, Analyst </Text>
+  //           <Text style={styles.positionLocation} >Santa Ana, CA </Text>
+  //           <Text style={styles.postTime} >Posted 24 days ago </Text>
+  //         </Card></TouchableOpacity>
+  //     </View>
+
   
   //  export const CalendlyScreen = () => {
   //    return (
@@ -182,9 +289,8 @@ export const JobScreen = () => {   //Jobs page component
     jobButton: {
       borderRadius: 10,
       width: hp('17%'),
-      height: hp('4.6%'),
-      left: 110,
-      top: 80,
+      height: hp('4.8%'),
+      alignContent: "center",
       backgroundColor: "#4C67F6"
     },
 
@@ -254,12 +360,11 @@ export const JobScreen = () => {   //Jobs page component
       height: hp("6%"),
       width: hp('35%'),
       alignSelf: 'center',
-      padding: hp('2%'),
+      padding: hp('1.5%'),
       borderWidth: 1,
-      borderRadius: 10,
+      borderRadius: 6,
       backgroundColor: 'white',
       borderColor: '#4C67F6',
-      fontStyle: 'italic',
       fontSize: 15,
     },
 
@@ -319,5 +424,14 @@ export const JobScreen = () => {   //Jobs page component
       color: '#929599', 
       marginBottom: -8, 
       marginTop: 13,
-    }
+    },
+
+    header: {
+      fontSize: 15,
+      //textAlign: 'left', 
+      marginLeft: hp('8%'),
+      //paddingRight: wp('13%'),
+      paddingTop: hp('2%'),
+      color: '#3F3356'
+  }
 });
