@@ -53,8 +53,8 @@ function HomeStack({navigation}) {
       },
       headerTintColor: '#459EFF',
       headerRight: () => 
-      (<TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-        <Ionicons name="md-person-outline" size={26} color="black" style={{paddingRight:15}} onPress={() => navigation.navigate("Profile")} />
+      (<TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+        <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}} onPress={() => navigation.navigate("SignIn")} />
       </TouchableOpacity>)
     }}
     >
