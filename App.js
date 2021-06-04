@@ -71,6 +71,7 @@ function HomeStack({navigation}) {
       <Stack.Screen 
         name="SignIn" 
         component={SignIn}
+        options={{headerShown:false}}
       />
     </Stack.Navigator>
   )
