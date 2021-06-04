@@ -239,7 +239,7 @@ export const JobScreen = () => {   //Jobs page component
   
   export const DonateScreen = () => {   //Donate page component
     return (
-      <View style={{paddingTop: "5%", paddingHorizontal: "5%", backgroundColor: '#F7F5F9'}}>
+      <View style={{paddingTop: "20%", paddingHorizontal: "5%", backgroundColor: '#F7F5F9'}}>
         <View style={{paddingTop: "5%"}}>
           <Image style={{marginBottom: hp('3%'), marginLeft: wp('15%')}} source = {require('../assets/img/arrow-left.png')} />
           <Image style={{marginLeft: -wp('15%'), marginRight: wp('5%')}} source = {require('../assets/img/arrow-right.png')} />
