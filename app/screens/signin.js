@@ -69,7 +69,7 @@ export const SignIn = ({ navigation}) => {
                     />
                 </View>
                 {/* Link that allows the user to reset their password */}
-                {/* <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text> */}
+                <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text>
             </View>
 
             {/* Buttons that allow the user to log in to their account and sign up*/}

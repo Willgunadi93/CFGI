@@ -265,7 +265,7 @@ export const AppointmentScreen = ({navigation}) => {
 
   const styles = StyleSheet.create({
     AsubTitle:{
-      color:'#FF564F',
+      color:'#FF6E00',
       fontSize: 24,
       fontWeight:'bold',
       paddingTop:20

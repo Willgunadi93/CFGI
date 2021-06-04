@@ -258,7 +258,7 @@ export default function App() {
      {userToken ? (
        <Tab.Navigator
        initialRouteName="Home"
-       tabBarOptions={{keyboardHidesTabBar: true, activeTintColor: 'blue', inactiveTintColor: 'black'}}>
+       tabBarOptions={{keyboardHidesTabBar: true, activeTintColor: '#3C65CC', inactiveTintColor: '#3E3D3D'}}>
        <Tab.Screen
          // Each tab leads to its respective stack, which 
         //  will lead the user to the actual components
