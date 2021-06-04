@@ -83,7 +83,8 @@ export default function App() {
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
-        </TouchableOpacity>)
+        </TouchableOpacity>),
+        headerBackTitle: null
       }}
       >
         <Stack.Screen
@@ -119,7 +120,8 @@ export default function App() {
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
-        </TouchableOpacity>)
+        </TouchableOpacity>),
+        headerBackTitle: null
       }}
       >
         <Stack.Screen
@@ -150,7 +152,8 @@ export default function App() {
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
-        </TouchableOpacity>)
+        </TouchableOpacity>),
+        headerBackTitle: null
       }}>
         {/* Landing page */}
         {/* <Stack.Screen
@@ -189,7 +192,8 @@ export default function App() {
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
-        </TouchableOpacity>)
+        </TouchableOpacity>),
+        headerBackTitle: null
       }}>
         {/* Landing page */}
         <Stack.Screen 
@@ -233,7 +237,8 @@ export default function App() {
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
-        </TouchableOpacity>)
+        </TouchableOpacity>),
+        headerBackTitle: null
       }} >
         {/* Landing page */}
         <Stack.Screen 
@@ -311,7 +316,8 @@ export default function App() {
           height: 85,
           backgroundColor:"#F7F5F9"
         },
-        headerTintColor: '#459EFF'
+        headerTintColor: '#459EFF',
+        headerBackTitle: null
       }}>
         <Stack.Screen name="SignIn" component={SignIn} options={{headerShown:false}}></Stack.Screen>
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{headerTitle:null}}></Stack.Screen> 
