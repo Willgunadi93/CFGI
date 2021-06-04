@@ -103,21 +103,21 @@ export const JobScreen = () => {   //Jobs page component
         <Text style={{fontSize: 14, color: '#000000', fontWeight:'bold',paddingBottom: hp('2.8%')}}>Please sign up below, we will contact you soon.
           </Text>
         
-          <Text style={styles.header}>First Name</Text>
+          <Text style={styles.header}>First Name*</Text>
           <View style={{paddingVertical: hp('1%')}}>
             <TextInput //placeholder="First Name"
             onChangeText={name => setFirstName(name)}
             style={styles.jobInput}
             />
           </View>
-          <Text style={styles.header}>Last Name</Text>
+          <Text style={styles.header}>Last Name*</Text>
           <View style={{paddingVertical: hp('1%')}}>
             <TextInput //placeholder="Last Name"
             onChangeText={name => setLastName(name)}
             style={styles.jobInput} 
             />
           </View>
-          <Text style={styles.header}>Email Address</Text>
+          <Text style={styles.header}>Email Address*</Text>
           <View style={{paddingVertical: hp('1.5%')}}>
             <TextInput //placeholder="Email Address"
             onChangeText={name => setEmail(name)}
@@ -132,7 +132,7 @@ export const JobScreen = () => {   //Jobs page component
             onEndEditing={name => optional_phone(name.nativeEvent.text, "^(\\+)?[0-9]{9,18}$", setPhoneError)}
             />
           </View>
-          <Text style={styles.header}>Company Name</Text>
+          <Text style={styles.header}>Company Name*</Text>
           <View style={{paddingVertical: hp('1.5%')}}>
             <TextInput style={styles.jobInput} //placeholder="Company Name"
             onChangeText={name => setCompanyName(name)}/>
@@ -157,7 +157,7 @@ export const JobScreen = () => {   //Jobs page component
             placeholder="  Please check back soon!"/> 
           </View> */}
 
-      <View style={{alignContent: 'center', paddingLeft: wp('32.2%'), marginTop: hp('0.6%')}}>
+      <View style={{alignContent: 'center', paddingLeft: wp('33.2%'), marginTop: hp('0.6%')}}>
         <TouchableOpacity onPress={checkTextInput} style={styles.jobButton} underlayColor="#0A30F6">
             <Text style={styles.jobTextStyle}>Submit</Text>
         </TouchableOpacity>
@@ -358,7 +358,7 @@ export const JobScreen = () => {   //Jobs page component
 
     jobInput: {
       height: hp("6%"),
-      width: hp('35%'),
+      width: hp('32%'),
       alignSelf: 'center',
       padding: hp('1.5%'),
       borderWidth: 1,
@@ -428,8 +428,8 @@ export const JobScreen = () => {   //Jobs page component
 
     header: {
       fontSize: 15,
-      //textAlign: 'left', 
-      marginLeft: hp('8%'),
+      textAlign: 'center', 
+      //marginLeft: hp('8%'),
       //paddingRight: wp('13%'),
       paddingTop: hp('2%'),
       color: '#3F3356'
