@@ -115,7 +115,11 @@ export default function App() {
           left:0,
           right:0
         },
-        headerTintColor: '#459EFF'
+        headerTintColor: '#459EFF',
+        headerRight: () => 
+        (<TouchableOpacity onPress={() => setUserToken(null)}>
+          <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
+        </TouchableOpacity>)
       }}
       >
         <Stack.Screen
@@ -142,7 +146,11 @@ export default function App() {
           left:0,
           right:0
         },
-        headerTintColor: '#459EFF'
+        headerTintColor: '#459EFF',
+        headerRight: () => 
+        (<TouchableOpacity onPress={() => setUserToken(null)}>
+          <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
+        </TouchableOpacity>)
       }}>
         {/* Landing page */}
         {/* <Stack.Screen
@@ -177,7 +185,11 @@ export default function App() {
           left:0,
           right:0
         },
-        headerTintColor: '#459EFF'
+        headerTintColor: '#459EFF',
+        headerRight: () => 
+        (<TouchableOpacity onPress={() => setUserToken(null)}>
+          <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
+        </TouchableOpacity>)
       }}>
         {/* Landing page */}
         <Stack.Screen 
@@ -217,7 +229,11 @@ export default function App() {
           left:0,
           right:0
         },
-        headerTintColor: '#459EFF'
+        headerTintColor: '#459EFF',
+        headerRight: () => 
+        (<TouchableOpacity onPress={() => setUserToken(null)}>
+          <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
+        </TouchableOpacity>)
       }} >
         {/* Landing page */}
         <Stack.Screen 
