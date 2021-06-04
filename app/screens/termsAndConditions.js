@@ -13,11 +13,6 @@ export const termsAndConditions = ({navigation}) => {
     <ScrollView>
         <View style={styles.container}>
             {/* Back button that allows the user to go back to the landing screen */}
-            <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
-                <View style={styles.backButtonContainer}>
-                    <Ionicons name="arrow-back-circle" size={40} color="#4C67F6"/>
-                </View>
-            </TouchableHighlight>
 
             <Text style={styles.titleText}>Terms and Conditions</Text>
             {/* The actual terms and conditions */}

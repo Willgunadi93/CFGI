@@ -250,7 +250,8 @@ export const FinAppScreen = ({navigation}) => {
                         //   }}
                     />
                     {phoneError? <Text style={{color:'#E76060'}}>Please provide a valid phone number, 
-                    all numbers together with no parantheses ("()") and no dashes ("-"). Pluses ("+") are allowed. </Text>: null}
+                    all numbers together with no parantheses ("()"), no dashes ("-"), and no spaces (" "). 
+                    Pluses ("+") are allowed. </Text>: null}
                 </View>
             </View>
 

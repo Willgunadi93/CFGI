@@ -37,173 +37,7 @@ const Tab = createBottomTabNavigator();
 
 import { Entypo } from '@expo/vector-icons'; 
 import {TouchableOpacity} from "react-native"
-function HomeStack({navigation}) {
-  return (
-    <Stack.Navigator
-    //Header for Stack
-    screenOptions={{
-      headerStyle:{
-        height: 85,
-        backgroundColor:"#F7F5F9"
-      },
-      headerTitle: () => <CFGIHeader/>,
-      headerTitleContainerStyle:{
-        left:0,
-        right:0
-      },
-      headerTintColor: '#459EFF',
-      headerRight: () => 
-      (<TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-        <Ionicons name="md-person-outline" size={26} color="black" style={{paddingRight:15}} onPress={() => navigation.navigate("Profile")} />
-      </TouchableOpacity>)
-    }}
-    >
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-      />
-      {/* Profile */}
-      <Stack.Screen 
-        name="Profile"
-        component={ProfileScreen}
-      />
-      {/* retun to signIn */}
-      <Stack.Screen 
-        name="SignIn" 
-        component={SignIn}
-      />
-    </Stack.Navigator>
-  )
-}
 
-// Stack that defines job hierarchy, all components related to jobs are listed here
-function JobStack() {
-  return (
-    <Stack.Navigator
-    //Header for Stack
-    screenOptions={{
-      headerStyle:{
-        height: 85,
-        backgroundColor:"#F7F5F9"
-      },
-      headerTitle: () => <CFGIHeader/>,
-      headerTitleContainerStyle:{
-        left:0,
-        right:0
-      },
-      headerTintColor: '#459EFF'
-    }}
-    >
-      <Stack.Screen
-        name="Jobs"
-        component={JobScreen}
-      />
-    </Stack.Navigator>
-  )
-}
-
-// Stack that defines legal consultation hierarchy, all components related to legal
-// are listed here
-function LegalStack() {
-  return (
-    <Stack.Navigator
-    //Header for Stack
-    screenOptions={{
-      headerStyle:{
-        height: 85,
-        backgroundColor:"#F7F5F9"
-      },
-      headerTitle: () => <CFGIHeader/>,
-      headerTitleContainerStyle:{
-        left:0,
-        right:0
-      },
-      headerTintColor: '#459EFF'
-    }}>
-      {/* Landing page */}
-      {/* <Stack.Screen
-        name="Legal"
-        component={LegalScreen}
-      /> */}
-      <Stack.Screen
-        name="AppointDocs"
-        component={AppointmentScreen}
-      />
-      <Stack.Screen
-        name="calendar"
-        component={CalendlyScreen}
-      />
-    </Stack.Navigator>
-  )
-}
-
-// Stack that defines financial assistance hierarchy, all components related to financial assistance
-// are listed here
-function FinStack() {
-  return (
-    <Stack.Navigator
-    //Header for Stack
-    screenOptions={{
-      headerStyle:{
-        height: 85,
-        backgroundColor:"#F7F5F9"
-      },
-      headerTitle: () => <CFGIHeader/>,
-      headerTitleContainerStyle:{
-        left:0,
-        right:0
-      },
-      headerTintColor: '#459EFF'
-    }}>
-      {/* Landing page */}
-      <Stack.Screen 
-        name="Financial"
-        component={FinScreen}
-      />
-      <Stack.Screen
-        name="termsAndConditions"
-        component={termsAndConditions}
-      />
-      {/* Actual application */}
-      <Stack.Screen
-        name="FinDocs"
-        component={FinAppScreen}
-      />
-      
-      <Stack.Screen
-        name="FinAppConfirmation"
-        component={FinAppConfirmationScreen}
-      />
-    </Stack.Navigator>
-  )
-}
-
-// Stack that defines donation hierarchy, all components related to donation are listed here
-function DonateStack() {
-  return (
-    <Stack.Navigator
-    // Header for Stack
-    screenOptions={{
-      headerStyle:{
-        height: 85,
-        backgroundColor:"#F7F5F9"
-      },
-      headerTitle: () => <CFGIHeader/>,
-      headerTitleContainerStyle:{
-        left:0,
-        right:0
-      },
-      headerTintColor: '#459EFF'
-    }} >
-      {/* Landing page */}
-      <Stack.Screen 
-        name="Donate"
-        component={DonateScreen}
-      />
-      {/* Add the actual donation screen here */}
-    </Stack.Navigator>
-  )
-}
 
 // Export the App component, our "main"
 export default function App() {
@@ -231,9 +65,193 @@ export default function App() {
     };
   }, []);
 
-
+  function HomeStack({navigation}) {
+    return (
+      <Stack.Navigator
+      //Header for Stack
+      screenOptions={{
+        headerStyle:{
+          height: 85,
+          backgroundColor:"#F7F5F9"
+        },
+        headerTitle: () => <CFGIHeader/>,
+        headerTitleContainerStyle:{
+          left:0,
+          right:0
+        },
+        headerTintColor: '#459EFF',
+        headerRight: () => 
+        (<TouchableOpacity onPress={() => setUserToken(null)}>
+          <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
+        </TouchableOpacity>),
+        headerBackTitle: null
+      }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+        {/* Profile */}
+        <Stack.Screen 
+          name="Profile"
+          component={ProfileScreen}
+        />
+        {/* retun to signIn */}
+      </Stack.Navigator>
+    )
+  }
+  
+  // Stack that defines job hierarchy, all components related to jobs are listed here
+  function JobStack() {
+    return (
+      <Stack.Navigator
+      //Header for Stack
+      screenOptions={{
+        headerStyle:{
+          height: 85,
+          backgroundColor:"#F7F5F9"
+        },
+        headerTitle: () => <CFGIHeader/>,
+        headerTitleContainerStyle:{
+          left:0,
+          right:0
+        },
+        headerTintColor: '#459EFF',
+        headerRight: () => 
+        (<TouchableOpacity onPress={() => setUserToken(null)}>
+          <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
+        </TouchableOpacity>),
+        headerBackTitle: null
+      }}
+      >
+        <Stack.Screen
+          name="Jobs"
+          component={JobScreen}
+        />
+      </Stack.Navigator>
+    )
+  }
+  
+  // Stack that defines legal consultation hierarchy, all components related to legal
+  // are listed here
+  function LegalStack() {
+    return (
+      <Stack.Navigator
+      //Header for Stack
+      screenOptions={{
+        headerStyle:{
+          height: 85,
+          backgroundColor:"#F7F5F9"
+        },
+        headerTitle: () => <CFGIHeader/>,
+        headerTitleContainerStyle:{
+          left:0,
+          right:0
+        },
+        headerTintColor: '#459EFF',
+        headerRight: () => 
+        (<TouchableOpacity onPress={() => setUserToken(null)}>
+          <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
+        </TouchableOpacity>),
+        headerBackTitle: null
+      }}>
+        {/* Landing page */}
+        {/* <Stack.Screen
+          name="Legal"
+          component={LegalScreen}
+        /> */}
+        <Stack.Screen
+          name="AppointDocs"
+          component={AppointmentScreen}
+        />
+        <Stack.Screen
+          name="calendar"
+          component={CalendlyScreen}
+        />
+      </Stack.Navigator>
+    )
+  }
+  
+  // Stack that defines financial assistance hierarchy, all components related to financial assistance
+  // are listed here
+  function FinStack() {
+    return (
+      <Stack.Navigator
+      //Header for Stack
+      screenOptions={{
+        headerStyle:{
+          height: 85,
+          backgroundColor:"#F7F5F9"
+        },
+        headerTitle: () => <CFGIHeader/>,
+        headerTitleContainerStyle:{
+          left:0,
+          right:0
+        },
+        headerTintColor: '#459EFF',
+        headerRight: () => 
+        (<TouchableOpacity onPress={() => setUserToken(null)}>
+          <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
+        </TouchableOpacity>),
+        headerBackTitle: null
+      }}>
+        {/* Landing page */}
+        <Stack.Screen 
+          name="Financial"
+          component={FinScreen}
+        />
+        <Stack.Screen
+          name="termsAndConditions"
+          component={termsAndConditions}
+        />
+        {/* Actual application */}
+        <Stack.Screen
+          name="FinDocs"
+          component={FinAppScreen}
+        />
+        
+        <Stack.Screen
+          name="FinAppConfirmation"
+          component={FinAppConfirmationScreen}
+        />
+      </Stack.Navigator>
+    )
+  }
+  
+  // Stack that defines donation hierarchy, all components related to donation are listed here
+  function DonateStack() {
+    return (
+      <Stack.Navigator
+      // Header for Stack
+      screenOptions={{
+        headerStyle:{
+          height: 85,
+          backgroundColor:"#F7F5F9"
+        },
+        headerTitle: () => <CFGIHeader/>,
+        headerTitleContainerStyle:{
+          left:0,
+          right:0
+        },
+        headerTintColor: '#459EFF',
+        headerRight: () => 
+        (<TouchableOpacity onPress={() => setUserToken(null)}>
+          <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
+        </TouchableOpacity>),
+        headerBackTitle: null
+      }} >
+        {/* Landing page */}
+        <Stack.Screen 
+          name="Donate"
+          component={DonateScreen}
+        />
+        {/* Add the actual donation screen here */}
+      </Stack.Navigator>
+    )
+  }
   // Define the bottom navigation bar by setting icons and colors if the 
   // user has been accepted by the system
+  
   return  (
     <AuthContext.Provider value={authContext}>
    <NavigationContainer style={styles.container}>
@@ -298,7 +316,8 @@ export default function App() {
           height: 85,
           backgroundColor:"#F7F5F9"
         },
-        headerTintColor: '#459EFF'
+        headerTintColor: '#459EFF',
+        headerBackTitle: null
       }}>
         <Stack.Screen name="SignIn" component={SignIn} options={{headerShown:false}}></Stack.Screen>
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{headerTitle:null}}></Stack.Screen> 
