@@ -86,3 +86,8 @@ These are just a few ideas, feel free to add more as you further develop the app
 * Form validation: [https://youtu.be/uxawinQ2tTk]
 * Regex (for input checking): [https://regex101.com/]
 
+(insert your component sections here)
+
+## Future of the App
+As of writing this, the app and its database are deployed on Heroku, but has yet to be deployed on the Apple App Store and Google Play Store. CFGI is a verified Google Play Store Developer, so we can actually deploy the app right now on Android. However, the app needs be user-tested first before that happens. We also still need to be verified Apple Store Developers, which is unfortunately much more difficult due to the whopping $99 a year we have to pay. <br/>
+To the future developers, these future changes described both here and earlier for each component seem like a lot (and there are). But we believe you can do it! None of us had any experience with React Native or Django when we first started, and while we're by no means experts, we're able to comfortably use it. We hope that you're able to learn React Native faster than we did through this README and existing code, and we hope that you can make the app a lot better than what we have right now.  
