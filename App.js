@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 // Navigation container used for navigating to every single component
 import { NavigationContainer } from '@react-navigation/native'; 
 // The bottom navigation bar used in our entire app
@@ -9,13 +9,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 // All of our screens, importing them here so our navigation stack is aware of the system hierarchy
 import {HomeScreen } from './app/screens/home.js';
 import {ProfileScreen} from './app/screens/profile.js';
-import { JobScreen, LegalScreen, DonateScreen} from './app/screens/screens.js';
+import { JobScreen, DonateScreen} from './app/screens/screens.js';
 import {FinScreen } from './app/screens/financial.js';
 import { FinAppScreen } from './app/screens/FinDocScreen.js';
 import { FinAppConfirmationScreen } from './app/screens/FinAppConfirmationScreen';
 import { termsAndConditions } from './app/screens/termsAndConditions';
-
-//Stephanie's Edit
 import { AppointmentScreen} from './app/screens/appointment.js';
 import { CalendlyScreen  } from './app/screens/legalCard.js';
 import CFGIHeader from './app/screens/cfgiHeader.js'
@@ -96,7 +94,7 @@ export default function App() {
           name="Profile"
           component={ProfileScreen}
         />
-        {/* retun to signIn */}
+        {/* return to signIn */}
       </Stack.Navigator>
     )
   }
@@ -155,11 +153,6 @@ export default function App() {
         </TouchableOpacity>),
         headerBackTitle: null
       }}>
-        {/* Landing page */}
-        {/* <Stack.Screen
-          name="Legal"
-          component={LegalScreen}
-        /> */}
         <Stack.Screen
           name="AppointDocs"
           component={AppointmentScreen}
@@ -258,6 +251,7 @@ export default function App() {
      {userToken ? (
        <Tab.Navigator
        initialRouteName="Home"
+      //  While the keyboard is being used, hide the navigation bar 
        tabBarOptions={{keyboardHidesTabBar: true, activeTintColor: '#3C65CC', inactiveTintColor: '#3E3D3D'}}>
        <Tab.Screen
          // Each tab leads to its respective stack, which 
