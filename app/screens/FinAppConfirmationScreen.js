@@ -3,16 +3,8 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-nati
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
-// const HomeActivity = ({navigation, route}) => {
-//     React.useLayoutEffect(() => {
-//       navigation.setOptions({headerShown: false});
-//     }, [navigation]);
-
 // Confirmation page after submitting
 export const FinAppConfirmationScreen = ({navigation}) => {
-    // React.useLayoutEffect(() => {
-    //     navigation.setOptions({headerShown: false});
-    // }, [navigation]);
 
     return (
     <ScrollView>
@@ -45,7 +37,6 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#F7F5F9',
-    //   alignItems: 'center',
       justifyContent: 'center',
     },
     

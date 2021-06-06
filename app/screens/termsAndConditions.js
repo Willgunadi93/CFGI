@@ -1,19 +1,15 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import { TouchableHighlight } from 'react-native-gesture-handler';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 
 // Page that will describe the terms and conditions of the user accepting 
-// financial aid from CFGI
+// financial aid from CFGI, this is very long
 export const termsAndConditions = ({navigation}) => {
     return (
     <ScrollView>
         <View style={styles.container}>
-            {/* Back button that allows the user to go back to the landing screen */}
-
             <Text style={styles.titleText}>Terms and Conditions</Text>
             {/* The actual terms and conditions */}
             <Text style={styles.mainText}>
@@ -173,7 +169,6 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#F7F5F9',
-    //   alignItems: 'center',
       justifyContent: 'center',
     },
 

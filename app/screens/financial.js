@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { ScreenContainer } from 'react-native-screens';
 // for responsive design
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
-// import {SvgUri } from 'react-native-svg-uri'; 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
@@ -17,9 +16,7 @@ export const FinScreen = ({navigation}) => {
             
             {/* Flavor and description text here */}
             <View style={styles.titleContainer}>
-            {/* View here */}
                 <Text style={styles.titleText}>APPLY</Text>
-                 {/*View here?  */}
             </View>
             <Text style={styles.header}>Emergency Financial Assistance</Text>
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput, TouchableHighlight, TouchableOpacity } from "react-native";
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity } from "react-native";
 // for responsive design 
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -70,7 +69,7 @@ export const FinAppScreen = ({navigation}) => {
     ]);
 
 
-    //Field Error States; 'false' means no errors
+    // Field Error States; 'false' means no errors
     const [fNameError, setfNameError] = useState(false);
     const [LNameError, setLNameError] = useState(false);
     const [degreeError, setDegreeError] = useState(false);
@@ -88,7 +87,7 @@ export const FinAppScreen = ({navigation}) => {
     const [aidError, setAidError] = useState(false);
     const [reasonError, setReasonError] = useState(false);
     
-    //Validation for only regex expression
+    // Validation for only regex expression
     function onlyRegex (item, expression, error) {
         var exp = new RegExp(expression)
         if(!exp.test(item)){
@@ -99,7 +98,7 @@ export const FinAppScreen = ({navigation}) => {
         }
     }
     
-    //Validation for non-empty states
+    // Validation for non-empty states
     function nonEmpty(item, error){
         if(item === ''){
             error(true)
@@ -123,22 +122,18 @@ export const FinAppScreen = ({navigation}) => {
         }
     }
 
-    function onSubmittion(){
+    // If all the inputs are filled in, the user will be taken to the confirmation page (add database)
+    function onSubmission(){
         var errors = [degreeError, statusError, maritalError, reasonError, aidError, otherStatusError, childrenError, gradYearError, 
             studyError, otherDegreeError, uniError, text1Error, phoneError, emailError, maritalError, statusError, degreeError,LNameError,fNameError];
         if(errors.every((e) => e === false))
             return(navigation.navigate("FinAppConfirmation"));
     }
 
+    // Our actual screen
     return (
     <ScrollView>
         <View style={styles.container}>
-            {/* Back button that allows the user to go back to the landing screen */}
-            {/* <TouchableHighlight onPress={() => navigation.goBack()} underlayColor={'#F7F5F9'}>
-                <View style={styles.backButtonContainer}>
-                    <Ionicons name="arrow-back-circle" size={40} color="#4C67F6"/>
-                </View>
-            </TouchableHighlight> */}
             <View style={{}}>
             <Text style={{paddingTop: 30, paddingBottom:20, fontWeight:'bold', fontSize:24, textAlign:'center', color: "#3F3356"}}>EMERGENCY FINANCIAL AID APPLICATION</Text>
             <Text style={[styles.mainText, ({textAlign:'center', paddingBottom: 30})]}>Please read through this document thoroughly and answer all questions carefully and accurately. By filling it out, you agree to the <Text style={{ color: 'blue', textDecorationLine: 'underline'}} onPress={() => navigation.navigate('termsAndConditions')}>Terms and Conditions</Text>.</Text>
@@ -148,23 +143,6 @@ export const FinAppScreen = ({navigation}) => {
             <Text style={styles.header}>First Name</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
-                    {/* <TextInput
-                        style = {styles.shortAnswerInput}
-                        // value = {first_name}
-                        setValue = {setFirstName}
-
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
-                    /> */}
-
                     {/* Stephanie Edit */}
                     <TextInput
                         // setValue = {setFirstName}
@@ -174,40 +152,20 @@ export const FinAppScreen = ({navigation}) => {
                         style={[styles.shortAnswerInput,{borderColor: fNameError? '#E76060': '#DADADA'}]}
                     />
                     {fNameError? <Text style={{color:'#E76060'}}>Please enter your first name.</Text>: null}
-                    {/* ===== */}
                 </View>
             </View>
 
             <Text style={styles.header}>Family/Last Name</Text>
             <View style={styles.inputContainer}>
                 <View style={{paddingVertical: hp('1%')}}>
-                    {/* <TextInput
-                        style = {styles.shortAnswerInput}
-                        value = {last_name}
-                        setValue = {setLastName}
-
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
-                    /> */}
                     <TextInput
                         onChangeText={name => setLastName({name})}
                         onChange={name => nonEmpty(name.nativeEvent.text, setLNameError)}
                         style={[styles.shortAnswerInput,{borderColor: LNameError? '#E76060': '#DADADA'}]}
                     />
                     {LNameError? <Text style={{color:'#E76060'}}>Please enter your last name.</Text>: null}
-                    {/* ===== */}
                 </View>
             </View>
-
-            {/* Use calendar functionality for date of */}
 
             <Text style={styles.header}>Email Address</Text>
             <View style={styles.inputContainer}>
@@ -216,16 +174,6 @@ export const FinAppScreen = ({navigation}) => {
                         style = {[styles.shortAnswerInput, {borderColor: emailError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setEmail({name})}
                         onEndEditing={name => onlyRegex(name.nativeEvent.text,'^.+@.+\\..+$', setEmailError)}
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
                     />
                     {emailError? <Text style={{color:'#E76060'}}>Please provide a valid email address.</Text>: null}
                 </View>
@@ -238,16 +186,6 @@ export const FinAppScreen = ({navigation}) => {
                         style = {[styles.shortAnswerInput, {borderColor: phoneError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setPhone({name})}
                         onChange={name => onlyRegex(name.nativeEvent.text,"^(\\+)?[0-9]{9,18}$", setPhoneError)}
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
                     />
                     {phoneError? <Text style={{color:'#E76060'}}>Please provide a valid phone number, 
                     all numbers together with no parantheses ("()"), no dashes ("-"), and no spaces (" "). 
@@ -281,16 +219,6 @@ export const FinAppScreen = ({navigation}) => {
                         style = {[styles.shortAnswerInput, {borderColor: uniError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setUni({name})}
                         onChange={name => nonEmpty(name.nativeEvent.text, setUniError)}
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
                     />
                     {uniError? <Text style={{color:'#E76060'}}>Please enter your university name.</Text>: null}
                 </View>
@@ -336,13 +264,6 @@ export const FinAppScreen = ({navigation}) => {
                             style = {[styles.shortAnswerInput, {borderColor: otherDegreeError? '#E76060': '#DADADA'}]}
                             onChangeText={name => setOtherDegree({name})}
                             onChange={name => nonEmpty(name.nativeEvent.text, setOtherDegreeError)}
-                            // onChangeText={onChangeText}
-                            // onChangeText={(text) => {this.setState({text});}}
-                            // value={this.state.text}
-                            // multiline onChange={(event) => this.onChangeText(event)}
-                            // onChange={(event) =>
-                            //     this.onChangeText(event)
-                            //   }
                         />
                         {otherDegreeError? <Text style={{color:'#E76060'}}>Please enter a valid degree or "N/A".</Text>: null}
                 </View>
@@ -359,16 +280,6 @@ export const FinAppScreen = ({navigation}) => {
                         style = {[styles.shortAnswerInput, {borderColor: studyError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setStudy({name})}
                         onChange={name => nonEmpty(name.nativeEvent.text, setStudyError)}
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
                     />
                     {studyError? <Text style={{color:'#E76060'}}>Please enter your field of study.</Text>: null}
                 </View>
@@ -385,16 +296,6 @@ export const FinAppScreen = ({navigation}) => {
                         style = {[styles.shortAnswerInput, {borderColor: gradYearError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setGradYear({name})}
                         onChange={name => onlyRegex(name.nativeEvent.text, "^20[0-9]{2}$", setGradYearError)}
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
                     />
                     {gradYearError? <Text style={{color:'#E76060'}}>Please provide a valid graduation year.</Text>: null}
                 </View>
@@ -414,7 +315,6 @@ export const FinAppScreen = ({navigation}) => {
                 setOpen = {setMaritalOpen}
                 // Changes the choice if the user changes their choice
                 onChangeValue = {marital => setMaritalValue(marital)}
-
                 // There's no search bar
                 searchable = {false}
                 // Making it scrollable
@@ -439,16 +339,6 @@ export const FinAppScreen = ({navigation}) => {
                         style = {[styles.shortAnswerInput, {borderColor: childrenError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setChildren({name})}
                         onChange={name => onlyRegex(name.nativeEvent.text, "^[0-9][0-9]?$", setChildrenError)}
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
                     />
                     {childrenError? <Text style={{color:'#E76060'}}>Please enter the number of children you have, or 0.</Text>: null}
                 </View>
@@ -479,6 +369,7 @@ export const FinAppScreen = ({navigation}) => {
                 containerStyle = {{width: wp('76%'), alignSelf:"center"}}
                 onChangeValue={(value) => setStatusError(false)}
             />
+            
             {statusError? <Text style={{color:'#E76060', paddingLeft: wp('13%') }}>Please select your immigration status.</Text>: null}
 
             <Text style={styles.header}>If you put "Other" in the last question, please put in your status.
@@ -492,13 +383,6 @@ export const FinAppScreen = ({navigation}) => {
                             style = {[styles.shortAnswerInput, {borderColor: otherStatusError? '#E76060': '#DADADA'}]}
                             onChangeText={name => setOtherStatus({name})}
                             onChange={name => nonEmpty(name.nativeEvent.text, setOtherStatusError)}
-                            // onChangeText={onChangeText}
-                            // onChangeText={(text) => {this.setState({text});}}
-                            // value={this.state.text}
-                            // multiline onChange={(event) => this.onChangeText(event)}
-                            // onChange={(event) =>
-                            //     this.onChangeText(event)
-                            //   }
                         />
                         {otherStatusError? <Text style={{color:'#E76060'}}>Please enter your immigration status, or "N/A".</Text>: null}
                 </View>
@@ -519,17 +403,6 @@ export const FinAppScreen = ({navigation}) => {
                         style = {[styles.shortAnswerInput, {borderColor: aidError? '#E76060': '#DADADA'}]}
                         onChangeText={name => setAid({name})}
                         onChange={name => onlyRegex(name.nativeEvent.text,'^[2-9][0-9][0-9](\.?[0-9]{2})?|1000$',setAidError)}
-                        // onChangeText={onChangeText}
-                        // onChangeText={(text) => {this.setState({text});}}
-                        // value={this.state.text}
-                        
-                        // multiline onChange={(event) => this.onChangeText(event)}
-                        // onChange={(event) =>
-                        //     this.onChangeText(event)
-                        //   }
-                        //   onContentSizeChange={(event) => {
-                        //     this.setState({ height: event.nativeEvent.contentSize.height })
-                        //   }}
                     />
                     {aidError? <Text style={{color:'#E76060'}}>Please enter in an aid amount between 200 to 1000 (no "$" needed).</Text>: null}
                 </View>
@@ -562,9 +435,8 @@ export const FinAppScreen = ({navigation}) => {
             </View>
 
 
-            {/* Temporary until uploading files is implemented */}
+            {/* Future feature: have a file uploading feature so CFGI doesn't have to reach out to user separately */}
             <View style={{paddingVertical: hp('3%')}}></View>
-            
             <View style={{flexDirection:'row', paddingHorizontal: wp('13%'), marginBottom:20}}>
                 <View>
                     <Text style={[styles.mainText, ({paddingRight: wp('0'), paddingLeft: wp('0%')})]}>I have filled out this application with complete accuracy and care.
@@ -572,6 +444,8 @@ export const FinAppScreen = ({navigation}) => {
                     I agree to the Terms and Conditions.</Text> 
                 </View>
             </View>
+
+            {/* Future feature: use calendar functionality to get today's date as a signature*/}
 
             <View style={styles.buttonContainer}>
                 {/* Allows the user to save the current application and come back to it later */}
@@ -583,7 +457,7 @@ export const FinAppScreen = ({navigation}) => {
                 </View>
                 {/* Submits the current application by uploading to the database, will be manually reviewed by CFGI */}
                 {/* Directs user to confirmation screen */}
-                <TouchableOpacity style={styles.buttonStyle} onPressIn={() => onSubmitEntry()} onPress={() =>onSubmittion()} underlayColor={'#F7F5F9'}>
+                <TouchableOpacity style={styles.buttonStyle} onPressIn={() => onSubmitEntry()} onPress={() =>onSubmission()} underlayColor={'#F7F5F9'}>
                     <Text style={styles.buttonText}>SUBMIT</Text>
                 </TouchableOpacity>
             </View>
