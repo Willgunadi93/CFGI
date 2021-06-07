@@ -4,7 +4,7 @@ import { ScreenContainer } from 'react-native-screens';
 import { Card } from "react-native-elements";
 import { useState } from 'react';
 import { AuthContext } from '../screens/context';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Alert } from 'react-native';
 //import { ScreenContainer } from 'react-native-screens';
 
 //import webview
@@ -14,11 +14,7 @@ import {
   widthPercentageToDP as wp,
  } from 'react-native-responsive-screen';
 
-//What Stephanie Added
-import LegalButton from '../screens/legalbuttons';
-import { Alert } from 'react-native';
-//
-
+ 
 export const JobScreen = () => {   //Jobs page component
 
   // Set variables and states
@@ -209,32 +205,6 @@ export const JobScreen = () => {   //Jobs page component
   //         </Card></TouchableOpacity>
   //     </View>
 
-  
-  //  export const CalendlyScreen = () => {
-  //    return (
-  //     <WebView source={{uri : 'https://testingcfgi.s3-us-west-1.amazonaws.com/webview.html'}}/>
-  //    );
-  //  }
-
-  // export const LegalScreen = ({navigation}) => {   //Jobs page component
-  //   return (
-  //     <View style={styles.legalContainer}>
-  //     {/* <Image style={{width:'50%', height:"15%", resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/> */}
-  //     <View style={{paddingBottom: 30, paddingTop:30}}>
-  //         <Text style={styles.legalTitle}>Legal Services</Text>
-  //         <Text style={{fontSize:18}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
-  //     </View>
-  //     <View style={styles.body}>
-  //         <LegalButton text='View Appointment' onPress={() => console.log("Haven't added page.")} icon='calendar' />
-  //         <LegalButton text="Schedule with Attorneys" onPress={() => navigation.navigate('AppointDocs')} icon='calendar-check' />
-  //         {/* <LegalButton text="Frequently Asked Questions" onPress={() => console.log("Haven't added page.")} icon='chat' />
-  //         <LegalButton text="Resource Library" onPress={() => console.log("Haven't added page.")} icon='book-reader'/> */}
-  //     </View>
-  //   </View>
-
-  //   );
-  // }
-
 
   
   export const DonateScreen = () => {   //Donate page component
@@ -315,45 +285,6 @@ export const JobScreen = () => {   //Jobs page component
       paddingHorizontal: 55,
       marginTop: 5,
       backgroundColor: "#4C67F6"
-    },
-
-    legalContainer: { //Attorney/Appointment
-      backgroundColor: '#F7F5F9',
-      padding: 30
-    },
-    legalTitle:{ //Legal Services
-      fontSize:32,
-      textAlign: 'left',
-      color: '#3F3356'
-    },
-    AsubTitle:{ //Attorney/Appointment
-      color:'#FF564F',
-      fontSize: 24,
-      fontWeight:'bold',
-      paddingTop:20
-    },
-    attorneyTitle:{ //Attorney/Appointment
-      color: "#3F3356",
-      fontSize: 24,
-      fontWeight:'bold'
-    },
-    legalResults:{ //Attorney/Appointment
-        fontSize:24,
-        color: "#3F3356",
-        fontWeight:'bold',
-        paddingRight: 10,
-        alignSelf:'flex-end'
-    },
-
-    dropdown:{ //Attorney/Appointment
-      borderColor: '#4C67F6',
-      borderWidth: 1,
-      borderRadius: 11,
-      padding:10,
-      marginTop:10,
-      fontWeight:'bold',
-      backgroundColor:'white',
-      color: 'black'
     },
 
     jobInput: {

@@ -33,7 +33,6 @@ const Tab = createBottomTabNavigator();
 // Stack hierarchy starting from the home screen, HomeScreen component is the top of the hierarchy and 
 // leads to every other component
 
-import { Entypo } from '@expo/vector-icons'; 
 import {TouchableOpacity} from "react-native"
 
 
@@ -72,12 +71,16 @@ export default function App() {
           height: 85,
           backgroundColor:"#F7F5F9"
         },
+        //CFGI Custom Header
         headerTitle: () => <CFGIHeader/>,
+        //Removes space around the CFGI Logo in header
         headerTitleContainerStyle:{
           left:0,
           right:0
         },
+        //Back button color
         headerTintColor: '#459EFF',
+        //Exit Icon of the header
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
@@ -109,12 +112,16 @@ export default function App() {
           height: 85,
           backgroundColor:"#F7F5F9"
         },
+        //CFGI Custom Header
         headerTitle: () => <CFGIHeader/>,
+        //Removes space around the CFGI Logo in header
         headerTitleContainerStyle:{
           left:0,
           right:0
         },
+        //Back button color
         headerTintColor: '#459EFF',
+        //Exit Icon of the header
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
@@ -141,12 +148,16 @@ export default function App() {
           height: 85,
           backgroundColor:"#F7F5F9"
         },
+        //CFGI Custom Header
         headerTitle: () => <CFGIHeader/>,
+        //Removes space around the CFGI Logo in header
         headerTitleContainerStyle:{
           left:0,
           right:0
         },
+        //Back button color
         headerTintColor: '#459EFF',
+        //Exit Icon of the header
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
@@ -176,12 +187,16 @@ export default function App() {
           height: 85,
           backgroundColor:"#F7F5F9"
         },
+        //CFGI Custom Header
         headerTitle: () => <CFGIHeader/>,
+        //Removes space around the CFGI Logo in header
         headerTitleContainerStyle:{
           left:0,
           right:0
         },
+        //Back button color
         headerTintColor: '#459EFF',
+        //Exit Icon of the header
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
@@ -221,12 +236,16 @@ export default function App() {
           height: 85,
           backgroundColor:"#F7F5F9"
         },
+        //CFGI Custom Header
         headerTitle: () => <CFGIHeader/>,
+        //Removes space around the CFGI Logo in header
         headerTitleContainerStyle:{
           left:0,
           right:0
         },
+        //Back button color
         headerTintColor: '#459EFF',
+        //Exit Icon of the header
         headerRight: () => 
         (<TouchableOpacity onPress={() => setUserToken(null)}>
           <Ionicons name="md-exit-outline" size={26} color="black" style={{paddingRight:15}}/>
@@ -304,12 +323,14 @@ export default function App() {
      ) : (
       //  If user isn't accepted by the system, they are directed to the stack of 
       // sign up/log in options
-      <Stack.Navigator 
+      <Stack.Navigator
+      //Header for Stack
       screenOptions={{
         headerStyle:{
           height: 85,
           backgroundColor:"#F7F5F9"
         },
+        //Back button color
         headerTintColor: '#459EFF',
         headerBackTitle: null
       }}>

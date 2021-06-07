@@ -6,7 +6,7 @@ import { useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useCallback } from 'react';
 
-//Dummy Data for Attorneys. One issue, can't call <Image source={require(u.image)}/> within it.
+//Dummy Data for Attorneys
 const users = [
     {
        name: 'Bill Gunadi',
@@ -58,7 +58,7 @@ const users = [
 
 export const AppointmentScreen = ({navigation}) => {
 
-    //Term & Conditions
+    //Term & Conditions State
     const [modalVisible, setModalVisible] = React.useState(true);
 
     //Expertise Dropdown
@@ -89,9 +89,10 @@ export const AppointmentScreen = ({navigation}) => {
       setExpertOpen(false);
     }, []);
 
+    //Attorney card list
     var cards = [];
 
-    //Expertise and Language is null.
+    //None selected; Expertise and Language is null.
     if(expert_value ===null && lang_value === null){
       var cards =  users.map(u => {
         return (
@@ -132,10 +133,10 @@ export const AppointmentScreen = ({navigation}) => {
       ).filter(e => e !== null)
     }
 
-    //Searchbar
+    //Searchbar State
     const [searchJob, setSearchJob] = React.useState(null);
 
-    //Searching for Attorney Name
+    //Searching for Attorney Name; Returns cards that fit the search parameters
     if(searchJob !== null && searchJob !== ""){
       var cards =  cards.filter(u => {
         return (
@@ -144,6 +145,7 @@ export const AppointmentScreen = ({navigation}) => {
       );
     }
 
+    //Resets all search selections by setting them to null
     function resetAll (){
       setExpertValue(null);
       setLangValue(null);
@@ -153,6 +155,7 @@ export const AppointmentScreen = ({navigation}) => {
     return (
       <ScrollView style={{paddingTop:30, backgroundColor:"#F7F5F9", flex: 1}}>
         
+        {/* //Terms and Conditions Modal */}
         <View>
         <Modal animationType="slide" transparent={true} visible={modalVisible} 
         onRequestClose={() => {
@@ -162,6 +165,7 @@ export const AppointmentScreen = ({navigation}) => {
               <Text style={{fontSize:18, fontWeight:'bold'}}>TERMS AND CONDITIONS</Text>
               <Text style={{fontSize:15, marginTop: 10}}>By continuing, I understand CFGI does not provide legal advice. It is a pro bono attorney matching service. 
               CFGI does not carry professional liability insurance. Attorneys are independently responsible for any legal advice provided.</Text>
+              {/* Button for Terms and Condition */}
               <TouchableOpacity onPress={() => {setModalVisible(!modalVisible)}} style={{backgroundColor:'#4C67F6', alignSelf:'center', borderRadius: 10, paddingVertical: 13, paddingHorizontal: 55, marginTop: 15}}>
                 <Text style={{fontSize: 15, color: 'white', fontWeight:'bold', alignSelf: 'center'}}>PROCEED</Text>
               </TouchableOpacity>
@@ -169,18 +173,23 @@ export const AppointmentScreen = ({navigation}) => {
             </View>
         </Modal>
         </View>
-        
+
+        {/* Legal Title Text */}
         <View style={{paddingHorizontal: 30, flex:1}}>
-          {/* <Image style={{height:'30%', resizeMode:"contain", alignSelf:'center'}}source={require('../assets/img/Screenslogo.png')}/> */}
           <Text style={styles.AsubTitle}>DIRECTORY</Text>
           <Text style={styles.attorneyTitle}>Find A CFGI Attorney For A Consultation</Text>
         </View>
          
+         {/* Background Image "Wave" */}
         <ImageBackground source={require('../assets/img/legalwave.png')} style={{resizeMode:'cover', zIndex:-1}} imageStyle={{opacity:0.5}}>
-        <View style={{paddingHorizontal: 30}}>
-        <TouchableOpacity onPress={() => resetAll()}><Text style={{color: "#3C65CC", alignSelf:'flex-end', paddingRight: 5, fontStyle:'italic', textDecorationLine: "underline"}}>Reset All</Text></TouchableOpacity>
-        <Text style={{fontWeight:"bold", fontSize:16, marginTop:25, color: "#3F3356"}}>EXPERTISE TYPE:</Text>
         
+        <View style={{paddingHorizontal: 30}}>
+        
+        {/* //Reset Button */}
+        <TouchableOpacity onPress={() => resetAll()}><Text style={{color: "#3C65CC", alignSelf:'flex-end', paddingRight: 5, fontStyle:'italic', textDecorationLine: "underline"}}>Reset All</Text></TouchableOpacity>
+        
+        {/* //Dropdown for Expertise */}
+        <Text style={{fontWeight:"bold", fontSize:16, marginTop:25, color: "#3F3356"}}>EXPERTISE TYPE:</Text>
         <DropDownPicker
             onOpen={onExpertOpen}  
             open={expert_open}
@@ -209,7 +218,8 @@ export const AppointmentScreen = ({navigation}) => {
             }}
             containerStyle={{marginTop:10}}
             />
-            
+          
+          {/* //Dropdown for "Language" Selection */}
         <Text style={{fontWeight:"bold", fontSize:16, color: "#3F3356"}}>LANGUAGE:</Text>
              <DropDownPicker
             onOpen={onLangOpen}
@@ -238,9 +248,11 @@ export const AppointmentScreen = ({navigation}) => {
             }}
             containerStyle={{marginTop:10, marginBottom:10}}
         /></View>
-        
-        <Divider style={{ height:1.5, backgroundColor: '#E6E6E6', marginTop: 20, borderRadius:10, alignSelf:"center", width: "85%", zIndex:-1}} />
 
+        {/* //Divider */}
+        <Divider style={{ height:1.5, backgroundColor: '#E6E6E6', marginTop: 20, borderRadius:10, alignSelf:"center", width: "85%", zIndex:-1}} />
+        
+        {/* //Results Text & Attorney Name Searchbar */}
         <View style={{padding:30, flexDirection:'row', paddingBottom:0}}>
           <Text style={styles.legalResults}> {cards.length} Results</Text>
           <SearchBar
@@ -254,7 +266,7 @@ export const AppointmentScreen = ({navigation}) => {
         </View>
         </ImageBackground>
         
-        {/* Where the cards populate */}
+        {/* Where the cards populate or appear */}
         <View style={{padding: 30, marginBottom: 15}}>
         {cards}
         </View>
@@ -264,17 +276,20 @@ export const AppointmentScreen = ({navigation}) => {
   }
 
   const styles = StyleSheet.create({
+    //The "Directory" subTitle on Legal Screen
     AsubTitle:{
       color:'#FF6E00',
       fontSize: 24,
       fontWeight:'bold',
       paddingTop:20
     },
+    //Main title under the "Directory"
     attorneyTitle:{
       color: "#3F3356",
       fontSize: 24,
       fontWeight:'bold'
     },
+    //Results title for number of results
     legalResults:{
         fontSize:24,
         color: "#3F3356",
@@ -282,12 +297,15 @@ export const AppointmentScreen = ({navigation}) => {
         paddingRight: 10,
         alignSelf:'flex-end'
     },
+    //For the modal; sets the modal style framework
     centeredView: {
       flex: 1,
       justifyContent: "flex-end",
       alignItems: "center",
+      //Turns the background dark when modal opened
       backgroundColor: "rgba(0, 0, 0, 0.2)"
     },
+    //For the modal; how the modal looks
     modalView: {
       backgroundColor: "white",
       borderRadius: 30,
