@@ -5,9 +5,8 @@ import { Card } from "react-native-elements";
 import { useState } from 'react';
 import { AuthContext } from '../screens/context';
 import { Alert } from 'react-native';
-//import { ScreenContainer } from 'react-native-screens';
 
-//import webview
+
 import { WebView } from 'react-native-webview';
 import {
   heightPercentageToDP as hp,
@@ -86,6 +85,7 @@ export const JobScreen = () => {   //Jobs page component
 
     return (
       <ScrollView>
+        {/* Job Page Description */}
       <View style={styles.jobContainer}>
       <View style={{padding: hp('3%'), flex: 1}}>
         <Text style={styles.jobTitle}>CAREERS</Text>
@@ -98,7 +98,8 @@ export const JobScreen = () => {   //Jobs page component
           Want to be on our partner list?{'\n'}</Text>
         <Text style={{fontSize: 14, color: '#000000', fontWeight:'bold',paddingBottom: hp('2.8%')}}>Please sign up below, we will contact you soon.
           </Text>
-        
+          
+          {/* Text Input for Sign Up Form */}
           <Text style={styles.header}>First Name*</Text>
           <View style={{paddingVertical: hp('1%')}}>
             <TextInput //placeholder="First Name"
@@ -134,31 +135,34 @@ export const JobScreen = () => {   //Jobs page component
             onChangeText={name => setCompanyName(name)}/>
           </View>
         </View>
-
-        {/* <View style={{paddingVertical: hp('1%')}}>
+        
+        {/* Job Page Comments Search Function: To Be Implemented
+        {<View style={{paddingVertical: hp('1%')}}>
             <TextInput inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:40}}
             containerStyle={{margin:0, padding:0, backgroundColor:'white', borderRadius:30, borderWidth:1, borderTopColor:'#4C67F6', borderEndColor:'#4C67F6', borderColor:'#4C67F6', borderBottomColor:'#4C67F6'}}
             inputStyle={{fontStyle:'italic', fontSize:14}} 
             onChangeText={searchFilterFunction} value={searchJob}
-            placeholder="  This feature is under construction."/>
+            placeholder="     job title, keyworkds, or company"/>
           </View> */}
           
-          {/* <View style={{paddingVertical: hp('1%')}}> 
+          {/* {<View style={{paddingVertical: hp('1%')}}> 
           <SearchBar inputContainerStyle={{backgroundColor:'white', borderRadius:30, height:40}}
             containerStyle={{margin:0, padding:0, backgroundColor:'white', borderRadius:30, borderWidth:1, borderTopColor:'#4C67F6', borderEndColor:'#4C67F6', borderColor:'#4C67F6', borderBottomColor:'#4C67F6'}}
             inputStyle={{fontStyle:'italic', fontSize:14}} 
             onChangeText={searchLocFunction} value={searchLoc} 
             clearIcon={true}
             searchIcon={() => <Ionicons name="location-outline" color='gray' size={19}/>}
-            placeholder="  Please check back soon!"/> 
-          </View> */}
-
+            placeholder="     zipcode or city"/> 
+          </View>} */}
+      
+      {/* Submit Buttion for the Form */}
       <View style={{alignContent: 'center', paddingLeft: wp('33.2%'), marginTop: hp('0.6%')}}>
         <TouchableOpacity onPress={checkTextInput} style={styles.jobButton} underlayColor="#0A30F6">
             <Text style={styles.jobTextStyle}>Submit</Text>
         </TouchableOpacity>
       </View>
-
+      
+      {/* Example Job Card Result for Future Implementation Reference */}
       <View style={{width: hp('15%'), height: hp('6%') ,top: hp('10%'), left: hp('3.5%')}}> 
         <Text style={{fontSize: 16, color: "#000000", fontWeight: 'bold'}}>Results</Text>
       </View>
@@ -177,7 +181,7 @@ export const JobScreen = () => {   //Jobs page component
     );
   }
 
-   //Job Page Comments Function: To Be Implemented
+   //Job Page Comments Job Cards Function: To Be Implemented
 
   // <View style={{top: hp('15%'), paddingStart: hp('1.5%'), paddingEnd: hp('1%')}}> 
   //       <TouchableOpacity onPress={() => console.log("Haven't added job details.")}>
