@@ -104,6 +104,20 @@ Future features this feature could or should have, from most to least important:
 
 These are just a few ideas, feel free to add more as you further develop the app. <br/>
 
+### Home Page (home.js)
+
+The main purpose is to provide users quick access to general information about CFGI, its mission, and the founders of the organization.
+
+The top right icon is the logout feature which takes users back to the sign in page. <br/>
+
+Future features this feature could have:
+
+- display more personalized information for users such as:
+  - Saved Financial Assistance Applications so users can  
+    progressively work on their applications and quickly access them
+  - Upcoming appointments with attorneys to notify users about booked
+    appointments <br/>
+
 ##### Code Sources
 
 - Error Pop Up: [https://reactnative.dev/docs/alert]
