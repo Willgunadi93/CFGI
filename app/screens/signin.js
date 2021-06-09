@@ -19,9 +19,6 @@ import { NavigationEvents } from 'react-navigation';
 
 // User is taken to this component when the app is opened 
 export const SignIn = ({ navigation}) => { 
-    // Buttons to login and sign up for an account
-    // LOGIN = logs in after users enter their email and password
-    // Signup = prompts users to create an account if they dont have one
     const [number, onChangeText] = React.useState(null);
     const { signIn } = React.useContext(AuthContext);
     const [form, setForm] = React.useState({});
@@ -69,14 +66,15 @@ export const SignIn = ({ navigation}) => {
                     />
                 </View>
                 {/* Link that allows the user to reset their password */}
-                <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text>
+                {/* <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('0.5%'), textDecorationLine: 'underline'}} onPress={() => navigation.push('ForgotPassword')}>Forgot password?</Text> */}
             </View>
 
-            {/* Buttons that allow the user to log in to their account and sign up*/}
+            {/* Button that allows the user to log in to their account*/}
             <View style={{paddingTop: hp('2%'), paddingHorizontal: wp('10%')}}>
               <Pressable style={styles.button} onPress={() => signIn()}>  
                 <Text style={styles.textStyle}>Login</Text>
               </Pressable>
+                {/* Link that allows the user to sign up*/}
               <Text style={{ color: 'blue', textAlign: 'right', paddingTop: hp('1%')}} onPress={() => navigation.push('CreateAccount')}>Sign up {'>'}</Text>
             </View>
             </ScrollView>
@@ -86,8 +84,8 @@ export const SignIn = ({ navigation}) => {
 
 // Component that allows the user to create a new account
 export const CreateAccount = ({navigation}) => {
-    // After the user enters their first name, last name, email, and password,
-    // their account is created and stored in the database
+    // After the user enters their first name, last name, username, email, and password,
+    // their account is created, their account information is sent in json format and is stored in the database
     const { signUp } = React.useContext(AuthContext);
     const [number, onChangeText] = React.useState(null);
 
@@ -203,7 +201,7 @@ export const CreateAccount = ({navigation}) => {
                     />
                 </View>
             </View>
-            {/* Once button is clicked, the user's account is created */}
+            {/* Once button is clicked, the user's account is created, and is directed back to the login page */}
             <View style={{paddingTop: hp('2%'), paddingHorizontal: wp('10%')}}>
               <Pressable onPress={onSubmit} style={styles.button}>
                 <Text style={styles.textStyle}>JOIN NOW</Text>
@@ -217,17 +215,14 @@ export const CreateAccount = ({navigation}) => {
 
 // User is taken to this component when they forget their password
 export const ForgotPassword = ({navigation}) => {
-    // After the user enters their first and last name, email, and password,
-    // their password is reset in the database
+    // Ideally, users input their email and will receive a validation code, but the functionality is not
+    // implemented due to time limitations, this is a prood of concept and shows the user interaction and flow.
     const { signUp } = React.useContext(AuthContext);
     const [number, onChangeText] = React.useState(null);
     return (
         <ScreenContainer style={StyleSheet.container}>
           <ScrollView>
             <View style={styles.logoView}>
-                {/* <View style={{paddingVertical: hp('4%'), alignItems: 'center'}}>
-                    
-                </View> */}
                 <View style={{alignItems: 'center'}}>
                   <Image style={{width: 250, height: 150, resizeMode: 'contain'}} source={require('../assets/img/logo-full.png')} />
                 </View>
@@ -251,15 +246,7 @@ export const ForgotPassword = ({navigation}) => {
                 <Text style={styles.textStyle}>CONTINUE</Text>
               </Pressable>
             </View>
-            {/* <View style={{alignItems: 'center'}}>
-                <View style={{position: 'absolute'}}>
-                    <Image style={styles.water} source={require('../assets/img/water.png')} />
-                    <View style={{alignItems: 'center'}}>
-                        <View style={styles.circleRedBottom}></View>
-                        <View style={styles.circleOrangeBottom}></View>
-                    </View>
-                </View>
-            </View> */}
+           
             {/* Defines formatting of phone screen */}
             <View style={{alignItems: 'center', paddingVertical: hp('6%')}}>
                 <Image style={{marginTop: hp('16%'), position: 'absolute', width:'100%', height: hp('19%')}} source={require('../assets/img/water.png')} />
@@ -273,12 +260,11 @@ export const ForgotPassword = ({navigation}) => {
 
 // Once the user enters their email, they are taken to this component
 // This component will allow the user to enter in a code sent to their email (from previous component)
+// But like the component above, this is a proof of concept that shows the user interaction and flow
 export const ResetPassword = () => {    
-    // Authority context stack is for user authentication
     const { signUp, signIn } = React.useContext(AuthContext);
     const [number, onChangeText] = React.useState(null);
 
-    // Create a modal
     const [modalVisible, setModalVisible] = React.useState(false);
 
     return (
@@ -314,7 +300,7 @@ export const ResetPassword = () => {
                     />
                 </View>
 
-                {/* User can enter in the new password again */}
+                {/* User can enter in the new password again to confirm*/}
                 <View style={{paddingVertical: hp('0.5%')}}>
                     <TextInput
                         secureTextEntry={true}
@@ -348,7 +334,7 @@ export const ResetPassword = () => {
                     </View>
                 </View>
             </Modal>
-            {/* Modal will bring up a Confirm Password dialogue*/}
+            {/* Modal will bring up a Confirm Password dialogue and when clicked logs the user in*/}
             <View style={{paddingTop: hp('2%'), paddingHorizontal: wp('10%')}}>
               <Pressable onPress={() => setModalVisible(true)} style={styles.button}>
                 <Text style={styles.textStyle}>CONFIRM PASSWORD</Text>
