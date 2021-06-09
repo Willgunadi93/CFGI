@@ -56,6 +56,12 @@ Beyond including new components and subsequently adding new or changing each of 
 - Ionicons (icons used for the navigation): [https://ionic.io/ionicons]
 - Hand Holding $ (had to use FontAwesome5 because this icon doesn't exist in Ionicons): [https://iconify.design/icon-sets/fa-solid/hand-holding-usd.html]
 
+### Login, Signup, and Password Resetting (app/screens/signin.js)
+
+Users of our application are required to have an account, which involves the general signup, login, and password resetting processes. First time users would navigate to the sign up page by clicking on the “sign up” link on the login screen, where they would create their account by inputting their first and last name, their email address, their desired username and password to sign up. Upon signing up, user’s signup information is sent to the database in a json format. After signing up successfully, users will be directed back to the login page where they can login using their username and password.
+
+The password resetting process’ functionality has not been implemented due to time limitations, but the front-end components have already been created. Currently the button that directs the users to the password resetting sequence is commented out in the source code, to uncomment that portion, navigate to the SignIn component and uncomment the commented code fragment.
+
 ### Financial Aid
 
 Users can apply for emergency financial aid for things such as emergency food, housing, travel expenses, etc. This aid can be anywhere from $200 to $1000. In the current iteration, assuming that they've read and agreed to the terms and conditions, users must fill out every field of the application and fully justify why they need the expenses. Once they submit their application, their information is saved to a database, where the CFGI admins can review their answers. If the CFGI admins accept their answers, they will reach out the users via email and ask the users for financial documents that support their justification. Assuming that the users have legitimate proof and the admins have accepted it, they will receive the aid. <br/>
@@ -91,6 +97,10 @@ These are just a few ideas, feel free to add more as you further develop the app
 - Input checking: [https://youtu.be/kuzhS_Aepdc]
 - Form validation: [https://youtu.be/uxawinQ2tTk]
 - Regex (for input checking): [https://regex101.com/]
+
+### Donation (app/screens/screens.js)
+
+Users can donate to CFGI through PayPal, and our application acts as a connector between the user and PayPal. When the donate button is clicked, users will be directed to their default browser to the PayPal donation page, where users can directly donate to CFGI through PayPal, they may also choose to make payment monthly, or add the cost of processing to the donation to help the organization furthermore.
 
 ### Jobs (screens.js)
 
