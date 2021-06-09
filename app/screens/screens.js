@@ -213,6 +213,7 @@ export const JobScreen = () => {   //Jobs page component
   
   export const DonateScreen = () => {   //Donate page component
     return (
+      // User Interface design
       <View style={{paddingTop: "5%", paddingHorizontal: "5%", backgroundColor: '#F7F5F9'}}>
         <View style={{paddingTop: "5%"}}>
           <Image style={{marginBottom: hp('3%'), marginLeft: wp('15%')}} source = {require('../assets/img/arrow-left.png')} />
@@ -236,11 +237,11 @@ export const JobScreen = () => {   //Jobs page component
           </View>
         </View>
         <View style={{paddingTop: "5%", paddingHorizontal: "25%"}}>
+          // When the button is clicked, the user is directed to their browser where the PayPal donation site of CFGI will be opened.
           <Pressable style={styles.button} onPress={ ()=>{ Linking.openURL('https://www.paypal.com/donate?hosted_button_id=SXQDLBKH55C42')}}>
             <Text style={styles.textStyle}>DONATE</Text>
           </Pressable>
         </View>
-        {/* <WebView style={{padding: 50}} source={{uri : 'https://paypalbutton.s3-us-west-1.amazonaws.com/paypal.html'}}/> */}
         <View style={{alignItems: "center"}}>
           <View style={{flexDirection: 'row', paddingTop: "5%"}}>
             <Text style={{fontSize: 12, color: "#FF6E00", opacity: 0.8}}>Help international students{'\n'}reach for the American dream</Text>
