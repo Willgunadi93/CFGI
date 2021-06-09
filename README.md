@@ -136,8 +136,6 @@ Future features this feature could have:
 - ScrollView: [https://youtu.be/riWf6CtFkUA]
 - Regex (for input checking): [https://regex101.com/]
 
-(insert your component sections here)
-
 ## Future of the App
 
 As of writing this, the app and its database are deployed on Heroku, but has yet to be deployed on the Apple App Store and Google Play Store. CFGI is a verified Google Play Store Developer, so we can actually deploy the app right now on Android. However, the app needs be user-tested first before that happens. We also still need to be verified Apple Store Developers, which is unfortunately much more difficult due to the whopping $99 a year we have to pay. <br/>
