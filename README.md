@@ -136,6 +136,43 @@ Future features this feature could have:
 - ScrollView: [https://youtu.be/riWf6CtFkUA]
 - Regex (for input checking): [https://regex101.com/]
 
+### CFGI Header (cfgiheader.js, App.js)
+A custom header that contains the CFGI logo shown at the top of almost every page in the app. This component is used and further stylized in App.js under the Stack Navigator component.
+
+##### Code Sources
+- Custom Header: [https://www.youtube.com/watch?v=C3oDJdlrEKE]
+- Header Props: [https://reactnavigation.org/docs/stack-navigator#headerbacktitle]
+
+### Legal Consultation with CFGI Attorney
+The main purpose of this feature is to allow international students to get legal consultation for issues. CFGI will cover a portion of the costs. Composed of three components/screens:
+- appointment.js – The landing page; the first step in scheduling a legal consultation with a CFGI networked Attorney. When the user arrives on the page, a modal will open stating that by proceeding onwards the user acknowledges the given terms and condition. The page will show the user a list of ‘LegalCards’ of CFGI networked attorneys and the number of results. Users can fine tune their search by the two dropdowns, Expertise and/or Language. They also have the option to search directly by attorney name in the search bar. The search bar searches only within the shown list of attorneys, filtered or not. Search settings can be reset by clicking “Reset All” at the top of the dropdown. “Reset All” will clear both dropdowns and the search bar. 
+- legalCard.js – A component used in appointment.js for the attorney info. The card contains a profile picture, the attorney’s expertise areas and language fluencies. When clicked, it will open an attorney profile modal containing more detailed information about the attorney. The type of information includes: name, profile picture, expertise, language, about (short bio), location, hours available, phone number, and linkedIn/avvo.com links (if provided). The bottom of the modal profile contains the “Schedule” button which will open/navigate to the attorney’s Calendly page.
+- CalendlyScreen – A component screen that returns a WebView of the attorney’s Calendly link. To schedule an appointment, users must select a given meeting time length, available day, time and enter their name and email. They also have the option to provide additional notes for the attorney. Once scheduled, users will be sent a confirmation email.
+
+Future features this feature could or should have, from most to least important:
+- An automated conflict checking system before scheduling
+- Restrict users to making one appointment at a time
+- The ability to view current appointments and past appointments
+- An FAQ for commonly asked questions
+- A legal resource library e.g., guides or helpful links
+- Include profile pictures of attorneys if provided, instead of the default picture currently
+- Allow for multiple expertise dropdown selection search
+
+#### How to get the specific link for CalendlyScreen:
+1. Get the attorney’s embedded Calendly link code. The directions on how to get this link is provided within a short video located in the CFGI INF 191 Capstone Google Drive, in ‘Final Deliverable’ under “Other Resources”.
+2. To use the WebView component, first create an external html file with the embedded Calendly link within the body tag of the html file.
+3. Then, using the Amazon AWS web hosting service, create a bucket and upload the html file within. Make sure to make the bucket’s permissions and restriction to public so that the app can have access to the link. 
+4. Then, AWS will provide an external link that points to the hosted html file.
+5. Within the source code, under appointments.js, set the ‘calendly’ attribute of the respective attorney object with that AWS link.
+
+##### Code Sources
+- Modal: [https://reactnative.dev/docs/modal]
+- Custom Card: [https://www.youtube.com/watch?v=5NewXsBnoKw]
+- Custom Button: [https://www.youtube.com/watch?v=LEa48P-KtCw&t=184s]
+- Dropdown: [https://hossein-zare.github.io/react-native-dropdown-picker-website/]
+- SearchBar: [https://reactnativeelements.com/docs/searchbar/]
+- URLs: https://reactnative.dev/docs/linking 
+
 ## Future of the App
 
 As of writing this, the app and its database are deployed on Heroku, but has yet to be deployed on the Apple App Store and Google Play Store. CFGI is a verified Google Play Store Developer, so we can actually deploy the app right now on Android. However, the app needs be user-tested first before that happens. We also still need to be verified Apple Store Developers, which is unfortunately much more difficult due to the whopping $99 a year we have to pay. <br/>
