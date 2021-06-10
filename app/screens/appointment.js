@@ -6,23 +6,11 @@ import { useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useCallback } from 'react';
 
-//Dummy Data for Attorneys
+//Attorney Data; An array of 'attorney info objects'
+//To add an attorney, add to 'users' array[] with the given attorney info as an object{} as shown below.
+//[Note]: You must provide a 'key', a sequential number. 
+//[Note]: You also must fill-in all information e.g., name, linkedin, avvo, otherlink, about, expertise, languages, location, ect..
 const users = [
-    {
-       name: 'Bill Gunadi',
-       linkedin: "",
-       avvo: "",
-       otherlink: "",
-       about: "Bill Gunadi is...",
-       expertise: ['Family Green Cards', 'Work Permits'],
-       languages: ['Spanish, Chinese, Hindi'],
-       location: "N/A",
-       hours: "N/A",
-       phone:"N/A",
-       calendly: 'https://testingcfgi.s3-us-west-1.amazonaws.com/webview.html',
-       image: '../assets/img/attorneydefault.png',
-       key:'1'
-    },
     {
       name: 'Matthew W. Blaisdell',
       linkedin: "https://www.linkedin.com/in/matthew-blaisdell-esq",
@@ -36,7 +24,7 @@ const users = [
       phone:"(347) 994-0177",
       calendly: "",
       image: '../assets/img/attorneydefault.png',
-      key:'2'
+      key:'1'
    },
     {
       name: 'Seth Finberg',
@@ -51,7 +39,7 @@ const users = [
       phone:"(954) 235-2277",
       calendly: "https://sethfinberg.s3-us-west-1.amazonaws.com/sethfinberg.html",
       image: '../assets/img/attorneydefault.png',
-      key:'3'
+      key:'2'
   }
    ]
    ////
@@ -64,6 +52,8 @@ export const AppointmentScreen = ({navigation}) => {
     //Expertise Dropdown
     const [expert_open, setExpertOpen] = useState(false);
     const [expert_value, setExpertValue] = useState(null);
+    //Expertise Dropdowns Value; this is an array objects. "label" is what is shown in the ui & 'value' is the 'value' of the object.
+    // To add another item to the dropdown, add {label: 'fill-out', value: 'fill-out'} in the array[].
     const [expert_items, setExpertItems] = useState([
       {label: 'Asylum', value: 'Asylum'},
       {label: 'Employment Authorization Documents (EAD)', value: 'Employment Authorization Documents (EAD)'},
@@ -77,6 +67,8 @@ export const AppointmentScreen = ({navigation}) => {
     //Language Dropdown
     const [lang_open, setLangOpen] = useState(false);
     const [lang_value, setLangValue] = useState(null);
+    //Language Dropdowns Value; this is an array objects. "label" is what is shown in the ui & 'value' is the 'value' of the object.
+    // To add another item to the dropdown, add {label: 'fill-out', value: 'fill-out'} in the array.
     const [lang_items, setLangItems] = useState([
       {label: 'English', value: 'English'}
     ]);
