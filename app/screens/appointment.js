@@ -22,7 +22,7 @@ const users = [
       location: "159 20th Street, Ste 1B, Brooklyn, NY 11232",
       hours: "M: 8:00 am – 3:00 pm (EST)\nTu: 10:00 am – 5:00 pm (EST)\nW:  8:00 am – 3:00 pm  (EST)\nTh:  11:00 am – 3:00 pm (EST)\nFr:  8:00 am – 3:00 pm (EST)",
       phone:"(347) 994-0177",
-      calendly: "",
+      calendly: "https://matthewblaisdell.s3.us-west-1.amazonaws.com/mattbladswell+copy.html",
       image: '../assets/img/attorneydefault.png',
       key:'1'
    },
