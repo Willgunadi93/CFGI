@@ -10,7 +10,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-### Installing
+### Installing<br/>
+Clone the repository<br/>
+We built our app using react expo. Make sure your machine has React Expo installed. <br/>
+Run 'expo start' in the root directory, from terminal to start the project. <br/>
+Install dependencies that the project requires.<br/><br/>
+
 
 ### Deployment
 
@@ -21,6 +26,8 @@ These instructions will get you a copy of the project up and running on your loc
 - Django
 
 ### Versioning
+<br/>
+Version 0.01 - June 9th, 2021<br/><br/>
 
 ### Authors
 
@@ -178,4 +185,5 @@ Future features this feature could or should have, from most to least important:
 ## Future of the App
 
 As of writing this, the app and its database are deployed on Heroku, but has yet to be deployed on the Apple App Store and Google Play Store. CFGI is a verified Google Play Store Developer, so we can actually deploy the app right now on Android. However, the app needs be user-tested first before that happens. We also still need to be verified Apple Store Developers, which is unfortunately much more difficult due to the whopping $99 a year we have to pay. <br/>
+We're also working on fully integrating the Django backend database with the front end, in hoping we can continue to futher the development of the application, and deploy on app stores.<br/><br/>
 To the future developers, these future changes described both here and earlier for each component seem like a lot (and there are). But we believe you can do it! None of us had any experience with React Native or Django when we first started, and while we're by no means experts, we're able to comfortably use it. We hope that you're able to learn React Native faster than we did through this README and existing code, and we hope that you can make the app a lot better than what we have right now.
